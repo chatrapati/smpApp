@@ -121,7 +121,7 @@ angular.module('shopMyTools.homeController', [])
         //swiper
         $scope.galleryOptions = {
             pagination: '.swiper-pagination',
-            slidesPerView: 3,
+            slidesPerView: 2.5,
             freeMode: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
@@ -131,7 +131,7 @@ angular.module('shopMyTools.homeController', [])
         };
         $scope.galleryOptions_deal = {
             pagination: '.swiper-pagination',
-            slidesPerView: 2,
+            slidesPerView: 1.4,
             freeMode: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
@@ -142,19 +142,4 @@ angular.module('shopMyTools.homeController', [])
 
 
 
-    })
-
-    .filter('noFractionCurrency',
-        ['$filter', '$locale', function (filter, locale) {
-            var currencyFilter = filter('currency');
-            var formats = locale.NUMBER_FORMATS;
-            return function (amount, currencySymbol) {
-                var value = currencyFilter(amount, currencySymbol);
-                var sep = value.indexOf(formats.DECIMAL_SEP);
-                // console.log(formats.DECIMAL_SEP);
-                if (amount >= 0) {
-                    return value.substring(0, sep);
-                }
-                return value.substring(0, sep) + ')';
-            };
-        }]);
+    });
