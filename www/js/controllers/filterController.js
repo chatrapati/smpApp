@@ -1,34 +1,42 @@
 angular.module('shopMyTools.filterController', [])
 
-.controller('filterController', function ($scope, $state) {
-   
-    $scope.groups = [];
-    for (var i=0; i<3; i++) {
-      $scope.groups[i] = {
-        name: i,
-        items: []
-      };
-      for (var j=0; j<3; j++) {
-        $scope.groups[i].items.push(i + '-' + j);
-      }
-    }
-    
-    /*
-     * if given group is the selected group, deselect it
-     * else, select the given group
-     */
-    $scope.toggleGroup = function(group) {
-      if ($scope.isGroupShown(group)) {
+.controller('filterController', function ($scope, $state, $rootScope) {
+
+    $rootScope.toggleCategory = function(category) {    
+      if ($scope.isGroupShown(category)) {
         $scope.shownGroup = null;
       } else {
-        $scope.shownGroup = group;
+        $scope.shownGroup = category;
       }
     };
-    $scope.isGroupShown = function(group) {
-      return $scope.shownGroup === group;
+    $scope.isGroupShown = function(category) {
+      return $scope.shownGroup == category;
     };
+      
+    $scope.categoryList = [];
+        
+    $scope.categoryList[0] = {
+      name: 'First',
+       items: [
+        { title: 'Sample1' },
+        { title: 'Sample2' },
+        { title: 'Sample3' },
+        { title: 'Sample4', id: 6, context: 'sanpm5' }      
+       ]
+     };
+        
+    $scope.categoryList[1] = {
+      name: 'Second',
+    icon:'fa fa-line-chart',
+     // image: 'investment',
+     items: [
+      { title: 'Sample1' },
+      { title: 'Sample2' },
+      { title: 'Sample3' },
+      { title: 'Sample4'}      
+     ]
+    };
+        
     
-    
-  
 
 });

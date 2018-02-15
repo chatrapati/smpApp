@@ -4,12 +4,6 @@ angular.module('shopMyTools.homeController', [])
 
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
-        $scope.category ={};
-        $scope.category.more ="view more";
-        $scope.categoryShow= false;
-        $scope.categoryshow = function(){
-            $scope.categoryShow= ! $scope.categoryShow;
-        }
 
         $scope.homePageDetails = function () {
             $scope.loading = true;
