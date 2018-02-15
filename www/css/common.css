@@ -176,7 +176,8 @@
     }
     .smt_logo{
         text-align: center;
-        padding: 20% 0;
+        /*padding: 20% 0;*/
+        padding: 20% 0 10% 0;
     }
     textarea, input[type="text"], input[type="password"],  input[type="number"], input[type="email"],  input[type="tel"] {
         color:#0487A1 !important;

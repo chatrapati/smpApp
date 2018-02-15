@@ -184,16 +184,19 @@ th, td {
 #middle_row{
     border-left: 1px solid #0487a1;   
     border-right: 1px solid #0487a1; 
-    padding: 0 13px;
+    /*padding: 0 13px;*/
+    padding: 0 13%;
 }
 #row1{
   padding: 0 13px;
+  float: left;
 }
 #row2{
   padding: 0 13px;
+  float: right;
 }
 .sign_up{
-  margin-top: 10%;
+  margin-top: 20%;
   text-align: center;
   font-size: 18px;
   font-weight: 600;
@@ -304,7 +307,9 @@ div.footer-button a.button.button-full {
 }
 
 .smt_logo_reg {
-  padding: 15%;
+  /*padding: 15%;*/
+  padding: 20% 0 10% 0;
+  text-align: center;
 }
 
 .card111{
