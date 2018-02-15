@@ -113,10 +113,10 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         controller: 'categoryController'
       })
 
-      .state('filter_Page', {
-        url: '/filter_Page',
+      .state('filterPageModal', {
+        url: '/filterPageModal',
         cache: false,
-        templateUrl: 'templates/filter_Page.html',
+        templateUrl: 'templates/filterPageModal.html',
         controller: 'filterController'
         
 
