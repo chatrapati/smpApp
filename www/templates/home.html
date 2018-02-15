@@ -28,7 +28,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" ng-show="categoryShow">
+			<div class="row" ng-if="category">
 				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
@@ -38,7 +38,10 @@
 			</div>
 			<div class="row">
 				<div class="col" style="text-align:right;margin-right: 10px;">
-					<label ng-model="category.more" class="viewmore_less" ng-click="categoryshow()">{{category.more}}</label>
+					<label  class="viewmore_less" ng-click="category=!category">
+						<span ng-if="!category">View More</span>
+						<span ng-if="category">View Less</span>							
+					</label>
 				</div>
 			</div>
 		</div>
