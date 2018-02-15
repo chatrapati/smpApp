@@ -3,7 +3,6 @@
     <!-- <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
@@ -12,31 +11,33 @@
 				<img width="30%" src="img/smtlogo.png">
 			</ion-nav-title> 
     </ion-nav-bar> -->
-
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
       <ion-nav-buttons side="left">
         <a class="button button-icon button-clear ion-navicon" menu-toggle="left"></a>
-
       </ion-nav-buttons>
       <ion-nav-title>
         <img width="100px" style="padding-top:10px" src="img/smtlogo.png">
       </ion-nav-title>
-
       <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-ios-search-strong"></button>
         <button class="button button-icon icon ion-ios-cart"></button>
-       
       </ion-nav-buttons>
     </ion-nav-bar>
-
-
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
+
+
+  <ion-side-menu side="left" class="smt_background_image smt_sideMenu">
     <ion-header-bar class="bar-stable">
       <!-- <h1 class="title">Left</h1> -->
-      <img width="100%" src="img/Smt_Logo.png">
+      <div class="menu_user_photo">
+        <img src="img/smtlogo.png">
+      </div>     
+      <div class="login_user_details">
+        <h1>Lakshmi</h1>
+        <p>Machilipatnam, Andhra Pradesh</p>
+      </div>
     </ion-header-bar>
     <ion-content class="scroll-content-menu">
       <ion-list>
@@ -46,9 +47,6 @@
             <i class="ion-edit f-right"></i>
           </div>
         </ion-item> -->
-       
-
-        
         <ion-item menu-close href="#/app/home">
           <i class="icon ion-ios-home placeholder-icon"></i> Home
         </ion-item>
@@ -57,15 +55,15 @@
         </ion-item>
         <ion-item menu-close href="#/app/myorders">
           <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders
-        </ion-item> 
-        <ion-item menu-close href="">
-          <i class="icon ion-ios-person-outline placeholder-icon"></i>  Profile
         </ion-item>
         <ion-item menu-close href="">
-          <i class="icon ion-ios-heart-outline placeholder-icon"></i>  My Wish List
+          <i class="icon ion-ios-person-outline placeholder-icon"></i> Profile
         </ion-item>
         <ion-item menu-close href="">
-          <i class="icon ion-ios-cart-outline placeholder-icon"></i>  Tool Cart
+          <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List
+        </ion-item>
+        <ion-item menu-close href="">
+          <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart
         </ion-item>
         <ion-item menu-close href="">
           <i class="icon ion-ios-unlocked-outline placeholder-icon"></i> Change Password
@@ -82,9 +80,10 @@
         <ion-item menu-close href="">
           <i class="icon ion-help placeholder-icon"></i> FAQ
         </ion-item>
-            
 
-
+        <div class="m_top12">
+          <button class="button button-block all_btns" id="menu_login_btn">LOGOUT</button>
+        </div>
         <!-- <ion-item class="white-bgclr">
           <div class="profile-name">
             <span>By
