@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content class="smt_background_image padding5">
+
+    <!-- <div class="smt_logo">
+      <img src="img/Smt_Logo.png" width="90%">
+    </div> -->
+    <table style="width:100%" class="nrows">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Order No</th>
+          <th>Qty</th>
+          <th>Amount</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="orderData in myOrdersList">
+          <td ng-bind="$index+1"></td>
+          <td ng-bind="orderData.orderid"></td>
+          <td ng-bind="orderData.totalquantity"></td>
+          <td class="txt_right" ng-bind="'&#8377'+orderData.totalamount"></td>
+          <td ng-click="gotoOrderDetails(orderData.orderid)">
+            <a href="">
+              <i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </ion-content>
+</ion-view>

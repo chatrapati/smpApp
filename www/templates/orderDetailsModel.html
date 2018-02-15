@@ -1,0 +1,106 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-assertive">
+        <h1 class="title">Order# : {{orderId}}</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closePopup()">
+                    <i class="icon ion-close-circled"></i>
+            </button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="smt_background_image padding5">
+
+        <table>
+            <tr ng-if="status!=''">
+                <td class="theme_clr">
+                    <b>Order Status</b>
+                </td>
+                <td ng-bind="status"></td>
+            </tr>
+            <tr ng-if="shippingtype!=''">
+                <td class="theme_clr">
+                    <b>Shipping Method</b>
+                </td>
+                <td ng-bind="shippingtype"></td>
+            </tr>
+            <tr ng-if="paymenttype!=''">
+                <td class="theme_clr">
+                    <b>Payment Method</b>
+                </td>
+                <td ng-bind="paymenttype"></td>
+            </tr>
+        </table>
+
+
+        <div class="row" ng-if="shippingtype == 'Delivery'">
+            <div class="col card1" ng-if="shippingaddress!='' && shippingaddress!=undefined">
+                <label class="theme_clr">
+                    <b>Shipping Address</b>
+                </label>
+                <p>{{shippingaddress.firstname}}&nbsp;&nbsp;{{shippingaddress.lastname}}</p>
+                <p>{{shippingaddress.mobile}}</p>
+                <p>{{shippingaddress.house_no}},&nbsp;&nbsp;{{shippingaddress.street_address}}</p>
+                <p>{{shippingaddress.city}}</p>
+                <p>{{shippingaddress.postal_code}}</p>
+                <p>{{shippingaddress.state}}</p>
+                <p>{{shippingaddress.country}}</p>
+            </div>
+            <div class="col card2" ng-if="billingaddress!='' && shippingaddress!=undefined">
+                <label class="theme_clr">
+                    <b>Billing Address</b>
+                </label>
+                <p>{{billingaddress.firstname}}&nbsp;&nbsp;{{billingaddress.lastname}}</p>
+                <p>{{billingaddress.mobile}}</p>
+                <p>{{billingaddress.house_no}},&nbsp;&nbsp;{{billingaddress.street_address}}</p>
+                <p>{{billingaddress.city}}</p>
+                <p>{{billingaddress.postal_code}}</p>
+                <p>{{billingaddress.state}}</p>
+                <p>{{billingaddress.country}}</p>
+            </div>
+        </div>
+
+        <table style="width:100%" ng-if="orderDetails.length>0" class="order_details_table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Tax (%)</th>
+                    <th>Tax Amount</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in orderDetails">
+                    <td ng-bind="data.productdescription"></td>
+                    <td class="txt_right" ng-bind="'&#8377'+data.unitprice"></td>
+                    <td ng-bind="data.tax"></td>
+                    <td class="txt_right" ng-bind="'&#8377'+data.tax_amount"></td>
+                    <td ng-bind="data.qty"></td>
+                    <td class="txt_right" ng-bind="'&#8377'+data.sub_total"></td>
+                </tr>
+                <tfoot class="tfoot_allign_right">
+                    <tr>
+                       
+                        <td colspan="5">Shipping Charges</td>
+                        <td>₹ 0</td>
+
+                    </tr>
+                    <tr>
+                       
+                        <td colspan="5">Coupon Amount</td>
+                        <td ng-bind="'&#8377'+discountAmt"></td>
+
+                    </tr>
+                    <tr>
+                       
+                        <td colspan="5">Grand Total (Incl.Tax) </td>
+                        <td ng-bind="'&#8377'+(grandTotal-discountAmt)"></td>
+
+                    </tr>
+                </tfoot>
+            </tbody>
+
+        </table>
+
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,182 @@
+<ion-view>
+	<ion-content class="smt_background_image" style="padding: 0;">
+
+		<!--   Banner Slider part Start here    -->
+		<div class="row">
+			<div class="col">
+				<ion-slide-box class="mainSlider" auto-play="false" does-continue="true">
+					<ion-slide class="mainSlides" ng-repeat="img in firstCarouselImages">
+						<img width="100%" ng-src="{{img}}">
+					</ion-slide>
+				</ion-slide-box>
+			</div>
+		</div>
+		<!--   Banner Slider part end here    -->
+
+		<!--   Categories part start here    -->
+		<div class="collections_part">
+			<div class="row">
+				<div class="col block_head categories">
+					<h3>Categories</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4">
+					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
+					<div class="collections_text">
+						<span>{{collection.name}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="categoryShow">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4">
+					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
+					<div class="collections_text">
+						<span>{{collection.name}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col" style="text-align:right;margin-right: 10px;">
+					<label ng-model="category.more" class="viewmore_less" ng-click="categoryshow()">{{category.more}}</label>
+				</div>
+			</div>
+		</div>
+		<!--   Categories part end here    -->
+
+		<!--   Top Brands start here  -->
+		<div class="topBrands_part">
+			<div class="block_head top_brands">
+				<h3>Top Brands</h3>
+			</div>
+			<div class="col home-slider">
+				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
+					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider">
+						<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
+					</ion-slide-page>
+				</ion-slides>
+			</div>
+		</div>
+		<!--   Top Brands End here    -->
+
+		<!--Best Deals -->
+		<div class="deals_part">
+			<div class="block_head deals">
+				<h3>Best Deal</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col home-slider">
+				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
+					<ion-slide-page ng-repeat="deal in deals">
+						<div class="card111">
+							<img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}">
+							<div class="deal_icons">
+								<span class="deal">Deal</span>
+							</div>
+							<div class="cart_icons">
+								<span>
+									<i class="icon ion-android-cart"></i>
+								</span>
+								<span>
+									<i class="icon ion-heart"></i>
+								</span>
+							</div>
+							<div class="content_part">
+								<div class="product_name" ng-init="limit = 19">
+									<a href="" title="{{deal.upload_name}}">{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
+								</div>
+								<div class="product_price" ng-repeat="price in deal.prices">
+									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="offer_percentage">{{price.percentage}} %</span>
+								</div>
+								<p class="excl_gst">(Excluding-GST)</p>
+							</div>
+						</div>
+					</ion-slide-page>
+				</ion-slides>
+			</div>
+		</div>
+		<!--Best Deals End here -->
+
+
+		<!--   Emerging Brands start here  -->
+		<div class="emergingBrands_part">
+			<div class="block_head emerg_brands">
+				<h3>Emerging Brands</h3>
+			</div>
+			<div class="col home-slider">
+				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
+					<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider">
+						<img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
+					</ion-slide-page>
+				</ion-slides>
+			</div>
+		</div>
+		<!--   Emerging Brands End here    -->
+
+		<!--Best Offers start here -->
+		<div class="offers_part">
+			<div class="block_head ofers">
+				<h3>Best Offers</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col home-slider">
+				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
+					<ion-slide-page ng-repeat="product in offersArray">
+						<div class="card111">
+							<!-- <img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}"> -->
+							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}" title="{{product.upload_name}}">
+							<div class="content_part">
+								<div class="product_name" ng-init="limit = 19">
+									<a href="" title="{{product.upload_name}}">{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
+								</div>
+								<div class="product_price" ng-repeat="price in product.prices">
+									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="offer_percentage">{{price.percentage}}%</span>
+								</div>
+								<p class="excl_gst">(Excluding-GST)</p>
+							</div>
+						</div>
+					</ion-slide-page>
+				</ion-slides>
+			</div>
+		</div>
+
+		<!--Best Offers End here -->
+
+
+
+	</ion-content>
+	<!--Footer Start here -->
+	<ion-footer-bar class="smtFooter">
+		<div class="tabs tabs-icon-top bar bar-assertive">
+			<a class="tab-item">
+				<i class="icon ion-ios-home"></i>
+				Home
+			</a>
+			<a class="tab-item">
+				<i class="icon ion-ios-location-outline"></i>
+				Location
+			</a>
+			<a class="tab-item">
+				<i class="icon ion-home"></i>
+				Tracking
+			</a>
+			<a class="tab-item">
+				<i class="icon ion-ios-person-outline"></i>
+				Service
+			</a>
+			<a class="tab-item">
+				<i class="icon ion-ios-more-outline"></i>
+				More
+			</a>
+		</div>
+	</ion-footer-bar>
+
+	<!--Footer End here -->
+
+</ion-view>

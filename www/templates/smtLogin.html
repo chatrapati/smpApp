@@ -1,0 +1,80 @@
+<ion-view view-title="Login">
+    <ion-content class="smt_background_image">
+
+        <div class="smt_logo">
+            <img src="img/Smt_Logo.png" width="90%">
+        </div>
+        <form name="loginForm">
+            <div class="list login_labls">
+                <label class="item item-input item-floating-label custom-login-label margin0">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Email / Mobile</span> -->
+                    <input type="text" placeholder="Email / Mobile" name="username" ng-model="loginData.username" required>
+                </label>
+                <span ng-show="loginForm.$submitted || loginForm.username.$touched || (loginForm.username.$dirty && loginForm.username.$invalid)">
+                    <span class="error" ng-show="loginForm.username.$error.required">Please enter Email / Mobile.</span>
+                </span>
+                <label class="item item-input custom-login-label">
+
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-ios-unlocked-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Password</span> -->
+                    <!-- <input type="password" placeholder="Password" name="password" ng-model="loginData.password" required>
+ -->
+                    <input type="{{inputType}}" placeholder="Password" name="password" ng-model="loginData.password" required>
+                    <div>
+                        <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
+                        <div>
+                            <label for="checkbox" ng-if="passwordCheckbox">
+                                <!-- <i class="icon ion-ios-eye-outline placeholder-icon"></i> -->
+                                <i class="fa fa-eye placeholder-icon"></i>
+                            </label>
+                            <label for="checkbox" ng-if="!passwordCheckbox">
+                                <!-- <i class="icon ion-eye-disabled placeholder-icon"></i> -->
+                                <i class="fa fa-eye-slash placeholder-icon"></i>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </label>
+                <!-- <div style="margin-top: -9%;float: right;" >
+                    <span ng-click="goalert()"><i class="icon ion-eye-disabled placeholder-icon" ></i></span> 
+                 </div> -->
+                <span ng-show="loginForm.$submitted || loginForm.password.$touched || (loginForm.password.$dirty && loginForm.password.$invalid)">
+                    <span class="error" ng-show="loginForm.password.$error.required">Please enter Password.</span>
+                </span>
+            </div>
+            <div class="remeber_forgetpass">
+                <span class="remember_me">
+                    <input type="checkbox">
+                    <span id="check_text">Remember me</span>
+                </span>
+                <!--<ion-checkbox id="checkbox_icon" ng-model="filter.red">Remember me</ion-checkbox>>-->
+                <span class="forgot_pswd" ng-click="gotoForgotPswd()">Forgot Password?</span>
+            </div>
+            <button class="button button-block all_btns" type="submit" id="login_btn" ng-disabled="loginForm.$invalid" ng-click="login(loginForm)">Login</button>
+        </form>
+        <div class="social_icons">
+
+            <img src="img/twitter.png" id="row1">
+            <img src="img/facebook.png" id="middle_row">
+            <img src="img/Google_Plus.png" id="row2">
+
+
+            <!-- <i class="icon ion-social-googleplus" id="row1"></i>
+            <i class="icon ion-social-twitter" id="middle_row"></i>
+            <i class="icon ion-social-facebook" id="row2"></i> -->
+        </div>
+        <div class="sign_up">
+            <span>Dont't have an account?
+                <a href="" id="login_signup" ng-click="gotoRegistration()">Sign Up</a>
+            </span>
+        </div>
+    </ion-content>
+</ion-view>

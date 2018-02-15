@@ -1,0 +1,78 @@
+<ion-view>
+    <ion-content class="smt_background_image" style="padding:0;">
+
+        <!--  Filter top header start here  -->
+        <div class="category_header">
+            <div class="bar bar-header">
+                <button class="button button-icon icon ion-close-circled"></button>
+                <div class="h1 title">Filter</div>
+                <div class="h1 title" style="text-align:right;">Apply</div>
+            </div>
+        </div>
+        </br>
+        <!--  Filter top header end here  -->
+
+        <!--  Filter body start here  -->
+        <!-- <div class="category_body">
+            <div class="filter_subCat">
+                <ion-list>
+                    <ion-checkbox ng-model="filter.red">Red</ion-checkbox>
+                </ion-list>
+            </div>
+            <div class="filter_price">
+                <ion-list>
+                    <ion-checkbox ng-model="filter.yellow">Yellow</ion-checkbox>
+                </ion-list>
+            </div>
+            <div class="filter_brand">
+                <ion-list>
+                    <ion-checkbox ng-model="filter.pink">Pink</ion-checkbox>
+                </ion-list>
+            </div>
+        </div> -->
+        <ion-list>
+            <div class="filter_list">
+                <div ng-repeat="group in groups" class="filter_subCat">
+                    <ion-item class="item-stable" id="accrd_head" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                        <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                        &nbsp; Sub Categories
+                    </ion-item>
+                    <ion-item class="item-accordion filter_subcat_list" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
+                        <ion-checkbox class="filter_sub_list" ng-model="filter.pink">Pink</ion-checkbox>
+                    </ion-item>
+                </div>
+            </div>
+        </ion-list>
+
+
+        <!--  Filter body end here  -->
+    </ion-content>
+
+    <!--Footer Start here -->
+    <!--<ion-footer-bar class="smtFooter">
+            <div class="tabs tabs-icon-top bar bar-assertive">
+                <a class="tab-item">
+                    <i class="icon ion-ios-home"></i>
+                    Home
+                </a>
+                <a class="tab-item">
+                    <i class="icon ion-ios-location-outline"></i>
+                    Location
+                </a>
+                <a class="tab-item">
+                    <i class="icon ion-home"></i>
+                    Tracking
+                </a>
+                <a class="tab-item">
+                    <i class="icon ion-ios-person-outline"></i>
+                    Service
+                </a>
+                <a class="tab-item">
+                    <i class="icon ion-ios-more-outline"></i>
+                    More
+                </a>
+            </div>
+        </ion-footer-bar>-->
+    <!--Footer End here -->
+
+</ion-view>

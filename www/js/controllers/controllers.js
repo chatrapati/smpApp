@@ -1,0 +1,243 @@
+angular.module('shopMyTools.controllers', [])
+
+    .controller('welcomeController', function ($scope, $state) {
+
+        $scope.options = {
+            loop: false,
+            effect: 'slide', // cube, coverflow
+            speed: 1500,
+        }
+
+        $scope.$on("$ionicSlides.sliderInitialized", function (event, data) {
+            // data.slider is the instance of Swiper
+            $scope.slider = data.slider;
+        });
+
+        $scope.$on("$ionicSlides.slideChangeStart", function (event, data) {
+            console.log('Slide change is beginning');
+        });
+
+        $scope.$on("$ionicSlides.slideChangeEnd", function (event, data) {
+            // note: the indexes are 0-based
+            $scope.activeIndex = data.slider.activeIndex;
+            $scope.previousIndex = data.slider.previousIndex;
+        });
+
+        $scope.gotoLoginPage = function () {
+            $state.go('smtLogin');
+        };
+    })
+
+    .controller('loginController', function ($scope, $rootScope, $state, loginService, $ionicPopup, $ionicLoading) {
+
+        $scope.loginData = {};
+
+
+        $scope.gotoRegistration = function () {
+             $state.go('smt_registration');
+          //  $state.go('app.home');
+        };
+        $scope.inputType = 'password';
+
+        // Hide & show password function
+        $scope.hideShowPassword = function () {
+            if ($scope.inputType == 'password') {
+                $scope.inputType = 'text';
+            }
+            else {
+                $scope.inputType = 'password';
+            }
+        };
+
+
+
+        $scope.login = function (form) {
+            if (form.$valid) {
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+                loginService.userAuthentication($scope.loginData.username, $scope.loginData.password).then(function (data) {
+                    $ionicLoading.hide();
+                    if (data.data.status == 'Success') {
+                        $rootScope.user_id = data.data.user_id;
+                        $rootScope.token = data.data.token;
+                        $rootScope.user_name = data.data.username;
+                        $rootScope.user_info = data.data.userinfo;
+                        if (data.data.billing_address != '') {
+                            $rootScope.user_billing_Address = data.data.billing_address;
+                        }
+                        if (data.data.shipping_address != '') {
+                            $rootScope.user_shipping_address = data.data.shipping_address;
+                        }
+
+
+                        window.localStorage['token'] = data.data.token;
+                        window.localStorage['user_id'] = data.data.user_id;
+                        window.localStorage['email'] = data.data.userinfo.email;
+                        window.localStorage['mobile'] = data.data.userinfo.user_mobile;
+                        localStorage.setItem('userInfo', JSON.stringify(data.data.userinfo));
+                        localStorage.setItem('gstNumber', JSON.stringify(data.data.GSTnumber));
+                        localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
+                        localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
+                        window.localStorage['user_name'] = $scope.userName;
+
+                        $state.go('app.home');
+                    } else {
+                        $ionicPopup.alert({
+                            template: data.data.status,
+                            title: 'Error!'
+                        });
+                    }
+                });
+            }
+        };
+
+        $scope.gotoForgotPswd = function () {
+            $state.go('forgotPassword');
+        };
+    })
+
+    .controller('registrationController', function ($scope, $rootScope, registrationService, $state, $ionicPopup, $ionicLoading) {
+
+        $scope.registerData = {};
+        $scope.registrationData = {};
+        $scope.otpData = {};
+
+        $scope.registerData.newsletter = "unchecked";
+        $scope.registerData.gstnumber = "";
+
+
+        $scope.getOtp = function (form) {
+            if (form.$valid && $scope.registerData.password == $scope.registerData.confirm_password) {
+
+                $scope.registerData.mobile = '91' + $scope.registrationData.mobile;
+                $rootScope.mobile = $scope.registerData.mobile;
+
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+
+                registrationService.getOtp($scope, $rootScope).then(function (data) {
+                    $ionicLoading.hide();
+                    if (data.data.status == 'Data saved successfully') {
+                        $rootScope.user_id = data.data.user_id;
+                        $rootScope.token = data.data.token;
+
+                        $rootScope.myPopup = $ionicPopup.show({
+                            templateUrl: 'templates/otpPopup.html',
+                            title: 'Enter OTP'
+                        });
+                    } else {
+                        $ionicPopup.alert({
+                            template: data.data.status,
+                            title: 'Error!'
+                        });
+                    }
+
+                });
+            }
+        };
+
+
+        $scope.verifyOTP = function (form, otpData) {
+            if (form.$valid) {
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+                $scope.otp = JSON.stringify(otpData.otp);
+                registrationService.verifyOTP($scope.otp, $rootScope.mobile).then(function (data) {
+                    $ionicLoading.hide();
+                    if (data.data.return == 'otp verified') {
+                        $rootScope.myPopup.close();
+
+                        $state.go('smtLogin');
+                    } else {
+
+                        $ionicPopup.alert({
+                            template: data.data.return,
+                            title: 'Error!'
+                        });
+                    }
+
+                })
+            }
+        }
+
+        $scope.resendOTP = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            registrationService.resendOTP($rootScope.user_id).then(function (data) {
+                $ionicLoading.hide();
+                $ionicPopup.alert({
+                    template: data.data.return,
+                    title: 'Success!'
+                });
+
+            })
+        }
+
+        $scope.gotoLogin = function () {
+            $state.go('smtLogin');
+            // $state.go('app.home');
+        };
+    })
+
+
+
+    .controller('forgotPasswordCtrl', function ($scope, $rootScope, forgotPaswdService, $state, $ionicPopup, $ionicLoading) {
+
+        $scope.forgetPswdData = {};
+
+        $scope.forgetPswd = function (form) {
+            if (form.$valid) {
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+                forgotPaswdService.forgotPassword($scope).then(function (data) {
+                    $ionicLoading.hide();
+                    if (data.data.status == 'email sent') {
+                        $state.go('emailSent');
+                    } else {
+                        $ionicPopup.alert({
+                            template: data.data.status,
+                            title: 'Error!'
+                        });
+                    }
+
+                })
+
+            }
+        };
+        $scope.gotoLogin = function () {
+            $state.go('smtLogin');
+        };
+    })
+
+
+    .controller('menuController', function ($scope, $state) {
+
+        marqueeInit({
+            uniqueid: 'mycrawler',
+            inc: 2, //speed - pixel increment for each iteration of this marquee's movement
+            mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+            moveatleast: 2,
+            neutral: 150,
+            savedirection: true,
+            random: true
+        });
+
+        $scope.gotoProductPage = function (category) {
+            if (category == '1') {
+                $state.go('login');
+            } else if (category == '2') {
+                $state.go('app.invoiceOrders');
+            } else if (category == '3') {
+                $state.go('app.myorders');
+            } else if (category == '4') {
+                $state.go('app.home');
+            }
+        }
+
+
+    });

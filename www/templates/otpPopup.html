@@ -1,0 +1,21 @@
+<div ng-controller="registrationController">
+
+
+
+    <div>
+        <form name="otpForm">
+            <div class="">
+                <!-- <label class="item item-input item-floating-label"> -->
+                    <input type="number" ng-model="otpData.otp" name="otp" required class="otp_input">
+                <!-- </label> -->
+                <span ng-show="otpForm.$submitted || otpForm.otp.$touched || (otpForm.otpForm.$dirty && otpForm.otp.$invalid)">
+                    <span class="error" ng-show="otpForm.otp.$error.required">Please enter OTP.</span>
+                </span>
+            </div>
+            <div class="m_top_7">
+                <button class="button all_btns f_left" ng-click="resendOTP()" id="popup_btn">Resend</button>
+                <button class="button all_btns f_right" ng-click="verifyOTP(otpForm,otpData)" id="popup_btn" ng-disabled="otpForm.$invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

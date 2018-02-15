@@ -1,0 +1,429 @@
+
+/* 
+.btn-cls {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.item  {
+    border-color: transparent;
+   background-color: transparent;
+}
+
+
+
+.center {
+    text-align: center;
+}
+.error{
+    color: #FF0000;
+}
+
+.item-floating-label .input-label {
+    color: white;
+}
+
+.form-margin{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 15%;
+}
+
+.border-bottom1 {
+    border-bottom: 1px solid white;
+}
+
+.border-bottom1-error {
+    border-bottom: 1px solid #FF0000;
+}
+
+
+.custom-login-label input[type]{
+    margin-left: 20px;
+}
+.custom-login-label i {
+    position: absolute;
+    bottom: 12px;
+}
+
+.btn-size {
+    min-height: 30px;
+    line-height: 0px;
+    border-radius: inherit;
+}
+
+.btn-pad {
+    padding: 0px 25px 0px 25px;
+}
+
+.button.button-fbclr {
+    border-color: transparent;
+    background-color: #0b3a88;
+    color: #fff; 
+}
+
+.button.button-gplusclr {
+    border-color: transparent;
+    background-color: #d34836;
+    color: #fff; 
+}
+
+
+.forgot-pswd{
+    float: right;
+    padding-top: 5px;
+    color: white;
+}
+
+.p-top20{
+    padding-top: 20%;
+}
+.p-left10 {
+    padding-left: 10px;
+}
+
+.placeholder-icon {
+    color: white;
+}
+
+.signup-icon {
+    float: right;
+    margin-right: 40px;
+    color: white;
+}
+.signup-icon-size {
+    font-size: 30px;
+}
+
+.f-right{
+    float: right;
+} */
+
+/* Rgistrtion Page CSS */
+
+/* .reg-form-margin {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+} */
+
+
+
+/*Menu */
+
+/* .bar.bar-stable {
+    background-color:#085662;
+  }
+  
+
+  .white-bgclr {
+      background-color: white;
+  }
+
+  .bar {
+      height: 55px;
+  }
+
+  .profile-name {
+    padding-left: 15px;
+    padding-top: 10px;
+    color: #0489a2;
+  }
+
+.p-left0 {
+    padding-left: 0px !important;
+}
+
+.p-right0 {
+    padding-right: 0px !important;
+}
+
+#otpPopup {
+    color: #0487a1;
+    padding-left: 10px;
+}
+.popup-head {
+    padding: 10px 7px !important;
+    border-bottom: 1px solid #0487a1 !important;
+    background: #0487a1 !important;
+}
+.otpButton{
+    background-color: #0487a1;
+    color: #fff;
+}
+.popup-head h3{
+    color:#fff !important;
+}
+.button-default{
+    background: #bbbbbbcf !important;
+} */
+
+
+
+/*   lakki styles start here 8-2-2018 */
+
+    .smt_background_image{
+        background: url("../img/BG_IMG.png");
+        width: 100%;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: #fff;
+        padding: 0 10%;
+        margin-bottom: 5%;
+        font-size: 12px;
+    }
+    .smt_logo{
+        text-align: center;
+        padding: 20% 0;
+    }
+    textarea, input[type="text"], input[type="password"],  input[type="number"], input[type="email"],  input[type="tel"] {
+        color:#0487A1 !important;
+        font-size: 13px !important;
+    }
+    *::-webkit-input-placeholder {
+        color: #0487a1 !important;
+        font-size: 18px !important;
+    }
+    *:-moz-placeholder {
+        color: #0487a1 !important;
+        font-size: 18px !important;
+    }
+    *:-ms-input-placeholder { 
+        color: #0487a1 !important;
+        font-size: 18px !important;
+    }
+    .float_labels{
+        color: #0487a1;
+        font-size: 13px;
+    }
+    .custom-login-label input[type]{
+        padding-left: 30px;
+        font-size: 13px;
+    }
+    .custom-login-label i {
+        position: absolute;
+        bottom: 12px;
+    }
+    .login_labls .item{
+        border-bottom:1px solid #0487a1 !important;
+        border: none
+    }
+    .placeholder-icon{
+        color: #0487a1;
+        font-size: 20px;
+        margin-bottom: -3px;
+    }
+    .all_btns{
+        background: #0487a1;
+        border-radius: 15px;
+        color:#fff;
+        font-weight: bold;
+    }
+    .ion-social-googleplus{
+        font-size: 40px;
+        color:#d34836;
+    }
+    .ion-social-twitter{
+        font-size: 40px;
+        color:#55acee;
+    }
+    .ion-social-facebook{
+        font-size: 40px;
+        color:#3b5998;
+    }
+   .social_icons{
+       text-align: center;
+       margin-top: 15%;
+   }
+   .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before{
+        background: #0487a1 !important;
+        border-color: #0487a1 !important;
+        border-radius: 50% !important;
+   }
+   .platform-android .checkbox-platform input:before, .platform-android .checkbox-platform .checkbox-icon:before, .checkbox-square input:before, .checkbox-square .checkbox-icon:before{
+        border-color: #0487a1 !important;
+        border-radius: 50% !important;
+   }
+   .error {
+        color: red;
+    }
+    .button.activated {
+        border-color: #0487a1 !important;
+        background-color: #0487a1 !important;
+        color: #fff !important;
+    }
+    .button:hover {
+        color: #fff ;
+    }
+    #mandatory_feild{
+        color:red;
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: -13px;
+    }
+    .popup-buttons button.button-positive {
+        background-color: #0487a1;
+    }
+    #popup_btn{
+        min-height: 30px !important;
+        line-height: 25px !important;
+        border-radius: 3px !important;
+    }
+
+    .f_left {
+        float: left;
+    }
+    .f_right {
+        float: right;
+    }
+    .popup-head {
+        background: #0487a1;
+        border:1px solid #0487a1;
+    }
+    .popup-head h3{
+        color:#fff;
+    }
+    .popup-body {
+        text-align: center;
+    }
+    .otp_input{
+        border: none !important;
+        border-bottom: 1px solid #0487a1 !important;
+        background: transparent !important;
+    }
+    .m_top-10 {
+        margin-top: -10%;
+      }
+      
+      .m_top12 {
+        margin-top: 12%;
+      }
+      .m_top_7{
+        margin-top: 7%;
+      }
+      .margin0.item {
+          margin: 1px !important;
+      }
+      .bar.bar-assertive {
+        border-color: #0487a1 !important;
+        background-color: #0487a1 !important;
+       /* background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);*/
+        color: #fff;
+    }
+    .mainSlider{
+        border-radius: 15px;
+    }
+    .block_head h3{
+        float: left;
+        margin-left: 2%;
+        font-size: 13px;
+        font-weight: 700;
+        color:#0487a1;
+        text-transform: uppercase;
+    }
+    .collectons img{
+        /* width: 50%;
+        border: 1px solid #0487a1;
+        border-radius: 50%;
+        padding: 5%; */
+        width: 55%;
+        border: 1px solid #0487a1;
+        border-radius: 50%;
+        padding: 10px 0px;
+    }
+    .collections_part{
+        text-align: center;
+    }
+    .collections_part .row{
+        /*margin-bottom: 5%;*/
+    }
+    .collections_text span{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    /*Swiper*/
+
+/*.home-slider .swiper-container {
+    width: 500px;
+    height: 300px;
+    margin: 20px auto;
+  }*/
+  .swiper-wrapper {
+    position: inherit !important;
+  }
+  .homeSmt .swiper-pagination {
+      display: none !important;
+  }
+  .home-slider .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .brands_slider{
+      height:75px !important;
+  }
+  .brands_slider img{
+      border:1px dotted #ddd;
+      border-radius: 5px;
+  }
+
+  table, td, th {    
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+}
+.nrows tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+th {
+    background-color: #0487a1;
+    color: #fff;
+}
+.padding5 {
+    padding: 5%;
+}
+.theme_clr {
+    color: #0487a1;
+}
+.txt_right {
+    text-align: right;
+}
+.tabs {
+    height: 55px !important;
+}
+/*   lakki styles start here 8-2-2018 */
+
+/*   lakki styles start here 14-2-2018 */
+.smtFooter .tab-item .icon{
+    padding: 5px 0 !important;
+    color: #fff;
+}
+.viewmore_less{
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+/*   lakki styles end here 14-2-2018 */
