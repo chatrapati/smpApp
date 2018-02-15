@@ -14,16 +14,15 @@
         <br>
         <ion-list>
             <div ng-repeat="category in categoryList">
-                <ion-item  ng-click="toggleCategory(category)" ng-class="{active: isGroupShown(category)}">
+                <ion-item ng-click="toggleCategory(category)" ng-class="{active: isGroupShown(category)}">
                     <i class="icon {{categoryList[0].icon}}"></i>
-                   <span>{{category.name}}</span> 
+                    <span>{{category.name}}</span>
                     <i class="downarrow icon ion-chevron-down icon-accessory"></i>
                 </ion-item>
 
 
-                <ion-item class="item-accordion item-text-wrap" ng-repeat="item in category.items" ng-show="isGroupShown(category)"
-                    href="#/app/{{item.context}}">
-                   <span>{{item.title}}</span> 
+                <ion-item class="item-accordion item-text-wrap" ng-repeat="item in category.items" ng-show="isGroupShown(category)">
+                    <span>{{item.title}}</span>
                 </ion-item>
             </div>
         </ion-list>

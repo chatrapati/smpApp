@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoFilters(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="row" ng-if="category">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoFilters(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>

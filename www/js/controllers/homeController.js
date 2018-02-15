@@ -109,9 +109,14 @@ angular.module('shopMyTools.homeController', [])
 
 
 
-        $scope.getOffers("");
+        $scope.getOffers();
 
-
+        $scope.gotoFilters = function(categoryName){
+            $rootScope.categoryName = categoryName;
+            window.localStorage['categoryName'] = categoryName;
+            alert(categoryName);
+            $state.go('categoryCartPage');
+        }
 
 
         //swiper
