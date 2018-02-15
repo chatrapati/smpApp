@@ -4,7 +4,7 @@
         <!--  category top header start here  -->
         <div class="category_header">
             <div class="bar bar-header">
-                <button class="button button-icon icon ion-close-circled"></button>
+                <button class="button button-icon icon ion-close-circled" ng-click="goback()"></button>
                 <div class="h1 title">{{categoryName}}</div>
                 <button class="button button-icon icon ion-funnel" ng-click="gotoFilter()"></button>
             </div>
@@ -37,9 +37,9 @@
                         <img ng-src="{{productsdata.upload_photo}}" alt="Image">
                         <h2>{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
-                            <span class="offer_price">{{prices.offer_price}}</span>
-                            <span class="real_price">{{prices.enduser_price}}</span>
-                            <span class="offer_percentage">{{prices.percentage}}%</span>
+                            <span class="offer_price">{{prices.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="real_price">{{prices.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="offer_percentage">{{prices.percentage | noFractionCurrency:'&#8377;'}}%</span>
                         </div>
                         <p class="excl_gst">(Excluding-GST)</p>
                         <div class="cat_cart_icons">
