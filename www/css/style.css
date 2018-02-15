@@ -453,3 +453,14 @@ text-align: right;
   color:#000 !important;
 }
 /*   lakki styles end here 14-2-2018 */
+
+
+/*   lakki styles start here 15-2-2018 */
+.item-complex .item-content{
+    border-bottom: 1px solid #0487a1 !important;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    background-color: #fff;
+}
+/*   lakki styles end here 15-2-2018 */
