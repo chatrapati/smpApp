@@ -1,15 +1,16 @@
 
 angular.module('shopMyTools.categoryService', [])
-.service('product_categories_service', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
+.service('categoryService', function ($q, $http, PRODUCT_CATEGORY_SERVICE) {
 
-    this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
+    this.getAllCategoriesOfProduct = function ($scope, $rootScope) {
         var deferred = $q.defer();
+        var data = angular.toJson($scope.getCategoryProductData);
 		
         $http({
             method: 'POST',
-            url: PRODUCT_CATEGORY_SERVICE+'/productlist',
+            url: PRODUCT_CATEGORY_SERVICE +'/productlist',
             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
-			data:{"category":categoryName,"subcategory":[subCategoryName], "from":fromVal ,"to":toVal } 
+			data
            
         }).then(function success(data) {
             deferred.resolve(data);
