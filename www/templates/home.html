@@ -86,8 +86,8 @@
 								</span>
 							</div>
 							<div class="content_part">
-								<div class="product_name" ng-init="limit = 19">
-									<a href="" title="{{deal.upload_name}}">{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
+								<div class="product_name">
+									<a href="" class="tooltip"  animation="fade">{{deal.upload_name | limitTo: 10}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in deal.prices">
 									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.filterController',
-  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService', 'shopMyTools.constants'])
+  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService', 'shopMyTools.constants','shopMyTools.smtdirective'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
