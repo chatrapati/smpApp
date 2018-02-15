@@ -28,8 +28,8 @@
                 </ion-item>
 
 
-                <ion-item class="item-accordion item-text-wrap" ng-repeat="item in category.items" ng-show="isGroupShown(category)" href="#/app/{{item.context}}">
-                    <span>{{item.title}}</span>
+                <ion-item class="item-accordion item-text-wrap" ng-repeat="item in category.list" ng-show="isGroupShown(category)" >
+                    <span>{{item}}</span>
                 </ion-item>
             </div>
         </ion-list>
