@@ -499,5 +499,26 @@ text-align: right;
     margin-bottom: 0;
     color: #fff;
 }
-
+.category_cart_list{
+    margin-top: 10%;
+}
+.category_cart_list .list1 .item{
+    background-color:transparent;
+    color: #444;
+    border: none; 
+    border-bottom: 3px solid #ddd; 
+    padding-bottom: 8%;     
+}
+.category_cart_list .list1 h1{
+    font-size: 18px;
+    margin-top: 2%;
+    margin-bottom: 2%;     
+}
+.whishlist_icons{
+    float: right;
+    margin-top: -15%;
+}
+.whishlist_icons span {
+  font-size: 25px;
+}
 /*   lakki styles end here 15-2-2018 */
