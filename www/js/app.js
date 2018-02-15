@@ -4,7 +4,6 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-
 angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.filterController',
   'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService', 'shopMyTools.constants'])
 
@@ -111,7 +110,7 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         url: '/categoryCartPage',
         cache: false,
         templateUrl: 'templates/categoryCartPage.html',
-       // controller: 'welcomeController'
+        controller: 'categoryController'
       })
 
       .state('filter_Page', {
