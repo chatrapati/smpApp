@@ -461,6 +461,43 @@ text-align: right;
     border-left: none;
     border-right: none;
     border-top: none;
-    background-color: #fff;
+    background:none;
 }
+#menu_login_btn{
+    margin-top: 5%;
+    width: 70%;
+    margin: 0 auto;
+}
+.smt_sideMenu .bar.bar-stable {
+  border-color: #0487a1;
+  background-color: #0487a1;
+  background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+  color: #fff;
+  height: 10%;
+}
+.smt_sideMenu .item{
+  background-color: transparent;
+}
+.scroll-content-menu{
+  margin-top: 12%;
+}
+.menu_user_photo{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 22%;
+    margin: 3%;
+}
+.menu_user_photo img{
+  max-width: 100%;
+  padding: 10px;
+}
+.login_user_details{
+    padding-top: 3%;
+}
+.login_user_details h1{
+    font-size: 25px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
 /*   lakki styles end here 15-2-2018 */
