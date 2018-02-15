@@ -52,7 +52,7 @@
 			<div class="block_head top_brands">
 				<h3>Top Brands</h3>
 			</div>
-			<div class="col home-slider">
+			<div class="col home-slider slider_brands">
 				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider">
 						<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
@@ -77,14 +77,14 @@
 							<div class="deal_icons">
 								<span class="deal">Deal</span>
 							</div>
-							<div class="cart_icons">
+							<!-- <div class="cart_icons">
 								<span>
 									<i class="icon ion-android-cart"></i>
 								</span>
 								<span>
 									<i class="icon ion-heart"></i>
 								</span>
-							</div>
+							</div> -->
 							<div class="content_part">
 								<div class="product_name" id="tooltip_name" ng-init="limit = 15">
 									<a href=""  tooltips tooltip-template={{deal.upload_name}}>{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
@@ -95,6 +95,14 @@
 									<span class="offer_percentage">{{price.percentage}} %</span>
 								</div>
 								<p class="excl_gst">(Excluding-GST)</p>
+								<div class="cart_icons">
+									<span>
+										<i class="icon ion-android-cart"></i>
+									</span>
+									<span>
+										<i class="icon ion-heart"></i>
+									</span>
+								</div>
 							</div>
 						</div>
 					</ion-slide-page>
@@ -109,7 +117,7 @@
 			<div class="block_head emerg_brands">
 				<h3>Emerging Brands</h3>
 			</div>
-			<div class="col home-slider">
+			<div class="col home-slider slider_brands">
 				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider">
 						<img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
@@ -130,8 +138,10 @@
 				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="product in offersArray">
 						<div class="card111">
-							<!-- <img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}"> -->
 							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
+							<div class="deal_icons">
+								<span class="deal">Deal</span>
+							</div>
 							<div class="content_part">
 								<div class="product_name"  id="tooltip_name" ng-init="limit = 15">
 									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
@@ -142,6 +152,14 @@
 									<span class="offer_percentage">{{price.percentage}}%</span>
 								</div>
 								<p class="excl_gst">(Excluding-GST)</p>
+								<div class="cart_icons">
+									<span>
+										<i class="icon ion-android-cart"></i>
+									</span>
+									<span>
+										<i class="icon ion-heart"></i>
+									</span>
+								</div>
 							</div>
 						</div>
 					</ion-slide-page>

@@ -1,7 +1,7 @@
 angular.module('shopMyTools.categoryPageController', [])
 
   .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory) {
-
+    
     $scope.getProductCategories = function (fromVal, toVal) {
       $scope.getCategoryProductData = {};
       $scope.getCategoryProductData.category = window.localStorage['categoryName'];
@@ -14,19 +14,26 @@ angular.module('shopMyTools.categoryPageController', [])
         if (data.data) {
 
           $scope.products = data.data.products;
-          $scope.subcategoriesList = data.data.subcategories;
+          $rootScope.subcategoriesList = data.data.subcategories;
+          $rootScope.brandsList = data.data.brand_data;
           // $scope.displayItems = $scope.products.slice(0, 5);
           $rootScope.totalcount = data.data.totalcount;
           // alert($rootScope.totalcount)
           // $scope.productsprice = $scope.products.prices;
           $scope.totalItems = data.data.products.length;
           $scope.datalists = data.data.products;
+
         } else {
 
         }
       })
     }
     $scope.getProductCategories();
+
+
+    
+
+   
 
 
     $scope.gotoFilter = function () {
@@ -43,8 +50,9 @@ angular.module('shopMyTools.categoryPageController', [])
       $scope.modal.hide();
     }
 
+    
 
-
+    $scope.test = ['adasda', 'yyyyy'];
 
     $rootScope.toggleCategory = function (category) {
       if ($scope.isGroupShown(category)) {
@@ -60,25 +68,13 @@ angular.module('shopMyTools.categoryPageController', [])
     $scope.categoryList = [];
 
     $scope.categoryList[0] = {
-      name: 'First',
-      items: [
-        { title: 'Sample1' },
-        { title: 'Sample2' },
-        { title: 'Sample3' },
-        { title: 'Sample4', id: 6, context: 'sanpm5' }
-      ]
+      name: 'Sub Categories',
+      list: $rootScope.subcategoriesList
     };
 
     $scope.categoryList[1] = {
-      name: 'Second',
-      icon: 'fa fa-line-chart',
-      // image: 'investment',
-      items: [
-        { title: 'Sample1' },
-        { title: 'Sample2' },
-        { title: 'Sample3' },
-        { title: 'Sample4' }
-      ]
+      name: 'Brands',
+      list: $rootScope.brandsList
     };
 
     $rootScope.goback = function () {

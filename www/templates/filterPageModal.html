@@ -7,7 +7,7 @@
 
         </ion-nav-buttons>
         <ion-nav-title>
-           <div class="h1 title">{{categoryName}}</div>
+            <div class="h1 title">{{categoryName}}</div>
         </ion-nav-title>
 
         <ion-nav-buttons side="right">
@@ -18,20 +18,29 @@
     <ion-content class="smt_background_image" style="padding:0;">
         <br>
         <br>
-       
+
         <ion-list>
             <div ng-repeat="category in categoryList">
-                <ion-item ng-click="toggleCategory(category)" ng-class="{active: isGroupShown(category)}">
-                    <i class="icon {{categoryList[0].icon}}"></i>
-                    <span>{{category.name}}</span>
-                    <i class="downarrow icon ion-chevron-down icon-accessory"></i>
-                </ion-item>
+                <div class="filter_head_options">
+                    <ion-item ng-click="toggleCategory(category)" ng-class="{active: isGroupShown(category)}">
+                        <i class="icon {{categoryList[0].icon}}"></i>
+                        <span>{{category.name}}</span>
+                        <i class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
 
-
-                <ion-item class="item-accordion item-text-wrap" ng-repeat="item in category.items" ng-show="isGroupShown(category)" href="#/app/{{item.context}}">
-                    <span>{{item.title}}</span>
-                </ion-item>
+                <ion-list class="item-accordion item-text-wrap" ng-repeat="item in category.list" ng-show="isGroupShown(category)" href="#/app/{{item.context}}"
+                    id="filter_checkOptions">
+                    <!-- <span>{{item.title}}</span> -->
+                    <ion-checkbox>{{item}}</ion-checkbox>
+                </ion-list>
             </div>
         </ion-list>
     </ion-content>
 </ion-modal-view>
+
+<!-- <ion-list>
+    <ion-checkbox>Red</ion-checkbox>
+    <ion-checkbox>Yellow</ion-checkbox>
+    <ion-checkbox>Pink</ion-checkbox>
+  </ion-list> -->
