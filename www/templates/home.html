@@ -86,8 +86,8 @@
 								</span>
 							</div>
 							<div class="content_part">
-								<div class="product_name">
-									<a href="" class="tooltip"  animation="fade">{{deal.upload_name | limitTo: 10}}</a>
+								<div class="product_name" id="tooltip_name" ng-init="limit = 15">
+									<a href=""  tooltips tooltip-template={{deal.upload_name}}>{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in deal.prices">
 									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
@@ -131,10 +131,10 @@
 					<ion-slide-page ng-repeat="product in offersArray">
 						<div class="card111">
 							<!-- <img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}"> -->
-							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}" title="{{product.upload_name}}">
+							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
 							<div class="content_part">
-								<div class="product_name" ng-init="limit = 19">
-									<a href="" title="{{product.upload_name}}">{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
+								<div class="product_name"  id="tooltip_name" ng-init="limit = 15">
+									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in product.prices">
 									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
