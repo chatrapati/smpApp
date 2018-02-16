@@ -45,3 +45,25 @@ angular.module('shopMyTools.homeService', [])
         };
 
     })
+
+    .service('allNewArrivalsService',function($q, $http,SERVER_URL){
+        this.allNewArrivalsMethod = function (subCatObj) {
+                var deferred = $q.defer();
+    
+                $http({
+                    method: 'GET',
+                    url:SERVER_URL+'/newarrivalcats?upload_subcategory='+subCatObj,
+                    headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'}		
+                    
+                }).then(function success(data) {
+                    deferred.resolve(data);
+    
+                }, function error(data) {
+                    deferred.reject(data);
+    
+                });
+    
+                return deferred.promise;
+            };
+    
+    })

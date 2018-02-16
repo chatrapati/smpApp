@@ -1,6 +1,6 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService) {
 
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
@@ -115,6 +115,33 @@ angular.module('shopMyTools.homeController', [])
         };
 
 
+        //NewArrivals
 
+
+        $scope.getNewArrivals = function (categoryObj) {
+            // alert(categoryObj)
+            allNewArrivalsService.allNewArrivalsMethod(categoryObj).then(function (data) {
+                // alert(JSON.stringify(data))
+                if (data.data.status == 'Success') {
+                    $scope.newarrivals = data.data.newarrivalcats;
+                    $rootScope.newarrivalsArray = [];
+                    for (i = 0; i < $scope.newarrivals.length; i++) {
+
+                        $scope.newarrivalsObj = $scope.newarrivals[i];
+                        for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
+                            if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
+
+                                $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
+                            }
+                        }
+                    }
+                } else {
+                    //  alert(data.data.status)
+                }
+
+            })
+        }
+
+        $scope.getNewArrivals("")
 
     });
