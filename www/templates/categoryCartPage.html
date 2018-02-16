@@ -16,24 +16,27 @@
             <div class="category_dropdown">
                 <div class="list" style="float:left;">
                     <label> Show</label>
-                    <select>
-                        <option>Blue</option>
-                        <option selected>Green</option>
-                        <option>Red</option>
+                    <select ng-model="noOfItems" ng-change="getselectedNoProducts(noOfItems)">
+                        <option value="12" selected>12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
                     </select>
+
                 </div>
                 <div class="list" style="float:right;">
                     <label> Sort</label>
-                    <select>
-                        <option>Blue</option>
-                        <option selected>Green</option>
-                        <option>Red</option>
+                    <select ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
+                        <option selected value="popularty">Popularity</option>
+                        <option value="topselling">Topselling</option>
+                        <option value="namefilter">Name</option>
+                        <option value="price_low_high">Price:Low to High</option>
+                        <option value="price_high_low">Price:High to Low</option>
                     </select>
                 </div>
             </div>
             <div class="category_cart_list">
-                 <div class="list1"  ng-repeat="productsdata in products">
-                    <a class="item item-thumbnail-left"  class="product-img" >
+                <div class="list1" ng-repeat="productsdata in products">
+                    <a class="item item-thumbnail-left" class="product-img">
                         <img ng-src="{{productsdata.upload_photo}}" alt="Image">
                         <h2>{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
@@ -43,10 +46,18 @@
                         </div>
                         <p class="excl_gst">(Excluding-GST)</p>
                         <div class="cat_cart_icons">
-                            <span><i class="icon ion-android-cart"></i></span>
-                            <span><i class="icon ion-heart"></i></span>
-                            <span><i class="icon ion-arrow-swap"></i></span>
-                            <span><i class="icon ion-android-star"></i></span>
+                            <span>
+                                <i class="icon ion-android-cart"></i>
+                            </span>
+                            <span>
+                                <i class="icon ion-heart"></i>
+                            </span>
+                            <span>
+                                <i class="icon ion-arrow-swap"></i>
+                            </span>
+                            <span>
+                                <i class="icon ion-android-star"></i>
+                            </span>
                         </div>
                     </a>
                 </div>
