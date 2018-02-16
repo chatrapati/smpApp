@@ -86,7 +86,7 @@
 								</span>
 							</div> -->
 							<div class="content_part">
-								<div class="product_name" id="tooltip_name" ng-init="limit = 15">
+								<div class="product_name" id="tooltip_name" ng-init="limit = 19">
 									<a href=""  tooltips tooltip-template={{deal.upload_name}}>{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in deal.prices">
@@ -143,7 +143,7 @@
 								<span class="deal">Deal</span>
 							</div>
 							<div class="content_part">
-								<div class="product_name"  id="tooltip_name" ng-init="limit = 15">
+								<div class="product_name"  id="tooltip_name" ng-init="limit = 19">
 									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in product.prices">
