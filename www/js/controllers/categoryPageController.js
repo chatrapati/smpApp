@@ -29,7 +29,7 @@ angular.module('shopMyTools.categoryPageController', [])
         } 
       })
     }
-    $scope.getProductCategories();
+     $scope.getProductCategories();
 
 
     
