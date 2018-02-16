@@ -310,7 +310,7 @@
       .bar.bar-assertive {
         border-color: #0487a1 !important;
         background-color: #0487a1 !important;
-       /* background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);*/
+       background-image:none !important;
         color: #fff;
     }
     .mainSlider{
@@ -382,8 +382,8 @@
       height:75px !important;
   }
   .brands_slider img{
-      border:1px dotted #ddd;
-      border-radius: 5px;
+      border:1px dotted #aeaeae;
+      border-radius: 10px;
   }
 
   table, td, th {    
