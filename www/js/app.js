@@ -132,6 +132,13 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         cache: false,
         templateUrl: 'templates/productDetail_page.html',
        // controller: 'welcomeController'
+      })
+      
+      .state('specifications_page', {
+        url: '/specifications_page',
+        cache: false,
+        templateUrl: 'templates/specifications_page.html',
+       // controller: 'welcomeController'
       });
       
       
