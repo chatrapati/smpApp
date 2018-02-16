@@ -666,5 +666,69 @@ div.footer-button a.button.button-full {
     background:#fff;
     border:1px solid #0487a1;
   }
+  .about_product .tabs-striped.tabs-background-positive .tabs{
+    background-color: transparent;
+  }
+  .about_product .tabs-striped.tabs-color-light .tab-item.active{
+    color: #000;
+    font-size: 20px;
+    border: 0 solid #0487a1;
+  }
+  .about_product .tabs-striped.tabs-color-light .tab-item{
+    color: #000;
+    font-size: 20px;
+    border: 0 solid #0487a1;
+  }
+  .about_product .tabs-background-positive .tabs, .tabs-background-positive > .tabs {
+    background-color: none;
+    background-image:none;
+    border-color: #ddd;
+}
+.prod_description p{
+    font-size: 16px;
+    color: #7f7a7a;
+    line-height: 1.4;
+}
+.prod_specification{
+    padding: 0 0 0 0;
+}
+.prod_specification h2{
+    color: #0487a1;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.seperatorColon{
+    padding: 0 15%;
+}
+.prod_specification span{
+    font-size: 16px;
+}
+.attrName{ 
+    color: #a09797;
+    padding-left: 15px;
+}
+.attrValue{
+    color: #000;
+    padding-right: 15px;
+}
+.prod_specification .spec_count{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+#priceRange{
+    border-width:0;
+    border-style: none;
+}
+.priceshower{
+    float: right;
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    color: #0487a1;
+    border-radius: 5px;
+    font-weight: 700;
+}
 
 /*   lakki styles end here 16-2-2018 */
