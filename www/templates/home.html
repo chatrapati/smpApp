@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoFilters(collection.name)">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoCategoryPage(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="row" ng-if="category">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoFilters(collection.name)">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoCategoryPage(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>
@@ -63,7 +63,7 @@
 		<!--   Top Brands End here    -->
 
 		<!--Best Deals -->
-		<div class="deals_part">
+		<!-- <div class="deals_part">
 			<div class="block_head deals">
 				<h3>Best Deal</h3>
 			</div>
@@ -72,19 +72,12 @@
 			<div class="col home-slider">
 				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="deal in deals">
-						<div class="card111">
+						<div class="card111" ng-click="getProductDetails(deal)">
 							<img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}">
 							<div class="deal_icons">
 								<span class="deal">Deal</span>
 							</div>
-							<!-- <div class="cart_icons">
-								<span>
-									<i class="icon ion-android-cart"></i>
-								</span>
-								<span>
-									<i class="icon ion-heart"></i>
-								</span>
-							</div> -->
+							
 							<div class="content_part">
 								<div class="product_name" id="tooltip_name" ng-init="limit = 19">
 									<a href=""  tooltips tooltip-template={{deal.upload_name}}>{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
@@ -108,7 +101,7 @@
 					</ion-slide-page>
 				</ion-slides>
 			</div>
-		</div>
+		</div> -->
 		<!--Best Deals End here -->
 
 
@@ -137,7 +130,7 @@
 			<div class="col home-slider">
 				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="product in offersArray">
-						<div class="card111">
+						<div class="card111" ng-click="getProductDetails(product)">
 							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
 							<div class="deal_icons">
 								<span class="deal">Deal</span>

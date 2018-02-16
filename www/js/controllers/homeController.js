@@ -32,91 +32,65 @@ angular.module('shopMyTools.homeController', [])
         $scope.homePageDetails();
 
 
-        $rootScope.getProductDetails = function (productObj) {
+        // $rootScope.getProductDetails = function (productObj) {
 
-            window.localStorage['productName'] = productObj.upload_name;
+        //     window.localStorage['productName'] = productObj.upload_name;
 
-            localStorage.removeItem('isReviewStatus');
+        //     localStorage.removeItem('isReviewStatus');
 
-            $rootScope.showHintFlag = 'false';
+        //     $rootScope.showHintFlag = 'false';
 
-            localStorage.setItem('breadCrumb', productObj.upload_category);
+        //     localStorage.setItem('breadCrumb', productObj.upload_category);
 
-            localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-
-
-            // $window.open("http://localhost/smtfeb6evening/index.html#!/productDetailPage");
-
-            $window.open("http://toolsomg.com/#!/productDetailPage");
+        //     localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
 
 
-            // $location.path("productDetailPage");
+        //     // $window.open("http://localhost/smtfeb6evening/index.html#!/productDetailPage");
 
-        }
+        //     $window.open("http://toolsomg.com/#!/productDetailPage");
+
+
+        //     // $location.path("productDetailPage");
+
+        // }
 
 
         //offers
 
         $scope.getOffers = function (categoryObj) {
 
-            $scope.loading = true;
 
             allOffersService.allOffersMethod(categoryObj).then(function (data) {
-
-                $scope.loading = false;
-
                 if (data.data.status == 'Success') {
-
                     $scope.Offers = data.data.offerscats;
-
-
-
                     $rootScope.offersArray = [];
-
                     for (i = 0; i < $scope.Offers.length; i++) {
-
-
-
                         $scope.offersObj = $scope.Offers[i];
-
                         for (j = 0; j < $scope.offersObj.prices.length; j++) {
-
                             if ($scope.offersObj.prices[j].enduser_price != 0) {
-
-
-
                                 $rootScope.offersArray.push($scope.offersObj)
-
                             }
-
                         }
-
                     }
-
-
-
-                } else {
-
-                    //  alert(data.data.status)
-
                 }
-
-
-
-            })
+            });
 
         }
 
 
 
-        $scope.getOffers();
+        $scope.getOffers("");
 
-        $scope.gotoFilters = function (categoryName) {
+        $scope.gotoCategoryPage = function (categoryName) {
             $rootScope.categoryName = categoryName;
             window.localStorage['categoryName'] = categoryName;
             $state.go('categoryCartPage');
         }
 
+        $scope.getProductDetails = function (productObj) {
+            window.localStorage['productName'] = productObj.upload_name;
+            $state.go("productDetail_page")
+        }
 
         //swiper
         $scope.galleryOptions = {
@@ -139,6 +113,7 @@ angular.module('shopMyTools.homeController', [])
 
             spaceBetween: 5
         };
+
 
 
 

@@ -16,66 +16,78 @@
             <div class="row">
                 <div class="col">
                     <!--   Banner Slider part Start here    -->
-                    <ion-slide-box class="product_detailSlider" auto-play="false" does-continue="true">
+                    <ion-slide-box class="product_detailSlider" auto-play="false" does-continue="true" id="productdetailSlide">
                         <ion-slide class="mainSlides">
-                            <img src="img/Smt_Logo.png" width="100%">
+                            <img ng-src={{productDetail.upload_photo}} width="50%">
                         </ion-slide>
                     </ion-slide-box>
                     <!--   Banner Slider part end here    -->
 
                     <!--  Product Description part start here    -->
-                    <div class="product_Detail_price">
-                        <span class="offer_price">2,15,825</span>
-                        <span class="real_price">4,20,000</span>
-                        <span class="offer_percentage"> OFF 30.24%</span>
-                    </div>
-                    <p class="detailexcl_gst">(Excluding-GST)</p>
-                    <!--  Product Description part end here    -->
-                    <div class="pro_detail_name">
-                        <h1>Product Name</h1>
-                        <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
-                            ndfjdfh sdfhdfh dfdhfdshf</p>
+                    <div>
+                        <div class="product_Detail_price">
+                            <span class="offer_price">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="real_price">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
+                        </div>
+                        <p class="detailexcl_gst">(Excluding-GST)</p>
+                        <!--  Product Description part end here    -->
+                        <div class="pro_detail_name">
+                            <h1>{{productDetail.upload_name}}</h1>
+                            <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
+                            ndfjdfh sdfhdfh dfdhfdshf</p> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="product_desc">
-            <div class="row">
-                <div class="col">
-                    <div class="highlits">
-                        <h3>Highlights</h3>
-                        <ul>
-                            <li>specification 1</li>
-                            <li>specification 2</li>
-                            <li>specification 3</li>
-                            <li>specification 4</li>
-                            <a href="">View Details</a>
-                        </ul>
+            <div class="product_desc">
+                <div class="row">
+                    <div class="col">
+                        <div class="highlits">
+                            <h3>Highlights</h3>
+                            <ul>
+                                <li>Brand : {{productDetail.upload_brand}}</li>
+                                <li>Model No : {{productDetail.upload_modelno}}</li>
+                                <li>Net Weight : {{productDetail.upload_netWeight}}</li>
+                                <li ng-repeat="specification in ProductSpecification  | limitTo:2">
+                                    <span > {{specification.atrname}}</span> 
+                                    <span > {{specification.atrvalue}}</span> 
+                                </li>
+                                <a href="">View Details</a>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="product_desc">
-            <div class="row">
-                <div class="col">
-                    <div class="related">
-                        <h1>Related Products <span><i class="ion-chevron-right"></i></span></h1>
+            <div class="product_desc">
+                <div class="row">
+                    <div class="col">
+                        <div class="related">
+                            <h1>Related Products
+                                <span>
+                                    <i class="ion-chevron-right"></i>
+                                </span>
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="product_desc">
-            <div class="row">
-                <div class="col">
-                    <div class="related">
-                        <h1>Upsell Products <span><i class="ion-chevron-right"></i></span></h1>
+            <div class="product_desc">
+                <div class="row">
+                    <div class="col">
+                        <div class="related">
+                            <h1>Upsell Products
+                                <span>
+                                    <i class="ion-chevron-right"></i>
+                                </span>
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
     </ion-content>
 
