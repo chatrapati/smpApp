@@ -1,6 +1,6 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
@@ -14,8 +14,11 @@ angular.module('shopMyTools.categoryPageController', [])
 
 
     $scope.callService = function () {
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
       categoryService.getAllCategoriesOfProduct($scope, $rootScope).then(function (data) {
-        $rootScope.loading = false;
+        $ionicLoading.hide();
         if (data.data) {
 
           $rootScope.products = data.data.products;
@@ -33,6 +36,23 @@ angular.module('shopMyTools.categoryPageController', [])
 
     $scope.getProductCategories();
 
+
+    $scope.showNoOfItems = [
+      { value: "12", Name: "12" },
+      { value: "24", Name: "24" },
+      { value: "36", Name: "36" }
+    ];
+    $scope.noOfItems = $scope.showNoOfItems[0].value;
+
+    $scope.showSortItems = [
+      { value: "popularty", Name: "Popularity" },
+      { value: "topselling", Name: "Topselling" },
+      { value: "namefilter", Name: "Name" },
+      { value: "price_low_high", Name: "Price:Low to High" },
+      { value: "price_high_low", Name: "Price:High to Low" }
+    ];
+    $scope.sortItem = $scope.showSortItems[0].value;
+
     $scope.getselectedNoProducts = function (noOfItems) {
       $rootScope.getCategoryProductData.to = noOfItems;
       $scope.callService();
@@ -42,7 +62,6 @@ angular.module('shopMyTools.categoryPageController', [])
       $rootScope.getCategoryProductData.val = sortItem
       $scope.callService();
     }
-
 
     $scope.gotoFilter = function () {
       $scope.modal.show();
@@ -92,8 +111,8 @@ angular.module('shopMyTools.categoryPageController', [])
     }
 
     $scope.goback = function () {
-      alert('back');
-      $ionicHistory.goBack();
+      $state.go('app.home');
+      // $ionicHistory.goBack();
     }
 
   });
