@@ -125,8 +125,15 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         cache: false,
         templateUrl: 'templates/whishlist_page.html',
         //controller: 'welcomeController'
+      })
+      
+      .state('productDetail_page', {
+        url: '/productDetail_page',
+        cache: false,
+        templateUrl: 'templates/productDetail_page.html',
+       // controller: 'welcomeController'
       });
-
+      
       
 
 
