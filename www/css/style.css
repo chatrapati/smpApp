@@ -556,4 +556,17 @@ div.footer-button a.button.button-full {
     border-style: none;
     font-size: 16px;
 }
+#tooltip_name tooltip._top:not(._left):not(._right) tip {
+  left: 90px;
+  top: 0;
+  font-size: 12px;
+  width: 190px !important;
+  padding: 4px 5px;
+  line-height: 1;
+  border-radius: 5px;
+  background: #a9abab;
+}
+#tooltip_name tooltip._top:not(._left):not(._right) tip tip-arrow {
+  border-top: 6px solid #a9abab;
+}
 /*   lakki styles end here 15-2-2018 */
