@@ -14,8 +14,11 @@ angular.module('shopMyTools.categoryPageController', [])
         if (data.data) {
 
           $scope.products = data.data.products;
-          $rootScope.subcategoriesList = data.data.subcategories;
-          $rootScope.brandsList = data.data.brand_data;
+          $scope.subcategoriesList = data.data.subcategories;
+          $scope.brandsList = data.data.brand_data;
+          $scope.minPrice = data.data.minprice;
+          $scope.maxPrice = data.data.maxprice;
+
           // $scope.displayItems = $scope.products.slice(0, 5);
           $rootScope.totalcount = data.data.totalcount;
           // alert($rootScope.totalcount)
@@ -23,16 +26,16 @@ angular.module('shopMyTools.categoryPageController', [])
           $scope.totalItems = data.data.products.length;
           $scope.datalists = data.data.products;
 
-        } else {
-
-        }
+        } 
       })
     }
     $scope.getProductCategories();
 
 
     
-
+$scope.getRange = function(range){
+  alert(range);
+}
    
 
 
@@ -52,30 +55,30 @@ angular.module('shopMyTools.categoryPageController', [])
 
     
 
-    $scope.test = ['adasda', 'yyyyy'];
+   
 
-    $rootScope.toggleCategory = function (category) {
-      if ($scope.isGroupShown(category)) {
-        $scope.shownGroup = null;
-      } else {
-        $scope.shownGroup = category;
-      }
-    };
-    $scope.isGroupShown = function (category) {
-      return $scope.shownGroup == category;
-    };
+    // $rootScope.toggleCategory = function (category) {
+    //   if ($scope.isGroupShown(category)) {
+    //     $scope.shownGroup = null;
+    //   } else {
+    //     $scope.shownGroup = category;
+    //   }
+    // };
+    // $scope.isGroupShown = function (category) {
+    //   return $scope.shownGroup == category;
+    // };
 
-    $scope.categoryList = [];
+    // $scope.categoryList = [];
 
-    $scope.categoryList[0] = {
-      name: 'Sub Categories',
-      list: $rootScope.subcategoriesList
-    };
+    // $scope.categoryList[0] = {
+    //   name: 'Sub Categories',
+    //   list: $rootScope.subcategoriesList
+    // };
 
-    $scope.categoryList[1] = {
-      name: 'Brands',
-      list: $rootScope.brandsList
-    };
+    // $scope.categoryList[1] = {
+    //   name: 'Brands',
+    //   list: $rootScope.brandsList
+    // };
 
     $rootScope.goback = function () {
       $ionicHistory.goBack();
