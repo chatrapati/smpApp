@@ -11,32 +11,13 @@
         </ion-nav-title>
 
         <ion-nav-buttons side="right">
-            <button class="button button-icon">Apply</button>
+            <button class="button button-icon" ng-click="getfiterItems(getCategoryProductData)">Apply</button>
 
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content class="smt_background_image" style="padding:0;">
         <br>
         <br>
-
-        <!-- <ion-list>
-            <div ng-repeat="category in categoryList">
-                <div class="filter_head_options">
-                    <ion-item ng-click="toggleCategory(category)" ng-class="{active: isGroupShown(category)}">
-                        <span>{{category.name}}</span>
-                        <i class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    </ion-item>
-                </div>
-
-                <ion-list class="item-accordion item-text-wrap" ng-repeat="item in category.list" ng-show="isGroupShown(category)" id="filter_checkOptions">
-                   
-                    <ion-checkbox>{{item}}</ion-checkbox>
-                </ion-list>
-            </div>
-        </ion-list> -->
-
-
-
         <ion-list>
 
             <div class="filter_head_options" ng-click="categories=!categories">
@@ -49,8 +30,9 @@
 
             <ion-list class="item-accordion item-text-wrap" ng-repeat="subCatigory in subcategoriesList" id="filter_checkOptions" ng-if="categories">
 
-                <ion-checkbox ng-click="getRange(subCatigory)" ng-model="subcategory.checked">{{subCatigory}}</ion-checkbox>
+                <ion-checkbox ng-change="getSubcatigory(subCatigory, subcategory.checked)" ng-model="subcategory.checked">{{subCatigory}}</ion-checkbox>
             </ion-list>
+
 
             <div class="filter_head_options" ng-click="brands=!brands">
                 <ion-item>
@@ -62,24 +44,24 @@
 
             <ion-list class="item-accordion item-text-wrap" ng-repeat="brand in brandsList" id="filter_checkOptions" ng-if="brands">
 
-                <ion-checkbox  ng-model="getCategoryProductData.brand">{{brand}}</ion-checkbox>
+                <ion-checkbox ng-model="brandItem.checked" ng-change="getBrand(brand, brandItem.checked)">{{brand}}</ion-checkbox>
             </ion-list>
         </ion-list>
 
 
         <div class="list">
-            <div class="item range range-positive">
-                <i class="icon ion-ios-sunny-outline"></i>
-                <input type="range" name="volume" min="{{minPrice}}" ng-model="getCategoryProductData.range" max="{{maxPrice}}" value="{{minPrice}}" >
-                <i class="icon ion-ios-sunny"></i>
+                <div class="filter_head_options">
+                        <ion-item>
+                            <span>Price</span>
+                            <label class="priceshower">{{range}}</label>
+                        </ion-item>
+                    </div>
+            <div class="item range range-positive" id="priceRange">      
+                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
+                <input class="lineRange" type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}" ng-change="getPriceRange(range)">
+                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
             </div>
         </div>
 
     </ion-content>
 </ion-modal-view>
-
-<!-- <ion-list>
-    <ion-checkbox>Red</ion-checkbox>
-    <ion-checkbox>Yellow</ion-checkbox>
-    <ion-checkbox>Pink</ion-checkbox>
-  </ion-list> -->
