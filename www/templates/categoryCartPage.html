@@ -17,25 +17,13 @@
                 <div class="list" style="float:left;">
                     <label> Show</label>
                     <select ng-model="noOfItems" ng-options="obj.value as obj.Name for obj in showNoOfItems" ng-change="getselectedNoProducts(noOfItems)">
-
                     </select>
-                    <!-- <select ng-model="noOfItems" ng-change="getselectedNoProducts(noOfItems)">
-                        <option value="12" selected>12</option>
-                        <option value="24">24</option>
-                        <option value="36">36</option>
-                    </select> -->
+
 
                 </div>
                 <div class="list" style="float:right;">
                     <label> Sort</label>
                     <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select>
-                    <!-- <select ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
-                        <option selected value="popularty">Popularity</option>
-                        <option value="topselling">Topselling</option>
-                        <option value="namefilter">Name</option>
-                        <option value="price_low_high">Price:Low to High</option>
-                        <option value="price_high_low">Price:High to Low</option>
-                    </select> -->
                 </div>
             </div>
             <div class="category_cart_list" ng-if="products!='' && products!=undefined">
@@ -46,14 +34,14 @@
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
                             <span class="offer_price">{{prices.offer_price | noFractionCurrency:'&#8377;'}}</span>
                             <span class="real_price">{{prices.enduser_price | noFractionCurrency:'&#8377;'}}</span>
-                            <span class="offer_percentage">{{prices.percentage}}%</span>
+                            <span class="offer_percentage">{{prices.percentage}} %</span>
                         </div>
                         <p class="excl_gst">(Excluding-GST)</p>
                         <div class="cat_cart_icons">
-                            <span>
+                            <span ng-click="addtoCart(productsdata)">
                                 <i class="icon ion-android-cart"></i>
                             </span>
-                            <span>
+                            <span ng-click="addtoWishList(productsdata)">
                                 <i class="icon ion-heart"></i>
                             </span>
                             <span>

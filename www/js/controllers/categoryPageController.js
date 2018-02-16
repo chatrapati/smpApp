@@ -1,6 +1,6 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
@@ -114,6 +114,62 @@ angular.module('shopMyTools.categoryPageController', [])
       $state.go('app.home');
       // $ionicHistory.goBack();
     }
+
+
+
+    $scope.addtoCart = function (productData) {
+      $scope.productDataList = [];
+      $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+      categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
+        window.localStorage['orderId'] = data.data.orderid;
+        $ionicLoading.hide();
+        if (data.data.status == 'item added to cart') {
+          //  alert(data.data.status);
+          $ionicPopup.alert({
+            template: 'Added to Cart Successfully!',
+            title: 'Success!'
+          });
+        } else if (data.data.status == 'item added to cart..') {
+          $ionicPopup.alert({
+            template: 'Added to Cart Successfully!',
+            title: 'Success!'
+          });
+        }
+        else if (data.data.status == 'out off stock') {
+          $ionicPopup.alert({
+            template: 'Out Off Stock!',
+            title: 'Sorry!'
+          });
+        }
+      });
+    }
+
+
+    $scope.addtoWishList = function (productData) {
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+      categoryService.addToWishListMethod(window.localStorage['user_id'], productData.upload_name).then(function (data) {
+        $ionicLoading.hide();
+        if (data.data.status == 'product saved successfully') {
+          $ionicPopup.alert({
+            template: 'Added to Wish List Successfully!!',
+            title: 'Success!'
+          });
+        } else {
+          $ionicPopup.alert({
+            template: data.data.status,
+            title: 'Sorry!'
+          });
+        }
+
+      })
+    }
+
+
 
   });
 

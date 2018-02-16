@@ -731,4 +731,21 @@ div.footer-button a.button.button-full {
     font-weight: 700;
 }
 
+.order_segment th{
+    /* background-color: #fff;
+    color: #0487a1 ;
+    font-size: 15px; */
+}
+.seg_select {
+    background-color: #0487a1;
+    color: #fff ;
+    font-size: 15px;
+}
+
+.seg_notselect {
+    background-color: #fff;
+    color: #0487a1 ;
+    font-size: 15px;
+}
+
 /*   lakki styles end here 16-2-2018 */
