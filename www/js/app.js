@@ -123,21 +123,35 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('whishlist_page', {
         url: '/whishlist_page',
         cache: false,
-        templateUrl: 'templates/whishlist_page.html',
+        templateUrl: 'templates/whishlist_page.html'
         //controller: 'welcomeController'
       })
       
       .state('productDetail_page', {
         url: '/productDetail_page',
         cache: false,
-        templateUrl: 'templates/productDetail_page.html',
+        templateUrl: 'templates/productDetail_page.html'
        // controller: 'welcomeController'
       })
       
       .state('specifications_page', {
         url: '/specifications_page',
         cache: false,
-        templateUrl: 'templates/specifications_page.html',
+        templateUrl: 'templates/specifications_page.html'
+       // controller: 'welcomeController'
+      })
+      
+      .state('relatedProducts_page', {
+        url: '/relatedProducts_page',
+        cache: false,
+        templateUrl: 'templates/relatedProducts_page.html'
+       // controller: 'welcomeController'
+      })
+      
+      .state('upsellProducts_page', {
+        url: '/upsellProducts_page',
+        cache: false,
+        templateUrl: 'templates/upsellProducts_page.html'
        // controller: 'welcomeController'
       });
       

@@ -50,11 +50,16 @@
 
 
         <div class="list">
-            <label>{{range}}</label>
-            <div class="item range range-positive">
-                <i class="fa fa-inr" aria-hidden="true"></i>
-                <input type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}" ng-change="getPriceRange(range)">
-                <i class="fa fa-inr" aria-hidden="true"></i>
+                <div class="filter_head_options">
+                        <ion-item>
+                            <span>Price</span>
+                            <label class="priceshower">{{range}}</label>
+                        </ion-item>
+                    </div>
+            <div class="item range range-positive" id="priceRange">      
+                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
+                <input class="lineRange" type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}" ng-change="getPriceRange(range)">
+                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
             </div>
         </div>
 

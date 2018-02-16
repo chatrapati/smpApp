@@ -718,4 +718,17 @@ div.footer-button a.button.button-full {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
 }
+#priceRange{
+    border-width:0;
+    border-style: none;
+}
+.priceshower{
+    float: right;
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    color: #0487a1;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
 /*   lakki styles end here 16-2-2018 */
