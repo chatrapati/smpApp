@@ -1,6 +1,6 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
@@ -110,8 +110,8 @@ angular.module('shopMyTools.categoryPageController', [])
     }
 
     $scope.goback = function () {
-      $state.go('app.home');
-      // $ionicHistory.goBack();
+      // $state.go('app.home');   
+      $window.history.go(-1);
     }
 
 

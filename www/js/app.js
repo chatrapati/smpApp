@@ -123,8 +123,8 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('whishlist_page', {
         url: '/whishlist_page',
         cache: false,
-        templateUrl: 'templates/whishlist_page.html'
-        //controller: 'welcomeController'
+        templateUrl: 'templates/whishlist_page.html',
+        controller: 'wishListDetailsCntrl'
       })
       
       .state('productDetail_page', {
