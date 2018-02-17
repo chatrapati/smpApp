@@ -153,6 +153,13 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         cache: false,
         templateUrl: 'templates/upsellProducts_page.html'
        // controller: 'welcomeController'
+      })
+      
+      .state('cart_page', {
+        url: '/cart_page',
+        cache: false,
+        templateUrl: 'templates/cart_page.html'
+       // controller: 'welcomeController'
       });
       
       
