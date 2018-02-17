@@ -1,175 +1,180 @@
 <ion-view>
-        <ion-content class="smt_background_image" style="padding:0;">
-    
-            <!--  category top header start here  -->
-            <div class="category_header">
-                <div class="bar bar-header">
-                    <button class="button button-icon icon ion-close-circled" ng-click="goback()"></button>
-                    <div class="h1 title">Upsell Products</div>
-                    <button class="button button-icon icon ion-search" ng-click="gotoFilter()"></button>
-                    <button class="button button-icon icon ion-funnel" ng-click="gotoFilter()"></button>
+
+    <!--  category top header start here  -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Upsell Products</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-search" menu-toggle="right" ng-click="gotoFilter()"></a>
+            <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!--  category top header end here  -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+
+        <!--  category body start here  -->
+        <div class="category_body">
+            <div class="category_dropdown rel_cat">
+                <div class="list" style="float:left;">
+                    <label> Show</label>
+                    <select ng-model="noOfItems" ng-change="getselectedNoProducts(noOfItems)">
+                        <option value="12" selected>12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                    </select>
+
+                </div>
+                <div class="list" style="float:right;">
+                    <label> Sort</label>
+                    <select ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
+                        <option selected value="popularty">Popularity</option>
+                        <option value="topselling">Topselling</option>
+                        <option value="namefilter">Name</option>
+                        <option value="price_low_high">Price:Low to High</option>
+                        <option value="price_high_low">Price:High to Low</option>
+                    </select>
                 </div>
             </div>
-            <!--  category top header end here  -->
-    
-            <!--  category body start here  -->
-            <div class="category_body">
-                <div class="category_dropdown rel_cat">
-                    <div class="list" style="float:left;">
-                        <label> Show</label>
-                        <select ng-model="noOfItems" ng-change="getselectedNoProducts(noOfItems)">
-                            <option value="12" selected>12</option>
-                            <option value="24">24</option>
-                            <option value="36">36</option>
-                        </select>
-    
-                    </div>
-                    <div class="list" style="float:right;">
-                        <label> Sort</label>
-                        <select ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
-                            <option selected value="popularty">Popularity</option>
-                            <option value="topselling">Topselling</option>
-                            <option value="namefilter">Name</option>
-                            <option value="price_low_high">Price:Low to High</option>
-                            <option value="price_high_low">Price:High to Low</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <br/>
-    
-    
-    
-    
-            <div class="category_cart_list">
-                <div class="row">
-                    <div class="col">
-                        <div class="card111">
-                            <img src="img/Smt_Logo.png" width="90%">
-                            <!-- <div class="deal_icons">
+        </div>
+        <br/>
+
+
+
+
+        <div class="category_cart_list">
+            <div class="row">
+                <div class="col">
+                    <div class="card111">
+                        <img src="img/Smt_Logo.png" width="90%">
+                        <!-- <div class="deal_icons">
                         <span class="deal">Deal</span>
                     </div> -->
-                            <div class="content_part">
-                                <div class="product_name" id="tooltip_name">
-                                    <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                                </div>
-                                <div class="product_price">
-                                    <span class="offer_price">2,00,040</span>
-                                    <span class="real_price">4,50,789</span>
-                                    <span class="offer_percentage">52%</span>
-                                </div>
-                                <p class="excl_gst">(Excluding-GST)</p>
-                                <div class="cart_icons">
-                                    <span>
-                                        <i class="icon ion-android-cart"></i>
-                                    </span>
-                                    <span>
-                                        <i class="icon ion-heart"></i>
-                                    </span>
-                                    <span class="extraCshback">
-                                        + Extra Cashback
-                                    </span>
-                                </div>
+                        <div class="content_part">
+                            <div class="product_name" id="tooltip_name">
+                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
                             </div>
-                        </div>
-                    </div>
-    
-                    <div class="col">
-                        <div class="card111">
-                            <img src="img/Smt_Logo.png" width="90%">
-                            <!-- <div class="deal_icons">
-                            <span class="deal">Deal</span>
-                        </div> -->
-                            <div class="content_part">
-                                <div class="product_name" id="tooltip_name">
-                                    <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                                </div>
-                                <div class="product_price">
-                                    <span class="offer_price">2,00,040</span>
-                                    <span class="real_price">4,50,789</span>
-                                    <span class="offer_percentage">52%</span>
-                                </div>
-                                <p class="excl_gst">(Excluding-GST)</p>
-                                <div class="cart_icons">
-                                    <span>
-                                        <i class="icon ion-android-cart"></i>
-                                    </span>
-                                    <span>
-                                        <i class="icon ion-heart"></i>
-                                    </span>
-                                    <span class="extraCshback">
-                                        + Extra Cashback
-                                    </span>
-                                </div>
+                            <div class="product_price">
+                                <span class="offer_price">2,00,040</span>
+                                <span class="real_price">4,50,789</span>
+                                <span class="offer_percentage">52%</span>
+                            </div>
+                            <p class="excl_gst">(Excluding-GST)</p>
+                            <div class="cart_icons">
+                                <span>
+                                    <i class="icon ion-android-cart"></i>
+                                </span>
+                                <span>
+                                    <i class="icon ion-heart"></i>
+                                </span>
+                                <span class="extraCshback">
+                                    + Extra Cashback
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-    
-                <div class="row">
-                    <div class="col">
-                        <div class="card111">
-                            <img src="img/Smt_Logo.png" width="90%">
-                            <!-- <div class="deal_icons">
+
+                <div class="col">
+                    <div class="card111">
+                        <img src="img/Smt_Logo.png" width="90%">
+                        <!-- <div class="deal_icons">
                             <span class="deal">Deal</span>
                         </div> -->
-                            <div class="content_part">
-                                <div class="product_name" id="tooltip_name">
-                                    <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                                </div>
-                                <div class="product_price">
-                                    <span class="offer_price">2,00,040</span>
-                                    <span class="real_price">4,50,789</span>
-                                    <span class="offer_percentage">52%</span>
-                                </div>
-                                <p class="excl_gst">(Excluding-GST)</p>
-                                <div class="cart_icons">
-                                    <span>
-                                        <i class="icon ion-android-cart"></i>
-                                    </span>
-                                    <span>
-                                        <i class="icon ion-heart"></i>
-                                    </span>
-                                    <span class="extraCshback">
-                                        + Extra Cashback
-                                    </span>
-                                </div>
+                        <div class="content_part">
+                            <div class="product_name" id="tooltip_name">
+                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
                             </div>
-                        </div>
-                    </div>
-    
-                    <div class="col">
-                        <div class="card111">
-                            <img src="img/Smt_Logo.png" width="90%">
-                            <!-- <div class="deal_icons">
-                                <span class="deal">Deal</span>
-                            </div> -->
-                            <div class="content_part">
-                                <div class="product_name" id="tooltip_name">
-                                    <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                                </div>
-                                <div class="product_price">
-                                    <span class="offer_price">2,00,040</span>
-                                    <span class="real_price">4,50,789</span>
-                                    <span class="offer_percentage">52%</span>
-                                </div>
-                                <p class="excl_gst">(Excluding-GST)</p>
-                                <div class="cart_icons">
-                                    <span>
-                                        <i class="icon ion-android-cart"></i>
-                                    </span>
-                                    <span>
-                                        <i class="icon ion-heart"></i>
-                                    </span>
-                                    <span class="extraCshback">
-                                        + Extra Cashback
-                                    </span>
-                                </div>
+                            <div class="product_price">
+                                <span class="offer_price">2,00,040</span>
+                                <span class="real_price">4,50,789</span>
+                                <span class="offer_percentage">52%</span>
+                            </div>
+                            <p class="excl_gst">(Excluding-GST)</p>
+                            <div class="cart_icons">
+                                <span>
+                                    <i class="icon ion-android-cart"></i>
+                                </span>
+                                <span>
+                                    <i class="icon ion-heart"></i>
+                                </span>
+                                <span class="extraCshback">
+                                    + Extra Cashback
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--  category body end here  -->
-        </ion-content>
-    </ion-view>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card111">
+                        <img src="img/Smt_Logo.png" width="90%">
+                        <!-- <div class="deal_icons">
+                            <span class="deal">Deal</span>
+                        </div> -->
+                        <div class="content_part">
+                            <div class="product_name" id="tooltip_name">
+                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
+                            </div>
+                            <div class="product_price">
+                                <span class="offer_price">2,00,040</span>
+                                <span class="real_price">4,50,789</span>
+                                <span class="offer_percentage">52%</span>
+                            </div>
+                            <p class="excl_gst">(Excluding-GST)</p>
+                            <div class="cart_icons">
+                                <span>
+                                    <i class="icon ion-android-cart"></i>
+                                </span>
+                                <span>
+                                    <i class="icon ion-heart"></i>
+                                </span>
+                                <span class="extraCshback">
+                                    + Extra Cashback
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card111">
+                        <img src="img/Smt_Logo.png" width="90%">
+                        <!-- <div class="deal_icons">
+                                <span class="deal">Deal</span>
+                            </div> -->
+                        <div class="content_part">
+                            <div class="product_name" id="tooltip_name">
+                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
+                            </div>
+                            <div class="product_price">
+                                <span class="offer_price">2,00,040</span>
+                                <span class="real_price">4,50,789</span>
+                                <span class="offer_percentage">52%</span>
+                            </div>
+                            <p class="excl_gst">(Excluding-GST)</p>
+                            <div class="cart_icons">
+                                <span>
+                                    <i class="icon ion-android-cart"></i>
+                                </span>
+                                <span>
+                                    <i class="icon ion-heart"></i>
+                                </span>
+                                <span class="extraCshback">
+                                    + Extra Cashback
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  category body end here  -->
+    </ion-content>
+</ion-view>
