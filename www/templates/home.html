@@ -52,7 +52,7 @@
 			<div class="block_head top_brands">
 				<h3>Top Brands</h3>
 			</div>
-			<div class="col home-slider slider_brands">
+			<div class="col home-slider slider_brands" >
 				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider" ng-click="gotoCategoryPage(brand.brandname, 'brand')">
 						<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
@@ -118,9 +118,9 @@
 					<ion-slide-page ng-repeat="product in offersArray">
 						<div class="card111">
 							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
-							<div class="deal_icons">
+							<!-- <div class="deal_icons">
 								<span class="deal">Deal</span>
-							</div>
+							</div> -->
 							<div class="content_part">
 								<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
 									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
