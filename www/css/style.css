@@ -657,19 +657,23 @@ div.footer-button a.button.button-full {
     background:#0487a1;
     border:1px solid #0487a1;
     color:#fff;
+    font-size: 17px;
+    line-height: 2.7;
   }
   #buynow{
     min-width: 50%;
     border-radius: 0px; 
     background:#fff;
     border:1px solid #0487a1;
+    font-size: 17px;
+    line-height: 2.7;
   }
   
 #productdetailSlide .slider-slide {
      text-align: center;
 }
 
-  .about_product .tabs-striped.tabs-background-positive .tabs{
+ .about_product .tabs-striped.tabs-background-positive .tabs{
     background-color: transparent;
   }
   .about_product .tabs-striped.tabs-color-light .tab-item.active{
@@ -801,5 +805,91 @@ div.footer-button a.button.button-full {
     }
     .about_product .tab-item{
         max-width: 210px;
+    }
+    .location_det{
+        font-size: 20px;
+        margin-top: 8px;
+        font-weight: 600;
+    }
+    #cart_page .pincode{
+        border-bottom: 3px solid #ddd;
+    }
+    .change_btn{
+        float: right;
+        border: 1px solid #ddd;
+        background: transparent;
+        color: #0487a1;
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin-top: 5px;
+    }
+    
+    #cart_list_icons .col{
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 15px;
+        margin: 10px 0;
+    }
+    #cart_list_icons span i{
+        padding-right: 10px;
+    }
+    .pro_amnt_details h2{
+        font-size: 20px;
+        color:#0487a1;
+        font-weight: 500;
+    }
+    .pro_amnt_details p span{
+        font-size: 17px;
+        color: #7d7b7b;
+    }
+    .pro_amnt_details p .attr{
+        /*float: left;*/
+    }
+    .pro_amnt_details p .val{
+        float: right;
+    }
+    .pro_attr_vals{
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+    }
+    .pro_attr_vals .attr, .pro_attr_vals .val{
+        font-size: 17px;
+        color: #000;
+        font-weight: 500;
+        margin-top: 5px;
+    }
+    .save_item{
+        color:#0487a1;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    .amunt_auto_incre{
+        display:inline-flex;
+        float: right;
+    }
+    .amunt_auto_incre .button{
+        min-width: 20px;
+        min-height: 20px;
+        line-height: 2;
+        border: 1px solid #0487a1;
+        background: #0487a1;
+        color: #fff;
+        border-radius: 0px;
+    }
+    .amunt_auto_incre .texting{
+        width: 50px;
+        border:1px solid #0487a1;
+    }
+    .item-complex .item-content{
+        padding: 10px 49px 10px 16px !important;
+    }
+    .w3-badge {
+        background-color: #0487a1;
+        color: #fff;
+        display: inline-block;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-align: center;
+        border-radius: 10px;
     }
 /*   lakki styles end here 17-2-2018 */
