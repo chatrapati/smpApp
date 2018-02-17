@@ -1,6 +1,6 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
-    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicHistory, $state) {
+    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicHistory, $state, $window) {
         $scope.getProductDetails = function () {
             product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName']).then(function (data) {
                 //alert(JSON.stringify(data));
@@ -38,7 +38,7 @@ angular.module('shopMyTools.productDetailPageController', [])
 
 
         $rootScope.goback = function () {
-           // $ionicHistory.goBack();
-           $state.go('app.home');
+            $window.history.go(-1);
+           //$state.go('app.home');
         }
     });

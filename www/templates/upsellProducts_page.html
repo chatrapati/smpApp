@@ -42,11 +42,9 @@
             </div>
         </div> -->
         <br/>
+      
 
-
-
-
-        <div class="row"  ng-repeat="upsell in upsellproducts" ng-switch on="$index % 2">
+        <div class="row"  ng-repeat="upsell in upsellproducts  | limitTo:6" ng-switch on="$index % 2">
                 <div class="col" ng-switch-when="0">
                     <div class="card111">
                         <img ng-src={{upsell.upload_photo}}  width="90%">
@@ -104,5 +102,11 @@
                 </div>
             </div>
         <!--  category body end here  -->
+        <div class="row " ng-if="upsellproducts.length==0">
+               <div class="col no_records">
+                    <span>No Products Available !!!</span>
+                </div> 
+            </div>
+    
     </ion-content>
 </ion-view>
