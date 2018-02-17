@@ -1,0 +1,137 @@
+<ion-view>
+
+    <!-- header part start here -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="closePopup()">
+                <i class="icon ion-close-circled"></i>
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Cart</div>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <!-- header part end here -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+        <ion-list>
+
+            <div class="block">
+            <div class="filter_head_options" ng-click="categories=!categories">
+                <ion-item>
+                    <span>Shipping Address</span>
+                    <i ng-if="!categories" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                    <i ng-if="categories" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                </ion-item>
+            </div>
+
+            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="categories">
+                <div class="">
+                    <form class="radiobutns">
+                        <input type="radio" name="gender" value="pickup" checked> Pick Up
+                        <br>
+                        <input type="radio" name="gender" value="delivery"> Delivery
+                    </form>
+                </div>
+
+                <!-- pick up start here -->
+                <div class="pickup">
+                    <form name="registerForm">
+                        <div class="list login_labls m_top-10">
+                            <label class="item item-input item-floating-label custom-login-label">
+                                <input type="text" placeholder="Mobile Number" name="mobile">
+                            </label>
+                            <br/>
+                            <label class="item item-input item-floating-label custom-login-label">
+                                <input type="text" placeholder="Pincode" name="pincode">
+                            </label>
+                        </div>
+                        <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid">Get</button>
+                    </form>
+                </div>
+                <!-- pick up end here -->
+
+                <!-- Delivery start here -->
+                <div class="delivery">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Person Name</h1>
+                            <p>
+                                <span>D/no:2/85A,</span>
+                                <span>Kothapudi,</span>
+                                <span>Machilipatnam,</span>
+                                <span>Krishna Dist,</span>
+                                <span>A.P, 521002.</span>
+                            </p>
+                            <p>8978041215</p>
+                            <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delivery end here -->
+
+            </ion-list>
+
+        </div>
+
+        <div class="block">
+            <div class="filter_head_options" ng-click="brands=!brands">
+                <ion-item>
+                    <span>Billing Address</span>
+                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                </ion-item>
+            </div>
+
+            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
+
+            </ion-list>
+        </div>
+
+        <div class="block">
+
+            <div class="filter_head_options" ng-click="brands=!brands">
+                <ion-item>
+                    <span>Payment Method</span>
+                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                </ion-item>
+            </div>
+
+            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
+                    <div class="">
+                            <form class="radiobutns">
+                                <input type="radio" name="gender" value="online" checked> Pay Online
+                                <br>
+                                <input type="radio" name="gender" value="cod"> Cash on Delivery
+                            </form>
+                        </div>
+            </ion-list>
+
+        </div>
+
+        <div class="block">
+
+
+            <div class="filter_head_options" ng-click="brands=!brands">
+                <ion-item>
+                    <span>Order Review</span>
+                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                </ion-item>
+            </div>
+
+            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
+
+            </ion-list>
+
+        </div>
+
+
+
+        </ion-list>
+
+
+
+    </ion-content>
+</ion-view>

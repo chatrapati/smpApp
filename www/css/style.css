@@ -899,4 +899,36 @@ div.footer-button a.button.button-full {
     .cart_imagess{
         float: right;
     }
+    .radiobutns{
+        margin-left: 25px;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    .pickup{
+        margin-top: 15%;
+    }
+    .pickup .item{
+        margin-right: 20px !important
+    }
+    .pickup .custom-login-label input[type]{
+        padding-left: 0px;
+    }
+    .pickup button.button-block{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .delivery h1{
+        font-size: 20px;
+        color:#000;
+        font-weight: 400;
+    }
+    .delivery p{
+        font-size: 20px;
+        color: #5e5d5d;
+        line-height: 1.2;
+        font-weight: 400;
+    }
+    .block{
+        border-bottom: 3px solid #ddd;
+    }
 /*   lakki styles end here 17-2-2018 */

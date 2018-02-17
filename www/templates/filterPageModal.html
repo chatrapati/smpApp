@@ -4,7 +4,6 @@
             <button class="button button-clear" ng-click="closePopup()">
                 <i class="icon ion-close-circled"></i>
             </button>
-
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">{{categoryName}}</div>
@@ -20,48 +19,59 @@
         <br>
         <ion-list>
 
-            <div class="filter_head_options" ng-click="categories=!categories">
-                <ion-item>
-                    <span>Sub Category</span>
-                    <i ng-if="!categories" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="categories" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
+            <div class="block">
+                <div class="filter_head_options" ng-click="categories=!categories">
+                    <ion-item>
+                        <span>Sub Category</span>
+                        <i ng-if="!categories" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="categories" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
+
+                <ion-list class="item-accordion item-text-wrap" ng-repeat="subCatigory in subcategoriesList" id="filter_checkOptions" ng-if="categories">
+
+                    <ion-checkbox ng-change="getSubcatigory(subCatigory, subcategory.checked)" ng-model="subcategory.checked">{{subCatigory}}</ion-checkbox>
+                </ion-list>
             </div>
 
-            <ion-list class="item-accordion item-text-wrap" ng-repeat="subCatigory in subcategoriesList" id="filter_checkOptions" ng-if="categories">
+            <div class="block">
 
-                <ion-checkbox ng-change="getSubcatigory(subCatigory, subcategory.checked)" ng-model="subcategory.checked">{{subCatigory}}</ion-checkbox>
-            </ion-list>
+                <div class="filter_head_options" ng-click="brands=!brands">
+                    <ion-item>
+                        <span>Brand</span>
+                        <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
 
+                <ion-list class="item-accordion item-text-wrap" ng-repeat="brand in brandsList" id="filter_checkOptions" ng-if="brands">
 
-            <div class="filter_head_options" ng-click="brands=!brands">
-                <ion-item>
-                    <span>Brand</span>
-                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
+                    <ion-checkbox ng-model="brandItem.checked" ng-change="getBrand(brand, brandItem.checked)">{{brand}}</ion-checkbox>
+                </ion-list>
             </div>
 
-            <ion-list class="item-accordion item-text-wrap" ng-repeat="brand in brandsList" id="filter_checkOptions" ng-if="brands">
-
-                <ion-checkbox ng-model="brandItem.checked" ng-change="getBrand(brand, brandItem.checked)">{{brand}}</ion-checkbox>
-            </ion-list>
-        </ion-list>
+            <div class="block">
 
 
-        <div class="list">
-                <div class="filter_head_options">
+
+                <div class="list">
+                    <div class="filter_head_options">
                         <ion-item>
                             <span>Price</span>
-                            <label class="priceshower">{{minPrice}} <span>to</span> {{range}}</label>
+                            <label class="priceshower">{{minPrice}}
+                                <span>to</span> {{range}}</label>
                         </ion-item>
                     </div>
-            <div class="item range range-positive" id="priceRange">      
-                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
-                <input class="lineRange" type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}" ng-change="getPriceRange(range)">
-                <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
+                    <div class="item range range-positive" id="priceRange">
+                        <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
+                        <input class="lineRange" type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}"
+                            ng-change="getPriceRange(range)">
+                        <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
-        </div>
+
+        </ion-list>
 
     </ion-content>
 </ion-modal-view>
