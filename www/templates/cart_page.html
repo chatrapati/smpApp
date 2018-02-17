@@ -38,29 +38,33 @@
                                 <div class="product_price">
                                     <span class="offer_price">{{item.offer_price | currency:'&#8377;'}}</span>
                                     <br>
-                                    <span>Tax Amount:</span>
-                                    <span>35345</span>
-                                    <br>
-                                    <span>Sub total:</span>
-                                    <span>35345</span>
-                                    <div class="amunt_auto_incre">
-                                            <a id="decre" class="button">-</a>
-                                            <input type="text" class="texting" ng-model="item.qty">
-                                            <a id="incre" class="button">+</a>
-                                        </div>
+                                    <span>Tax :</span>
+                                    <span>{{item.tax }}</span>
+
                                     <!-- <span class="offer_percentage">30.24%</span> -->
                                 </div>
-                                <!-- <p class="excl_gst">(Excluding-GST)</p> -->
+
                             </div>
                             <div class="col">
-                                <img ng-src="{{item.image}}" width="90%" class="cart_imagess">
-                                
-                                <!-- <p class="excl_gst">(Excluding-GST)</p> -->
-                            </div>
-                            <!-- <div class="col">
-                                <img src="img/Smt_Logo.png" width="90%" class="cart_imagess">
+                                <img ng-src="{{item.image}}" width="50%" class="cart_imagess">
 
-                            </div> -->
+                                <div class="amunt_auto_incre">
+                                    <a id="decre" class="button">-</a>
+                                    <input type="text" class="texting" ng-model="item.qty">
+                                    <a id="incre" class="button">+</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <!-- <span>Total Price :</span>
+                            <span>{{item.tax }}</span>
+                            <br> -->
+                            <span>Tax Amount:</span>
+                            <span>{{item.tax_amount | currency:'&#8377;'}}</span>
+                            <br>
+                            <span>Sub total:</span>
+                            <span>{{item.sub_total | currency:'&#8377;'}}</span>
                         </div>
                         <div class="row" id="cart_list_icons">
                             <div class="col">

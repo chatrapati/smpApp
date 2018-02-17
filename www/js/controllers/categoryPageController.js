@@ -22,8 +22,8 @@ angular.module('shopMyTools.categoryPageController', [])
         $ionicLoading.hide();
         if (data.data) {
           $rootScope.products = data.data.products;
-          $rootScope.subcategoriesList = data.data.subcategories;
-          $rootScope.brandsList = data.data.brand_data;
+          $rootScope.subcategoriesList = data.data.mobilesubcategories;
+          $rootScope.brandsList = data.data.mobilebrandslist;
           $rootScope.minPrice = data.data.minprice;
           $rootScope.maxPrice = data.data.maxprice;
           $rootScope.totalcount = data.data.totalcount;
