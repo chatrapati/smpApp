@@ -243,7 +243,7 @@ angular.module('shopMyTools.dashboardController', [])
     })
 
 
-    .controller('viewCartItemsListCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, $window, viewCartItemsService) {
+    .controller('viewCartItemsListCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, $window, viewCartItemsService, categoryService) {
 
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
@@ -259,6 +259,36 @@ angular.module('shopMyTools.dashboardController', [])
         }
 
         $scope.getCartItemsList();
+
+
+
+
+        $scope.addtocartDetails = function (productDataName, quantity) {
+           // alert('in');
+            $scope.productDataListData = [];
+            if (quantity > 1) {
+                $scope.productDataListData.push({ "productdescription": productDataName, "qty": quantity })
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
+                categoryService.addToCartMethod($scope.productDataListData, window.localStorage['user_id']).then(function (data) {
+                    window.localStorage['orderId'] = data.data.orderid;
+                    $ionicLoading.hide();
+                    if (data.data.status == 'item added to cart') {
+                        $scope.getCartItemsList();
+
+                    } else if (data.data.status == 'item added to cart..') {
+                        $scope.getCartItemsList();
+                    }
+                    else if (data.data.status == 'out off stock') {
+                        $scope.getCartItemsList();
+                    }
+                });
+            }
+        }
+
+
+
 
         $scope.goback = function () {
             $state.go('app.home');

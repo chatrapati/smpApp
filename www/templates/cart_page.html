@@ -50,7 +50,7 @@
 
                                 <div class="amunt_auto_incre">
                                     <a id="decre" class="button">-</a>
-                                    <input type="text" class="texting" ng-model="item.qty">
+                                    <input type="text" class="texting" ng-model="item.qty" ng-change="addtocartDetails(item.productdescription,item.qty)">
                                     <a id="incre" class="button">+</a>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                 <h2>Price Details</h2>
                                 <div class="">
                                     <p>
-                                        <span class="attr">Price (2 item)</span>
+                                        <span class="attr">Price (<span>{{cartItemsList.length}}</span> items)</span>
                                         <span class="val">10000.00</span>
                                     </p>
                                     <p>
