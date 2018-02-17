@@ -116,13 +116,13 @@
 			<div class="col home-slider">
 				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="product in offersArray">
-						<div class="card111" ng-click="getProductDetails(product)">
+						<div class="card111">
 							<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
 							<div class="deal_icons">
 								<span class="deal">Deal</span>
 							</div>
 							<div class="content_part">
-								<div class="product_name" id="tooltip_name" ng-init="limit = 19">
+								<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
 									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in product.prices">
@@ -175,10 +175,10 @@
 			<div class="col home-slider">
 				<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 					<ion-slide-page ng-repeat="newarrival in newarrivalsArray">
-						<div class="card111" ng-click="getProductDetails(newarrival)">
+						<div class="card111">
 							<img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}">
 							<div class="content_part">
-								<div class="product_name" id="tooltip_name" ng-init="limit = 19">
+								<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(newarrival)">
 									<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in newarrival.prices">

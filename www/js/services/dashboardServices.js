@@ -80,10 +80,77 @@ angular.module('shopMyTools.dashboardServices', [])
 
         this.cancelOrderMethod = function (orderid) {
             var deferred = $q.defer();
-    
+
             $http({
                 method: 'GET',
                 url: SERVER_URL1 + '/cancel_order?orderid=' + orderid,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
+
+    })
+
+
+    .service('wishListService', function ($q, $http, SERVER_URL1) {
+        this.getWishList = function (userid) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: SERVER_URL1 + '/yourwishlist?user_id=' + userid,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
+
+        this.deleteWishlistItem = function (userId, productName) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'DELETE',
+                url: SERVER_URL1 + '/delproduct',
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: { "user_id": userId, "product_name": productName }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
+
+    })
+
+
+    .service('viewCartItemsService', function ($q, $http, LOGIN_URL) {
+
+        this.getCartItemsList = function (userid) {
+            var deferred = $q.defer();
+    
+            $http({
+                method: 'GET',
+                url: LOGIN_URL + '/initiateorder?userid=' + userid,
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
     
             }).then(function success(data) {
@@ -98,4 +165,3 @@ angular.module('shopMyTools.dashboardServices', [])
         };
 
     })
-
