@@ -144,15 +144,15 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('relatedProducts_page', {
         url: '/relatedProducts_page',
         cache: false,
-        templateUrl: 'templates/relatedProducts_page.html'
-       // controller: 'welcomeController'
+        templateUrl: 'templates/relatedProducts_page.html',
+        controller: 'productDetailController'
       })
       
       .state('upsellProducts_page', {
         url: '/upsellProducts_page',
         cache: false,
-        templateUrl: 'templates/upsellProducts_page.html'
-       // controller: 'welcomeController'
+        templateUrl: 'templates/upsellProducts_page.html',
+        controller: 'productDetailController'
       })
       
       .state('cart_page', {
