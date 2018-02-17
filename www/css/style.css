@@ -752,24 +752,24 @@ div.footer-button a.button.button-full {
 .rel_cat .list{
     margin-bottom: 0px;
 }
-
-
 .order_segment th{
-    /* background-color: #fff;
-    color: #0487a1 ;
-    font-size: 15px; */
+    background-color: #fff;
+    color: #0487a1;
+    font-size: 15px;
 }
 .seg_select {
-    background-color: #0487a1;
-    color: #fff ;
+    color: #111 !important;
+    font-size: 15px !important;
+    border: none;
+    border-bottom: 2px solid #0487a1;
+}
+.no_records {
+    background-color: #dedede;
+    padding: 3%;
     font-size: 15px;
+    margin-top: 5%;
 }
 
-.seg_notselect {
-    background-color: #fff;
-    color: #0487a1 ;
-    font-size: 15px;
-}
 
 /*   lakki styles end here 16-2-2018 */
 

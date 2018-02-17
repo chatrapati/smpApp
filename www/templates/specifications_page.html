@@ -19,48 +19,46 @@
                     <!-- all specifications part start here -->
                     <div class="prod_specification">
                         <h2>Specifications</h2>
-                        <p class="spec_count">
-                            <span class="attrName">Brand</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">{{productDetail.upload_brand}}</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Price</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
-                        </p>
-                        <p class="spec_count">
-                                <span class="attrName">Special Price</span>
-                                <span class="seperatorColon"></span>
-                                <span class="attrValue">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
-                            </p>
-                        <p class="spec_count" ng-repeat="specification in ProductSpecification">
-                            <span class="attrName"> {{specification.atrname}}</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">{{specification.atrvalue}}</span>
-                        </p>
-                        <!-- 
-                        
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p> -->
+                        <div class="row spec_count">
+                            <div class="col">
+                                <span class="attrName">Brand</span>
+                            </div>
+                            <div class="col">
+                                <span class="attrValue">{{productDetail.upload_brand}}</span>
+                            </div>
+                        </div>
+                        <div class="row spec_count">
+                            <div class="col">
+                                <span class="attrName">Price</span>
+                            </div>
+                            <div class="col">
+                                <span class="attrValue">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            </div>
+                        </div>
+                        <div class="row spec_count">
+                                <div class="col">
+                                    <span class="attrName">Special Price</span>
+                                </div>
+                                <div class="col">
+                                    <span class="attrValue">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                </div>
+                            </div>
+                            <div class="row spec_count">
+                                    <div class="col">
+                                        <span class="attrName">Model No</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="attrValue">{{productDetail.upload_modelno}}</span>
+                                    </div>
+                                </div>
+                                <div class="row spec_count" ng-repeat="specification in ProductSpecification">
+                                        <div class="col">
+                                            <span class="attrName">{{specification.atrname}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span class="attrValue">{{specification.atrvalue}}</span>
+                                        </div>
+                                    </div>
                     </div>
                     <!-- all specifications part end here -->
                 </ion-tab>

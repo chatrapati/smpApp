@@ -5,6 +5,7 @@ angular.module('shopMyTools.categoryPageController', [])
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
       $rootScope.getCategoryProductData.category = window.localStorage['categoryName'];
+      $rootScope.categoryName = window.localStorage['categoryName'];
       $rootScope.getCategoryProductData.subcategory = [""];
       $rootScope.getCategoryProductData.from = 0;
       $rootScope.getCategoryProductData.to = 12;
@@ -20,7 +21,6 @@ angular.module('shopMyTools.categoryPageController', [])
       categoryService.getAllCategoriesOfProduct($scope, $rootScope).then(function (data) {
         $ionicLoading.hide();
         if (data.data) {
-
           $rootScope.products = data.data.products;
           $rootScope.subcategoriesList = data.data.subcategories;
           $rootScope.brandsList = data.data.brand_data;
@@ -29,7 +29,6 @@ angular.module('shopMyTools.categoryPageController', [])
           $rootScope.totalcount = data.data.totalcount;
           $rootScope.totalItems = data.data.products.length;
           $rootScope.datalists = data.data.products;
-
         }
       })
     }
@@ -127,7 +126,6 @@ angular.module('shopMyTools.categoryPageController', [])
         window.localStorage['orderId'] = data.data.orderid;
         $ionicLoading.hide();
         if (data.data.status == 'item added to cart') {
-          //  alert(data.data.status);
           $ionicPopup.alert({
             template: 'Added to Cart Successfully!',
             title: 'Success!'

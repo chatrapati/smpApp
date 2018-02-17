@@ -1,6 +1,6 @@
 <ion-modal-view>
     <ion-header-bar class="bar bar-assertive">
-        <h1 class="title">Order# : {{orderId}}</h1>
+        <h1 class="title">Order # : {{orderId}}</h1>
         <div class="buttons">
             <button class="button button-clear" ng-click="closePopup()">
                     <i class="icon ion-close-circled"></i>
@@ -31,7 +31,7 @@
         </table>
 
 
-        <div class="row" ng-if="shippingtype == 'Delivery'">
+        <div class="row m_top_5" ng-if="shippingtype == 'Delivery'">
             <div class="col card1" ng-if="shippingaddress!='' && shippingaddress!=undefined">
                 <label class="theme_clr">
                     <b>Shipping Address</b>
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <table style="width:100%" ng-if="orderDetails.length>0" class="order_details_table">
+        <table style="width:100%" ng-if="orderDetails.length>0" class="order_details_table m_top_5">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -82,7 +82,7 @@
                     <tr>
                        
                         <td colspan="5">Shipping Charges</td>
-                        <td>₹ 0</td>
+                        <td>₹0</td>
 
                     </tr>
                     <tr>
@@ -101,6 +101,8 @@
             </tbody>
 
         </table>
-
+        <div class="f_right m_top_5" ng-if="status == 'Pending'">
+            <button class="button all_btns" type="submit" ng-click="cancelOrder(orderId)">Cancel Order</button>
+        </div>
     </ion-content>
 </ion-modal-view>
