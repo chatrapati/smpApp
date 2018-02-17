@@ -137,8 +137,8 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('specifications_page', {
         url: '/specifications_page',
         cache: false,
-        templateUrl: 'templates/specifications_page.html'
-       // controller: 'welcomeController'
+        templateUrl: 'templates/specifications_page.html',
+        controller: 'productDetailController'
       })
       
       .state('relatedProducts_page', {

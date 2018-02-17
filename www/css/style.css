@@ -770,3 +770,38 @@ div.footer-button a.button.button-full {
 }
 
 /*   lakki styles end here 16-2-2018 */
+
+
+/*   lakki styles start here 17-2-2018 */
+    .about_product .tabs-top > .tabs{
+        top: 0;
+    }
+    .about_product .tabs-striped.tabs-positive .tabs{
+        background:none;
+        border-bottom: 1px solid #ddd;
+    }
+    .prod_specification{
+        top: 10%;
+    }
+    .prod_description{
+        margin-top: 15%;
+    }
+    .about_product .tabs-striped.tabs-positive .tab-item.tab-item-active{
+        color: #000;
+        font-size: 20px;
+        line-height: 2.3;
+        font-weight: 500;
+    }
+    .about_product .tabs-icon-top > .tabs .tab-item{
+        color: #000;
+        font-size: 20px;
+        line-height: 2.3;
+        font-weight: 500;
+    }
+    .about_product .tabs-striped.tabs-positive .tab-item.tab-item-active{
+        border-color: #0487A1;
+    }
+    .about_product .tab-item{
+        max-width: 210px;
+    }
+/*   lakki styles end here 17-2-2018 */
