@@ -1,9 +1,8 @@
 <ion-view>
-
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" menu-toggle="left"></a>
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Product Name</div>
@@ -21,10 +20,27 @@
                     <div class="prod_specification">
                         <h2>Specifications</h2>
                         <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
+                            <span class="attrName">Brand</span>
                             <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
+                            <span class="attrValue">{{productDetail.upload_brand}}</span>
                         </p>
+                        <p class="spec_count">
+                            <span class="attrName">Price</span>
+                            <span class="seperatorColon"></span>
+                            <span class="attrValue">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                        </p>
+                        <p class="spec_count">
+                                <span class="attrName">Special Price</span>
+                                <span class="seperatorColon"></span>
+                                <span class="attrValue">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                            </p>
+                        <p class="spec_count" ng-repeat="specification in ProductSpecification">
+                            <span class="attrName"> {{specification.atrname}}</span>
+                            <span class="seperatorColon"></span>
+                            <span class="attrValue">{{specification.atrvalue}}</span>
+                        </p>
+                        <!-- 
+                        
                         <p class="spec_count">
                             <span class="attrName">Attribute Name</span>
                             <span class="seperatorColon"></span>
@@ -44,17 +60,7 @@
                             <span class="attrName">Attribute Name</span>
                             <span class="seperatorColon"></span>
                             <span class="attrValue">Attribute value</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p>
-                        <p class="spec_count">
-                            <span class="attrName">Attribute Name</span>
-                            <span class="seperatorColon"></span>
-                            <span class="attrValue">Attribute value</span>
-                        </p>
+                        </p> -->
                     </div>
                     <!-- all specifications part end here -->
                 </ion-tab>
@@ -76,11 +82,6 @@
             </ion-tabs>
         </div>
         <!-- tabs part end here -->
-
-
-
-
-
 
 
     </ion-content>
