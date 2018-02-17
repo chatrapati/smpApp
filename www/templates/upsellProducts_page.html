@@ -18,7 +18,7 @@
     <ion-content class="smt_background_image" style="padding:0;">
 
         <!--  category body start here  -->
-        <div class="category_body">
+        <!-- <div class="category_body">
             <div class="category_dropdown rel_cat">
                 <div class="list" style="float:left;">
                     <label> Show</label>
@@ -40,28 +40,24 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div> -->
         <br/>
 
 
 
 
-        <div class="category_cart_list">
-            <div class="row">
-                <div class="col">
+        <div class="row"  ng-repeat="upsell in upsellproducts" ng-switch on="$index % 2">
+                <div class="col" ng-switch-when="0">
                     <div class="card111">
-                        <img src="img/Smt_Logo.png" width="90%">
-                        <!-- <div class="deal_icons">
-                        <span class="deal">Deal</span>
-                    </div> -->
+                        <img ng-src={{upsell.upload_photo}}  width="90%">
                         <div class="content_part">
                             <div class="product_name" id="tooltip_name">
-                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
+                                <a href="" >{{upsell.upload_name}}</a>
                             </div>
-                            <div class="product_price">
-                                <span class="offer_price">2,00,040</span>
-                                <span class="real_price">4,50,789</span>
-                                <span class="offer_percentage">52%</span>
+                            <div class="product_price" ng-repeat="price in upsell.prices">
+                                <span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="offer_percentage">{{price.percentage}}%</span>
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
                             <div class="cart_icons">
@@ -71,28 +67,25 @@
                                 <span>
                                     <i class="icon ion-heart"></i>
                                 </span>
-                                <span class="extraCshback">
+                                <!-- <span class="extraCshback">
                                     + Extra Cashback
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card111">
-                        <img src="img/Smt_Logo.png" width="90%">
-                        <!-- <div class="deal_icons">
-                            <span class="deal">Deal</span>
-                        </div> -->
+                <div class="col" ng-switch-when="0">
+                    <div class="card111" ng-show="upsellproducts[$index+1]">
+                        <img ng-src={{upsellproducts[$index+1].upload_photo}}  width="90%">
                         <div class="content_part">
-                            <div class="product_name" id="tooltip_name">
-                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
+                            <div class="product_name" >
+                                <a href="">{{upsellproducts[$index+1].upload_name}}</a>
                             </div>
-                            <div class="product_price">
-                                <span class="offer_price">2,00,040</span>
-                                <span class="real_price">4,50,789</span>
-                                <span class="offer_percentage">52%</span>
+                            <div class="product_price" ng-repeat="price in upsellproducts[$index+1].prices">
+                                <span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="offer_percentage">{{price.percentage}}%</span>
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
                             <div class="cart_icons">
@@ -102,79 +95,14 @@
                                 <span>
                                     <i class="icon ion-heart"></i>
                                 </span>
-                                <span class="extraCshback">
+                                <!-- <span class="extraCshback">
                                     + Extra Cashback
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="card111">
-                        <img src="img/Smt_Logo.png" width="90%">
-                        <!-- <div class="deal_icons">
-                            <span class="deal">Deal</span>
-                        </div> -->
-                        <div class="content_part">
-                            <div class="product_name" id="tooltip_name">
-                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                            </div>
-                            <div class="product_price">
-                                <span class="offer_price">2,00,040</span>
-                                <span class="real_price">4,50,789</span>
-                                <span class="offer_percentage">52%</span>
-                            </div>
-                            <p class="excl_gst">(Excluding-GST)</p>
-                            <div class="cart_icons">
-                                <span>
-                                    <i class="icon ion-android-cart"></i>
-                                </span>
-                                <span>
-                                    <i class="icon ion-heart"></i>
-                                </span>
-                                <span class="extraCshback">
-                                    + Extra Cashback
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card111">
-                        <img src="img/Smt_Logo.png" width="90%">
-                        <!-- <div class="deal_icons">
-                                <span class="deal">Deal</span>
-                            </div> -->
-                        <div class="content_part">
-                            <div class="product_name" id="tooltip_name">
-                                <a href="" tooltips tooltip-template={{product.upload_name}}>Product Name</a>
-                            </div>
-                            <div class="product_price">
-                                <span class="offer_price">2,00,040</span>
-                                <span class="real_price">4,50,789</span>
-                                <span class="offer_percentage">52%</span>
-                            </div>
-                            <p class="excl_gst">(Excluding-GST)</p>
-                            <div class="cart_icons">
-                                <span>
-                                    <i class="icon ion-android-cart"></i>
-                                </span>
-                                <span>
-                                    <i class="icon ion-heart"></i>
-                                </span>
-                                <span class="extraCshback">
-                                    + Extra Cashback
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--  category body end here  -->
     </ion-content>
 </ion-view>

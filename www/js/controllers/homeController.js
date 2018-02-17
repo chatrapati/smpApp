@@ -67,7 +67,7 @@ angular.module('shopMyTools.homeController', [])
         //swiper
         $scope.galleryOptions = {
             pagination: '.swiper-pagination',
-            slidesPerView: 2.5,
+            slidesPerView: 2.2,
             freeMode: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
