@@ -1,18 +1,17 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService, $ionicLoading) {
 
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 
         $scope.homePageDetails = function () {
-            $scope.loading = true;
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             homePageService.homePageMethod().then(function (data) {
-
-                $scope.loading = false;
-
+                $ionicLoading.hide();
                 if (data.data.status == 'Success') {
-
                     $scope.topbrands = data.data.topbrands;
                     $scope.deals = data.data.deals;
                     $scope.emergingbrands = data.data.emergingbrands;
@@ -20,47 +19,20 @@ angular.module('shopMyTools.homeController', [])
 
                 } else {
 
-                    //  alert(data.data.status)
-
                 }
-
-
-
             })
 
         }
         $scope.homePageDetails();
 
-
-        // $rootScope.getProductDetails = function (productObj) {
-
-        //     window.localStorage['productName'] = productObj.upload_name;
-
-        //     localStorage.removeItem('isReviewStatus');
-
-        //     $rootScope.showHintFlag = 'false';
-
-        //     localStorage.setItem('breadCrumb', productObj.upload_category);
-
-        //     localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-
-
-        //     // $window.open("http://localhost/smtfeb6evening/index.html#!/productDetailPage");
-
-        //     $window.open("http://toolsomg.com/#!/productDetailPage");
-
-
-        //     // $location.path("productDetailPage");
-
-        // }
-
-
         //offers
 
         $scope.getOffers = function (categoryObj) {
-
-
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             allOffersService.allOffersMethod(categoryObj).then(function (data) {
+                $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     $scope.Offers = data.data.offerscats;
                     $rootScope.offersArray = [];
@@ -119,14 +91,15 @@ angular.module('shopMyTools.homeController', [])
 
 
         $scope.getNewArrivals = function (categoryObj) {
-            // alert(categoryObj)
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             allNewArrivalsService.allNewArrivalsMethod(categoryObj).then(function (data) {
-                // alert(JSON.stringify(data))
+                $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     $scope.newarrivals = data.data.newarrivalcats;
                     $rootScope.newarrivalsArray = [];
                     for (i = 0; i < $scope.newarrivals.length; i++) {
-
                         $scope.newarrivalsObj = $scope.newarrivals[i];
                         for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
                             if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
@@ -136,7 +109,7 @@ angular.module('shopMyTools.homeController', [])
                         }
                     }
                 } else {
-                    //  alert(data.data.status)
+                    
                 }
 
             })

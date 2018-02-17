@@ -2,17 +2,17 @@
 
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
-            <ion-nav-buttons side="left">
-                <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
-            </ion-nav-buttons>
-            <ion-nav-title>
-                <div class="h1 title">My Wish List</div>
-            </ion-nav-title>
-            <ion-nav-buttons side="right">
-                <a class="button button-icon icon ion-search" menu-toggle="right" ng-click="gotoFilter()"></a>
-            </ion-nav-buttons>
-        </ion-nav-bar>
-        <!--  category top header end here  -->
+        <ion-nav-buttons side="left">
+            <span class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></span>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">My Wish List</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-search" menu-toggle="right" ng-click="gotoFilter()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!--  category top header end here  -->
 
 
     <ion-content class="smt_background_image" style="padding:0;">
@@ -20,53 +20,34 @@
         <!--  category body start here  -->
         <div class="category_body">
             <div class="category_cart_list">
-                 <div class="list1">
-                    <a class="item item-thumbnail-left"  class="product-img">
-                        <img ng-src="{{productsdata.upload_photo}}" alt="{{productsdata.brand_name}}">
-                        <h1>Product Name</h1>
-                        <h2>Model Number</h2>
-                        <div class="product_price">
-                            <span class="offer_price">2000</span>
-                            <span class="real_price">4000</span>
-                            <!-- <span class="offer_percentage">30.24%</span> -->
-                        </div>
-                        <!-- <p class="excl_gst">(Excluding-GST)</p> -->
-                        <div class="cat_cart_icons whishlist_icons">
-                            <span><i class="icon ion-android-cart"></i></span>
-                            <span><i class="icon ion-trash-a"></i></span>
-                        </div>
-                    </a>
+                <div class="category_cart_list" ng-repeat="item in wishlistItems">
+                    <div class="list1">
+                        <a class="item item-thumbnail-left" class="product-img">
+                            <img ng-src="{{item.upload_photo}}" alt="{{item.brand_name}}">
+                            <h1>{{item.upload_name}}</h1>
+                            <!-- <h2>Model Number</h2> -->
+                            <div class="product_price" ng-repeat="price in item.prices">
+                                <span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="offer_percentage" style="float:none;">{{price.percentage}} %</span>
+                            </div>
+                            <p class="excl_gst">(Excluding-GST)</p>
+                            <div class="cat_cart_icons whishlist_icons">
+                                <span ng-click="addtoCartItems(item)">
+                                    <i class="icon ion-android-cart"></i>
+                                </span>
+                                <span ng-click="deleteWishlistItem(item)">
+                                    <i class="icon ion-trash-a"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
         <!--  category body end here  -->
     </ion-content>
 
-    <!--Footer Start here -->
-    <!--<ion-footer-bar class="smtFooter">
-        <div class="tabs tabs-icon-top bar bar-assertive">
-            <a class="tab-item">
-                <i class="icon ion-ios-home"></i>
-                Home
-            </a>
-            <a class="tab-item">
-                <i class="icon ion-ios-location-outline"></i>
-                Location
-            </a>
-            <a class="tab-item">
-                <i class="icon ion-home"></i>
-                Tracking
-            </a>
-            <a class="tab-item">
-                <i class="icon ion-ios-person-outline"></i>
-                Service
-            </a>
-            <a class="tab-item">
-                <i class="icon ion-ios-more-outline"></i>
-                More
-            </a>
-        </div>
-    </ion-footer-bar>-->
-    <!--Footer End here -->
 
 </ion-view>
