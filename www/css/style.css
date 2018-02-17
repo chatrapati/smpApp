@@ -403,7 +403,6 @@ div.footer-button a.button.button-full {
 .category_body .category_dropdown{
     width:100%;
     float:left;
-    margin-top: 10%;
 }
 .cart_icons{
     /*position: absolute;
@@ -508,7 +507,7 @@ div.footer-button a.button.button-full {
     color: #fff;
 }
 .category_cart_list{
-    margin-top: 10%;
+
 }
 .category_cart_list .list1 .item{
     background-color:transparent;
@@ -573,8 +572,7 @@ div.footer-button a.button.button-full {
 
 /*   lakki styles start here 16-2-2018 */
 .product_top_desc{
-    margin-top: 5%;
-    border-bottom: 3px solid #ddd;
+   /* border-bottom: 3px solid #ddd;*/
 }
 .product_detailSlider{
     border:1px solid #ddd;
@@ -745,7 +743,7 @@ div.footer-button a.button.button-full {
     margin-left: -10px;
 }
 .category_dropdown.rel_cat{
-    margin-top: 11%;
+   
 }
 .rel_cat .list{
     margin-bottom: 0px;
@@ -770,3 +768,38 @@ div.footer-button a.button.button-full {
 
 
 /*   lakki styles end here 16-2-2018 */
+
+
+/*   lakki styles start here 17-2-2018 */
+    .about_product .tabs-top > .tabs{
+        top: 0;
+    }
+    .about_product .tabs-striped.tabs-positive .tabs{
+        background:none;
+        border-bottom: 1px solid #ddd;
+    }
+    .prod_specification{
+        top: 10%;
+    }
+    .prod_description{
+        margin-top: 15%;
+    }
+    .about_product .tabs-striped.tabs-positive .tab-item.tab-item-active{
+        color: #000;
+        font-size: 20px;
+        line-height: 2.3;
+        font-weight: 500;
+    }
+    .about_product .tabs-icon-top > .tabs .tab-item{
+        color: #000;
+        font-size: 20px;
+        line-height: 2.3;
+        font-weight: 500;
+    }
+    .about_product .tabs-striped.tabs-positive .tab-item.tab-item-active{
+        border-color: #0487A1;
+    }
+    .about_product .tab-item{
+        max-width: 210px;
+    }
+/*   lakki styles end here 17-2-2018 */

@@ -1,35 +1,69 @@
 <ion-view>
+    <!--  category top header start here  -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Product Name</div>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <!--  category top header end here  -->
+
     <ion-content class="smt_background_image" style="padding:0;">
-
-        <!--  category top header start here  -->
-        <div class="category_header">
-            <div class="bar bar-header">
-                <button class="button button-icon icon ion-close-circled"></button>
-                <div class="h1 title">Product Name</div>
-                <!-- <button class="button button-icon icon ion-android-cart"></button> -->
-            </div>
-        </div>
-        <br/> <br/>
-        <br/>
-        <br/>
-        <br/>
-        <!--  category top header end here  -->
-
         <!-- tabs part start here -->
         <div class="about_product">
-            <table style="width:100%" class="order_segment">
-                <thead>
-                    <tr>
-                        <!-- <th ng-class="click?'seg_select':'seg_notselect' "ng-click="click=!click">Pending Orders</th> -->
-                        <th ng-class="{seg_select}" ng-click="click1=!click1">Specifications</th>
-                        <th ng-class="{seg_select}" ng-click="click2=!click2">Description</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <!-- tabs part end here -->
+            <ion-tabs class="tabs-positive tabs-icon-top">
 
+                <ion-tab title="Specifications">
+                    <!-- all specifications part start here -->
+                    <div class="prod_specification">
+                        <h2>Specifications</h2>
+                        <div class="row spec_count">
+                            <div class="col">
+                                <span class="attrName">Brand</span>
+                            </div>
+                            <div class="col">
+                                <span class="attrValue">{{productDetail.upload_brand}}</span>
+                            </div>
+                        </div>
+                        <div class="row spec_count">
+                            <div class="col">
+                                <span class="attrName">Price</span>
+                            </div>
+                            <div class="col">
+                                <span class="attrValue">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            </div>
+                        </div>
+                        <div class="row spec_count">
+                                <div class="col">
+                                    <span class="attrName">Special Price</span>
+                                </div>
+                                <div class="col">
+                                    <span class="attrValue">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                </div>
+                            </div>
+                            <div class="row spec_count">
+                                    <div class="col">
+                                        <span class="attrName">Model No</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="attrValue">{{productDetail.upload_modelno}}</span>
+                                    </div>
+                                </div>
+                                <div class="row spec_count" ng-repeat="specification in ProductSpecification">
+                                        <div class="col">
+                                            <span class="attrName">{{specification.atrname}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <span class="attrValue">{{specification.atrvalue}}</span>
+                                        </div>
+                                    </div>
+                    </div>
+                    <!-- all specifications part end here -->
+                </ion-tab>
 
+<<<<<<< HEAD
         <br/>
         <br/>
         <br/>
@@ -89,6 +123,25 @@
             </p>
         </div>
         <!-- all specifications part end here -->
+=======
+                <ion-tab title="Description">
+                    <!-- description part start here -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="prod_description">
+                                <p>Explore the history of the classic Lorem Ipsum passage and generate your own text using any
+                                    number of characters, words, sentences or paragraphs. Commonly used as placeholder text
+                                    in the graphic and print industries, Lorem Ipsum's origins extend far back to a scrambled
+                                    Latin passage from Cicero in the middle ages.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- description part end here -->
+                </ion-tab>
+            </ion-tabs>
+        </div>
+        <!-- tabs part end here -->
+>>>>>>> 12fcaf68ba72b453b087d4bb398fd5fb7cf534ed
 
 
     </ion-content>

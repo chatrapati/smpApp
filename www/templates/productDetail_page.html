@@ -1,16 +1,20 @@
 <ion-view>
-    <ion-content class="smt_background_image" style="padding:0;">
 
-        <!--  category top header start here  -->
-        <div class="category_header">
-            <div class="bar bar-header">
-                <button class="button button-icon icon ion-close-circled" ng-click="goback()"></button>
-                <div class="h1 title">Product Details</div>
-                <button class="button button-icon icon ion-android-cart"></button>
-            </div>
-        </div>
-        <br/>
-        <!--  category top header end here  -->
+    <!--  category top header start here  -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Product Details</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-android-cart" menu-toggle="right" ng-click="gotoFilter()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!--  category top header end here  -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
 
         <div class="product_top_desc">
             <div class="row">
@@ -51,10 +55,10 @@
                                 <li>Model No : {{productDetail.upload_modelno}}</li>
                                 <li>Net Weight : {{productDetail.upload_netWeight}}</li>
                                 <li ng-repeat="specification in ProductSpecification  | limitTo:2">
-                                    <span > {{specification.atrname}}</span> 
-                                    <span > {{specification.atrvalue}}</span> 
+                                    <span> {{specification.atrname}}</span>
+                                    <span> {{specification.atrvalue}}</span>
                                 </li>
-                                <a href="">View Details</a>
+                                <a ui-sref="specifications_page">View Details</a>
                             </ul>
                         </div>
                     </div>
