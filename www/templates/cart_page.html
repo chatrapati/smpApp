@@ -3,7 +3,7 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" menu-toggle="left"></a>
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Cart</div>
@@ -31,39 +31,42 @@
         <div class="category_body">
             <div class="category_cart_list">
                 <div class="list1">
-                    <div class="row">
-                        <div class="col">
-                            <h1>Product Name</h1>
-                            <div class="product_price">
-                                <span class="offer_price">2000</span>
-                                <span class="real_price">4000</span>
-                                <span class="offer_percentage">30.24%</span>
+                    <div ng-repeat="item in cartItemsList">
+                        <div class="row">
+                            <div class="col">
+                                <h1>{{item.productdescription}}</h1>
+                                <div class="product_price">
+                                    <span class="offer_price">{{item.offer_price | currency:'&#8377;'}}</span>
+                                    <br> <span>Tax Amount:</span><span>35345</span>
+                                    <br>
+                                    <span>Sub total:</span><span>35345</span>
+                                    <!-- <span class="offer_percentage">30.24%</span> -->
+                                </div>
+                                <!-- <p class="excl_gst">(Excluding-GST)</p> -->
                             </div>
-                            <p class="excl_gst">(Excluding-GST)</p>
-                        </div>
-                        <div class="col">
-                            <img src="img/Smt_Logo.png" width="90%">
+                            <div class="col">
+                                <img ng-src="{{item.image}}" width="90%">
+                                <div class="amunt_auto_incre">
+                                    <a id="decre" class="button">-</a>
+                                    <input type="text" class="texting" ng-model="item.qty">
+                                    <a id="incre" class="button">+</a>
+                                </div>
 
-                            <div class="amunt_auto_incre">
-                                <a id="decre" class="button">-</a>
-                                <input type="text" class="texting">
-                                <a id="incre" class="button">+</a>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="row" id="cart_list_icons">
-                        <div class="col">
-                            <span>
-                                <i class="icon ion-heart"></i>
-                            </span>
-                            <span>Move to whishlist</span>
-                        </div>
-                        <div class="col">
-                            <span>
-                                <i class="icon ion-trash-a"></i>
-                            </span>
-                            <span>Remove</span>
+                        <div class="row" id="cart_list_icons">
+                            <div class="col">
+                                <span>
+                                    <i class="icon ion-heart"></i>
+                                </span>
+                                <span>Move to whishlist</span>
+                            </div>
+                            <div class="col">
+                                <span>
+                                    <i class="icon ion-trash-a"></i>
+                                </span>
+                                <span>Remove</span>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

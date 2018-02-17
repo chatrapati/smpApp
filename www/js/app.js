@@ -158,8 +158,8 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('cart_page', {
         url: '/cart_page',
         cache: false,
-        templateUrl: 'templates/cart_page.html'
-       // controller: 'welcomeController'
+        templateUrl: 'templates/cart_page.html',
+        controller: 'viewCartItemsListCntrl'
       });
       
       

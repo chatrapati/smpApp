@@ -252,12 +252,17 @@ angular.module('shopMyTools.dashboardController', [])
             viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'success') {
-                    $rootScope.cartArray = data.data.item_list;
+                    $scope.cartItemsList = data.data.item_list;
                 }
 
             })
         }
 
         $scope.getCartItemsList();
+
+        $scope.goback = function () {
+            $state.go('app.home');
+            //  $window.history.go(-1);
+        }
 
     })
