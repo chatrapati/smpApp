@@ -14,6 +14,6 @@ angular.module('shopMyTools.constants', [])
 
 .constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005')
 
- //.constant('PRODUCT_CATEGORY_SERVICE', 'http://192.168.20.67:8000')
+ .constant('PRODUCT_CATEGORY_SERVICE', 'http://192.168.20.67:8000')
 
-.constant('PRODUCT_CATEGORY_SERVICE','http://157.119.108.137:80'); 
+//.constant('PRODUCT_CATEGORY_SERVICE','http://157.119.108.137:80'); 
