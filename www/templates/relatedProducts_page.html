@@ -49,7 +49,7 @@
                     <div class="card111">
                         <img ng-src={{related.upload_photo}}  width="90%">
                         <div class="content_part">
-                            <div class="product_name" id="tooltip_name">
+                            <div class="product_name" id="tooltip_name" ng-click="getProductDetails(related)">
                                 <a href="" >{{related.upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in related.prices">
@@ -77,7 +77,7 @@
                     <div class="card111" ng-show="relatedproducts[$index+1]">
                         <img ng-src={{relatedproducts[$index+1].upload_photo}}  width="90%">
                         <div class="content_part">
-                            <div class="product_name" >
+                            <div class="product_name" ng-click="getProductDetails(relatedproducts[$index+1])" >
                                 <a href="">{{relatedproducts[$index+1].upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">

@@ -34,6 +34,11 @@ angular.module('shopMyTools.productDetailPageController', [])
 
         $scope.getProductDetails();
 
+        $scope.getProductDetails = function (productObj) {
+            window.localStorage['productName'] = productObj.upload_name;
+            $state.go("productDetail_page")
+        }
+
 
 
 

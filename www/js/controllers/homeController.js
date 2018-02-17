@@ -64,6 +64,14 @@ angular.module('shopMyTools.homeController', [])
             $state.go("productDetail_page")
         }
 
+        $scope.getCategoryBasedOnBrands = function (brandObj) {
+            window.localStorage['categoryName'] = "";
+            localStorage.setItem('brandName',brandObj.brandname)
+           // window.localStorage['brandName'] = brandObj.brandname;
+           $state.go('categoryCartPage');
+
+        }
+
         //swiper
         $scope.galleryOptions = {
             pagination: '.swiper-pagination',
