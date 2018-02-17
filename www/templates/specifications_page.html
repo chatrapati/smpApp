@@ -9,17 +9,23 @@
                 <!-- <button class="button button-icon icon ion-android-cart"></button> -->
             </div>
         </div>
+        <br/> <br/>
+        <br/>
+        <br/>
         <br/>
         <!--  category top header end here  -->
 
         <!-- tabs part start here -->
         <div class="about_product">
-            <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
-                <div class="tabs">
-                    <a class="tab-item active" data-target="#hai">Specifications</a>
-                    <a class="tab-item" href="">Description</a>
-                </div>
-            </div>
+            <table style="width:100%" class="order_segment">
+                <thead>
+                    <tr>
+                        <!-- <th ng-class="click?'seg_select':'seg_notselect' "ng-click="click=!click">Pending Orders</th> -->
+                        <th ng-class="{seg_select}" ng-click="click1=!click1">Specifications</th>
+                        <th ng-class="{seg_select}" ng-click="click2=!click2">Description</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
         <!-- tabs part end here -->
 
@@ -31,17 +37,20 @@
 
 
         <!-- description part start here -->
-        <div class="row">
+        <div class="row" ng-if="click2">
             <div class="col">
                 <div class="prod_description">
-                    <p>Explore the history of the classic Lorem Ipsum passage and generate your own text using any number of characters, words, sentences or paragraphs. Commonly used as placeholder text in the graphic and print industries, Lorem Ipsum's origins extend far back to a scrambled Latin passage from Cicero in the middle ages.</p>
+                    <p>Explore the history of the classic Lorem Ipsum passage and generate your own text using any number of
+                        characters, words, sentences or paragraphs. Commonly used as placeholder text in the graphic and
+                        print industries, Lorem Ipsum's origins extend far back to a scrambled Latin passage from Cicero
+                        in the middle ages.</p>
                 </div>
             </div>
         </div>
         <!-- description part end here -->
 
         <!-- all specifications part start here -->
-        <div class="prod_specification">
+        <div class="prod_specification" ng-if="click1">
             <h2>Specifications</h2>
             <p class="spec_count">
                 <span class="attrName">Attribute Name</span>

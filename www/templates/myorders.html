@@ -1,10 +1,19 @@
 <ion-view>
   <ion-content class="smt_background_image padding5">
 
-    <!-- <div class="smt_logo">
-      <img src="img/Smt_Logo.png" width="90%">
-    </div> -->
-    <table style="width:100%" class="nrows">
+    
+
+    <table style="width:100%" class="order_segment">
+      <thead>
+        <tr>
+          <th ng-class="{seg_select : Pendingactive}" ng-click="getOrdersList('pending')">Pending Orders</th>
+          <th ng-class="{seg_select : Invoiceactive}" ng-click="getOrdersList('invoice')">Invoice Orders</th>
+          <th ng-class="{seg_select : Cancelactive}" ng-click="getOrdersList('cancel')">Cancel Orders</th>
+        </tr>
+      </thead>
+    </table>
+
+    <table style="width:100%" class="nrows m_top_5" ng-if="Pendingactive && (pendingOrderList.length > 0)">
       <thead>
         <tr>
           <th>S.No</th>
@@ -15,7 +24,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="orderData in myOrdersList">
+        <tr ng-repeat="orderData in pendingOrderList">
+          <td ng-bind="$index+1"></td>
+          <td ng-bind="orderData.orderid"></td>
+          <td ng-bind="orderData.totalquantity"></td>
+          <td class="txt_right" ng-bind="'&#8377'+orderData.totalamount"></td>
+          <td ng-click="gotoOrderDetails(orderData.orderid)">
+            <a href="">
+              <i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table style="width:100%" class="nrows m_top_5" ng-if="Invoiceactive && invoiceOrderList.length>0">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Order No</th>
+          <th>Qty</th>
+          <th>Amount</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="orderData in invoiceOrderList">
           <td ng-bind="$index+1"></td>
           <td ng-bind="orderData.orderid"></td>
           <td ng-bind="orderData.totalquantity"></td>
@@ -29,18 +62,39 @@
     </table>
 
 
-    <!-- <table style="width:100%" class="order_segment">
+    <table style="width:100%" class="nrows m_top_5" ng-if="Cancelactive && cancelOrderList.length>0">
       <thead>
         <tr>
-          <!-- <th ng-class="click?'seg_select':'seg_notselect' "ng-click="click=!click">Pending Orders</th> 
-          <th ng-class="click?'seg_select':'seg_notselect'" ng-click="getOrders()">Pending Orders</th>
-          <th ng-class="click1?'seg_select':'seg_notselect' " ng-click="click1=!click1">Invoice Orders</th>
-          <th ng-class="click2?'seg_select':'seg_notselect' " ng-click="click2=!click2">Cancel Orders</th>
+          <th>S.No</th>
+          <th>Order No</th>
+          <th>Qty</th>
+          <th>Amount</th>
+          <th>Options</th>
         </tr>
       </thead>
-    </table> -->
+      <tbody ng-repeat="cancelOrderData in cancelOrderList">
+        <tr ng-if="cancelOrderData.status == 'Cancel'">
+          <td ng-bind="$index+1"></td>
+          <td ng-bind="cancelOrderData.orderid"></td>
+          <td ng-bind="cancelOrderData.totalquantity"></td>
+          <td class="txt_right" ng-bind="'&#8377'+cancelOrderData.totalamount"></td>
+          <td ng-click="gotoOrderDetails(cancelOrderData.orderid)">
+            <a href="">
+              <i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-
+    <div class="no_records" ng-if="Pendingactive && pendingOrderList.length == 0">
+      <span>No Records Found !!!</span>
+    </div>
+    <div class="no_records" ng-if="Invoiceactive && invoiceOrderList.length == 0">
+      <span>No Records Found !!!</span>
+    </div>
+    <div class="no_records" ng-if="Cancelactive && cancelOrderList.length == 0">
+      <span>No Records Found !!!</span>
+    </div>
 
 
   </ion-content>
