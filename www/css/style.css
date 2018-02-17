@@ -868,17 +868,21 @@ div.footer-button a.button.button-full {
         float: right;
     }
     .amunt_auto_incre .button{
-        min-width: 20px;
-        min-height: 20px;
-        line-height: 2;
+        min-height: 0;
+        min-width: 0;
+        height: 30px;
+        line-height: 1.6;
         border: 1px solid #0487a1;
         background: #0487a1;
         color: #fff;
         border-radius: 0px;
+        text-align: center;
     }
     .amunt_auto_incre .texting{
-        width: 50px;
+        width: 60px;
+        height: 30px;
         border:1px solid #0487a1;
+        text-align: center;
     }
     .item-complex .item-content{
         padding: 10px 49px 10px 16px !important;
@@ -891,5 +895,8 @@ div.footer-button a.button.button-full {
         padding-right: 8px;
         text-align: center;
         border-radius: 10px;
+    }
+    .cart_imagess{
+        float: right;
     }
 /*   lakki styles end here 17-2-2018 */
