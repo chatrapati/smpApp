@@ -167,6 +167,13 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         cache: false,
         templateUrl: 'templates/shipping&billing_page.html'
        // controller: 'welcomeController'
+      })
+      
+      .state('toolsShops_page', {
+        url: '/toolsShops_page',
+        cache: false,
+        templateUrl: 'templates/toolsShops_page.html'
+       // controller: 'welcomeController'
       });
       
       

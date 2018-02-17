@@ -513,7 +513,7 @@ div.footer-button a.button.button-full {
     background-color:transparent;
     color: #444;
     border: none; 
-    border-bottom: 3px solid #ddd; 
+    border-bottom: 5px solid #ddd; 
     padding-bottom: 6%;     
 }
 .category_cart_list .list1 h1{
@@ -614,7 +614,7 @@ div.footer-button a.button.button-full {
     margin-top: 3px;
 }
 .product_desc{
-    border-bottom: 3px solid #ddd; 
+    border-bottom: 5px solid #ddd; 
 }
 .highlits h3{
     color: #0487a1;
@@ -812,7 +812,7 @@ div.footer-button a.button.button-full {
         font-weight: 600;
     }
     #cart_page .pincode{
-        border-bottom: 3px solid #ddd;
+        border-bottom: 5px solid #ddd;
     }
     .change_btn{
         float: right;
@@ -931,4 +931,28 @@ div.footer-button a.button.button-full {
     .block{
         border-bottom: 5px solid #ddd;
     }
+    .shop_address .s_head{
+        color: #2c2b2b;
+    }
+    .shop_address .s_data{
+        color: #666565;
+    }
+    .shop_address .col span{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .shop_address .col{
+        padding: 0 5px;
+    }
+    .shop_address .row{
+        padding: 0 5px;
+    }
+    .name_of_the_shop .radiobutns{
+        font-weight: 500;
+    }
+    .name_of_the_shop{
+        border-bottom: 5px solid #ddd;
+        margin: 5px 0;
+    }
+    
 /*   lakki styles end here 17-2-2018 */
