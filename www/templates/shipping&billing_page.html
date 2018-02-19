@@ -17,121 +17,174 @@
         <ion-list>
 
             <div class="block">
-            <div class="filter_head_options" ng-click="categories=!categories">
-                <ion-item>
-                    <span>Shipping Address</span>
-                    <i ng-if="!categories" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="categories" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
-            </div>
-
-            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="categories">
-                <div class="">
-                    <form class="radiobutns">
-                        <input type="radio" name="gender" value="pickup" checked> Pick Up
-                        <br>
-                        <input type="radio" name="gender" value="delivery"> Delivery
-                    </form>
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Shipping Address</span>
+                        <i ng-if="showshippingDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="!showshippingDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
                 </div>
 
-                <!-- pick up start here -->
-                <div class="pickup">
-                    <form name="registerForm">
-                        <div class="list login_labls m_top-10">
-                            <label class="item item-input item-floating-label custom-login-label">
-                                <input type="text" placeholder="Mobile Number" name="mobile">
-                            </label>
-                            <br/>
-                            <label class="item item-input item-floating-label custom-login-label">
-                                <input type="text" placeholder="Pincode" name="pincode">
-                            </label>
-                        </div>
-                        <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid">Get</button>
-                    </form>
-                </div>
-                <!-- pick up end here -->
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showshippingDiv">
+                    <div class="">
+                        <form class="radiobutns">
+                            <input type="radio" name="Pickup" ng-model="checkoutData.shippingType" value="Pickup"> Pick Up
+                            <br>
+                            <input type="radio" name="Delivery" ng-model="checkoutData.shippingType" value="Delivery"> Delivery
+                        </form>
+                    </div>
 
-                <!-- Delivery start here -->
-                <div class="delivery">
-                    <div class="row">
-                        <div class="col">
-                            <h1>Person Name</h1>
-                            <p>
-                                <span>D/no:2/85A,</span>
-                                <span>Kothapudi,</span>
-                                <span>Machilipatnam,</span>
-                                <span>Krishna Dist,</span>
-                                <span>A.P, 521002.</span>
-                            </p>
-                            <p>8978041215</p>
-                            <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</button>
+                    <!-- pick up start here -->
+                    <div class="pickup" ng-if="checkoutData.shippingType == 'Pickup'">
+                        <form name="pickupForm">
+                            <div class="list login_labls m_top-10">
+                                <label class="item item-input item-floating-label">
+                                    <input type="text" placeholder="Mobile" name="mobile" ng-model="getPincodeData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
+                                        maxlength="10" required>
+                                </label>
+                                <span ng-show="pickupForm.$submitted || pickupForm.mobile.$touched || (pickupForm.mobile.$dirty && pickupForm.mobile.$invalid)">
+                                    <span class="error" ng-show="pickupForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                    <span class="error" ng-show="pickupForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                </span>
+
+                                <br/>
+                                <label class="item item-input item-floating-label">
+                                    <input type="text" name="postal_code" ng-model="getPincodeData.postal_code" placeholder="Enter Postal code" required maxlength="6"
+                                        ng-pattern="/^[1-9][0-9]{5}$/">
+                                </label>
+                                <span ng-show="pickupForm.$submitted || pickupForm.postal_code.$touched || (pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid)">
+                                    <span class="error" ng-show="pickupForm.postal_code.$error.required">Please enter Pincode.</span>
+                                    <span class="error" ng-show="pickupForm.postal_code.$error.pattern">Please enter Valid Pincode.</span>
+                                </span>
+                            </div>
+                            <button class="button button-block all_btns" id="reg_btn" ng-disabled="pickupForm.$invalid" ng-click="getPickupDetails(getPincodeData)">Get</button>
+                        </form>
+                    </div>
+                    <!-- pick up end here -->
+
+                    <!-- Delivery start here -->
+                    <div class="delivery" ng-if="checkoutData.shippingType == 'Delivery'">
+                        <div class="row">
+                            <div class="col">
+                                <h1>Person Name</h1>
+                                <p>
+                                    <span>D/no:2/85A,</span>
+                                    <span>Kothapudi,</span>
+                                    <span>Machilipatnam,</span>
+                                    <span>Krishna Dist,</span>
+                                    <span>A.P, 521002.</span>
+                                </p>
+                                <p>8978041215</p>
+                                <button class="button button-block all_btns" id="reg_btn">Change or Add Address</button>
+                            </div>
                         </div>
                     </div>
+                    <!-- Delivery end here -->
+
+                </ion-list>
+
+            </div>
+
+            <div class="block">
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Billing Address</span>
+                        <i ng-if="showBillingAddressDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="!showBillingAddressDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
                 </div>
-                <!-- Delivery end here -->
 
-            </ion-list>
-
-        </div>
-
-        <div class="block">
-            <div class="filter_head_options" ng-click="brands=!brands">
-                <ion-item>
-                    <span>Billing Address</span>
-                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
-            </div>
-
-            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
-
-            </ion-list>
-        </div>
-
-        <div class="block">
-
-            <div class="filter_head_options" ng-click="brands=!brands">
-                <ion-item>
-                    <span>Payment Method</span>
-                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
-            </div>
-
-            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
-                    <div class="">
-                            <form class="radiobutns">
-                                <input type="radio" name="gender" value="online" checked> Pay Online
-                                <br>
-                                <input type="radio" name="gender" value="cod"> Cash on Delivery
-                            </form>
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showBillingAddressDiv">
+                    <div class="row ">
+                        <div class="col delivery">
+                            <h1>{{billingAddress.firstname}} {{billingAddress.lastname}}</h1>
+                            <p>
+                                <span>{{billingAddress.house_no}},</span>
+                                <span>{{billingAddress.street_address}},</span>
+                                <span>{{billingAddress.city}}, {{billingAddress.postal_code}}</span>
+                                <span>{{billingAddress.state}},</span>
+                                <span>{{billingAddress.country}}.</span>
+                            </p>
+                            <p>{{billingAddress.mobile}}</p>
+                            <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a>
+                            <button class="button button-block all_btns" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
                         </div>
-            </ion-list>
-
-        </div>
-
-        <div class="block">
-
-
-            <div class="filter_head_options" ng-click="brands=!brands">
-                <ion-item>
-                    <span>Order Review</span>
-                    <i ng-if="!brands" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                    <i ng-if="brands" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                </ion-item>
+                    </div>
+                </ion-list>
             </div>
 
-            <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="brands">
+            <div class="block">
 
-            </ion-list>
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Payment Method</span>
+                        <i ng-if="showPaymentTypeDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="!showPaymentTypeDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
 
-        </div>
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showPaymentTypeDiv">
+                    <div class="">
+                        <div class="radiobutns">
+                            <input type="radio" name="online" ng-model="paymentType" value="online"> Pay Online
+                            <br>
+                            <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery"> Cash on Delivery
+                            <button class="button button-block all_btns" ng-disabled="!paymentType" id="reg_btn" ng-click="savePaymentType(paymentType)">Continue</button>
+                        </div>
+                    </div>
+                </ion-list>
+
+            </div>
+
+            <div class="block">
+
+
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Order Review</span>
+                        <i ng-if="showOrderDetailDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="!showOrderDetailDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
+
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="showOrderDetailDiv">
+                    <table style="width:100%" class="nrows m_top_5" ng-if="cartItemsList.length > 0">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Tax (%)</th>
+                                <th>Tax-Amount</th>
+                                <th>Qty</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cartItem in cartItemsList">
+                                <td>{{cartItem.productdescription}}</td>
+                                <td class="txt_right">{{cartItem.offer_price | currency:'&#8377;'}}</td>
+                                <td>{{cartItem.tax}}</td>
+                                <td class="txt_right">{{cartItem.tax_amount|currency:'&#8377;'}}</td>
+                                <td>{{cartItem.qty}}</td>
+                                <td class="txt_right">{{cartItem.offer_price*cartItem.qty|currency:'&#8377;'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pro_attr_vals txt_right">
+                        <p>
+                            <span class="attr">Amount Payble</span>
+                            <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                        </p>
+                    </div>
+                </ion-list>
+
+            </div>
 
 
 
         </ion-list>
 
-
+        <button class="button button-block all_btns" id="reg_btn" ng-click="checkoutProcess()">Checkout</button>
 
     </ion-content>
 </ion-view>

@@ -4,8 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.productDetailPageController',
-  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService','shopMyTools.productDetailPageService', 'shopMyTools.constants','shopMyTools.smtdirective','720kb.tooltips','ionic-ratings'])
+angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.productDetailPageController','shopMyTools.ckeckoutController',
+  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService','shopMyTools.productDetailPageService','shopMyTools.ckeckoutSerivce', 'shopMyTools.constants','shopMyTools.smtdirective','720kb.tooltips','ionic-ratings'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -165,16 +165,16 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       .state('shipping&billing_page', {
         url: '/shipping&billing_page',
         cache: false,
-        templateUrl: 'templates/shipping&billing_page.html'
-       // controller: 'welcomeController'
-      })
-      
-      .state('toolsShops_page', {
-        url: '/toolsShops_page',
-        cache: false,
-        templateUrl: 'templates/toolsShops_page.html'
-       // controller: 'welcomeController'
+        templateUrl: 'templates/shipping&billing_page.html',
+        controller: 'ckeckoutCntrl'
       });
+      
+      // .state('toolsShops_page', {
+      //   url: '/toolsShops_page',
+      //   cache: false,
+      //   templateUrl: 'templates/toolsShops_page.html'
+      //  // controller: 'welcomeController'
+      // });
       
       
 

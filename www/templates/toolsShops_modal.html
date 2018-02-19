@@ -1,0 +1,74 @@
+<ion-modal-view>
+
+    <!-- header part start here -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="closePopup()">
+                <i class="icon ion-close-circled"></i>
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Cart</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon" ng-click="gotoBillingAddressDetails()">Save</button>
+
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!-- header part end here -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+        <br>
+        <br>
+        <br>
+        <div class="name_of_the_shop" ng-repeat="dealer in dealersList">
+            <div class="radiobutns">
+                <input type="radio" name="address" ng-model="selected" ng-value="'{{dealer}}'" ng-change="saveDealerAddress(dealer)"/>{{dealer.shop_name}}
+                <div class="shop_address">
+                    <div class="row">
+                        <div class="col">
+                            <span class="s_head">Shop Name : </span>
+                        </div>
+                        <div class="col">
+                            <span class="s_data">{{dealer.shop_name}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <span class="s_head">Address : </span>
+                        </div>
+                        <div class="col">
+                            <span class="s_data">{{dealer.shop_address}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span class="s_head">Contact Person : </span>
+                        </div>
+                        <div class="col">
+                            <span class="s_data">{{dealer.dealer_name}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span class="s_head">Contact Number : </span>
+                        </div>
+                        <div class="col">
+                            <span class="s_data"> {{dealer.phone}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span class="s_head">Pincode : </span>
+                        </div>
+                        <div class="col">
+                            <span class="s_data">{{dealer.pincode}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

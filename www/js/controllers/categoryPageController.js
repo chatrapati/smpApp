@@ -4,8 +4,16 @@ angular.module('shopMyTools.categoryPageController', [])
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
-      $rootScope.getCategoryProductData.category = window.localStorage['categoryName'];
-      $rootScope.categoryName = window.localStorage['categoryName'];
+
+      if(window.localStorage['categoryType'] == 'category'){
+        $rootScope.getCategoryProductData.category = window.localStorage['categoryName'];
+        $rootScope.categoryName = window.localStorage['categoryName'];
+      }else {
+        $rootScope.getCategoryProductData.brand = [window.localStorage['brandName']];
+        $rootScope.categoryName = window.localStorage['brandName'];
+      }
+      
+      
       $rootScope.getCategoryProductData.subcategory = [""];
       $rootScope.getCategoryProductData.from = 0;
       $rootScope.getCategoryProductData.to = 12;
