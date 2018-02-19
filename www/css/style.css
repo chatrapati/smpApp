@@ -955,4 +955,33 @@ div.footer-button a.button.button-full {
         margin: 5px 0;
     }
     
-/*   lakki styles end here 17-2-2018 */
+/*   lakki styles end here 19-2-2018 */
+
+#rating.col{
+    display: inherit !important;
+    font-size: 15px !important;
+    margin-top: 10%;
+    margin-left: 5%;
+}
+.rating .ratepercentage{
+    left: 12%;
+    padding-top: 11px;
+    position: absolute;
+    font-size: 30px;
+    color: #0a9dc7;
+    font-weight: 500;
+} 
+.ratingbar{
+    height: 3px;
+    width: 100%; 
+    transition: width 0.1s; 
+    background: #cec8c8;
+  }
+ .ratingbar:after {
+     content: '';
+     display: block;
+     background: #0487a1;
+     width: 50%;
+     height: 100%;
+    
+ }

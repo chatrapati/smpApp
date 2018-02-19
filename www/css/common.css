@@ -440,4 +440,13 @@ th {
 .text-center{
     text-align: center;
 }
-/*   lakki styles end here 14-2-2018 */
+/*   lakki styles end here 19-2-2018 */
+
+.ionic_ratings .icon {
+    font-size: 25px;
+  }
+
+  .m-rt12{
+      margin-right: 12px;
+  }
+
