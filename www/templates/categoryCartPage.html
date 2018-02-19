@@ -37,8 +37,8 @@
                         <img ng-src="{{productsdata.upload_photo}}" alt="Image">
                         <h2>{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
-                            <span class="offer_price">{{prices.offer_price | noFractionCurrency:'&#8377;'}}</span>
-                            <span class="real_price">{{prices.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="offer_price">{{prices.offer_price | currency:'&#8377;'}}</span>
+                            <span class="real_price">{{prices.enduser_price | currency:'&#8377;'}}</span>
                             <span class="offer_percentage">{{prices.percentage}} %</span>
                         </div>
                         <p class="excl_gst">(Excluding-GST)</p>

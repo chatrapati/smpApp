@@ -252,7 +252,8 @@ angular.module('shopMyTools.dashboardController', [])
             viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'success') {
-                    $scope.cartItemsList = data.data.item_list;
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
                 }
 
             })
@@ -264,9 +265,9 @@ angular.module('shopMyTools.dashboardController', [])
 
 
         $scope.addtocartDetails = function (productDataName, quantity) {
-           // alert('in');
+            // alert('in');
             $scope.productDataListData = [];
-            if (quantity > 1) {
+            if (quantity >= 1) {
                 $scope.productDataListData.push({ "productdescription": productDataName, "qty": quantity })
                 $ionicLoading.show({
                     template: 'Loading...'
@@ -288,7 +289,12 @@ angular.module('shopMyTools.dashboardController', [])
         }
 
 
+        $scope.gotoCheckout = function (item) {
+            // alert(item.tax_amount);
+            $state.go('shipping&billing_page');
+        }
 
+       
 
         $scope.goback = function () {
             $state.go('app.home');

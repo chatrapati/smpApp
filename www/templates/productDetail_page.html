@@ -30,8 +30,8 @@
                     <!--  Product Description part start here    -->
                     <div>
                         <div class="product_Detail_price">
-                            <span class="offer_price">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
-                            <span class="real_price">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                            <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
+                            <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
                             <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
                         </div>
                         <p class="detailexcl_gst">(Excluding-GST)</p>

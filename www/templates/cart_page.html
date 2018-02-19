@@ -12,7 +12,7 @@
     <!--  category top header end here  -->
 
     <ion-content class="smt_background_image" style="padding:0;" id="cart_page">
-        <div class="row pincode">
+        <!-- <div class="row pincode">
             <div class="col">
                 <p class="location_det">
                     <span class="theme_clr">
@@ -25,7 +25,7 @@
             <div class="col">
                 <button class="change_btn">Change</button>
             </div>
-        </div>
+        </div> -->
 
         <!--  category body start here  -->
         <div class="category_body">
@@ -56,15 +56,15 @@
                             </div>
 
                         </div>
-                        <div>
-                            <!-- <span>Total Price :</span>
-                            <span>{{item.tax }}</span>
-                            <br> -->
-                            <span>Tax Amount:</span>
-                            <span>{{item.tax_amount | currency:'&#8377;'}}</span>
-                            <br>
-                            <span>Sub total:</span>
-                            <span>{{item.sub_total | currency:'&#8377;'}}</span>
+                        <div class="row">
+                            <div class="col font_size15">
+                                <span>Tax Amount:</span>
+                                <span>{{item.tax_amount | currency:'&#8377;'}}</span>
+                                <br>
+                                <span>Sub total:</span>
+                                <span>{{item.sub_total | currency:'&#8377;'}}</span>
+                            </div>
+
                         </div>
                         <div class="row" id="cart_list_icons">
                             <div class="col">
@@ -87,21 +87,22 @@
                                 <h2>Price Details</h2>
                                 <div class="">
                                     <p>
-                                        <span class="attr">Price (<span>{{cartItemsList.length}}</span> items)</span>
-                                        <span class="val">10000.00</span>
+                                        <span class="attr">Price (
+                                            <span>{{cartItemsList.length}}</span> items)</span>
+                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
                                     </p>
                                     <p>
-                                        <span class="attr">Delivery</span>
-                                        <span class="val">68.00</span>
+                                        <span class="attr">Shipping Charges</span>
+                                        <span class="val">&#8377;0.00</span>
                                     </p>
                                 </div>
                                 <div class="pro_attr_vals">
                                     <p>
                                         <span class="attr">Amount Payble</span>
-                                        <span class="val">10068.00</span>
+                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
                                     </p>
                                 </div>
-                                <p class="save_item">You will save 1200 rupees on this order...</p>
+                                <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
                             </div>
                         </div>
                     </div>
@@ -113,8 +114,8 @@
 
     <ion-footer-bar>
         <!--Footer Start here -->
-        <div id="footer" class="button-bar">
-            <a id="cart" class="button">Checkout</a>
+        <div id="footer" class="button-bar" ng-repeat="item in cartItemsList">
+            <a id="cart" class="button" ng-click="gotoCheckout(item)">Checkout</a>
             <a id="buynow" class="button">View Price Details</a>
         </div>
         <!--Footer End here -->

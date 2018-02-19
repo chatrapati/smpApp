@@ -53,8 +53,8 @@
                                 <a href="" >{{upsell.upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in upsell.prices">
-                                <span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
-                                <span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
                                 <span class="offer_percentage">{{price.percentage}}%</span>
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
@@ -81,8 +81,8 @@
                                 <a href="">{{upsellproducts[$index+1].upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in upsellproducts[$index+1].prices">
-                                <span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
-                                <span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
                                 <span class="offer_percentage">{{price.percentage}}%</span>
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>

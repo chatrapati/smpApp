@@ -32,7 +32,7 @@
                                 <span class="attrName">Price</span>
                             </div>
                             <div class="col">
-                                <span class="attrValue">{{productDetailPrice.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+                                <span class="attrValue">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
                             </div>
                         </div>
                         <div class="row spec_count">
@@ -40,7 +40,7 @@
                                     <span class="attrName">Special Price</span>
                                 </div>
                                 <div class="col">
-                                    <span class="attrValue">{{productDetailPrice.offer_price | noFractionCurrency:'&#8377;'}}</span>
+                                    <span class="attrValue">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
                                 </div>
                             </div>
                             <div class="row spec_count">
