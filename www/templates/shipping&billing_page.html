@@ -42,20 +42,27 @@
                                     <input type="text" placeholder="Mobile" name="mobile" ng-model="getPincodeData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
                                         maxlength="10" required>
                                 </label>
-                                <span ng-show="pickupForm.$submitted || pickupForm.mobile.$touched || (pickupForm.mobile.$dirty && pickupForm.mobile.$invalid)">
-                                    <span class="error" ng-show="pickupForm.mobile.$error.required">Please enter Mobile Number.</span>
-                                    <span class="error" ng-show="pickupForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
-                                </span>
-
+                                <div class="row">
+                                    <div class="validations">
+                                        <span ng-show="pickupForm.$submitted || pickupForm.mobile.$touched || (pickupForm.mobile.$dirty && pickupForm.mobile.$invalid)">
+                                            <span class="error" ng-show="pickupForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                            <span class="error" ng-show="pickupForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                        </span>
+                                    </div>
+                                </div>
                                 <br/>
                                 <label class="item item-input item-floating-label">
                                     <input type="text" name="postal_code" ng-model="getPincodeData.postal_code" placeholder="Enter Postal code" required maxlength="6"
                                         ng-pattern="/^[1-9][0-9]{5}$/">
                                 </label>
-                                <span ng-show="pickupForm.$submitted || pickupForm.postal_code.$touched || (pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid)">
-                                    <span class="error" ng-show="pickupForm.postal_code.$error.required">Please enter Pincode.</span>
-                                    <span class="error" ng-show="pickupForm.postal_code.$error.pattern">Please enter Valid Pincode.</span>
-                                </span>
+                                <div class="row">
+                                    <div class="validations">
+                                        <span ng-show="pickupForm.$submitted || pickupForm.postal_code.$touched || (pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid)">
+                                            <span class="error" ng-show="pickupForm.postal_code.$error.required">Please enter Pincode.</span>
+                                            <span class="error" ng-show="pickupForm.postal_code.$error.pattern">Please enter Valid Pincode.</span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <button class="button button-block all_btns" id="reg_btn" ng-disabled="pickupForm.$invalid" ng-click="getPickupDetails(getPincodeData)">Get</button>
                         </form>
@@ -74,10 +81,10 @@
                                     <span>{{shippingAddress.state}},</span>
                                     <span>{{shippingAddress.country}}.</span>
                                 </p>
-                                <p>{{shippingAddress.mobile}}</p>
+                                <p class="theme_clr">{{shippingAddress.mobile}}</p>
                                 <!-- <a class="f_right" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</a> -->
-                                <button class="button all_btns changeAddr" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</button>
-                                <button class="button all_btns conti" id="reg_btn" ng-click="saveShippingAddress()">Continue</button>
+                                <button class="button all_btns changeAddr middle" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</button>
+                                <button class="button all_btns conti middle" id="reg_btn" ng-click="saveShippingAddress()">Continue</button>
                             </div>
                         </div>
                     </div>
@@ -107,9 +114,10 @@
                                 <span>{{billingAddress.state}},</span>
                                 <span>{{billingAddress.country}}.</span>
                             </p>
-                            <p>{{billingAddress.mobile}}</p>
-                            <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a>
-                            <button class="button button-block all_btns" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
+                            <p class="theme_clr">{{billingAddress.mobile}}</p>
+                            <!-- <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a> -->
+                            <button class="button all_btns changeAddr middle" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</button>
+                            <button class="button all_btns conti middle" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
                         </div>
                     </div>
                 </ion-list>
@@ -131,7 +139,11 @@
                             <input type="radio" name="online" ng-model="paymentType" value="online"> Pay Online
                             <br>
                             <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery"> Cash on Delivery
-                            <button class="button button-block all_btns" ng-disabled="!paymentType" id="reg_btn" ng-click="savePaymentType(paymentType)">Continue</button>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button class="button all_btns middle" ng-disabled="!paymentType" id="reg_btn" ng-click="savePaymentType(paymentType)">Continue</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </ion-list>
@@ -186,11 +198,11 @@
 
         </ion-list>
         <div class="row">
-            <div class="col">
-                    <button class="button all_btns" id="reg_btn" ng-click="checkoutProcess()">Checkout</button>
+            <div class="col text-center">
+                <button class="button all_btns middle" id="reg_btn" ng-click="checkoutProcess()">Checkout</button>
             </div>
         </div>
-        
+
 
     </ion-content>
 </ion-view>
