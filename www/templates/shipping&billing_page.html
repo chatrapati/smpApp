@@ -116,7 +116,7 @@
                             </p>
                             <p class="theme_clr">{{billingAddress.mobile}}</p>
                             <!-- <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a> -->
-                            <button class="button all_btns changeAddr middle" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</button>
+                            <button class="button all_btns changeAddr middle" id="reg_btn" ng-click="gotoEditBillingAddress()">Change or Add Address</button>
                             <button class="button all_btns conti middle" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
                         </div>
                     </div>
