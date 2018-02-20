@@ -28,20 +28,49 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.Addressmodal.hide();
         }
 
+        $ionicModal.fromTemplateUrl('templates/editBillingAddressModal.html', {
+            scope: $scope,
+        }).then(function (modal) {
+            $scope.billingAddressmodal = modal;
+        });
+
+        $scope.closeBillAddPopup = function () {
+            $scope.billingAddressmodal.hide();
+        }
+
+        $scope.gotoEditBillingAddress = function () {
+            $scope.billingAddressmodal.show();
+        }
 
 
         $scope.saveEditShippingAddress = function (editShippingAdd, billingAddCheck) {
             $scope.shippingAddress = editShippingAdd;
+            $scope.sameAsShipping = billingAddCheck.checked;
             $scope.Addressmodal.hide();
-            if (billingAddCheck == true) {
-                $scope.billingAddress = $scope.shippingAddress;
-                // $scope.showshippingDiv = false;
-                // $scope.showBillingAddressDiv = false;
-                // $scope.showPaymentTypeDiv = false;
+            if ($scope.sameAsShipping == true) {
+                $scope.billingAddress = editShippingAdd;
             } else {
 
             }
         }
+
+
+        $scope.saveShippingAddress = function () {
+            if ($scope.sameAsShipping == true) {
+                $scope.showshippingDiv = false;
+                $scope.showBillingAddressDiv = false;
+                $scope.showPaymentTypeDiv = true;
+            } else {
+                $scope.showshippingDiv = false;
+                $scope.showBillingAddressDiv = true;
+            }
+        }
+
+
+        $scope.saveEditBillingAddress = function (editBillingAddressData) {
+            $scope.billingAddress = editBillingAddressData;
+        }
+
 
         $scope.getPickupDetails = function (getPincodeData) {
 
@@ -113,7 +142,7 @@ angular.module('shopMyTools.ckeckoutController', [])
         }
 
         $scope.saveBillingAddress = function (billingAddress) {
-            $scope.billingAddressData = billingAddress;
+            $scope.billingAddress = billingAddress;
             $scope.showBillingAddressDiv = false;
             $scope.showPaymentTypeDiv = true;
         }
@@ -172,7 +201,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 "discount": "0",
 
-                "billingaddress": [$scope.billingAddressData],
+                "billingaddress": [$scope.billingAddress],
 
                 "shippingaddress": [$scope.shippingAddress],
 

@@ -107,7 +107,7 @@
                                 <span>{{billingAddress.country}}.</span>
                             </p>
                             <p>{{billingAddress.mobile}}</p>
-                            <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a>
+                            <a class="f_right" id="reg_btn" ng-click="gotoEditBillingAddress()">Change or Add Address</a>
                             <button class="button button-block all_btns" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
                         </div>
                     </div>
