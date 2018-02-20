@@ -32,21 +32,39 @@
             <div class="row">
                 <div class="col">
                     <!--   Banner Slider part Start here    -->
+                    <!-- <ion-slide-box class="product_detailSlider" ng-repeat="img in imgList" auto-play="false" does-continue="true" id="productdetailSlide">
+                        <ion-slide class="mainSlides">
+                            <img ng-src={{img}} width="50%">
+                        </ion-slide>
+                    </ion-slide-box> -->
 
-                    <!--   Banner Slider part end here    -->
+                    <ion-slide-box class="mainSlider" auto-play="true" does-continue="true">
+                        <ion-slide class="mainSlides" ng-repeat="img in imgList track by $index">
+                            <img width="30%" ng-src="{{img}}">
+                        </ion-slide>
 
-                    <!--  Product Description part start here    -->
-                    <div>
-                        <div class="product_Detail_price">
-                            <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
-                            <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
-                            <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
-                        </div>
-                        <p class="detailexcl_gst">(Excluding-GST)</p>
-                        <!--  Product Description part end here    -->
-                        <div class="pro_detail_name">
-                            <h1>{{productDetail.upload_name}}</h1>
-                            <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
+                    </ion-slide-box>
+
+
+
+
+
+                </div>
+            </div>
+            <!--   Banner Slider part end here    -->
+
+            <!--  Product Description part start here    -->
+            <div>
+                <div class="product_Detail_price">
+                    <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
+                    <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
+                    <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
+                </div>
+                <p class="detailexcl_gst">(Excluding-GST)</p>
+                <!--  Product Description part end here    -->
+                <div class="pro_detail_name">
+                    <h1>{{productDetail.upload_name}}</h1>
+                    <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
                 </div>
             </div>
@@ -200,6 +218,10 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> e4a0057c3a0ed1c41918ca47a9ae7e462db588a3
     </ion-content>
 
     <ion-footer-bar>
