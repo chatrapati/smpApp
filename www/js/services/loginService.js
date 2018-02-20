@@ -20,7 +20,20 @@ angular.module('shopMyTools.services', [])
             return deferred.promise;
         };
 
-
+        this.getOrdersCount = function (email, mobile, userId) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: LOGIN_URL + '/orderscount',
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: { "email": email, "mobile": mobile, "user_id": userId }
+            }).then(function success(data) {
+                deferred.resolve(data);
+            }, function error(data) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        };
 
 
 
@@ -113,4 +126,27 @@ angular.module('shopMyTools.services', [])
         };
 
 
+    })
+
+
+    .service('logoutService', function ($q, $http, LOGIN_URL) {
+        this.userLogout = function (token) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'POST',
+                url: LOGIN_URL + '/logout',
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: { "token": token }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
     })

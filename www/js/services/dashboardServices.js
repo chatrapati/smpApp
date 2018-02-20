@@ -147,23 +147,43 @@ angular.module('shopMyTools.dashboardServices', [])
 
         this.getCartItemsList = function (userid) {
             var deferred = $q.defer();
-    
+
             $http({
                 method: 'GET',
                 url: LOGIN_URL + '/initiateorder?userid=' + userid,
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
-    
+
             }).then(function success(data) {
                 deferred.resolve(data);
-    
+
             }, function error(data) {
                 deferred.reject(data);
-    
+
             });
-    
+
             return deferred.promise;
         };
 
+        this.deleteCartItem = function (userid, productName) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'DELETE',
+                url: LOGIN_URL + '/initiateorder?userid=' + userid,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: { "product": productName }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
+
+
     })
 
-    

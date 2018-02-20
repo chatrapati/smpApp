@@ -29,7 +29,7 @@
 
         <!--  category body start here  -->
         <div class="category_body">
-            <div class="category_cart_list">
+            <div class="category_cart_list" ng-if="cartItemsList.length > 0">
                 <div class="list1">
                     <div ng-repeat="item in cartItemsList">
                         <div class="row">
@@ -67,13 +67,13 @@
 
                         </div>
                         <div class="row" id="cart_list_icons">
-                            <div class="col">
+                            <div class="col" ng-click="addtoWishList(item)">
                                 <span>
                                     <i class="icon ion-heart"></i>
                                 </span>
                                 <span>Move to whishlist</span>
                             </div>
-                            <div class="col">
+                            <div class="col" ng-click="deleteCartItem(item)">
                                 <span>
                                     <i class="icon ion-trash-a"></i>
                                 </span>
@@ -109,10 +109,16 @@
                 </div>
             </div>
         </div>
+        <div class="no_records" ng-if="cartItemsList.length == 0">
+            <span>No Records Found !!!</span>
+        </div>
+        <br>
+        <br>
         <!--  category body end here  -->
     </ion-content>
 
-    <ion-footer-bar>
+
+    <ion-footer-bar ng-if="cartItemsList.length>0">
         <!--Footer Start here -->
         <div id="footer" class="button-bar" ng-repeat="item in cartItemsList">
             <a id="cart" class="button" ng-click="gotoCheckout(item)">Checkout</a>

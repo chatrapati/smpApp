@@ -48,8 +48,6 @@
                             <h1>{{productDetail.upload_name}}</h1>
                             <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -202,13 +200,12 @@
                 </div>
             </div>
         </div>
-
     </ion-content>
 
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button">ADD TO CART</a>
+            <a id="cart" class="button" ng-click="addtoCart(productDetail.upload_name)">ADD TO CART</a>
             <a id="buynow" class="button">BUY NOW</a>
         </div>
         <!--Footer End here -->

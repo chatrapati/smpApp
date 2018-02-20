@@ -1,0 +1,155 @@
+<ion-view>
+
+    <!-- header part start here -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="closePopup()">
+                <i class="icon ion-close-circled"></i>
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Cart</div>
+        </ion-nav-title>
+        <!-- <ion-nav-buttons side="right">
+                <button class="button button-icon" ng-click="gotoBillingAddressDetails()">Save</button>
+            </ion-nav-buttons> -->
+    </ion-nav-bar>
+    <!-- header part end here -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+        <div class="row cur_loc" id="add_new_add_btn">
+            <div class="col">
+                <button class="button button-block">
+                    <i class="fa ion-android-locate"></i> Use my current location</button>
+                <p class="fill_addr">Top to auto file the address fields</p>
+            </div>
+        </div>
+
+        <!-- addresses start here -->
+        <div class="location_address">
+            <div class="row">
+                <div class="col">
+                    <form name="">
+                        <div class="list edit_labls">
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        City
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="City" name="city"> -->
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Locality, area of street
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" name="locality" placeholder="Locality, area of street"> -->
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Flat no., Building name
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Flat no., Building name" name="flatno"> -->
+                            </label>
+                            <div class="row">
+                                <div class="col" style="margin: 0 0 0 -10px;">
+                                    <label class="item item-input item-floating-label">
+                                        <div class="input-placeholder">
+                                            <input type="text" required>
+                                            <div class="placeholder">
+                                                Pincode
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                        <!-- <input type="text" placeholder="Pincode" name="pincode"> -->
+                                    </label>
+                                </div>
+                                <div class="col" style="margin: 0 -10px 0 0;">
+                                    <label class="item item-input item-floating-label">
+                                        <div class="input-placeholder">
+                                            <input type="text" required>
+                                            <div class="placeholder">
+                                                State
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                        <!-- <input type="text" placeholder="State" name="state"> -->
+                                    </label>
+                                </div>
+                            </div>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Landmark(Optional)
+                                        <!-- <span class="star">*</span> -->
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Landmark(Optional)" name="landmark"> -->
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Name
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Name" name="name"> -->
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Mobile Number
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Mobile Number" name="mobile"> -->
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <div class="input-placeholder">
+                                    <input type="text" required>
+                                    <div class="placeholder">
+                                        Alt Mobile Number(Optional)
+                                        <!-- <span class="star">*</span> -->
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Alt Mobile Number(Optional)" name="altMobile"> -->
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- addresses end here -->
+
+        <div class="row" id="address_type">
+            <div class="col">
+                <h3>Address Type</h3>
+                <form class="radiobutns">
+                    <input type="radio" name="gender" value="home"> Home (All day delivery)
+                    <br>
+                    <input type="radio" name="gender" value="work"> Work (Delivery between 10am - 5pm)
+                </form>
+            </div>
+        </div>
+
+        <div class="row" id="delivery_btn">
+            <div class="col">
+                <button class="button button-block">Save</button>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

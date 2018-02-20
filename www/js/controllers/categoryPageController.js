@@ -1,19 +1,19 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window, viewCartItemsService) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
 
-      if(window.localStorage['categoryType'] == 'category'){
+      if (window.localStorage['categoryType'] == 'category') {
         $rootScope.getCategoryProductData.category = window.localStorage['categoryName'];
         $rootScope.categoryName = window.localStorage['categoryName'];
-      }else {
+      } else {
         $rootScope.getCategoryProductData.brand = [window.localStorage['brandName']];
         $rootScope.categoryName = window.localStorage['brandName'];
       }
-      
-      
+
+
       $rootScope.getCategoryProductData.subcategory = [""];
       $rootScope.getCategoryProductData.from = 0;
       $rootScope.getCategoryProductData.to = 12;
@@ -129,31 +129,50 @@ angular.module('shopMyTools.categoryPageController', [])
 
     $scope.addtoCart = function (productData) {
       $scope.productDataList = [];
-      $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
+
       $ionicLoading.show({
         template: 'Loading...'
       });
-      categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
-        window.localStorage['orderId'] = data.data.orderid;
-        $ionicLoading.hide();
-        if (data.data.status == 'item added to cart') {
-          $ionicPopup.alert({
-            template: 'Added to Cart Successfully!',
-            title: 'Success!'
+      viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+
+        if (data.data.status == 'success') {
+          $rootScope.cartItemsList = data.data.item_list;
+          $rootScope.grand_total = data.data.grand_total;
+          $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+          if ($rootScope.cartItemsList.length > 0) {
+            $scope.productDataList = $rootScope.cartItemsList;
+          }
+
+          $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
+
+          categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
+            window.localStorage['orderId'] = data.data.orderid;
+            $ionicLoading.hide();
+            if (data.data.status == 'item added to cart') {
+              $ionicPopup.alert({
+                template: 'Added to Cart Successfully!',
+                title: 'Success!'
+              });
+            } else if (data.data.status == 'item added to cart..') {
+              $ionicPopup.alert({
+                template: 'Added to Cart Successfully!',
+                title: 'Success!'
+              });
+            }
+            else if (data.data.status == 'out off stock') {
+              $ionicPopup.alert({
+                template: 'Out Off Stock!',
+                title: 'Sorry!'
+              });
+            }
           });
-        } else if (data.data.status == 'item added to cart..') {
-          $ionicPopup.alert({
-            template: 'Added to Cart Successfully!',
-            title: 'Success!'
-          });
+
         }
-        else if (data.data.status == 'out off stock') {
-          $ionicPopup.alert({
-            template: 'Out Off Stock!',
-            title: 'Sorry!'
-          });
-        }
-      });
+
+      })
+
+
+
     }
 
 

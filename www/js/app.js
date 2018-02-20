@@ -4,8 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.productDetailPageController','shopMyTools.ckeckoutController',
-  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService','shopMyTools.productDetailPageService','shopMyTools.ckeckoutSerivce', 'shopMyTools.constants','shopMyTools.smtdirective','720kb.tooltips','ionic-ratings'])
+angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController', 'shopMyTools.homeController', 'shopMyTools.categoryPageController', 'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
+  'shopMyTools.services', 'shopMyTools.dashboardServices', 'shopMyTools.homeService', 'shopMyTools.categoryService', 'shopMyTools.productDetailPageService', 'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective', '720kb.tooltips'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -33,7 +33,16 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         controller: 'menuController'
       })
 
-
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/home.html',
+            controller: 'homeController'
+          }
+        }
+      })
+      
       .state('welcome', {
         url: '/welcome',
         cache: false,
@@ -78,33 +87,13 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       })
 
 
-      .state('app.invoiceOrders', {
-        url: '/invoiceOrders',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/invoiceOrders.html'
-          }
-        }
+      .state('myorders', {
+        url: '/myorders',
+        cache: false,
+        templateUrl: 'templates/myorders.html',
+        controller: 'myOrderController'
       })
 
-      .state('app.myorders', {
-        url: '/myorders',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/myorders.html',
-            controller: 'myOrderController'
-          }
-        }
-      })
-      .state('app.home', {
-        url: '/home',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/home.html',
-            controller: 'homeController'
-          }
-        }
-      })
 
       .state('categoryCartPage', {
         url: '/categoryCartPage',
@@ -119,55 +108,69 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         templateUrl: 'templates/filterPageModal.html',
         controller: 'filterController'
       })
-      
+
       .state('whishlist_page', {
         url: '/whishlist_page',
         cache: false,
         templateUrl: 'templates/whishlist_page.html',
         controller: 'wishListDetailsCntrl'
       })
-      
+
       .state('productDetail_page', {
         url: '/productDetail_page',
         cache: false,
         templateUrl: 'templates/productDetail_page.html',
         controller: 'productDetailController'
       })
-      
+
       .state('specifications_page', {
         url: '/specifications_page',
         cache: false,
         templateUrl: 'templates/specifications_page.html',
         controller: 'productDetailController'
       })
-      
+
       .state('relatedProducts_page', {
         url: '/relatedProducts_page',
         cache: false,
         templateUrl: 'templates/relatedProducts_page.html',
         controller: 'productDetailController'
       })
-      
+
       .state('upsellProducts_page', {
         url: '/upsellProducts_page',
         cache: false,
         templateUrl: 'templates/upsellProducts_page.html',
         controller: 'productDetailController'
       })
-      
+
       .state('cart_page', {
         url: '/cart_page',
         cache: false,
         templateUrl: 'templates/cart_page.html',
         controller: 'viewCartItemsListCntrl'
       })
+
+      // .state('shipping&billing_page', {
+      //     url: '/shipping&billing_page',
+      //     cache: false,
+      //     templateUrl: 'templates/shipping&billing_page.html',
+      //     controller: 'ckeckoutCntrl'
+      // })
       
-      .state('shipping&billing_page', {
-        url: '/shipping&billing_page',
-        cache: false,
-        templateUrl: 'templates/shipping&billing_page.html',
-        controller: 'ckeckoutCntrl'
-      });
+      .state('add_address_page', {
+          url: '/add_address_page',
+          cache: false,
+          templateUrl: 'templates/add_address_page.html'
+          // controller: 'welcomeController'
+       })
+       
+       .state('use_current_location_page', {
+          url: '/use_current_location_page',
+          cache: false,
+          templateUrl: 'templates/use_current_location_page.html'
+          // controller: 'welcomeController'
+        });
       
       // .state('toolsShops_page', {
       //   url: '/toolsShops_page',

@@ -34,8 +34,8 @@ angular.module('shopMyTools.controllers', [])
 
 
         $scope.gotoRegistration = function () {
-             $state.go('smt_registration');
-          //  $state.go('app.home');
+            $state.go('smt_registration');
+            //  $state.go('app.home');
         };
         $scope.inputType = 'password';
 
@@ -80,7 +80,7 @@ angular.module('shopMyTools.controllers', [])
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
                         window.localStorage['user_name'] = $scope.userName;
-
+                        $scope.getOrdersCount();
                         $state.go('app.home');
                     } else {
                         $ionicPopup.alert({
@@ -91,6 +91,48 @@ angular.module('shopMyTools.controllers', [])
                 });
             }
         };
+
+
+        //Orders Count
+
+        $scope.getOrdersCount = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            loginService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'Success') {
+                    // $scope.ordersCount = data.data;
+                    $rootScope.wishListItemsCount = data.data.wishlist_items;
+                    $rootScope.CartItemsCount =  data.data.add_to_cart;
+                    // $rootScope.invoiceCountItems = data.data.invoice_count;
+                    $rootScope.ordersCount = data.data.orders_count;
+                    //  $rootScope.pendingOrderCountItems = data.data.pending_order_count;
+                    $rootScope.customerData = data.data.cust_details
+                    //alert(JSON.stringify($rootScope.customerData))
+                    $rootScope.customerData.mobile = $rootScope.customerData.mobile.slice(2);
+                    $rootScope.couponCode = data.data.cupon_code;
+                    if (data.data.reward_points == null) {
+                        $rootScope.rewardPoints = 0;
+                    } else {
+                        $rootScope.rewardPoints = data.data.reward_points;
+
+                    }
+
+
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Error!'
+                    });
+                }
+            })
+        }
+
+
+
+
 
         $scope.gotoForgotPswd = function () {
             $state.go('forgotPassword');
@@ -215,16 +257,42 @@ angular.module('shopMyTools.controllers', [])
     })
 
 
-    .controller('menuController', function ($scope, $state) {
-        $scope.gotoProductPage = function (category) {
-            if (category == '1') {
-                $state.go('login');
-            } else if (category == '2') {
-                $state.go('app.invoiceOrders');
-            } else if (category == '3') {
-                $state.go('app.myorders');
-            } else if (category == '4') {
+    .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window) {
+        $scope.gotoRespectivePage = function (page) {
+            if (page == 'home') {
                 $state.go('app.home');
+            } else if (page == 'login') {
+                $state.go('smtLogin');
+            } else if (page == 'myorders') {
+                $state.go('myorders');
+            } else if (page == 'profile') {
+                $state.go('app.home');
+            } else if (page == 'wishlist') {
+                $state.go('whishlist_page');
+            } else if (page == 'cartPage') {
+                $state.go('cart_page');
+            } else if (page == 'chngpaswd') {
+                $state.go('forgotPassword');
+            } else if (page == 'chngadd') {
+                $state.go('app.home');
+            } else if (page == 'policy') {
+                $state.go('app.home');
+            } else if (page == 'aboutus') {
+                $state.go('app.home');
+            } else if (page == 'faq') {
+                $state.go('app.home');
+            } else if (page == 'logout') {
+
+                logoutService.userLogout(window.localStorage['token']).then(function (data) {
+                    if (data.data.status == 'success') {
+                        $window.localStorage.clear();
+                        $scope = $scope.$new(true);
+                        $rootScope = $rootScope.$new(true);
+                        $state.go('smtLogin');
+                    } else {
+
+                    }
+                })
             }
         }
 
