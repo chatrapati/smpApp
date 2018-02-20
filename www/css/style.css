@@ -672,6 +672,9 @@ div.footer-button a.button.button-full {
 #productdetailSlide .slider-slide {
      text-align: center;
 }
+.slider-slides {
+    text-align: center;
+}
 
  .about_product .tabs-striped.tabs-background-positive .tabs{
     background-color: transparent;
@@ -988,3 +991,25 @@ div.footer-button a.button.button-full {
      height: 100%;
     
  }
+
+ /*20-02-18*/
+
+ #prodetail textarea{
+    width: 100%;
+    border: 1px solid #5e5d5d;
+ }
+ #prodetail .review-submit-btn{
+    float: right;
+    margin-top: 10px;
+}
+#prodetail .review-rated{
+    font-size: 15px;
+    background: #ffc900;
+    border-radius: 5px;
+    color: #fff;
+    padding-left: 6px;
+}
+#prodetailstar i{
+    margin-left: 3px;
+    margin-right: 3px;
+}

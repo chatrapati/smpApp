@@ -122,7 +122,10 @@ angular.module('shopMyTools.categoryPageController', [])
       $window.history.go(-1);
     }
 
-
+    $scope.getProductDetails = function (productObj) {
+      window.localStorage['productName'] = productObj.upload_name;
+      $state.go("productDetail_page")
+  }
 
     $scope.addtoCart = function (productData) {
       $scope.productDataList = [];

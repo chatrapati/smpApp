@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoCategoryPage(collection.name, 'category')">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoCategoryPage(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="row" ng-if="category">
-				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoCategoryPage(collection.name, 'category')">
+				<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoCategoryPage(collection.name)">
 					<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
 					<div class="collections_text">
 						<span>{{collection.name}}</span>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="col home-slider slider_brands" >
 				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
-					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider" ng-click="gotoCategoryPage(brand.brandname, 'brand')">
+					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider"  ng-click="getCategoryBasedOnBrands(brand)">
 						<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
 					</ion-slide-page>
 				</ion-slides>
@@ -83,8 +83,8 @@
 									<a href=""  tooltips tooltip-template={{deal.upload_name}}>{{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in deal.prices">
-									<span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-									<span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
 									<span class="offer_percentage">{{price.percentage}} %</span>
 								</div>
 								<p class="excl_gst">(Excluding-GST)</p>
@@ -126,16 +126,16 @@
 									<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in product.prices">
-									<span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-									<span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
 									<span class="offer_percentage">{{price.percentage}}%</span>
 								</div>
 								<p class="excl_gst">(Excluding-GST)</p>
 								<div class="cart_icons">
-									<span ng-click="addtoCart(product)">
+									<span>
 										<i class="icon ion-android-cart"></i>
 									</span>
-									<span ng-click="addtoWishList(product)">
+									<span>
 										<i class="icon ion-heart"></i>
 									</span>
 								</div>
@@ -155,7 +155,7 @@
 			</div>
 			<div class="col home-slider slider_brands">
 				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
-					<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider" ng-click="gotoCategoryPage(ebrand.brandname, 'brand')">
+					<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider">
 						<img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
 					</ion-slide-page>
 				</ion-slides>
@@ -182,16 +182,16 @@
 									<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
 								</div>
 								<div class="product_price" ng-repeat="price in newarrival.prices">
-									<span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-									<span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+									<span class="offer_price">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+									<span class="real_price">{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
 									<span class="offer_percentage">{{price.percentage}}%</span>
 								</div>
 								<p class="excl_gst">(Excluding-GST)</p>
 								<div class="cart_icons">
-									<span ng-click="addtoCart(newarrival)">
+									<span>
 										<i class="icon ion-android-cart"></i>
 									</span>
-									<span ng-click="addtoWishList(newarrival)">
+									<span>
 										<i class="icon ion-heart"></i>
 									</span>
 								</div>
