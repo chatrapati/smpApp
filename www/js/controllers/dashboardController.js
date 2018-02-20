@@ -196,6 +196,7 @@ angular.module('shopMyTools.dashboardController', [])
                 if (data.data.status == 'success') {
                     $rootScope.wishlistItems = data.data.prod_info;
                     $scope.wishListItemsCount = $rootScope.wishlistItems.length;
+                    alert($scope.wishListItemsCount);
                 } else {
                     alert(data.data.status);
                 }
@@ -373,7 +374,7 @@ angular.module('shopMyTools.dashboardController', [])
                     });
                     viewCartItemsService.deleteCartItem(window.localStorage['user_id'], item.productdescription).then(function (data) {
                         $ionicLoading.hide();
-                        if (data.data.status == 'Product deleted successfully') {
+                        if (data.data.status == 'product deleted successfully') {
                             $scope.getCartItemsList();
                         }
                     })

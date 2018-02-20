@@ -12,10 +12,36 @@ angular.module('shopMyTools.ckeckoutController', [])
         $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
 
 
-      //  $scope.customermobile = window.localStorage['mobile'];
+        //  $scope.customermobile = window.localStorage['mobile'];
+
+        $scope.editAddress = function () {
+            $scope.Addressmodal.show();
+        }
+
+        $ionicModal.fromTemplateUrl('templates/use_current_location_page.html', {
+            scope: $scope,
+        }).then(function (modal) {
+            $scope.Addressmodal = modal;
+        });
+
+        $scope.closeAddPopup = function () {
+            $scope.Addressmodal.hide();
+        }
 
 
 
+        $scope.saveEditShippingAddress = function (editShippingAdd, billingAddCheck) {
+            $scope.shippingAddress = editShippingAdd;
+            $scope.Addressmodal.hide();
+            if (billingAddCheck == true) {
+                $scope.billingAddress = $scope.shippingAddress;
+                // $scope.showshippingDiv = false;
+                // $scope.showBillingAddressDiv = false;
+                // $scope.showPaymentTypeDiv = false;
+            } else {
+
+            }
+        }
 
         $scope.getPickupDetails = function (getPincodeData) {
 
@@ -106,7 +132,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             $window.history.go(-1);
         }
 
-        $scope.status = "Pending";
+        $scope.status = "Accepted";
 
         $scope.orderItemArray = [];
 
@@ -135,7 +161,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 "status": $scope.status,
                 "shop": $scope.shop,
-                "alt_mobile": "91"+$scope.customerMobile,
+                "alt_mobile": "91" + $scope.customerMobile,
                 "customermobile": window.localStorage['mobile'],
 
                 "totalamount": JSON.stringify($rootScope.grand_total),

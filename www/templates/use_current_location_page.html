@@ -1,29 +1,31 @@
-<ion-view>
+<ion-modal-view>
 
     <!-- header part start here -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <button class="button button-clear" ng-click="closePopup()">
+            <button class="button button-clear" ng-click="closeAddPopup()">
                 <i class="icon ion-close-circled"></i>
             </button>
         </ion-nav-buttons>
         <ion-nav-title>
-            <div class="h1 title">Cart</div>
+            <div class="h1 title">Address</div>
         </ion-nav-title>
-        <!-- <ion-nav-buttons side="right">
-                <button class="button button-icon" ng-click="gotoBillingAddressDetails()">Save</button>
-            </ion-nav-buttons> -->
+        <ion-nav-buttons side="right">
+            <button class="button button-icon" ng-click="saveEditShippingAddress(shippingAddress, billingAddress)">Save</button>
+        </ion-nav-buttons>
     </ion-nav-bar>
     <!-- header part end here -->
 
     <ion-content class="smt_background_image" style="padding:0;">
-        <div class="row cur_loc" id="add_new_add_btn">
+        <br>
+        <br>
+        <!-- <div class="row cur_loc" id="add_new_add_btn">
             <div class="col">
                 <button class="button button-block">
                     <i class="fa ion-android-locate"></i> Use my current location</button>
                 <p class="fill_addr">Top to auto file the address fields</p>
             </div>
-        </div>
+        </div> -->
 
         <!-- addresses start here -->
         <div class="location_address">
@@ -32,8 +34,9 @@
                     <form name="">
                         <div class="list edit_labls">
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">City</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.city">
                                     <div class="placeholder">
                                         City
                                         <span class="star">*</span>
@@ -42,8 +45,9 @@
                                 <!-- <input type="text" placeholder="City" name="city"> -->
                             </label>
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">Locality, area of street</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.street_address">
                                     <div class="placeholder">
                                         Locality, area of street
                                         <span class="star">*</span>
@@ -52,8 +56,9 @@
                                 <!-- <input type="text" name="locality" placeholder="Locality, area of street"> -->
                             </label>
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">Flat no., Building name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.house_no">
                                     <div class="placeholder">
                                         Flat no., Building name
                                         <span class="star">*</span>
@@ -64,8 +69,9 @@
                             <div class="row">
                                 <div class="col" style="margin: 0 0 0 -10px;">
                                     <label class="item item-input item-floating-label">
+                                        <span class="input-label">Pincode</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required>
+                                            <input type="text" required ng-model="shippingAddress.postal_code">
                                             <div class="placeholder">
                                                 Pincode
                                                 <span class="star">*</span>
@@ -76,8 +82,9 @@
                                 </div>
                                 <div class="col" style="margin: 0 -10px 0 0;">
                                     <label class="item item-input item-floating-label">
+                                        <span class="input-label">State</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required>
+                                            <input type="text" required ng-model="shippingAddress.state">
                                             <div class="placeholder">
                                                 State
                                                 <span class="star">*</span>
@@ -87,19 +94,18 @@
                                     </label>
                                 </div>
                             </div>
-                            <label class="item item-input item-floating-label">
+                            <!-- <label class="item item-input item-floating-label">
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.city">
                                     <div class="placeholder">
                                         Landmark(Optional)
-                                        <!-- <span class="star">*</span> -->
-                                    </div>
+                                     </div>
                                 </div>
-                                <!-- <input type="text" placeholder="Landmark(Optional)" name="landmark"> -->
-                            </label>
+                            </label> -->
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">Name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.firstname">
                                     <div class="placeholder">
                                         Name
                                         <span class="star">*</span>
@@ -108,8 +114,9 @@
                                 <!-- <input type="text" placeholder="Name" name="name"> -->
                             </label>
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.mobile">
                                     <div class="placeholder">
                                         Mobile Number
                                         <span class="star">*</span>
@@ -118,8 +125,9 @@
                                 <!-- <input type="text" placeholder="Mobile Number" name="mobile"> -->
                             </label>
                             <label class="item item-input item-floating-label">
+                                <span class="input-label">Alt Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required>
+                                    <input type="text" required ng-model="shippingAddress.alt_mobile">
                                     <div class="placeholder">
                                         Alt Mobile Number(Optional)
                                         <!-- <span class="star">*</span> -->
@@ -127,6 +135,19 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Alt Mobile Number(Optional)" name="altMobile"> -->
                             </label>
+
+
+                            <span class="remember_me">
+                                <input type="checkbox" ng-model="billingAddress.checked">
+                                <span id="check_text">Use as Billing Address</span>
+                            </span>
+
+                            <!-- <div class="row" id="delivery_btn">
+                                <div class="col">
+
+                                    <button class="button button-block" ng-click="saveEditShippingAddress(shippingAddress)">Save</button>
+                                </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -134,7 +155,7 @@
         </div>
         <!-- addresses end here -->
 
-        <div class="row" id="address_type">
+        <!-- <div class="row" id="address_type">
             <div class="col">
                 <h3>Address Type</h3>
                 <form class="radiobutns">
@@ -143,13 +164,9 @@
                     <input type="radio" name="gender" value="work"> Work (Delivery between 10am - 5pm)
                 </form>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row" id="delivery_btn">
-            <div class="col">
-                <button class="button button-block">Save</button>
-            </div>
-        </div>
+
 
     </ion-content>
-</ion-view>
+</ion-modal-view>

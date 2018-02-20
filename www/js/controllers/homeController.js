@@ -205,6 +205,8 @@ angular.module('shopMyTools.homeController', [])
             categoryService.addToWishListMethod(window.localStorage['user_id'], productData.upload_name).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'product saved successfully') {
+                    $rootScope.wishListItemsCount = data.data.items_count;
+                   
                     $ionicPopup.alert({
                         template: 'Added to Wish List Successfully!!',
                         title: 'Success!'

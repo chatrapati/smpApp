@@ -65,17 +65,18 @@
                     <!-- Delivery start here -->
                     <div class="delivery" ng-if="checkoutData.shippingType == 'Delivery'">
                         <div class="row">
-                            <div class="col">
-                                <h1>Person Name</h1>
+                            <div class="col delivery">
+                                <h1>{{shippingAddress.firstname}} {{shippingAddress.lastname}}</h1>
                                 <p>
-                                    <span>D/no:2/85A,</span>
-                                    <span>Kothapudi,</span>
-                                    <span>Machilipatnam,</span>
-                                    <span>Krishna Dist,</span>
-                                    <span>A.P, 521002.</span>
+                                    <span>{{shippingAddress.house_no}},</span>
+                                    <span>{{shippingAddress.street_address}},</span>
+                                    <span>{{shippingAddress.city}}, {{shippingAddress.postal_code}}</span>
+                                    <span>{{shippingAddress.state}},</span>
+                                    <span>{{shippingAddress.country}}.</span>
                                 </p>
-                                <p>8978041215</p>
-                                <button class="button button-block all_btns" id="reg_btn">Change or Add Address</button>
+                                <p>{{shippingAddress.mobile}}</p>
+                                <a class="f_right" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</a>
+                                <button class="button button-block all_btns" id="reg_btn" ng-click="saveShippingAddress()">Continue</button>
                             </div>
                         </div>
                     </div>
