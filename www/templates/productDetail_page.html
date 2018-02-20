@@ -32,6 +32,21 @@
             <div class="row">
                 <div class="col">
                     <!--   Banner Slider part Start here    -->
+
+                    <!--   Banner Slider part end here    -->
+
+                    <!--  Product Description part start here    -->
+                    <div>
+                        <div class="product_Detail_price">
+                            <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
+                            <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
+                            <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
+                        </div>
+                        <p class="detailexcl_gst">(Excluding-GST)</p>
+                        <!--  Product Description part end here    -->
+                        <div class="pro_detail_name">
+                            <h1>{{productDetail.upload_name}}</h1>
+                            <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                     <!-- <ion-slide-box class="product_detailSlider" ng-repeat="img in imgList" auto-play="false" does-continue="true" id="productdetailSlide">
                         <ion-slide class="mainSlides">
                             <img ng-src={{img}} width="50%">
@@ -68,6 +83,8 @@
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
                 </div>
             </div>
+
+
 
 
             <div class="product_desc">
