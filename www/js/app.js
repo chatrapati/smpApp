@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController','shopMyTools.homeController','shopMyTools.categoryPageController','shopMyTools.productDetailPageController','shopMyTools.ckeckoutController',
-  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService','shopMyTools.productDetailPageService','shopMyTools.ckeckoutSerivce', 'shopMyTools.constants','shopMyTools.smtdirective','720kb.tooltips','ionic-ratings'])
+  'shopMyTools.services','shopMyTools.dashboardServices', 'shopMyTools.homeService','shopMyTools.categoryService','shopMyTools.productDetailPageService','shopMyTools.ckeckoutSerivce', 'shopMyTools.constants','shopMyTools.smtdirective','720kb.tooltips'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -163,11 +163,25 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       })
       
       .state('shipping&billing_page', {
-        url: '/shipping&billing_page',
-        cache: false,
-        templateUrl: 'templates/shipping&billing_page.html',
-        controller: 'ckeckoutCntrl'
-      });
+          url: '/shipping&billing_page',
+          cache: false,
+          templateUrl: 'templates/shipping&billing_page.html',
+          controller: 'ckeckoutCntrl'
+      })
+      
+      .state('add_address_page', {
+          url: '/add_address_page',
+          cache: false,
+          templateUrl: 'templates/add_address_page.html'
+          // controller: 'welcomeController'
+       })
+       
+       .state('use_current_location_page', {
+          url: '/use_current_location_page',
+          cache: false,
+          templateUrl: 'templates/use_current_location_page.html'
+          // controller: 'welcomeController'
+        });
       
       // .state('toolsShops_page', {
       //   url: '/toolsShops_page',

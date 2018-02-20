@@ -450,3 +450,12 @@ th {
       margin-right: 12px;
   }
 
+  input[type="radio"] {
+    margin: 0;
+    line-height: normal;
+    height: 20px;
+    width: 20px;
+}
+.item-input {
+    padding: 5px 0 5px 5px !important;
+}
