@@ -20,37 +20,45 @@
             <div class="row">
                 <div class="col">
                     <!--   Banner Slider part Start here    -->
-                    <ion-slide-box class="mainSlider" auto-play="true" does-continue="true">
-                            <ion-slide class="mainSlides" ng-repeat="img in imagess track by $index">
-                                <img width="100%" ng-src="{{img}}">
-                            </ion-slide>
-                        </ion-slide-box>
-                        <!-- <ion-slide class="mainSlides">
-                            <img ng-src={{productDetail.upload_photo}} width="50%">
-                        </ion-slide>
+                    <!-- <ion-slide-box class="product_detailSlider" ng-repeat="img in imgList" auto-play="false" does-continue="true" id="productdetailSlide">
                         <ion-slide class="mainSlides">
-                            <img ng-src={{productDetail.upload_photo}} width="50%">
-                        </ion-slide> -->
-                    </ion-slide-box>
-                    <!--   Banner Slider part end here    -->
+                            <img ng-src={{img}} width="50%">
+                        </ion-slide>
+                    </ion-slide-box> -->
 
-                    <!--  Product Description part start here    -->
-                    <div>
-                        <div class="product_Detail_price">
-                            <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
-                            <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
-                            <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
-                        </div>
-                        <p class="detailexcl_gst">(Excluding-GST)</p>
-                        <!--  Product Description part end here    -->
-                        <div class="pro_detail_name">
-                            <h1>{{productDetail.upload_name}}</h1>
-                            <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
-                            ndfjdfh sdfhdfh dfdhfdshf</p> -->
-                        </div>
-                    </div>
+                    <ion-slide-box class="mainSlider" auto-play="true" does-continue="true">
+                        <ion-slide class="mainSlides" ng-repeat="img in imgList track by $index">
+                            <img width="30%" ng-src="{{img}}">
+                        </ion-slide>
+
+                    </ion-slide-box>
+
+
+
+
+
                 </div>
             </div>
+            <!--   Banner Slider part end here    -->
+
+            <!--  Product Description part start here    -->
+            <div>
+                <div class="product_Detail_price">
+                    <span class="offer_price">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
+                    <span class="real_price">{{productDetailPrice.enduser_price | currency:'&#8377;'}}</span>
+                    <span class="offer_percentage"> - {{productDetailPrice.percentage}}%</span>
+                </div>
+                <p class="detailexcl_gst">(Excluding-GST)</p>
+                <!--  Product Description part end here    -->
+                <div class="pro_detail_name">
+                    <h1>{{productDetail.upload_name}}</h1>
+                    <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
+                            ndfjdfh sdfhdfh dfdhfdshf</p> -->
+                </div>
+            </div>
+
+
+
 
             <div class="product_desc">
                 <div class="row">
@@ -68,38 +76,6 @@
                                 <a ui-sref="specifications_page">View Details</a>
                             </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product_desc">
-                <div class="row">
-                    <div class="col col-50">
-                        <div class="highlits">
-                            <h3>Ratings & Reviews</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row rating">
-                    <div>
-                        <span class="ratepercentage">3.9/5</span>
-                    </div>
-                    <div class="col" id="rating">
-                        <div class="highlits" ng-repeat="i in [1,2,3,4,5]">
-                            <!-- <ionic-ratings ratingsobj='ratingsObject' index='0'></ionic-ratings> -->
-
-                            <i class="ion-android-star-outline m-rt12"></i>
-                        </div>
-                    </div>
-                    <div class="col col-10">
-                    </div>
-                    <div class="col col-40">
-                        <span>5</span>
-                        <div class="ratingbar"></div>
-                        <!-- <span>4</span><div class="ratingbar"></div>
-                           <span>3</span><div class="ratingbar"></div>
-                           <span>2</span><div class="ratingbar"></div>
-                           <span>1</span><div class="ratingbar"></div> -->
                     </div>
                 </div>
             </div>
@@ -131,13 +107,13 @@
                     </div>
                 </div>
             </div>
-
+        </div>
     </ion-content>
 
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button">ADD TO CART</a>
+            <a id="cart" class="button" ng-click="addtoCart(productDetail.upload_name)">ADD TO CART</a>
             <a id="buynow" class="button">BUY NOW</a>
         </div>
         <!--Footer End here -->

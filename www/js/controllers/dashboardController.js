@@ -14,17 +14,18 @@ angular.module('shopMyTools.dashboardController', [])
                 $ionicLoading.hide();
                 if (data.data.status == 'success') {
                     $scope.myOrdersList = data.data.order_info;
-                    for (var i = 0; i <= $scope.myOrdersList.length; i++) {
-                        if ($scope.myOrdersList[i].status == 'Pending') {
-                            $scope.pendingOrderList.push($scope.myOrdersList[i])
+
+                    //alert(JSON.stringify($scope.myOrdersList))
+
+                    $scope.myOrdersList.forEach(function (orders) {
+                        if (orders.status == 'Pending') {
+                            $scope.pendingOrderList.push(orders)
+                        } else if (orders.status == 'Complete') {
+                            $scope.invoiceOrderList.push(orders)
+                        } else if (orders.status == 'Cancel') {
+                            $scope.cancelOrderList.push(orders)
                         }
-                        if ($scope.myOrdersList[i].status == 'Complete') {
-                            $scope.invoiceOrderList.push($scope.myOrdersList[i])
-                        }
-                        if ($scope.myOrdersList[i].status == 'Cancel') {
-                            $scope.cancelOrderList.push($scope.myOrdersList[i])
-                        }
-                    }
+                    });
                 }
             })
         };
@@ -47,7 +48,10 @@ angular.module('shopMyTools.dashboardController', [])
         //     })
         // };
 
-
+        $scope.goback = function () {
+            $state.go('app.home');
+            //  $window.history.go(-1);
+        }
 
         $scope.gotoOrderDetails = function (orderId) {
             window.localStorage['orderId'] = orderId;
@@ -113,21 +117,35 @@ angular.module('shopMyTools.dashboardController', [])
         }
 
         $scope.cancelOrder = function (orderId) {
-            $ionicLoading.show({
-                template: 'Loading...'
+
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'SMT',
+                template: 'Are you sure you want to cancel this product?'
             });
-            myOrdersService.cancelOrderMethod(orderId).then(function (data) {
-                $ionicLoading.hide();
-                if (data.data.status == 'success') {
-                    $scope.modal.hide();
-                    $scope.getOrders();
-                } else {
-                    $ionicPopup.alert({
-                        template: data.data.status,
-                        title: 'Error!'
+            confirmPopup.then(function (res) {
+                if (res) {
+                    $ionicLoading.show({
+                        template: 'Loading...'
                     });
+                    myOrdersService.cancelOrderMethod(orderId).then(function (data) {
+                        $ionicLoading.hide();
+                        if (data.data.status == 'success') {
+                            $scope.modal.hide();
+                            $scope.getOrders();
+                        } else {
+                            $ionicPopup.alert({
+                                template: data.data.status,
+                                title: 'Error!'
+                            });
+                        }
+                    })
+                } else {
+                    // console.log('You are not sure');
                 }
-            })
+            });
+
+
+
         }
 
 
@@ -177,6 +195,7 @@ angular.module('shopMyTools.dashboardController', [])
                 $ionicLoading.hide();
                 if (data.data.status == 'success') {
                     $rootScope.wishlistItems = data.data.prod_info;
+                    $scope.wishListItemsCount = $rootScope.wishlistItems.length;
                 } else {
                     alert(data.data.status);
                 }
@@ -215,21 +234,33 @@ angular.module('shopMyTools.dashboardController', [])
 
 
         $scope.deleteWishlistItem = function (product) {
-            $ionicLoading.show({
-                template: 'Loading...'
+
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'SMT',
+                template: 'Are you sure you want to delete this product?'
             });
-            wishListService.deleteWishlistItem(window.localStorage['user_id'], product.upload_name).then(function (data) {
-                $ionicLoading.hide();
-                if (data.data.status == 'product removed successfully') {
-                    $ionicPopup.alert({
-                        template: 'Removed successfully!',
-                        title: 'Success!'
+            confirmPopup.then(function (res) {
+                if (res) {
+                    $ionicLoading.show({
+                        template: 'Loading...'
                     });
-                    $scope.getWishList();
+                    wishListService.deleteWishlistItem(window.localStorage['user_id'], product.upload_name).then(function (data) {
+                        $ionicLoading.hide();
+                        if (data.data.status == 'product removed successfully') {
+                            // $ionicPopup.alert({
+                            //     template: 'Removed successfully!',
+                            //     title: 'Success!'
+                            // });
+                            $scope.getWishList();
+                        } else {
+                            alert(data.data.status)
+                        }
+                    })
                 } else {
-                    alert(data.data.status)
+                    // console.log('You are not sure');
                 }
-            })
+            });
+
         }
 
 
@@ -254,6 +285,7 @@ angular.module('shopMyTools.dashboardController', [])
                 if (data.data.status == 'success') {
                     $rootScope.cartItemsList = data.data.item_list;
                     $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 }
 
             })
@@ -265,28 +297,97 @@ angular.module('shopMyTools.dashboardController', [])
 
 
         $scope.addtocartDetails = function (productDataName, quantity) {
-            // alert('in');
-            $scope.productDataListData = [];
-            if (quantity >= 1) {
-                $scope.productDataListData.push({ "productdescription": productDataName, "qty": quantity })
-                $ionicLoading.show({
-                    template: 'Loading...'
-                });
-                categoryService.addToCartMethod($scope.productDataListData, window.localStorage['user_id']).then(function (data) {
-                    window.localStorage['orderId'] = data.data.orderid;
-                    $ionicLoading.hide();
-                    if (data.data.status == 'item added to cart') {
-                        $scope.getCartItemsList();
 
-                    } else if (data.data.status == 'item added to cart..') {
-                        $scope.getCartItemsList();
+            $scope.productDataListData = [];
+
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+
+                if (data.data.status == 'success') {
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                    if (quantity >= 1) {
+
+                        if ($rootScope.cartItemsList.length > 0) {
+                            $scope.productDataListData = $rootScope.cartItemsList;
+                        }
+                        $scope.productDataListData.push({ "productdescription": productDataName, "qty": quantity })
+
+                        categoryService.addToCartMethod($scope.productDataListData, window.localStorage['user_id']).then(function (data) {
+                            window.localStorage['orderId'] = data.data.orderid;
+                            $ionicLoading.hide();
+                            if (data.data.status == 'item added to cart') {
+                                $scope.getCartItemsList();
+
+                            } else if (data.data.status == 'item added to cart..') {
+                                $scope.getCartItemsList();
+                            }
+                            else if (data.data.status == 'out off stock') {
+                                $scope.getCartItemsList();
+                            }
+                        });
                     }
-                    else if (data.data.status == 'out off stock') {
-                        $scope.getCartItemsList();
-                    }
-                });
-            }
+                }
+
+            })
+
+
         }
+
+
+
+        $scope.addtoWishList = function (productData) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            categoryService.addToWishListMethod(window.localStorage['user_id'], productData.productdescription).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'product saved successfully') {
+                    $ionicPopup.alert({
+                        template: 'Added to Wish List Successfully!!',
+                        title: 'Success!'
+                    });
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Sorry!'
+                    });
+                }
+
+            })
+        }
+
+        $scope.deleteCartItem = function (item) {
+
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'SMT',
+                template: 'Are you sure you want to delete this product from cart items?'
+            });
+            confirmPopup.then(function (res) {
+                if (res) {
+                    $ionicLoading.show({
+                        template: 'Loading...'
+                    });
+                    viewCartItemsService.deleteCartItem(window.localStorage['user_id'], item.productdescription).then(function (data) {
+                        $ionicLoading.hide();
+                        if (data.data.status == 'Product deleted successfully') {
+                            $scope.getCartItemsList();
+                        }
+                    })
+                } else {
+                    // console.log('You are not sure');
+                }
+            });
+
+
+
+        }
+
+
+
 
 
         $scope.gotoCheckout = function (item) {
@@ -294,7 +395,7 @@ angular.module('shopMyTools.dashboardController', [])
             $state.go('shipping&billing_page');
         }
 
-       
+
 
         $scope.goback = function () {
             $state.go('app.home');

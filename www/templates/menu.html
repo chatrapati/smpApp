@@ -47,41 +47,41 @@
             <i class="ion-edit f-right"></i>
           </div>
         </ion-item> -->
-        <ion-item menu-close href="#/app/home">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('home')">
           <i class="icon ion-ios-home placeholder-icon"></i> Home
         </ion-item>
-        <ion-item menu-close href="#/smtLogin">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('login')">
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Login
         </ion-item>
-        <ion-item menu-close href="#/app/myorders">
-          <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders <span class="w3-badge">9</span>
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('myorders')">
+          <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders <span class="w3-badge">{{ordersCount}}</span>
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('profile')">
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Profile
         </ion-item>
-        <ion-item menu-close href="#/whishlist_page">
-          <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List <span class="w3-badge">900</span>
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('wishlist')">
+          <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List <span class="w3-badge">{{wishListItemsCount}}</span>
         </ion-item>
-        <ion-item menu-close href="#/cart_page">
-          <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart <span class="w3-badge">9</span>
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('cartPage')">
+          <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart <span class="w3-badge">{{CartItemsCount}}</span>
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('chngpaswd')">
           <i class="icon ion-ios-unlocked-outline placeholder-icon"></i> Change Password
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('chngadd')">
           <i class="icon ion-ios-location-outline placeholder-icon"></i> Change Address
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('policy')">
           <i class="icon ion-ios-toggle-outline placeholder-icon"></i> Return Policy
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('aboutus')">
           <i class="icon ion-ios-people-outline placeholder-icon"></i> About Us
         </ion-item>
-        <ion-item menu-close href="">
+        <ion-item menu-close href="" ng-click="gotoRespectivePage('faq')">
           <i class="icon ion-help placeholder-icon"></i> FAQ
         </ion-item>
 
-        <div class="m_top12">
+        <div class="m_top12" ng-click="gotoRespectivePage('logout')">
           <button class="button button-block all_btns" id="menu_login_btn">LOGOUT</button>
         </div>
        
