@@ -250,6 +250,11 @@
    .error {
         color: red;
     }
+    .btn_clr.activated{
+        border-color: #0487a1 !important;
+        background-color: #0487a1 !important;
+        color: #fff !important;
+    }
     .button.activated {
         border-color: #0487a1 !important;
         background-color: #0487a1 !important;
