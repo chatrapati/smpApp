@@ -151,15 +151,35 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         controller: 'viewCartItemsListCntrl'
       })
 
-      .state('shipping&billing_page', {
-        url: '/shipping&billing_page',
-        cache: false,
-        templateUrl: 'templates/shipping&billing_page.html',
-        controller: 'ckeckoutCntrl'
-      });
-
-    
-
+      // .state('shipping&billing_page', {
+      //     url: '/shipping&billing_page',
+      //     cache: false,
+      //     templateUrl: 'templates/shipping&billing_page.html',
+      //     controller: 'ckeckoutCntrl'
+      // })
+      
+      .state('add_address_page', {
+          url: '/add_address_page',
+          cache: false,
+          templateUrl: 'templates/add_address_page.html'
+          // controller: 'welcomeController'
+       })
+       
+       .state('use_current_location_page', {
+          url: '/use_current_location_page',
+          cache: false,
+          templateUrl: 'templates/use_current_location_page.html'
+          // controller: 'welcomeController'
+        });
+      
+      // .state('toolsShops_page', {
+      //   url: '/toolsShops_page',
+      //   cache: false,
+      //   templateUrl: 'templates/toolsShops_page.html'
+      //  // controller: 'welcomeController'
+      // });
+      
+      
 
 
 
