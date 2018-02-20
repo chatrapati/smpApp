@@ -1,0 +1,12 @@
+<ion-modal-view>
+
+    <ion-content>
+
+        <label>Write your review</label>
+                        <ionic-ratings ng-model="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
+                        <textarea type="text" ng-model="reviewcomment" placeholder="write your review...."></textarea>
+                        <button class="review-submit-btn" ng-click="reviews(reviewRating,review_login);">submit</button>
+    </ion-content>
+
+    
+</ion-modal-view>
