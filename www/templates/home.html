@@ -53,7 +53,7 @@
 				<h3>Top Brands</h3>
 			</div>
 			<div class="col home-slider slider_brands" >
-				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
+				<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt" does-continue="true">
 					<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider"  ng-click="gotoCategoryPage(brand.brandname,'brand')">
 						<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
 					</ion-slide-page>
