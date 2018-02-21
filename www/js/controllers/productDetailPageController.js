@@ -1,10 +1,6 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
-<<<<<<< HEAD
     .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service) {
-=======
-    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService) {
->>>>>>> ccdae0435102a17cf9f419913b7b60c3f3798357
         $scope.getProductDetails = function () {
             $scope.ratingsList = [];
             $rootScope.imgList = [];
@@ -32,16 +28,6 @@ angular.module('shopMyTools.productDetailPageController', [])
                         if ($scope.images[i] != '' && $scope.images[i] != undefined) {
                             $rootScope.imgList.push($scope.images[i]);
                         }
-
-                        //  $scope.imagess = $scope.imgList;
-
-                    if ($scope.images.length > 0) {
-                        for (var i = 0; i <= $scope.images.length; i++) {
-                            if ($scope.images[i] != '' && $scope.images[i] != undefined) {
-                                $rootScope.imgList.push($scope.images[i]);
-                            }
-                        }
-
 
                         //  $scope.imagess = $scope.imgList;
 
