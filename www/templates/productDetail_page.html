@@ -150,7 +150,7 @@
                         </div>
                         <div ng-if="review">
                             <form name="reviewForm">
-                                <ionic-ratings class="give_rating" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
+                                <ionic-ratings  class="give_rating" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
                                 <span ng-show="reviewForm.$submitted || reviewForm.rating.$touched || (reviewForm.rating.$dirty && reviewForm.rating.$invalid)">
                                     <span class="error" ng-show="reviewForm.rating.$error.required">Please give rating.</span>
                                 </span>
