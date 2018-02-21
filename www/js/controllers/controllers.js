@@ -63,6 +63,7 @@ angular.module('shopMyTools.controllers', [])
                         $rootScope.token = data.data.token;
                         $rootScope.user_name = data.data.username;
                         $rootScope.user_info = data.data.userinfo;
+                        $rootScope.mobileNo = data.data.userinfo.user_mobile;
                         if (data.data.billing_address != '') {
                             $rootScope.user_billing_Address = data.data.billing_address;
                         }
@@ -79,7 +80,7 @@ angular.module('shopMyTools.controllers', [])
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
                         window.localStorage['user_name'] = $scope.userName;
-                       
+
                         $state.go('app.home');
                     } else {
                         $ionicPopup.alert({
@@ -230,13 +231,13 @@ angular.module('shopMyTools.controllers', [])
             } else if (page == 'cartPage') {
                 $state.go('cart_page');
             } else if (page == 'chngpaswd') {
-                $state.go('forgotPassword');
+                $state.go('changePassword');
             } else if (page == 'chngadd') {
                 $state.go('app.home');
             } else if (page == 'policy') {
-                window.open('http://toolsomg.com/returnpolicy.html#!/','_blank'); 
+                window.open('http://toolsomg.com/returnpolicy.html#!/', '_blank');
             } else if (page == 'aboutus') {
-                window.open('http://toolsomg.com/aboutus.html#!/','_blank'); 
+                window.open('http://toolsomg.com/aboutus.html#!/', '_blank');
             } else if (page == 'faq') {
                 $state.go('app.home');
             } else if (page == 'logout') {
@@ -255,4 +256,31 @@ angular.module('shopMyTools.controllers', [])
         }
 
 
-    });
+    })
+
+
+    .controller('resetPasswordCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, resetPasswordService) {
+
+        $scope.resetPswdData = {};
+        $scope.userId = window.localStorage['user_id'];
+        $scope.resetPassword = function (form) {
+            if (form.$valid && $scope.resetPswdData.new_password == $scope.resetPswdData.confirm_password) {
+                resetPasswordService.resetPassword($scope.userId, $scope.resetPswdData.new_password, $scope.resetPswdData.confirm_password).then(function (data) {
+                    if (data.data.status == "password changed successfully") {
+                        $ionicPopup.alert({
+                            template: 'Password Changes successfully!',
+                            title: 'Success!'
+                        });
+                        $state.go('app.home');
+                    }
+
+                })
+            }
+        }
+
+        $scope.goback = function () {
+            $state.go('app.home');
+            //  $window.history.go(-1);
+        }
+
+    })

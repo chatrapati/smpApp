@@ -20,7 +20,7 @@
       </ion-nav-title>
       <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-ios-search-strong"></button>
-        <button class="button button-icon icon ion-ios-cart"></button>
+        <button class="button button-icon icon ion-ios-cart"></button><ion-badge class="cart_badge">10</ion-badge>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -35,8 +35,8 @@
         <img src="img/smtlogo.png">
       </div>     
       <div class="login_user_details">
-        <h1>Lakshmi</h1>
-        <p>Machilipatnam, Andhra Pradesh</p>
+        <h1>{{user_name}}</h1>
+        <p>{{mobileNo}}</p>
       </div>
     </ion-header-bar>
     <ion-content class="scroll-content-menu">
@@ -68,9 +68,9 @@
         <ion-item menu-close href="" ng-click="gotoRespectivePage('chngpaswd')">
           <i class="icon ion-ios-unlocked-outline placeholder-icon"></i> Change Password
         </ion-item>
-        <ion-item menu-close href="" ng-click="gotoRespectivePage('chngadd')">
+        <!-- <ion-item menu-close href="" ng-click="gotoRespectivePage('chngadd')">
           <i class="icon ion-ios-location-outline placeholder-icon"></i> Change Address
-        </ion-item>
+        </ion-item> -->
         <ion-item menu-close href="" ng-click="gotoRespectivePage('policy')">
           <i class="icon ion-ios-toggle-outline placeholder-icon"></i> Return Policy
         </ion-item>
