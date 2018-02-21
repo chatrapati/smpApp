@@ -9,7 +9,7 @@
             <div class="h1 title">Product Details</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-android-cart" menu-toggle="right" ng-click="gotoFilter()"></a>
+            <a class="button button-icon icon ion-android-cart" menu-toggle="right" ng-click="gotoFilter()"></a><ion-badge class="cart_badge">10</ion-badge>
         </ion-nav-buttons>
     </ion-nav-bar>
     <!--  category top header end here  -->
@@ -30,8 +30,8 @@
                 </ion-slide-box> -->
 
 
-                <ion-slides options="" slider="" class="">
-                    <ion-slide-page ng-repeat="img in imgList track by $index" class="">
+                <ion-slides options="" slider="" class="prod_slider">
+                    <ion-slide-page ng-repeat="img in imgList track by $index" class="text-center">
                         <img ng-src="{{img}}" class="">
                     </ion-slide-page>
                 </ion-slides>

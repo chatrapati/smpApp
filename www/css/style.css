@@ -643,7 +643,7 @@ div.footer-button a.button.button-full {
 }
 .related h1{
     color: #0487a1;
-    font-size: 23px;
+    font-size: 20px;
 }
 .related span{
     float: right;
@@ -1210,4 +1210,15 @@ p.ph_no{
  .space{
      margin-top: -10px;
  }
+ .prod_slider .swiper-slide img {
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 100%;
+}
+#buynow.activated{
+    background: #0487a1;
+    border: 1px solid #0487a1;
+    color: #fff;
+}
  /* 21-02-2018 styles end here */

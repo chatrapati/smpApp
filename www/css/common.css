@@ -476,9 +476,11 @@ th {
     border-radius: 50%;
     background: red;
     height: 20px;
-    width: 30px;
+    padding: 5px 5px;
+    /* width: 30px; */
     text-align: center;
     font-size: 10px;
     font-weight: 700;
     margin-left: -10px;
+    line-height: 1;
 }
