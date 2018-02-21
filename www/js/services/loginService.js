@@ -2,12 +2,13 @@ angular.module('shopMyTools.services', [])
 
     .service('loginService', function ($q, $http, LOGIN_URL) {
 
-        this.userAuthentication = function (username, password) {
+        this.userAuthentication = function (username, password, userType, ipAddress) {
             var deferred = $q.defer();
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: LOGIN_URL + '/userlogin',
-                headers: { 'Content-Type': 'application/json', 'Authorization': btoa(username + ':' + password), 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' }
+                headers: { 'Content-Type': 'application/json', 'Authorization': btoa(username + ':' + password), 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+                data: { "user_type": userType, "ip_address": ipAddress }
 
             }).then(function success(data) {
                 deferred.resolve(data);
@@ -70,14 +71,14 @@ angular.module('shopMyTools.services', [])
             return deferred.promise;
         };
 
-        this.verifyOTP = function (otp, mobile) {
+        this.verifyOTP = function (otp, mobile, ipAddress) {
             var deferred = $q.defer();
 
             $http({
                 method: 'POST',
                 url: LOGIN_URL + '/verifyotp',
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-                data: { "mobile": mobile, "otp": otp }
+                data: { "mobile": mobile, "otp": otp, "ip_address":ipAddress }
 
             }).then(function success(data) {
                 deferred.resolve(data);
@@ -90,14 +91,14 @@ angular.module('shopMyTools.services', [])
             return deferred.promise;
         };
 
-        this.resendOTP = function (userId) {
+        this.resendOTP = function (mobile, otp) {
             var deferred = $q.defer();
 
             $http({
-                method: 'GET',
-                url: LOGIN_URL + '/resendotp?user_id=' + userId,
+                method: 'POST',
+                url: LOGIN_URL + '/resendotp',
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-
+                data : {"mobile": mobile, "otp":otp}
             }).then(function success(data) {
                 deferred.resolve(data);
 

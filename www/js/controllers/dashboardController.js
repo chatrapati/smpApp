@@ -18,7 +18,7 @@ angular.module('shopMyTools.dashboardController', [])
                     //alert(JSON.stringify($scope.myOrdersList))
 
                     $scope.myOrdersList.forEach(function (orders) {
-                        if (orders.status == 'Pending') {
+                        if (orders.status == 'Accepted') {
                             $scope.pendingOrderList.push(orders)
                         } else if (orders.status == 'Complete') {
                             $scope.invoiceOrderList.push(orders)

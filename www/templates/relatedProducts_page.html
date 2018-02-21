@@ -7,10 +7,7 @@
         <ion-nav-title>
             <div class="h1 title">Related Products</div>
         </ion-nav-title>
-        <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-search" menu-toggle="right" ng-click="gotoFilter()"></a>
-            <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
-        </ion-nav-buttons>
+        
     </ion-nav-bar>
     <!--  category top header end here  -->
 
@@ -60,7 +57,7 @@
                             <p class="excl_gst">(Excluding-GST)</p>
                             <div class="cart_icons">
                                 <span>
-                                    <i class="icon ion-android-cart"></i>
+                                    <i class="icon ion-android-cart" ng-click="addtoCart(related.upload_name)"></i>
                                 </span>
                                 <span>
                                     <i class="icon ion-heart"></i>

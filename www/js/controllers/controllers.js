@@ -32,6 +32,8 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.loginData = {};
 
+        $scope.user_type = "mobile";
+        $scope.ip_address = "mobile";
 
         $scope.gotoRegistration = function () {
             $state.go('smt_registration');
@@ -56,7 +58,7 @@ angular.module('shopMyTools.controllers', [])
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
-                loginService.userAuthentication($scope.loginData.username, $scope.loginData.password).then(function (data) {
+                loginService.userAuthentication($scope.loginData.username, $scope.loginData.password, $scope.user_type, $scope.ip_address).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'Success') {
                         $rootScope.user_id = data.data.user_id;
@@ -106,6 +108,7 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.registerData.newsletter = "unchecked";
         $scope.registerData.gstnumber = "";
+        $scope.registerData.user_type = "mobile";
 
 
         $scope.getOtp = function (form) {
@@ -121,9 +124,7 @@ angular.module('shopMyTools.controllers', [])
                 registrationService.getOtp($scope, $rootScope).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'Data saved successfully') {
-                        $rootScope.user_id = data.data.user_id;
-                        $rootScope.token = data.data.token;
-
+                        $rootScope.otp = data.data.otp;
                         $rootScope.myPopup = $ionicPopup.show({
                             templateUrl: 'templates/otpPopup.html',
                             title: 'Enter OTP'
@@ -146,16 +147,19 @@ angular.module('shopMyTools.controllers', [])
                     template: 'Loading...'
                 });
                 $scope.otp = JSON.stringify(otpData.otp);
-                registrationService.verifyOTP($scope.otp, $rootScope.mobile).then(function (data) {
+                $scope.ip_address = "mobile";
+                registrationService.verifyOTP($scope.otp, $rootScope.mobile, $scope.ip_address).then(function (data) {
                     $ionicLoading.hide();
-                    if (data.data.return == 'otp verified') {
+                    if (data.data.status == 'Data saved successfully') {
+                        $rootScope.user_id = data.data.user_id;
+                        $rootScope.token = data.data.token;
                         $rootScope.myPopup.close();
 
                         $state.go('smtLogin');
                     } else {
 
                         $ionicPopup.alert({
-                            template: data.data.return,
+                            template: data.data.status,
                             title: 'Error!'
                         });
                     }
@@ -168,7 +172,7 @@ angular.module('shopMyTools.controllers', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            registrationService.resendOTP($rootScope.user_id).then(function (data) {
+            registrationService.resendOTP($rootScope.mobile, $rootScope.otp).then(function (data) {
                 $ionicLoading.hide();
                 $ionicPopup.alert({
                     template: data.data.return,
