@@ -195,7 +195,7 @@ angular.module('shopMyTools.dashboardController', [])
                 $ionicLoading.hide();
                 if (data.data.status == 'success') {
                     $rootScope.wishlistItems = data.data.prod_info;
-                    $scope.wishListItemsCount = $rootScope.wishlistItems.length;                   
+                    $scope.wishListItemsCount = $rootScope.wishlistItems.length;
                 } else {
                     alert(data.data.status);
                 }
@@ -205,16 +205,16 @@ angular.module('shopMyTools.dashboardController', [])
 
         $scope.addtoCartItems = function (productData) {
             $scope.productDataList = [];
-           
+
             $ionicLoading.show({
                 template: 'Loading...'
             });
 
             if ($rootScope.cartItemsList.length > 0) {
-                $scope.productDataListData = $rootScope.cartItemsList;
+                $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" });
-            $rootScope.CartItemsCount = $scope.productDataListData.length;
+            $rootScope.CartItemsCount = $scope.productDataList.length;
 
 
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
@@ -306,27 +306,23 @@ angular.module('shopMyTools.dashboardController', [])
 
 
 
-        $scope.addtocartDetails = function (productDataName, quantity) {
+        $scope.addtocartDetails = function (cartObj) {
 
-            $scope.productDataListData = [];
 
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
-            // viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+            if (cartObj.qty >= 1) {
+                $ionicLoading.show({
+                    template: 'Loading...'
+                });
 
-            //     if (data.data.status == 'success') {
-            //         $rootScope.cartItemsList = data.data.item_list;
-            //         $rootScope.grand_total = data.data.grand_total;
-            //         $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-            if (quantity >= 1) {
+                $rootScope.cartItemsList.forEach(function (cartItem) {
+                    if (cartObj.productdescription == cartItem.productdescription) {
+                        cartItem.qty = cartObj.qty;
+                    }
+                })
 
-                if ($rootScope.cartItemsList.length > 0) {
-                    $scope.productDataListData = $rootScope.cartItemsList;
-                }
-                $scope.productDataListData.push({ "productdescription": productDataName, "qty": quantity })
-                $rootScope.CartItemsCount = $scope.productDataListData.length;
-                categoryService.addToCartMethod($scope.productDataListData, window.localStorage['user_id']).then(function (data) {
+
+                $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                categoryService.addToCartMethod($rootScope.cartItemsList, window.localStorage['user_id']).then(function (data) {
                     window.localStorage['orderId'] = data.data.orderid;
                     $ionicLoading.hide();
                     if (data.data.status == 'item added to cart') {
@@ -342,10 +338,6 @@ angular.module('shopMyTools.dashboardController', [])
             }
         }
 
-        //     })
-
-
-        // }
 
 
 
@@ -396,11 +388,22 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
+        // $scope.item = {};
+        // //   $scope.item.qty = 0;
+        // $scope.increment = function (qty) {
+        //     $scope.val = JSON.parse(qty);
+        //     $scope.val += 1;
+        //     $scope.item.qty = $scope.val;
+        //     alert($scope.item.qty);
+        // }
+        // $scope.decrement = function (qty) {
+        //     qty -= 1;
+        //     $scope.item.qty = qty;
+
+        // }
 
 
-
-
-        $scope.gotoCheckout = function (item) {
+        $scope.gotoCheckout = function () {
             // alert(item.tax_amount);
             $state.go('shipping&billing_page');
         }

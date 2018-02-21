@@ -53,10 +53,13 @@
                                 <img ng-src="{{item.image}}" width="50%" class="cart_imagess">
 
                                 <div class="amunt_auto_incre">
-                                    <a id="decre" class="button">-</a>
-                                    <input type="text" class="texting" ng-model="item.qty" ng-change="addtocartDetails(item.productdescription,item.qty)">
-                                    <a id="incre" class="button">+</a>
+                                    <a id="decre" class="button" ng-click="decrement(item.qty)">-</a>
+                                    <input type="text" class="texting" ng-model="item.qty" ng-change="addtocartDetails(item)">
+                                    <a id="incre" class="button"  ng-click="increment(item.qty)">+</a>
                                 </div>
+
+
+                                
                             </div>
                         </div>
                         <!-- <div class="row">

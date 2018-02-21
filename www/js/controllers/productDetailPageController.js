@@ -20,13 +20,13 @@ angular.module('shopMyTools.productDetailPageController', [])
                     $scope.prdouctReviewInfo = data.data.Review_info;
                     $scope.images = data.data.Product.extraimages;
 
-                 
+                    $rootScope.imgList.push($scope.productDetail.upload_photo);
 
                     for (var i = 0; i <= $scope.images.length; i++) {
                         if ($scope.images[i] != '' && $scope.images[i] != undefined) {
                             $rootScope.imgList.push($scope.images[i]);
                         }
-                        $scope.imgList.push($scope.productDetail.upload_photo);
+                        //  $scope.imgList.push($scope.productDetail.upload_photo);
                     }
 
                     $ionicLoading.hide();
@@ -35,7 +35,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                     $scope.relatedproducts = data.data.Related_Products;
                     $scope.upsellproducts = data.data.Upsell_Products;
 
-                  
+
                 }
                 else {
                     //alert('');
