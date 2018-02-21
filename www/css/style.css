@@ -1129,4 +1129,18 @@ p.ph_no{
       font-size: 20px;
       font-weight: 700;
   }
+
+ #product-icon i{
+    float: right;
+    font-size: 24px;
+    margin-top: -26px;
+    color: #0487a1;
+ } 
+
+ .padding-left5{
+     padding-left: 5%;
+ }
+ .padding-left2{
+     padding-left: 2%;
+ }
  /* 20-02-2018 styles end here */
