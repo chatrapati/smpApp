@@ -1,6 +1,6 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
-    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service) {
+    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service,  $ionicPopup) {
         $scope.getProductDetails = function () {
             $scope.ratingsList = [];
             $rootScope.imgList = [];
@@ -50,7 +50,12 @@ angular.module('shopMyTools.productDetailPageController', [])
             reviews_service.reviewsMethod(data, $scope.rating, $scope.productDetail.upload_name, window.localStorage['email']).then(function (data) {
 
                 if (data.data.success == 'success') {
-                    alert('Thanks for Review.... Your comment will be updated in 48 hours.');
+
+                    $ionicPopup.alert({
+                        template: 'Thanks for Review.... Your comment will be updated in 48 hours.',
+                        title: 'Success!'
+                    });
+                    // alert('Thanks for Review.... Your comment will be updated in 48 hours.');
 
 
                 } else {
