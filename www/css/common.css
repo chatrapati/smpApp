@@ -250,6 +250,11 @@
    .error {
         color: red;
     }
+    .btn_clr.activated{
+        border-color: #0487a1 !important;
+        background-color: #0487a1 !important;
+        color: #fff !important;
+    }
     .button.activated {
         border-color: #0487a1 !important;
         background-color: #0487a1 !important;
@@ -414,6 +419,11 @@ th {
 .padding5 {
     padding: 5%;
 }
+.delivery .theme_clr {
+    color: #0487a1;
+    font-weight: 500;
+}
+
 .theme_clr {
     color: #0487a1;
 }

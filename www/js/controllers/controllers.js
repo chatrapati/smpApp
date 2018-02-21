@@ -70,7 +70,6 @@ angular.module('shopMyTools.controllers', [])
                             $rootScope.user_shipping_address = data.data.shipping_address;
                         }
 
-
                         window.localStorage['token'] = data.data.token;
                         window.localStorage['user_id'] = data.data.user_id;
                         window.localStorage['email'] = data.data.userinfo.email;
@@ -80,7 +79,7 @@ angular.module('shopMyTools.controllers', [])
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
                         window.localStorage['user_name'] = $scope.userName;
-                        $scope.getOrdersCount();
+                       
                         $state.go('app.home');
                     } else {
                         $ionicPopup.alert({
@@ -91,47 +90,6 @@ angular.module('shopMyTools.controllers', [])
                 });
             }
         };
-
-
-        //Orders Count
-
-        $scope.getOrdersCount = function () {
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
-            $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
-            loginService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
-                $ionicLoading.hide();
-                if (data.data.status == 'Success') {
-                    // $scope.ordersCount = data.data;
-                    $rootScope.wishListItemsCount = data.data.wishlist_items;
-                    $rootScope.CartItemsCount =  data.data.add_to_cart;
-                    // $rootScope.invoiceCountItems = data.data.invoice_count;
-                    $rootScope.ordersCount = data.data.orders_count;
-                    //  $rootScope.pendingOrderCountItems = data.data.pending_order_count;
-                    $rootScope.customerData = data.data.cust_details
-                    //alert(JSON.stringify($rootScope.customerData))
-                    $rootScope.customerData.mobile = $rootScope.customerData.mobile.slice(2);
-                    $rootScope.couponCode = data.data.cupon_code;
-                    if (data.data.reward_points == null) {
-                        $rootScope.rewardPoints = 0;
-                    } else {
-                        $rootScope.rewardPoints = data.data.reward_points;
-
-                    }
-
-
-                } else {
-                    $ionicPopup.alert({
-                        template: data.data.status,
-                        title: 'Error!'
-                    });
-                }
-            })
-        }
-
-
-
 
 
         $scope.gotoForgotPswd = function () {

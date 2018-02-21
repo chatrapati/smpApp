@@ -28,20 +28,50 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.Addressmodal.hide();
         }
 
+        $ionicModal.fromTemplateUrl('templates/editBillingAddressModal.html', {
+            scope: $scope,
+        }).then(function (modal) {
+            $scope.billingAddressmodal = modal;
+        });
+
+        $scope.closeBillAddPopup = function () {
+            $scope.billingAddressmodal.hide();
+        }
+
+        $scope.gotoEditBillingAddress = function () {
+            $scope.billingAddressmodal.show();
+        }
 
 
-        $scope.saveEditShippingAddress = function (editShippingAdd, billingAddCheck) {
+        $scope.saveEditShippingAddress = function (editShippingAdd) {
             $scope.shippingAddress = editShippingAdd;
+            $scope.sameAsShipping = editShippingAdd.checked;
             $scope.Addressmodal.hide();
-            if (billingAddCheck == true) {
-                $scope.billingAddress = $scope.shippingAddress;
-                // $scope.showshippingDiv = false;
-                // $scope.showBillingAddressDiv = false;
-                // $scope.showPaymentTypeDiv = false;
+            if ($scope.sameAsShipping == true) {
+                $scope.billingAddress = editShippingAdd;
             } else {
 
             }
         }
+
+
+        $scope.saveShippingAddress = function () {
+            if ($scope.sameAsShipping == true) {
+                $scope.showshippingDiv = false;
+                $scope.showBillingAddressDiv = false;
+                $scope.showPaymentTypeDiv = true;
+            } else {
+                $scope.showshippingDiv = false;
+                $scope.showBillingAddressDiv = true;
+            }
+        }
+
+
+        $scope.saveEditBillingAddress = function (editBillingAddressData) {
+            $scope.billingAddress = editBillingAddressData;
+            $scope.billingAddressmodal.hide();
+        }
+
 
         $scope.getPickupDetails = function (getPincodeData) {
 
@@ -113,7 +143,7 @@ angular.module('shopMyTools.ckeckoutController', [])
         }
 
         $scope.saveBillingAddress = function (billingAddress) {
-            $scope.billingAddressData = billingAddress;
+            $scope.billingAddress = billingAddress;
             $scope.showBillingAddressDiv = false;
             $scope.showPaymentTypeDiv = true;
         }
@@ -172,7 +202,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 "discount": "0",
 
-                "billingaddress": [$scope.billingAddressData],
+                "billingaddress": [$scope.billingAddress],
 
                 "shippingaddress": [$scope.shippingAddress],
 
@@ -190,16 +220,14 @@ angular.module('shopMyTools.ckeckoutController', [])
             checkoutService.saveOrderMethod($scope.finalCheckoutData).then(function (data) {
                 console.log($scope.finalCheckoutData);
                 if (data.data.status == 'data saved') {
-
                     $scope.finalOrderId = data.data.orderid;
-
                     window.localStorage['finalOrderId'] = $scope.finalOrderId;
 
                     $ionicPopup.alert({
                         template: $scope.finalOrderId,
                         title: 'Sucess!'
                     });
-                    $scope.getCartItemsList();
+                    $scope.submitPayment();
                 }
 
             })
@@ -215,16 +243,19 @@ angular.module('shopMyTools.ckeckoutController', [])
                         $rootScope.cartItemsList = data.data.item_list;
                         $rootScope.grand_total = data.data.grand_total;
                         $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-                        $state.go('app.home');
+
+                        $scope.submitPayment();
                     }
 
                 })
             }
 
-
-
-
-
+            $scope.submitPayment = function () {
+                checkoutService.submitPayment(window.localStorage['finalOrderId'], window.localStorage['user_id']).then(function (data) {
+                    alert(data.data.status == "status changed");
+                    $state.go('app.home');
+                })
+            }
         }
 
 

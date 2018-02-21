@@ -1,6 +1,6 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, ordersCountService) {
 
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
@@ -69,13 +69,14 @@ angular.module('shopMyTools.homeController', [])
             $state.go("productDetail_page")
         }
 
-        $scope.getCategoryBasedOnBrands = function (brandObj) {
-            window.localStorage['categoryName'] = "";
-            localStorage.setItem('brandName', brandObj.brandname)
-            // window.localStorage['brandName'] = brandObj.brandname;
-            $state.go('categoryCartPage');
+        // $scope.getCategoryBasedOnBrands = function (brandObj) {
+        //     alert(brandObj.brandname);
+        //     window.localStorage['categoryName'] = "";
+        //     localStorage.setItem('brandName', brandObj.brandname)
+        //     // window.localStorage['brandName'] = brandObj.brandname;
+        //     $state.go('categoryCartPage');
 
-        }
+        // }
 
         //swiper
         $scope.galleryOptions = {
@@ -156,41 +157,41 @@ angular.module('shopMyTools.homeController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+            //  viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-                if (data.data.status == 'success') {
-                    $rootScope.cartItemsList = data.data.item_list;
-                    $rootScope.grand_total = data.data.grand_total;
-                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-                    if ($rootScope.cartItemsList.length > 0) {
-                        $scope.productDataList = $rootScope.cartItemsList;
-                    }
-                    $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
-
-                    categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
-                        window.localStorage['orderId'] = data.data.orderid;
-                        $ionicLoading.hide();
-                        if (data.data.status == 'item added to cart') {
-                            $ionicPopup.alert({
-                                template: 'Added to Cart Successfully!',
-                                title: 'Success!'
-                            });
-                        } else if (data.data.status == 'item added to cart..') {
-                            $ionicPopup.alert({
-                                template: 'Added to Cart Successfully!',
-                                title: 'Success!'
-                            });
-                        }
-                        else if (data.data.status == 'out off stock') {
-                            $ionicPopup.alert({
-                                template: 'Out Off Stock!',
-                                title: 'Sorry!'
-                            });
-                        }
+            // if (data.data.status == 'success') {
+            //     $rootScope.cartItemsList = data.data.item_list;
+            //     $rootScope.grand_total = data.data.grand_total;
+            //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+            if ($rootScope.cartItemsList.length > 0) {
+                $scope.productDataList = $rootScope.cartItemsList;
+            }
+            $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
+            $rootScope.CartItemsCount = $scope.productDataList.length;
+            categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
+                window.localStorage['orderId'] = data.data.orderid;
+                $ionicLoading.hide();
+                if (data.data.status == 'item added to cart') {
+                    $ionicPopup.alert({
+                        template: 'Added to Cart Successfully!',
+                        title: 'Success!'
+                    });
+                } else if (data.data.status == 'item added to cart..') {
+                    $ionicPopup.alert({
+                        template: 'Added to Cart Successfully!',
+                        title: 'Success!'
                     });
                 }
+                else if (data.data.status == 'out off stock') {
+                    $ionicPopup.alert({
+                        template: 'Out Off Stock!',
+                        title: 'Sorry!'
+                    });
+                }
+            });
+            //   }
 
-            })
+            //  })
 
 
 
@@ -206,7 +207,7 @@ angular.module('shopMyTools.homeController', [])
                 $ionicLoading.hide();
                 if (data.data.status == 'product saved successfully') {
                     $rootScope.wishListItemsCount = data.data.items_count;
-                   
+
                     $ionicPopup.alert({
                         template: 'Added to Wish List Successfully!!',
                         title: 'Success!'
@@ -220,6 +221,64 @@ angular.module('shopMyTools.homeController', [])
 
             })
         }
+
+
+
+        //Orders Count
+
+        $scope.getOrdersCount = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            ordersCountService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'Success') {
+                    // $scope.ordersCount = data.data;
+                    $rootScope.wishListItemsCount = data.data.wishlist_items;
+                    $rootScope.CartItemsCount = data.data.add_to_cart;
+                    // $rootScope.invoiceCountItems = data.data.invoice_count;
+                    $rootScope.ordersCount = data.data.orders_count;
+                    //  $rootScope.pendingOrderCountItems = data.data.pending_order_count;
+                    $rootScope.customerData = data.data.cust_details
+                    //alert(JSON.stringify($rootScope.customerData))
+                    $rootScope.customerData.mobile = $rootScope.customerData.mobile.slice(2);
+                    $rootScope.couponCode = data.data.cupon_code;
+                    if (data.data.reward_points == null) {
+                        $rootScope.rewardPoints = 0;
+                    } else {
+                        $rootScope.rewardPoints = data.data.reward_points;
+
+                    }
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Error!'
+                    });
+                }
+            })
+        };
+        $scope.getOrdersCount();
+
+        $scope.getCartItemsList = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'success') {
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                } else if (data.data.status == 'no data available of this user') {
+                    $rootScope.cartItemsList = [];
+                }
+
+            })
+        };
+        $scope.getCartItemsList();
+
+
 
 
     });

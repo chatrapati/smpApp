@@ -38,12 +38,16 @@
                                 <div class="product_price">
                                     <span class="offer_price">{{item.offer_price | currency:'&#8377;'}}</span>
                                     <br>
-                                    <span>Tax :</span>
-                                    <span>{{item.tax }}</span>
-
+                                    <span class="pro_attr">Tax :</span>
+                                    <span class="pro_val">{{item.tax }}</span>
+                                    <br>
+                                    <span class="pro_attr">Tax Amount:</span>
+                                    <span class="pro_val">{{item.tax_amount | currency:'&#8377;'}}</span>
+                                    <br>
+                                    <span class="pro_attr">Sub total:</span>
+                                    <span class="pro_val">{{item.sub_total | currency:'&#8377;'}}</span>
                                     <!-- <span class="offer_percentage">30.24%</span> -->
                                 </div>
-
                             </div>
                             <div class="col">
                                 <img ng-src="{{item.image}}" width="50%" class="cart_imagess">
@@ -54,9 +58,8 @@
                                     <a id="incre" class="button">+</a>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col font_size15">
                                 <span>Tax Amount:</span>
                                 <span>{{item.tax_amount | currency:'&#8377;'}}</span>
@@ -64,16 +67,15 @@
                                 <span>Sub total:</span>
                                 <span>{{item.sub_total | currency:'&#8377;'}}</span>
                             </div>
-
-                        </div>
+                        </div> -->
                         <div class="row" id="cart_list_icons">
-                            <div class="col" ng-click="addtoWishList(item)">
+                            <div class="col btn_clr" ng-click="addtoWishList(item)">
                                 <span>
                                     <i class="icon ion-heart"></i>
                                 </span>
                                 <span>Move to whishlist</span>
                             </div>
-                            <div class="col" ng-click="deleteCartItem(item)">
+                            <div class="col btn_clr" ng-click="deleteCartItem(item)">
                                 <span>
                                     <i class="icon ion-trash-a"></i>
                                 </span>

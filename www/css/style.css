@@ -901,6 +901,7 @@ div.footer-button a.button.button-full {
     }
     .cart_imagess{
         float: right;
+        width: 65%;
     }
     .radiobutns{
         margin-left: 25px;
@@ -918,16 +919,16 @@ div.footer-button a.button.button-full {
     }
     .pickup button.button-block{
         width: 50%;
-        margin: 0 auto;
+        margin: -15px auto 15px auto;
     }
     .delivery h1{
         font-size: 20px;
-        color:#000;
-        font-weight: 400;
+        color: #5a5959;
+        font-weight: 500;
     }
     .delivery p{
-        font-size: 20px;
-        color: #5e5d5d;
+        font-size: 17px;
+        color: #a8a4a4;
         line-height: 1.2;
         font-weight: 400;
     }
@@ -1143,4 +1144,26 @@ p.ph_no{
  .padding-left2{
      padding-left: 2%;
  }
+  .changeAddr{
+      float: left;
+  }
+  .conti{
+    float: right;
+  }
+  .validations{
+      margin-left: 5%;
+  }
+  .middle{
+    padding: 0 20px;
+  }
+  .pro_attr{
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .pro_val{
+    font-size: 15px;
+    font-weight: 500;
+    color: #7d7b7b;
+  }
+
  /* 20-02-2018 styles end here */

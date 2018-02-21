@@ -1,6 +1,10 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
+<<<<<<< HEAD
     .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service) {
+=======
+    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService) {
+>>>>>>> ccdae0435102a17cf9f419913b7b60c3f3798357
         $scope.getProductDetails = function () {
             $scope.ratingsList = [];
             $rootScope.imgList = [];
@@ -17,7 +21,6 @@ angular.module('shopMyTools.productDetailPageController', [])
                     $scope.productDetailPrice = data.data.price_info;
                     $scope.ProductSpecification = data.data.attribute_info;
                     $scope.productDetailedReview = data.data.product_Reviews;
-
                     $scope.images = data.data.Product.extraimages;
 
                     for (i = 0; i < $scope.productDetailedReview.length; i++) {
@@ -29,6 +32,16 @@ angular.module('shopMyTools.productDetailPageController', [])
                         if ($scope.images[i] != '' && $scope.images[i] != undefined) {
                             $rootScope.imgList.push($scope.images[i]);
                         }
+
+                        //  $scope.imagess = $scope.imgList;
+
+                    if ($scope.images.length > 0) {
+                        for (var i = 0; i <= $scope.images.length; i++) {
+                            if ($scope.images[i] != '' && $scope.images[i] != undefined) {
+                                $rootScope.imgList.push($scope.images[i]);
+                            }
+                        }
+
 
                         //  $scope.imagess = $scope.imgList;
 
@@ -127,16 +140,16 @@ angular.module('shopMyTools.productDetailPageController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+            // viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-                if (data.data.status == 'success') {
-                    $rootScope.cartItemsList = data.data.item_list;
-                    $rootScope.grand_total = data.data.grand_total;
+            //     if (data.data.status == 'success') {
+            //         $rootScope.cartItemsList = data.data.item_list;
+            //         $rootScope.grand_total = data.data.grand_total;
                     if ($rootScope.cartItemsList.length > 0) {
                         $scope.productDataList = $rootScope.cartItemsList;
                     }
                     $scope.productDataList.push({ "productdescription": productName, "qty": "1" })
-
+                    $rootScope.CartItemsCount =  $scope.productDataList.length;
                     categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                         window.localStorage['orderId'] = data.data.orderid;
                         $ionicLoading.hide();
@@ -160,9 +173,9 @@ angular.module('shopMyTools.productDetailPageController', [])
                     });
                 }
 
-            })
+        //     })
 
-        }
+        // }
 
 
 

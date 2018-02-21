@@ -37,8 +37,8 @@
                         <img ng-src="{{productsdata.upload_photo}}" alt="Image">
                         <h2 ng-click="getProductDetails(productsdata)">{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
-                            <span class="offer_price">{{prices.offer_price | currency:'&#8377;'}}</span>
-                            <span class="real_price">{{prices.enduser_price | currency:'&#8377;'}}</span>
+                            <span class="offer_price">&#8377;{{prices.offer_price | number}}</span>
+                            <span class="real_price">&#8377;{{prices.enduser_price | number}}</span>
                             <span class="offer_percentage">{{prices.percentage}} %</span>
                         </div>
                         <p class="excl_gst">(Excluding-GST)</p>
@@ -49,9 +49,9 @@
                             <span ng-click="addtoWishList(productsdata)">
                                 <i class="icon ion-heart"></i>
                             </span>
-                            <span>
+                            <!-- <span>
                                 <i class="icon ion-arrow-swap"></i>
-                            </span>
+                            </span> -->
                             <span>
                                 <i class="icon ion-android-star"></i>
                             </span>

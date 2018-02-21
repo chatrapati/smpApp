@@ -54,6 +54,21 @@ angular.module('shopMyTools.ckeckoutSerivce', [])
             return deferred.promise;
         };
 
+        this.submitPayment = function (orderid, userId) {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: LOGIN_URL + '/paymentstatus?orderid=' + orderid + '&user_id=' + userId,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+            }, function error(data) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        };
+
 
     })
 
