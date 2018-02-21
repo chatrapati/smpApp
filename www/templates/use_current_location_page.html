@@ -8,10 +8,10 @@
             </button>
         </ion-nav-buttons>
         <ion-nav-title>
-            <div class="h1 title">Shipping Address</div>
+            <div class="h1 title">Address</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <button class="button button-icon" ng-click="saveEditShippingAddress(shippingAddress, billingAddCheck)">Save</button>
+            <button class="button button-icon" ng-click="saveEditShippingAddress(shippingAddress)">Save</button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <!-- header part end here -->
@@ -138,7 +138,7 @@
 
 
                             <span class="remember_me">
-                                <input type="checkbox" ng-model="billingAddCheck.checked">
+                                <input type="checkbox" ng-model="shippingAddress.checked">
                                 <span id="check_text">Use as Billing Address</span>
                             </span>
 

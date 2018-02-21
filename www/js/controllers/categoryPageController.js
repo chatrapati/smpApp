@@ -1,6 +1,6 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window, viewCartItemsService) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
@@ -133,18 +133,18 @@ angular.module('shopMyTools.categoryPageController', [])
       $ionicLoading.show({
         template: 'Loading...'
       });
-      viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+      // viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-        if (data.data.status == 'success') {
-          $rootScope.cartItemsList = data.data.item_list;
-          $rootScope.grand_total = data.data.grand_total;
-          $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+      //   if (data.data.status == 'success') {
+      //     $rootScope.cartItemsList = data.data.item_list;
+      //     $rootScope.grand_total = data.data.grand_total;
+      //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
           if ($rootScope.cartItemsList.length > 0) {
             $scope.productDataList = $rootScope.cartItemsList;
           }
 
           $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
-
+          $rootScope.CartItemsCount = $scope.productDataList.length;
           categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
             window.localStorage['orderId'] = data.data.orderid;
             $ionicLoading.hide();
@@ -167,9 +167,9 @@ angular.module('shopMyTools.categoryPageController', [])
             }
           });
 
-        }
+      //   }
 
-      })
+      // })
 
 
 

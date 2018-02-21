@@ -43,9 +43,9 @@ angular.module('shopMyTools.ckeckoutController', [])
         }
 
 
-        $scope.saveEditShippingAddress = function (editShippingAdd, billingAddCheck) {
+        $scope.saveEditShippingAddress = function (editShippingAdd) {
             $scope.shippingAddress = editShippingAdd;
-            $scope.sameAsShipping = billingAddCheck.checked;
+            $scope.sameAsShipping = editShippingAdd.checked;
             $scope.Addressmodal.hide();
             if ($scope.sameAsShipping == true) {
                 $scope.billingAddress = editShippingAdd;
@@ -69,6 +69,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
         $scope.saveEditBillingAddress = function (editBillingAddressData) {
             $scope.billingAddress = editBillingAddressData;
+            $scope.billingAddressmodal.hide();
         }
 
 
@@ -219,16 +220,14 @@ angular.module('shopMyTools.ckeckoutController', [])
             checkoutService.saveOrderMethod($scope.finalCheckoutData).then(function (data) {
                 console.log($scope.finalCheckoutData);
                 if (data.data.status == 'data saved') {
-
                     $scope.finalOrderId = data.data.orderid;
-
                     window.localStorage['finalOrderId'] = $scope.finalOrderId;
 
                     $ionicPopup.alert({
                         template: $scope.finalOrderId,
                         title: 'Sucess!'
                     });
-                    $scope.getCartItemsList();
+                    $scope.submitPayment();
                 }
 
             })
@@ -244,16 +243,19 @@ angular.module('shopMyTools.ckeckoutController', [])
                         $rootScope.cartItemsList = data.data.item_list;
                         $rootScope.grand_total = data.data.grand_total;
                         $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-                        $state.go('app.home');
+
+                        $scope.submitPayment();
                     }
 
                 })
             }
 
-
-
-
-
+            $scope.submitPayment = function () {
+                checkoutService.submitPayment(window.localStorage['finalOrderId'], window.localStorage['user_id']).then(function (data) {
+                    alert(data.data.status == "status changed");
+                    $state.go('app.home');
+                })
+            }
         }
 
 

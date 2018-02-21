@@ -27,8 +27,8 @@
                             <h1>{{item.upload_name}}</h1>
                             <!-- <h2>Model Number</h2> -->
                             <div class="product_price" ng-repeat="price in item.prices">
-                                <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-                                <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+                                <span class="offer_price">&#8377;{{price.offer_price | number}}</span>
+                                <span class="real_price">&#8377;{{price.enduser_price | number}}</span>
                                 <span class="offer_percentage" style="float:none;">{{price.percentage}} %</span>
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
