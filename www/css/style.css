@@ -971,9 +971,7 @@ div.footer-button a.button.button-full {
     margin-left: 5%;
 }
 .rating .ratepercentage{
-    left: 12%;
-    padding-top: 11px;
-    position: absolute;
+    padding-left: 20%;
     font-size: 30px;
     color: #0a9dc7;
     font-weight: 500;
@@ -1130,6 +1128,20 @@ p.ph_no{
       font-size: 20px;
       font-weight: 700;
   }
+
+ #product-icon i{
+    float: right;
+    font-size: 24px;
+    margin-top: -26px;
+    color: #0487a1;
+ } 
+
+ .padding-left5{
+     padding-left: 5%;
+ }
+ .padding-left2{
+     padding-left: 2%;
+ }
   .changeAddr{
       float: left;
   }

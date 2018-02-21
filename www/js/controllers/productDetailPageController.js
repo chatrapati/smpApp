@@ -1,8 +1,8 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
-    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService) {
+    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service) {
         $scope.getProductDetails = function () {
-
+            $scope.ratingsList = [];
             $rootScope.imgList = [];
             $ionicLoading.show({
                 template: 'Loading...'
@@ -19,13 +19,15 @@ angular.module('shopMyTools.productDetailPageController', [])
                     $scope.productDetailedReview = data.data.product_Reviews;
                     $scope.images = data.data.Product.extraimages;
 
-                    if ($scope.images.length > 0) {
-                        for (var i = 0; i <= $scope.images.length; i++) {
-                            if ($scope.images[i] != '' && $scope.images[i] != undefined) {
-                                $rootScope.imgList.push($scope.images[i]);
-                            }
-                        }
+                    for (i = 0; i < $scope.productDetailedReview.length; i++) {
+                        $scope.ratingsList.push($scope.productDetailedReview[i].rating)
+                    }
 
+
+                    for (var i = 0; i <= $scope.images.length; i++) {
+                        if ($scope.images[i] != '' && $scope.images[i] != undefined) {
+                            $rootScope.imgList.push($scope.images[i]);
+                        }
 
                         //  $scope.imagess = $scope.imgList;
 
@@ -37,6 +39,26 @@ angular.module('shopMyTools.productDetailPageController', [])
 
                     $scope.relatedproducts = data.data.Related_Products;
                     $scope.upsellproducts = data.data.Upsell_Products;
+
+                    $scope.range = function(n) {
+                        return new Array(n);
+                    };
+
+                    $scope.givenRatingsObject = {
+                        iconOn: 'ion-ios-star',    //Optional
+                        iconOff: 'ion-ios-star-outline',   //Optional
+                        iconOnColor: 'rgb(200, 200, 100)',  //Optional
+                        iconOffColor: 'rgb(200, 100, 100)',    //Optional
+                        rating: $scope.ratingsList, //Optional
+                        minRating: 0,    //Optional
+                        readOnly: true, //Optional
+                        // callback: function (rating, index) {    //Mandatory
+                        //     $scope.ratingsCallback(rating, index);
+                        // }
+                    };
+
+                    
+  
 
 
                 }
@@ -51,16 +73,18 @@ angular.module('shopMyTools.productDetailPageController', [])
 
 
             reviews_service.reviewsMethod(data, $scope.rating, $scope.productDetail.upload_name, window.localStorage['email']).then(function (data) {
-                alert(data.data.status);
+
+                if (data.data.success == 'success') {
+                    alert('Thanks for Review.... Your comment will be updated in 48 hours.');
+
+
+                } else {
+                    alert(data.data.success)
+                }
             });
         };
 
-        // $scope.reviews = function(productDescription,riviewRating,mobileNumber,ratingComments,userName){
-        // 	reviews_service.reviewsMethod(productDescription,riviewRating,mobileNumber,ratingComments,userName).then(function(data){
-        // 	alert(JSON.stringify(data));
-        // 	//alert(userName);
-        // 	});
-        // };
+
 
         $scope.getProductDetails();
 
@@ -83,9 +107,16 @@ angular.module('shopMyTools.productDetailPageController', [])
             }
         };
 
+        //    $scope.productDetailedReview = [];
+
+
+
+
         $scope.ratingsCallback = function (rating, index) {
             // console.log('Selected rating is : ', rating, ' and the index is : ', index);
-            $scope.rating = rating;
+            $scope.rating = JSON.stringify(rating);
+            //console.log(JSON.stringify(rating));
+
         };
 
 
