@@ -472,3 +472,13 @@ th {
 #border_none{
     border:none !important;
 }
+.cart_badge{
+    border-radius: 50%;
+    background: red;
+    height: 20px;
+    width: 30px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: -10px;
+}
