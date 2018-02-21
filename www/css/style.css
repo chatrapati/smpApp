@@ -1206,4 +1206,10 @@ p.ph_no{
  .space{
      margin-top: -10px;
  }
+ .prod_slider .swiper-slide img {
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 100%;
+}
  /* 21-02-2018 styles end here */
