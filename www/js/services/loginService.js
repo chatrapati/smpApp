@@ -134,3 +134,20 @@ angular.module('shopMyTools.services', [])
             return deferred.promise;
         };
     })
+
+    .service('resetPasswordService', function ($q, $http, LOGIN_URL) {
+        this.resetPassword = function (userId, newPswd, confirmPswd) {
+            var deferred = $q.defer();
+            $http({
+                method: 'POST',
+                url: LOGIN_URL + '/resetpassword?user_id=' + userId,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: { "new_password": newPswd, "confirm_password": confirmPswd }
+            }).then(function success(data) {
+                deferred.resolve(data);
+            }, function error(data) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        };
+    })

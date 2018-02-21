@@ -163,21 +163,14 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
           cache: false,
           templateUrl: 'templates/add_address_page.html'
           // controller: 'welcomeController'
-       });
+       })
        
-      //  .state('use_current_location_page', {
-      //     url: '/use_current_location_page',
-      //     cache: false,
-      //     templateUrl: 'templates/use_current_location_page.html',
-      //     controller: 'ckeckoutCntrl'
-      //   });
-      
-      // .state('toolsShops_page', {
-      //   url: '/toolsShops_page',
-      //   cache: false,
-      //   templateUrl: 'templates/toolsShops_page.html'
-      //  // controller: 'welcomeController'
-      // });
+       .state('changePassword', {
+        url: '/changePassword',
+        cache: false,
+        templateUrl: 'templates/changePassword.html',
+        controller: 'resetPasswordCntrl'
+     });
       
       
 

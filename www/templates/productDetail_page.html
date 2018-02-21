@@ -17,17 +17,28 @@
     <ion-content class="smt_background_image" style="padding:0;">
         <div class="row">
             <div class="col ">
-                <ion-slide-box does-continue="true" class="mainSlider">
-                    <!-- <ion-slide class="mainSlider" ng-repeat="img in imgList track by $index">
+                <!-- <ion-slide-box does-continue="true" class="mainSlider">
+                    <ion-slide class="mainSlider" ng-repeat="img in imgList track by $index">
                         <img width="50%" ng-src="{{img}}">
-                    </ion-slide> -->
+                    </ion-slide>
                     <ion-slide class="mainSlider">
                         <img width="50%" ng-src="{{productDetail.upload_photo}}">
                     </ion-slide>
 
-                </ion-slide-box>
+                </ion-slide-box> -->
+
+
+                <ion-slides options="" slider="" class="">
+                    <ion-slide-page ng-repeat="img in imgList track by $index" class="">
+                        <img ng-src="{{img}}" class="">
+                    </ion-slide-page>
+                </ion-slides>
+
+
             </div>
         </div>
+
+       
         <div class="product_top_desc">
             <div class="row">
                 <div class="col">
@@ -100,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
 
 
@@ -217,7 +228,7 @@
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button">ADD TO CART</a>
+            <a id="cart" class="button" ng-click="addtoCart(productDetail.upload_name)">ADD TO CART</a>
             <a id="buynow" class="button">BUY NOW</a>
         </div>
         <!--Footer End here -->
