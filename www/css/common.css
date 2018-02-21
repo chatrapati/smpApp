@@ -469,3 +469,6 @@ th {
 .item-input {
     padding: 5px 0 5px 5px !important;
 }
+#border_none{
+    border:none !important;
+}
