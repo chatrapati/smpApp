@@ -971,9 +971,7 @@ div.footer-button a.button.button-full {
     margin-left: 5%;
 }
 .rating .ratepercentage{
-    left: 12%;
-    padding-top: 11px;
-    position: absolute;
+    padding-left: 20%;
     font-size: 30px;
     color: #0a9dc7;
     font-weight: 500;

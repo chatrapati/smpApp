@@ -84,8 +84,7 @@
                     </div>
                 </div>
                 <div class="rating">
-                        <span class="ratepercentage">4/5</span>
-                        <ionic-ratings style="float:right;" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
+                        <span class="ratepercentage">{{productDetail.avgrating}}/5</span>
                 </div>
                 <div  ng-repeat="review in productDetailedReview">
                    
