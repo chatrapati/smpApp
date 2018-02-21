@@ -288,6 +288,10 @@ th, td {
     padding-left: 20%;
     padding-right: 20%;
 }
+.welcome-slide2-txt {
+    padding-left: 5%;
+    padding-right: 5%;
+}
 .swiper-pagination-bullet-active {
     opacity: 1;
     background: #0487a1 !important;
