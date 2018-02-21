@@ -84,24 +84,34 @@
                     </div>
                 </div>
                 <div class="rating">
-                        <span class="ratepercentage">{{productDetail.avgrating}}/5</span>
+                    <div class="row">
+                        <div class="text-center">
+                            <div>
+                                <span class="ratepercentage">{{productDetail.avgrating}}/5</span>
+                            </div>
+                            <div id="rating" ng-repeat="n in [] | range:5" style="float:left;">
+
+                                <div ng-if="n<productDetail.avgrating">
+                                    <i class="fa fa-star" aria-hidden="true" style="padding-right:5px;font-size:15px;color:#efb30b;"></i>
+                                </div>
+
+                                <div ng-if="n>=productDetail.avgrating">
+                                    <i class="fa fa-star-o" aria-hidden="true" style="padding-right:5px;font-size:15px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+
+
                 </div>
-                <div  ng-repeat="review in productDetailedReview">
-                   
-                    <!-- <div id="rating" ng-repeat="n in [] | range:5" style="float:left;">
 
-                        <div ng-if="n<review.rating">
-                            <i class="fa fa-star" aria-hidden="true" style="padding-right:5px;font-size:15px;color:#efb30b;"></i>
-                        </div>
+                <br>
 
-                        <div ng-if="n>=review.rating">
-                            <i class="fa fa-star-o" aria-hidden="true" style="padding-right:5px;font-size:15px;"></i>
-                        </div>
-                    </div> -->
+                <div ng-repeat="reviews in prdouctReviewInfo|limitTo:3">
 
-
-
-                    <div  class="padding-left5">
+                    <div class="padding-left5" ng-repeat="review in reviews.data |limitTo:2">
                         <span class="review-rated">{{review.rating}}
                             <i class="">
                                 <i class="ion-android-star-outline"></i>
@@ -109,12 +119,12 @@
                         <span class="padding-left2">{{review.review}} Review by {{review.user}} </span>
                         <p>{{review.rating_comments}}</p>
                         <p>Posted On
-                            <span>{{review.created_date}}</span>
+                            <span>{{review.created_date | date:'medium'}}</span>
                             <p>
-
-
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col">
                         <div class="highlits" ng-click="review=!review" id="product-icon">

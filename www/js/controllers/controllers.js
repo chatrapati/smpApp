@@ -234,9 +234,9 @@ angular.module('shopMyTools.controllers', [])
             } else if (page == 'chngadd') {
                 $state.go('app.home');
             } else if (page == 'policy') {
-                $state.go('app.home');
+                window.open('http://toolsomg.com/returnpolicy.html#!/','_blank'); 
             } else if (page == 'aboutus') {
-                $state.go('app.home');
+                window.open('http://toolsomg.com/aboutus.html#!/','_blank'); 
             } else if (page == 'faq') {
                 $state.go('app.home');
             } else if (page == 'logout') {

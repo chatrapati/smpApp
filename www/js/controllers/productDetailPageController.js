@@ -17,50 +17,25 @@ angular.module('shopMyTools.productDetailPageController', [])
                     $scope.productDetailPrice = data.data.price_info;
                     $scope.ProductSpecification = data.data.attribute_info;
                     $scope.productDetailedReview = data.data.product_Reviews;
+                    $scope.prdouctReviewInfo = data.data.Review_info;
                     $scope.images = data.data.Product.extraimages;
 
-                    for (i = 0; i < $scope.productDetailedReview.length; i++) {
-                        $scope.ratingsList.push($scope.productDetailedReview[i].rating)
-                    }
-
+                 
 
                     for (var i = 0; i <= $scope.images.length; i++) {
                         if ($scope.images[i] != '' && $scope.images[i] != undefined) {
                             $rootScope.imgList.push($scope.images[i]);
                         }
-
-                        //  $scope.imagess = $scope.imgList;
-
                         $scope.imgList.push($scope.productDetail.upload_photo);
                     }
+
                     $ionicLoading.hide();
-                    //   $scope.imagess = $rootScope.imgList;
 
 
                     $scope.relatedproducts = data.data.Related_Products;
                     $scope.upsellproducts = data.data.Upsell_Products;
 
-                    $scope.range = function(n) {
-                        return new Array(n);
-                    };
-
-                    $scope.givenRatingsObject = {
-                        iconOn: 'ion-ios-star',    //Optional
-                        iconOff: 'ion-ios-star-outline',   //Optional
-                        iconOnColor: 'rgb(200, 200, 100)',  //Optional
-                        iconOffColor: 'rgb(200, 100, 100)',    //Optional
-                        rating: $scope.ratingsList, //Optional
-                        minRating: 0,    //Optional
-                        readOnly: true, //Optional
-                        // callback: function (rating, index) {    //Mandatory
-                        //     $scope.ratingsCallback(rating, index);
-                        // }
-                    };
-
-                    
-  
-
-
+                  
                 }
                 else {
                     //alert('');
@@ -131,33 +106,33 @@ angular.module('shopMyTools.productDetailPageController', [])
             //     if (data.data.status == 'success') {
             //         $rootScope.cartItemsList = data.data.item_list;
             //         $rootScope.grand_total = data.data.grand_total;
-                    if ($rootScope.cartItemsList.length > 0) {
-                        $scope.productDataList = $rootScope.cartItemsList;
-                    }
-                    $scope.productDataList.push({ "productdescription": productName, "qty": "1" })
-                    $rootScope.CartItemsCount =  $scope.productDataList.length;
-                    categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
-                        window.localStorage['orderId'] = data.data.orderid;
-                        $ionicLoading.hide();
-                        if (data.data.status == 'item added to cart') {
-                            $ionicPopup.alert({
-                                template: 'Added to Cart Successfully!',
-                                title: 'Success!'
-                            });
-                        } else if (data.data.status == 'item added to cart..') {
-                            $ionicPopup.alert({
-                                template: 'Added to Cart Successfully!',
-                                title: 'Success!'
-                            });
-                        }
-                        else if (data.data.status == 'out off stock') {
-                            $ionicPopup.alert({
-                                template: 'Out Off Stock!',
-                                title: 'Sorry!'
-                            });
-                        }
+            if ($rootScope.cartItemsList.length > 0) {
+                $scope.productDataList = $rootScope.cartItemsList;
+            }
+            $scope.productDataList.push({ "productdescription": productName, "qty": "1" })
+            $rootScope.CartItemsCount = $scope.productDataList.length;
+            categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
+                window.localStorage['orderId'] = data.data.orderid;
+                $ionicLoading.hide();
+                if (data.data.status == 'item added to cart') {
+                    $ionicPopup.alert({
+                        template: 'Added to Cart Successfully!',
+                        title: 'Success!'
+                    });
+                } else if (data.data.status == 'item added to cart..') {
+                    $ionicPopup.alert({
+                        template: 'Added to Cart Successfully!',
+                        title: 'Success!'
                     });
                 }
+                else if (data.data.status == 'out off stock') {
+                    $ionicPopup.alert({
+                        template: 'Out Off Stock!',
+                        title: 'Sorry!'
+                    });
+                }
+            });
+        }
 
         //     })
 
