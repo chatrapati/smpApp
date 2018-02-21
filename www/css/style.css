@@ -1216,4 +1216,9 @@ p.ph_no{
     max-width: 50%;
     max-height: 100%;
 }
+#buynow.activated{
+    background: #0487a1;
+    border: 1px solid #0487a1;
+    color: #fff;
+}
  /* 21-02-2018 styles end here */
