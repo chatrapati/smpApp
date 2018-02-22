@@ -46,7 +46,7 @@
             </div>
             <div class="remeber_forgetpass">
                 <span class="remember_me">
-                    <input type="checkbox">
+                    <input type="checkbox" ng-model="loginData.checked" ng-change="getLoginCredentials(loginData.checked)">
                     <span id="check_text">Remember me</span>
                 </span>
                 <!--<ion-checkbox id="checkbox_icon" ng-model="filter.red">Remember me</ion-checkbox>>-->

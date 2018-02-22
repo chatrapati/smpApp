@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController', 'shopMyTools.homeController', 'shopMyTools.categoryPageController', 'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
-  'shopMyTools.services', 'shopMyTools.dashboardServices', 'shopMyTools.homeService', 'shopMyTools.categoryService', 'shopMyTools.productDetailPageService', 'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective', '720kb.tooltips','ionic-ratings'])
+  'shopMyTools.services', 'shopMyTools.dashboardServices', 'shopMyTools.homeService', 'shopMyTools.categoryService', 'shopMyTools.productDetailPageService', 'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective', '720kb.tooltips', 'ionic-ratings'])
 
   .run(function ($ionicPlatform, $state) {
     $ionicPlatform.ready(function () {
@@ -178,11 +178,20 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       cache: false,
       templateUrl: 'templates/search.html',
       controller: 'searchController'
-   });
+   })
       
-      
-
-
+      .state('payu', {
+        url: '/payu',
+        cache: false,
+        templateUrl: 'templates/payu.html',
+        controller: 'ckeckoutCntrl'
+      })
+      .state('editUserProfile', {
+        url: '/editUserProfile',
+        cache: false,
+        templateUrl: 'templates/editUserProfile.html',
+        controller: 'editProfileCntrl'
+      });
 
 
 

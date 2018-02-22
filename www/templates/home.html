@@ -7,10 +7,10 @@
 				<ul class="list" ng-if="searchedMoreProducts.length!=0">
 					<li class="item" ng-repeat="product in searchedMoreProducts | limitTo : 5" ng-click="getProductDetails(product)">
 						{{product.upload_name}}
-						
+
 					</li>
-					<span ng-click="getSearchtDetails(searchKey)"  class="search-view-more">view more</span>
-					
+					<span ng-click="getSearchtDetails(searchKey)" class="search-view-more">view more</span>
+
 					<li class="item">
 						<b>Recommended</b>
 					</li>
@@ -20,180 +20,191 @@
 
 				</ul>
 
+				<div ng-if="searchDiv">
+					<ul class="list">
+						<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
+							{{product.upload_name}}
+						</li>
+						<li class="item" ng-if="searchedMoreProducts.length!=0">
+							<b>Recommended</b>
+						</li>
+						<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
+							{{recommended.upload_category}}
+						</li>
 
-			</div>
+					</ul>
 
 
-
-			<div class="row " ng-if="searchedMoreProducts.length==0">
-				<div class="col no_records">
-					<span>No Search Results Found !!!</span>
-				</div>
-			</div>
-		</div>
-
-		<div>
-			<!--   Banner Slider part Start here    -->
-			<div class="row">
-				<div class="col">
-					<ion-slide-box class="mainSlider" auto-play="true" does-continue="true">
-						<ion-slide class="mainSlides" ng-repeat="img in firstCarouselImages">
-							<img width="100%" ng-src="{{img}}">
-						</ion-slide>
-					</ion-slide-box>
-				</div>
-			</div>
-			<!--   Banner Slider part end here    -->
-
-			<!--   Categories part start here    -->
-			<div class="collections_part">
-				<div class="row">
-					<div class="col block_head categories">
-						<h3>Categories</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoCategoryPage(collection.name,'category')">
-						<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
-						<div class="collections_text">
-							<span>{{collection.name}}</span>
+					<div class="row " ng-if="searchedMoreProducts.length==0">
+						<div class="col no_records">
+							<span>No Search Results Found !!!</span>
 						</div>
 					</div>
+
 				</div>
-				<div class="row" ng-if="category">
-					<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoCategoryPage(collection.name, 'category')">
-						<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
-						<div class="collections_text">
-							<span>{{collection.name}}</span>
+
+				<div>
+					<!--   Banner Slider part Start here    -->
+					<div class="row">
+						<div class="col">
+							<ion-slide-box class="mainSlider" auto-play="true" does-continue="true">
+								<ion-slide class="mainSlides" ng-repeat="img in firstCarouselImages">
+									<img width="100%" ng-src="{{img}}">
+								</ion-slide>
+							</ion-slide-box>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col" style="text-align:right;margin-right: 10px;">
-						<label class="viewmore_less" ng-click="category=!category">
-							<span ng-if="!category">View More</span>
-							<span ng-if="category">View Less</span>
-						</label>
+					<!--   Banner Slider part end here    -->
+
+					<!--   Categories part start here    -->
+					<div class="collections_part">
+						<div class="row">
+							<div class="col block_head categories">
+								<h3>Categories</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo:4" ng-click="gotoCategoryPage(collection.name,'category')">
+								<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
+								<div class="collections_text">
+									<span>{{collection.name}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="row" ng-if="category">
+							<div class="col col-25 collectons" ng-repeat="collection in collections|limitTo : 4 : 4" ng-click="gotoCategoryPage(collection.name, 'category')">
+								<img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
+								<div class="collections_text">
+									<span>{{collection.name}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col" style="text-align:right;margin-right: 10px;">
+								<label class="viewmore_less" ng-click="category=!category">
+									<span ng-if="!category">View More</span>
+									<span ng-if="category">View Less</span>
+								</label>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<!--   Categories part end here    -->
+					<!--   Categories part end here    -->
 
-			<!--   Top Brands start here  -->
-			<div class="topBrands_part">
-				<div class="block_head top_brands">
-					<h3>Top Brands</h3>
-				</div>
-				<div class="col home-slider slider_brands">
-					<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt" does-continue="true">
-						<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider" ng-click="gotoCategoryPage(brand.brandname,'brand')">
-							<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
-						</ion-slide-page>
-					</ion-slides>
-				</div>
-			</div>
-			<!--   Top Brands End here    -->
+					<!--   Top Brands start here  -->
+					<div class="topBrands_part">
+						<div class="block_head top_brands">
+							<h3>Top Brands</h3>
+						</div>
+						<div class="col home-slider slider_brands">
+							<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt" does-continue="true">
+								<ion-slide-page ng-repeat="brand in topbrands" class="brands_slider" ng-click="gotoCategoryPage(brand.brandname,'brand')">
+									<img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
+								</ion-slide-page>
+							</ion-slides>
+						</div>
+					</div>
+					<!--   Top Brands End here    -->
 
-			<!--Best Offers start here -->
-			<div class="offers_part">
-				<div class="block_head ofers">
-					<h3>Best Offers</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col home-slider">
-					<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
-						<ion-slide-page ng-repeat="product in offersArray">
-							<div class="card111">
-								<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
-								<!-- <div class="deal_icons">
+					<!--Best Offers start here -->
+					<div class="offers_part">
+						<div class="block_head ofers">
+							<h3>Best Offers</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col home-slider">
+							<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
+								<ion-slide-page ng-repeat="product in offersArray">
+									<div class="card111">
+										<img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}">
+										<!-- <div class="deal_icons">
 								<span class="deal">Deal</span>
 							</div> -->
-								<div class="content_part">
-									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
-										<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
+										<div class="content_part">
+											<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
+												<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
+											</div>
+											<div class="product_price" ng-repeat="price in product.prices">
+												<span class="offer_price">&#8377;{{price.offer_price | number}}</span>
+												<span class="real_price">&#8377;{{price.enduser_price | number}}</span>
+												<span class="offer_percentage">{{price.percentage}}%</span>
+											</div>
+											<p class="excl_gst">(Excluding-GST)</p>
+											<div class="cart_icons">
+												<span ng-click="addtoCart(product)">
+													<i class="icon ion-android-cart"></i>
+												</span>
+												<span ng-click="addtoWishList(product)">
+													<i class="icon ion-heart"></i>
+												</span>
+											</div>
+										</div>
 									</div>
-									<div class="product_price" ng-repeat="price in product.prices">
-										<span class="offer_price">&#8377;{{price.offer_price | number}}</span>
-										<span class="real_price">&#8377;{{price.enduser_price | number}}</span>
-										<span class="offer_percentage">{{price.percentage}}%</span>
+								</ion-slide-page>
+							</ion-slides>
+						</div>
+					</div>
+
+					<!--Best Offers End here -->
+
+					<!--   Emerging Brands start here  -->
+					<div class="emergingBrands_part">
+						<div class="block_head emerg_brands">
+							<h3>Emerging Brands</h3>
+						</div>
+						<div class="col home-slider slider_brands">
+							<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
+								<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider" ng-click="gotoCategoryPage(ebrand.brandname,'brand')">
+									<img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
+								</ion-slide-page>
+							</ion-slides>
+						</div>
+					</div>
+					<!--   Emerging Brands End here    -->
+
+
+					<!-- New Arraivals-->
+
+					<div class="offers_part">
+						<div class="block_head ofers">
+							<h3>New Arrivals</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col home-slider">
+							<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
+								<ion-slide-page ng-repeat="newarrival in newarrivalsArray">
+									<div class="card111">
+										<img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}">
+										<div class="content_part">
+											<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(newarrival)">
+												<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
+											</div>
+											<div class="product_price" ng-repeat="price in newarrival.prices">
+												<span class="offer_price">&#8377;{{price.offer_price |number}}</span>
+												<span class="real_price">&#8377;{{price.enduser_price | number}}</span>
+												<span class="offer_percentage">{{price.percentage}}%</span>
+											</div>
+											<p class="excl_gst">(Excluding-GST)</p>
+											<div class="cart_icons">
+												<span ng-click="addtoCart(newarrival)">
+													<i class="icon ion-android-cart"></i>
+												</span>
+												<span ng-click="addtoWishList(newarrival)">
+													<i class="icon ion-heart"></i>
+												</span>
+											</div>
+										</div>
 									</div>
-									<p class="excl_gst">(Excluding-GST)</p>
-									<div class="cart_icons">
-										<span ng-click="addtoCart(product)">
-											<i class="icon ion-android-cart"></i>
-										</span>
-										<span ng-click="addtoWishList(product)">
-											<i class="icon ion-heart"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</ion-slide-page>
-					</ion-slides>
+								</ion-slide-page>
+							</ion-slides>
+						</div>
+					</div>
+
+					<!-- New Arraivals End here-->
+
+
 				</div>
-			</div>
-
-			<!--Best Offers End here -->
-
-			<!--   Emerging Brands start here  -->
-			<div class="emergingBrands_part">
-				<div class="block_head emerg_brands">
-					<h3>Emerging Brands</h3>
-				</div>
-				<div class="col home-slider slider_brands">
-					<ion-slides options="galleryOptions" slider="gallerySlider" class="homeSmt">
-						<ion-slide-page ng-repeat="ebrand in emergingbrands" class="brands_slider" ng-click="gotoCategoryPage(ebrand.brandname,'brand')">
-							<img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
-						</ion-slide-page>
-					</ion-slides>
-				</div>
-			</div>
-			<!--   Emerging Brands End here    -->
-
-
-			<!-- New Arraivals-->
-
-			<div class="offers_part">
-				<div class="block_head ofers">
-					<h3>New Arrivals</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col home-slider">
-					<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
-						<ion-slide-page ng-repeat="newarrival in newarrivalsArray">
-							<div class="card111">
-								<img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}">
-								<div class="content_part">
-									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(newarrival)">
-										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
-									</div>
-									<div class="product_price" ng-repeat="price in newarrival.prices">
-										<span class="offer_price">&#8377;{{price.offer_price |number}}</span>
-										<span class="real_price">&#8377;{{price.enduser_price | number}}</span>
-										<span class="offer_percentage">{{price.percentage}}%</span>
-									</div>
-									<p class="excl_gst">(Excluding-GST)</p>
-									<div class="cart_icons">
-										<span ng-click="addtoCart(newarrival)">
-											<i class="icon ion-android-cart"></i>
-										</span>
-										<span ng-click="addtoWishList(newarrival)">
-											<i class="icon ion-heart"></i>
-										</span>
-									</div>
-								</div>
-							</div>
-						</ion-slide-page>
-					</ion-slides>
-				</div>
-			</div>
-
-			<!-- New Arraivals End here-->
-
-
-		</div>
 
 	</ion-content>
 	<!--Footer Start here -->

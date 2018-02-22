@@ -2,6 +2,8 @@ angular.module('shopMyTools.homeController', [])
 
     .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService,searchProductsMoreService) {
 
+        $rootScope.searchDiv = false;
+
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 
