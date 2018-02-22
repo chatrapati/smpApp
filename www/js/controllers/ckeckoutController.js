@@ -214,7 +214,9 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 "total_items": JSON.stringify($scope.totalquantity),
 
-                "user_id": window.localStorage['user_id']
+                "user_id": window.localStorage['user_id'],
+
+                "user_type" : "mobile"
             }
 
             checkoutService.saveOrderMethod($scope.finalCheckoutData).then(function (data) {
