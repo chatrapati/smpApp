@@ -1,5 +1,16 @@
 <ion-view>
-
+        <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+                <ion-nav-buttons side="left">
+                    <span class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></span>
+                </ion-nav-buttons>
+                <ion-nav-title>
+                    <div class="h1 title">{{categoryName}}</div>
+                </ion-nav-title>
+                <ion-nav-buttons side="right">
+                    <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-content>
  <div class="details_container packerdivtopheight">
 
         <div class="submit_right">
@@ -10,7 +21,7 @@
 
               <div class="addporperty_from" align="middle">
                    <!-- <div class="edit_information_page_block"  style="width:60%;margin-top:10px;"> -->
-                 <form id="msform" ng-submit="payuMoneyFunc()" action="https://secure.payu.in/_payment"  method="post" name="payuForm">
+                 <form id="msform" ng-submit="payuMoneyFunc()"   method="post" name="payuForm">
 
                    <fieldset>
 
@@ -20,20 +31,20 @@
 
                                <input type="hidden" name="txnid" ng-model="txnId" value="{{txnId}}"  />
 
-                               <input type="hidden" id="amount" name="amount"  ng-model="amount" value="{{amount}}" placeholder="Amount" />
+                               <input type="text" id="amount" name="amount"  ng-model="amount" value="{{amount}}" placeholder="Amount" />
 
                                
 
-                               <input type="hidden" id="firstname" name="firstname" value="{{firstname}}"  ng-model="firstname" placeholder="Your Name" required/>
+                               <input type="text" id="firstname" name="firstname" value="{{firstname}}"  ng-model="firstname" placeholder="Your Name" required/>
 
                                
 
-                               <input type="hidden" name="email" ng-model="email" value="{{email}}"  placeholder="Email id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                               <input type="email" name="email" ng-model="email" value="{{email}}"  placeholder="Email id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
 
                                />
                            
 
-                               <input type="hidden" id="phone"  value="{{phone}}" ng-minlength="10" ng-maxlength="10" name="phone" ng-model="phone" placeholder="Phone Number"
+                               <input type="text" id="phone"  value="{{phone}}" ng-minlength="10" ng-maxlength="10" name="phone" ng-model="phone" placeholder="Phone Number"
 
                                 required pattern="[789][0-9]{9}" />
 
@@ -41,7 +52,7 @@
 
                                <p style="color:red" ng-show="onSubmit && (payuForm.phone.$error.pattern || payuForm.phone.$error.minlength || payuForm.phone.$error.maxlength)">Invalid mobile number.</p>
 
-                               <input type="hidden" id="productinfo" name="productinfo" ng-model="productinfo" ng-init="productinfo = 'propertyPost'" value="propertyPost"
+                               <input type="text" id="productinfo" name="productinfo" ng-model="productinfo" ng-init="productinfo = 'propertyPost'" value="propertyPost"
 
                                />
 
@@ -82,6 +93,7 @@
 
 
      </div>
+     </ion-content>
     </ion-view>
 
 

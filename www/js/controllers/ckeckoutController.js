@@ -1,6 +1,8 @@
 angular.module('shopMyTools.ckeckoutController', [])
 
-    .controller('ckeckoutCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, $window, $ionicModal, checkoutService, viewCartItemsService) {
+    .controller('ckeckoutCntrl', 
+    function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading,
+         $window, $ionicModal, checkoutService, viewCartItemsService,getpayuDetailsService,$cordovaInAppBrowser) {
 
         $scope.showshippingDiv = true;
         $scope.showBillingAddressDiv = false;
@@ -10,6 +12,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
         $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
         $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
+        $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
 
         //  $scope.customermobile = window.localStorage['mobile'];
@@ -169,6 +172,51 @@ angular.module('shopMyTools.ckeckoutController', [])
 
         }
 
+        $scope.getPayuDetails = function () {
+
+            getpayuDetailsService.getpayuDetailsMethod().then(function (data) {
+                if (data.data.status == 'payu data') {
+
+                    $scope.payuData = data.data.data;
+
+                    $scope.merchant_key = $scope.payuData.merchant_id;
+
+                    $scope.salt_key = $scope.payuData.salt_key;
+
+                }
+
+            })
+
+        }
+
+        $scope.getPayuDetails();
+
+        $scope.firstname = $scope.userInfo.firstname;
+        $scope.email = $scope.userInfo.email;
+        $scope.phone = window.localStorage['mobile'];
+        $rootScope.amount = $rootScope.grand_total;
+       
+
+        $scope.payuMoneyFunc = function ($location, $sce) {
+
+            $scope.txnId = window.localStorage['finalOrderId'];
+           // alert($scope.txnId)
+
+            $scope.string = $scope.merchant_key + '|' + $scope.txnId + '|' + $rootScope.amount + '|' + 'productinfo' + '|' + $scope.firstname + '|' + $scope.email + '|||||||||||' + $scope.salt_key;
+
+            $scope.encrypttext = sha512($scope.string);
+
+            $scope.hash = $scope.encrypttext;
+
+            console.log($scope.hash)
+
+            // cordova.InAppBrowser.open('https://secure.payu.in/_payment?merchant_key='+$scope.merchant_key+'&txnId='+$scope.txnId+'&amount='+$rootScope.amount+'&productinfo=productinfo&firstname='+$scope.firstname+'&email='+$scope.email+'&salt_key='+$scope.salt_key)
+            window.open('https://secure.payu.in/_payment?merchant_key='+$scope.merchant_key+'&txnId='+$scope.txnId+'&amount='+$rootScope.amount+'&productinfo=productinfo&firstname='+$scope.firstname+'&email='+$scope.email+'&salt_key='+$scope.salt_key+'&phone='+$scope.phone+'&hash='+$scope.hash)
+
+
+
+        }
+
 
         $scope.goback = function () {
             //  $state.go('app.home');
@@ -199,9 +247,9 @@ angular.module('shopMyTools.ckeckoutController', [])
         $scope.totalquantity = $rootScope.cartItemsList.length;
         $scope.checkoutProcess = function () {
 
-            if($scope.paymentType == 'online'){
-                $state.go('payu');
-            }
+            // if($scope.paymentType == 'online'){
+            //    $state.go('payu');
+            // }
 
 
             $scope.finalCheckoutData = {
@@ -244,10 +292,7 @@ angular.module('shopMyTools.ckeckoutController', [])
                     $scope.finalOrderId = data.data.orderid;
                     window.localStorage['finalOrderId'] = $scope.finalOrderId;
 
-                    $ionicPopup.alert({
-                        template: $scope.finalOrderId,
-                        title: 'Sucess!'
-                    });
+                   
                     $scope.submitPayment();
                 }
 
@@ -256,7 +301,13 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.submitPayment = function () {
                 checkoutService.submitPayment(window.localStorage['finalOrderId'], window.localStorage['user_id']).then(function (data) {
                     if (data.data.status == "status changed") {
+                        if($scope.paymentType == 'cashondelivery'){
+                            $ionicPopup.alert({
+                                template: window.localStorage['finalOrderId'],
+                                title: 'Sucess!'
+                            });
                         $state.go('app.home');
+                        }
                     }
                 })
             }

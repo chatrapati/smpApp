@@ -72,3 +72,25 @@ angular.module('shopMyTools.ckeckoutSerivce', [])
 
     })
 
+    .service('getpayuDetailsService', function ($q, $http, LOGIN_URL) {
+        this.getpayuDetailsMethod = function () {
+            var deferred = $q.defer();
+    
+            $http({
+                method: 'GET',
+                url: LOGIN_URL + '/payudata',
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'payu_secret_key': '4r5s@W' }
+    
+            }).then(function success(data) {
+                deferred.resolve(data);
+    
+            }, function error(data) {
+                deferred.reject(data);
+    
+            });
+    
+            return deferred.promise;
+        };
+    
+    })
+
