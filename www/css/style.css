@@ -1226,9 +1226,8 @@ p.ph_no{
 
  .search-view-more{
     font-size: 17px;
-    color: #0a9dc7;
+    color: #fff;
     float: right;
-    padding-right: 10%;
     text-decoration: underline;
  }
  .overlay, 

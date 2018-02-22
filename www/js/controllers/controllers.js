@@ -346,7 +346,7 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window) {
 
          $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
@@ -361,8 +361,8 @@ angular.module('shopMyTools.controllers', [])
          $scope.getSearchtDetailsList();
 
         $scope.goback = function () {
-            $state.go('app.home');
-            //  $window.history.go(-1);
+          //  $state.go('app.home');
+              $window.history.go(-1);
         }
     })
 
