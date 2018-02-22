@@ -72,18 +72,18 @@
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('myorders')">
           <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders
-          <span class="w3-badge">{{ordersCount}}</span>
+          <span nf-if="ordersCount > 0" class="w3-badge">{{ordersCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('profile')">
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Profile
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('wishlist')">
           <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List
-          <span class="w3-badge">{{wishListItemsCount}}</span>
+          <span ng-if="wishListItemsCount>0" class="w3-badge">{{wishListItemsCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('cartPage')">
           <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart
-          <span class="w3-badge">{{CartItemsCount}}</span>
+          <span ng-if="CartItemsCount > 0" class="w3-badge">{{CartItemsCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('chngpaswd')">
           <i class="icon ion-ios-unlocked-outline placeholder-icon"></i> Change Password

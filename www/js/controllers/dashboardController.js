@@ -303,12 +303,28 @@ angular.module('shopMyTools.dashboardController', [])
 
         $scope.getCartItemsList();
 
+        // var count = 0;
+        $scope.increment = function (obj) {
+            $scope.qty = JSON.parse(obj.qty)
+            $scope.qty += 1;
+            obj.qty = JSON.stringify($scope.qty);
+            $scope.addtocartDetails(obj);
+        }
+
+        $scope.decrement = function (obj) {
+
+            if (obj.qty > 1) {
+                $scope.qty = JSON.parse(obj.qty)
+                $scope.qty -= 1;
+                obj.qty = JSON.stringify($scope.qty);
+                $scope.addtocartDetails(obj);
+            }
 
 
+
+        }
 
         $scope.addtocartDetails = function (cartObj) {
-
-
             if (cartObj.qty >= 1) {
                 $ionicLoading.show({
                     template: 'Loading...'

@@ -1,6 +1,6 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, allOffersService, allNewArrivalsService, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, ordersCountService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService) {
 
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
@@ -16,7 +16,7 @@ angular.module('shopMyTools.homeController', [])
                     $scope.deals = data.data.deals;
                     $scope.emergingbrands = data.data.emergingbrands;
                     $scope.collections = data.data.collections;
-
+                    $scope.getOffers("");
                 } else {
 
                 }
@@ -31,7 +31,7 @@ angular.module('shopMyTools.homeController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            allOffersService.allOffersMethod(categoryObj).then(function (data) {
+            homePageService.allOffersMethod(categoryObj).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     $scope.Offers = data.data.offerscats;
@@ -46,12 +46,12 @@ angular.module('shopMyTools.homeController', [])
                     }
                 }
             });
-
+            $scope.getNewArrivals("");
         }
 
 
 
-        $scope.getOffers("");
+        // $scope.getOffers("");
 
         $scope.gotoCategoryPage = function (product, type) {
             $rootScope.categoryName = product;
@@ -69,14 +69,6 @@ angular.module('shopMyTools.homeController', [])
             $state.go("productDetail_page")
         }
 
-        // $scope.getCategoryBasedOnBrands = function (brandObj) {
-        //     alert(brandObj.brandname);
-        //     window.localStorage['categoryName'] = "";
-        //     localStorage.setItem('brandName', brandObj.brandname)
-        //     // window.localStorage['brandName'] = brandObj.brandname;
-        //     $state.go('categoryCartPage');
-
-        // }
 
         //swiper
         $scope.galleryOptions = {
@@ -108,7 +100,7 @@ angular.module('shopMyTools.homeController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            allNewArrivalsService.allNewArrivalsMethod(categoryObj).then(function (data) {
+            homePageService.allNewArrivalsMethod(categoryObj).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     $scope.newarrivals = data.data.newarrivalcats;
@@ -129,7 +121,7 @@ angular.module('shopMyTools.homeController', [])
             })
         }
 
-        $scope.getNewArrivals("")
+        //  $scope.getNewArrivals("")
 
 
         //rating
@@ -231,18 +223,14 @@ angular.module('shopMyTools.homeController', [])
                 template: 'Loading...'
             });
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
-            ordersCountService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
+            homePageService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     // $scope.ordersCount = data.data;
                     $rootScope.wishListItemsCount = data.data.wishlist_items;
                     $rootScope.CartItemsCount = data.data.add_to_cart;
-                    // $rootScope.invoiceCountItems = data.data.invoice_count;
                     $rootScope.ordersCount = data.data.orders_count;
-                    //  $rootScope.pendingOrderCountItems = data.data.pending_order_count;
                     $rootScope.customerData = data.data.cust_details
-                    //alert(JSON.stringify($rootScope.customerData))
-                    $rootScope.customerData.mobile = $rootScope.customerData.mobile.slice(2);
                     $rootScope.couponCode = data.data.cupon_code;
                     if (data.data.reward_points == null) {
                         $rootScope.rewardPoints = 0;
@@ -258,7 +246,7 @@ angular.module('shopMyTools.homeController', [])
                 }
             })
         };
-        $scope.getOrdersCount();
+          $scope.getOrdersCount();
 
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
@@ -272,6 +260,7 @@ angular.module('shopMyTools.homeController', [])
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 }
 
             })

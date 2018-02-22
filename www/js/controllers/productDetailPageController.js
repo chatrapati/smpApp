@@ -1,6 +1,6 @@
 angular.module('shopMyTools.productDetailPageController', [])
 
-    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service,  $ionicPopup) {
+    .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service, $ionicPopup) {
         $scope.getProductDetails = function () {
             $scope.ratingsList = [];
             $rootScope.imgList = [];
@@ -142,10 +142,33 @@ angular.module('shopMyTools.productDetailPageController', [])
 
         // }
 
+        $scope.addtoWishList = function (productName) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            categoryService.addToWishListMethod(window.localStorage['user_id'], productName).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'product saved successfully') {
+                    $ionicPopup.alert({
+                        template: 'Added to Wish List Successfully!!',
+                        title: 'Success!'
+                    });
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Sorry!'
+                    });
+                }
 
+            })
+        }
 
-        $rootScope.goback = function () {
+        $scope.goback = function () {
             $window.history.go(-1);
-            //$state.go('app.home');
+          //  $state.go('app.home');
+        }
+
+        $scope.gotoCartPage = function () {
+            $state.go('cart_page');
         }
     });
