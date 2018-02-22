@@ -1,6 +1,6 @@
 angular.module('shopMyTools.constants', [])
 
-.constant('SERVER_URL', 'http://192.168.20.68:800')
+// .constant('SERVER_URL', 'http://192.168.20.68:800')
 
 //.constant('LOGIN_URL',' http://192.168.20.69:9002')
 
@@ -17,7 +17,7 @@ angular.module('shopMyTools.constants', [])
 
 
 
-//.constant('SERVER_URL', 'http://157.119.108.141:80')
+.constant('SERVER_URL', 'http://157.119.108.141:80')
 
 .constant('SERVER_URL1','http://157.119.108.142:8002')
 

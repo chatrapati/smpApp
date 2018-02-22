@@ -106,11 +106,10 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.getLoginCredentials = function (checked) {
             if (checked == true) {
-                alert('in');
-                // $scope.loginData.username = window.localStorage['Password'];
-                // $scope.loginData.password = window.localStorage['email'];
+                $scope.loginData.username = window.localStorage['email'];
+                $scope.loginData.password = window.localStorage['Password'];
             } else {
-                alert('out');
+                $scope.loginData = {};
             }
 
         }
@@ -177,7 +176,10 @@ angular.module('shopMyTools.controllers', [])
                         $rootScope.user_id = data.data.user_id;
                         $rootScope.token = data.data.token;
                         $rootScope.myPopup.close();
-
+                        $ionicPopup.alert({
+                            template: 'Registered Successfully',
+                            title: 'Success!'
+                        });
                         $state.go('smtLogin');
                     } else {
 
@@ -252,7 +254,7 @@ angular.module('shopMyTools.controllers', [])
             } else if (page == 'myorders') {
                 $state.go('myorders');
             } else if (page == 'profile') {
-                $state.go('app.home');
+                $state.go('editUserProfile');
             } else if (page == 'wishlist') {
                 $state.go('whishlist_page');
             } else if (page == 'cartPage') {
@@ -333,4 +335,14 @@ angular.module('shopMyTools.controllers', [])
             //  $window.history.go(-1);
         }
 
+    })
+
+
+    .controller('editProfileCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading) {
+
+
+        $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+        $scope.editProfileData = {};
+        $scope.editProfileData = $scope.userInfo;
     })

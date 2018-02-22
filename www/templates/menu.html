@@ -31,7 +31,7 @@
         <button class="button button-icon icon ion-ios-search-strong" ng-click="search=!search"></button>
         <!-- <input type="text" class="form-control" ng-change="isTextChange()" ng-model="text" /> -->
         <button class="button button-icon icon ion-ios-cart"></button>
-        <ion-badge class="cart_badge">{{CartItemsCount}}</ion-badge>
+        <ion-badge ng-if="CartItemsCount>0" class="cart_badge">{{CartItemsCount}}</ion-badge>
       </ion-nav-buttons>
 
     </ion-nav-bar>
@@ -66,7 +66,7 @@
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('myorders')">
           <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders
-          <span nf-if="ordersCount > 0" class="w3-badge">{{ordersCount}}</span>
+          <span ng-if="ordersCount > 0" class="w3-badge">{{ordersCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('profile')">
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Profile
