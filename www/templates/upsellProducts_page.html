@@ -17,33 +17,6 @@
 
     <ion-content class="smt_background_image" style="padding:0;">
 
-        <!--  category body start here  -->
-        <!-- <div class="category_body">
-            <div class="category_dropdown rel_cat">
-                <div class="list" style="float:left;">
-                    <label> Show</label>
-                    <select ng-model="noOfItems" ng-change="getselectedNoProducts(noOfItems)">
-                        <option value="12" selected>12</option>
-                        <option value="24">24</option>
-                        <option value="36">36</option>
-                    </select>
-
-                </div>
-                <div class="list" style="float:right;">
-                    <label> Sort</label>
-                    <select ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
-                        <option selected value="popularty">Popularity</option>
-                        <option value="topselling">Topselling</option>
-                        <option value="namefilter">Name</option>
-                        <option value="price_low_high">Price:Low to High</option>
-                        <option value="price_high_low">Price:High to Low</option>
-                    </select>
-                </div>
-            </div>
-        </div> -->
-        <br/>
-      
-
         <div class="row"  ng-repeat="upsell in upsellproducts  | limitTo:6" ng-switch on="$index % 2">
                 <div class="col" ng-switch-when="0">
                     <div class="card111">

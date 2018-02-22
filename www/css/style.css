@@ -1222,3 +1222,17 @@ p.ph_no{
     color: #fff;
 }
  /* 21-02-2018 styles end here */
+
+
+ .overlay, 
+.content{
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.overlay{
+    z-index: 10;
+    background: white;
+}

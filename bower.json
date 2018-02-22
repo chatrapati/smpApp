@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "ionic-ratings": "^0.3.0",
-    "alasql": "^0.4.5"
+    "alasql": "^0.4.5",
+    "ionic-filter-bar": "^1.1.1"
   }
 }

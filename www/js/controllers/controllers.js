@@ -220,7 +220,7 @@ angular.module('shopMyTools.controllers', [])
     })
 
 
-    .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window) {
+    .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window, searchProductsService) {
         $scope.gotoRespectivePage = function (page) {
             if (page == 'home') {
                 $state.go('app.home');
@@ -257,6 +257,37 @@ angular.module('shopMyTools.controllers', [])
                     }
                 })
             }
+        }
+
+        $scope.search = false;
+
+        $scope.enableSearchbar = function(){
+            $scope.search = true;
+        }
+
+
+        //search bar
+        $scope.getSeachProducts = function (searchKey) {
+
+
+            if (searchKey.length >= 3) {
+
+                searchProductsService.searchProductsMoreMethod(searchKey).then(function (data) {
+                    //alert(JSON.stringify(data))
+                    if (data.data.status == 'success') {
+                        $scope.searchedMoreProducts = data.data.product_info;
+                        $rootScope.recommendedList = data.data.recommended;
+                    }
+
+                })
+
+                $rootScope.searchDiv = true;
+            } else {
+                $rootScope.searchDiv = false;
+            }
+
+
+
         }
 
 

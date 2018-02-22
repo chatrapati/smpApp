@@ -55,7 +55,6 @@ angular.module('shopMyTools.productDetailPageController', [])
                         template: 'Thanks for Review.... Your comment will be updated in 48 hours.',
                         title: 'Success!'
                     });
-                    // alert('Thanks for Review.... Your comment will be updated in 48 hours.');
 
 
                 } else {
