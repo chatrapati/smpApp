@@ -177,7 +177,7 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       url: '/search',
       cache: false,
       templateUrl: 'templates/search.html',
-      //controller: 'resetPasswordCntrl'
+      controller: 'searchController'
    });
       
       

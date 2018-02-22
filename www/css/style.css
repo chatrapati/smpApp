@@ -1224,15 +1224,10 @@ p.ph_no{
  /* 21-02-2018 styles end here */
 
 
- .overlay, 
-.content{
-    display:block;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.overlay{
-    z-index: 10;
-    background: white;
-}
+ .search-view-more{
+    font-size: 17px;
+    color: #0a9dc7;
+    float: right;
+    padding-right: 10%;
+    text-decoration: underline;
+ }

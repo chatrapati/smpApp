@@ -265,6 +265,7 @@ angular.module('shopMyTools.controllers', [])
             }
         }
 
+ //search bar
         $scope.search = false;
 
         $scope.enableSearchbar = function(){
@@ -272,13 +273,13 @@ angular.module('shopMyTools.controllers', [])
         }
 
 
-        //search bar
+       
         $scope.getSeachProducts = function (searchKey) {
-
+            $rootScope.searchKey = searchKey;
 
             if (searchKey.length >= 3) {
 
-                searchProductsService.searchProductsMoreMethod(searchKey).then(function (data) {
+                searchProductsService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
                     //alert(JSON.stringify(data))
                     if (data.data.status == 'success') {
                         $scope.searchedMoreProducts = data.data.product_info;
@@ -323,6 +324,27 @@ angular.module('shopMyTools.controllers', [])
                 })
             }
         }
+
+        $scope.goback = function () {
+            $state.go('app.home');
+            //  $window.history.go(-1);
+        }
+
+    })
+
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService) {
+
+         $scope.getSearchtDetailsList = function () {
+            searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
+                //alert(JSON.stringify(data))
+                if (data.data.status == 'success') {
+                    $scope.searchedMoreProducts = data.data.product_info;
+                }
+
+            })
+         }
+
+         $scope.getSearchtDetailsList();
 
         $scope.goback = function () {
             $state.go('app.home');

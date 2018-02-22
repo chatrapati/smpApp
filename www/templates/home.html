@@ -4,11 +4,14 @@
 
 		<div>
 			<div ng-if="searchDiv">
-				<ul class="list" >
-					<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
+				<ul class="list" ng-if="searchedMoreProducts.length!=0">
+					<li class="item" ng-repeat="product in searchedMoreProducts | limitTo : 5" ng-click="getProductDetails(product)">
 						{{product.upload_name}}
+						
 					</li>
-					<li class="item" ng-if="searchedMoreProducts.length!=0">
+					<span ng-click="getSearchtDetails(searchKey)"  class="search-view-more">view more</span>
+					
+					<li class="item">
 						<b>Recommended</b>
 					</li>
 					<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
