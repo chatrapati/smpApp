@@ -23,7 +23,7 @@
                         <img ng-src={{product.upload_photo}}  width="90%">
                         <div class="content_part">
                             <div class="product_name" id="tooltip_name">
-                                <a href="" >{{product.upload_name}}</a>
+                                <a href="" ng-click="getProductDetails(product)" >{{product.upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in product.prices">
                                 <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
@@ -32,10 +32,10 @@
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
                             <div class="cart_icons">
-                                <span>
+                                <span ng-click="addtoCart(product)">
                                     <i class="icon ion-android-cart"></i>
                                 </span>
-                                <span>
+                                <span ng-click="addtoWishList(product)">
                                     <i class="icon ion-heart"></i>
                                 </span>
                                 <!-- <span class="extraCshback">
@@ -51,7 +51,7 @@
                         <img ng-src={{searchedMoreProducts[$index+1].upload_photo}}  width="90%">
                         <div class="content_part">
                             <div class="product_name">
-                                <a href="">{{searchedMoreProducts[$index+1].upload_name}}</a>
+                                <a href="" ng-click="getProductDetails(searchedMoreProducts[$index+1])">{{searchedMoreProducts[$index+1].upload_name}}</a>
                             </div>
                             <div class="product_price" ng-repeat="price in searchedMoreProducts[$index+1].prices">
                                 <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
@@ -60,10 +60,10 @@
                             </div>
                             <p class="excl_gst">(Excluding-GST)</p>
                             <div class="cart_icons">
-                                <span>
+                                <span ng-click="addtoCart(product)">
                                     <i class="icon ion-android-cart"></i>
                                 </span>
-                                <span>
+                                <span ng-click="addtoWishList(product)">
                                     <i class="icon ion-heart"></i>
                                 </span>
                                 <!-- <span class="extraCshback">
