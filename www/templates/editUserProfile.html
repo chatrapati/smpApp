@@ -1,0 +1,66 @@
+<ion-view>
+    <!-- header part start here -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Profile</div>
+        </ion-nav-title>
+    </ion-nav-bar>
+    <!-- header part end here -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+
+        <div class="">
+            <div class="row">
+                <div class="col">
+                    <form name="">
+                        <div class="list edit_labls">
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">First Name</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="new_password" readonly ng-model="editProfileData.firstname">
+
+                                </div>
+
+                            </label>
+
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Last Name</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="new_password" readonly ng-model="editProfileData.lastname">
+
+                                </div>
+
+                            </label>
+
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Email</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="confirm_password" readonly ng-model="editProfileData.email">
+
+                                </div>
+
+                            </label>
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Mobile</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="confirm_password" required ng-model="editProfileData.user_mobile">
+                                    <div class="placeholder">
+                                        Confirm Password
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+
+                            </label>
+                            <button class="button button-block all_btns" type="submit" id="login_btn" ng-disabled="resetPswdForm.$invalid" ng-click="resetPassword(resetPswdForm)">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

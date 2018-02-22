@@ -199,6 +199,10 @@ angular.module('shopMyTools.ckeckoutController', [])
         $scope.totalquantity = $rootScope.cartItemsList.length;
         $scope.checkoutProcess = function () {
 
+            if($scope.paymentType == 'online'){
+                $state.go('payu');
+            }
+
 
             $scope.finalCheckoutData = {
 
