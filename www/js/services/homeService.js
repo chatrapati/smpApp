@@ -100,3 +100,26 @@ angular.module('shopMyTools.homeService', [])
         };
     
     })
+
+    .service('searchProductsMoreService', function ($q, $http, SERVER_URL1) {
+        this.searchProductsMoreMethod = function (productName) {
+            var deferred = $q.defer();
+    
+            $http({
+                method: 'GET',
+                url: SERVER_URL1 + '/searchproduct?product_name=' + productName,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+    
+            }).then(function success(data) {
+                deferred.resolve(data);
+    
+            }, function error(data) {
+                deferred.reject(data);
+    
+            });
+    
+            return deferred.promise;
+        };
+    
+    })
+

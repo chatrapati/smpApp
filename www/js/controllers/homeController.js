@@ -1,9 +1,9 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService,searchProductsMoreService) {
 
         $rootScope.searchDiv = false;
-
+        $rootScope.searchKey = '';
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 
@@ -269,7 +269,12 @@ angular.module('shopMyTools.homeController', [])
         };
         $scope.getCartItemsList();
 
+        //search
+        $scope.getSearchtDetails = function (searchKey) {
+            $state.go("search")
+        }
 
+      
 
 
     });

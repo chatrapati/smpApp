@@ -172,13 +172,14 @@ angular.module('shopMyTools', ['ionic', 'ngCordova','shopMyTools.controllers', '
         cache: false,
         templateUrl: 'templates/changePassword.html',
         controller: 'resetPasswordCntrl'
-      })
-      .state('search', {
-        url: '/search',
-        cache: false,
-        templateUrl: 'templates/search.html',
-        //controller: 'resetPasswordCntrl'
-      })
+     })
+     .state('search', {
+      url: '/search',
+      cache: false,
+      templateUrl: 'templates/search.html',
+      controller: 'searchController'
+   })
+      
       .state('payu', {
         url: '/payu',
         cache: false,

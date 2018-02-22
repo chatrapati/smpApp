@@ -1224,6 +1224,12 @@ p.ph_no{
  /* 21-02-2018 styles end here */
 
 
+ .search-view-more{
+    font-size: 17px;
+    color: #fff;
+    float: right;
+    text-decoration: underline;
+ }
  .overlay, 
 .content{
     display:block;
@@ -1235,4 +1241,14 @@ p.ph_no{
 .overlay{
     z-index: 10;
     background: white;
+}
+.search_back{
+    margin-left: 10%;
+    width: 80%;
+    position:absolute;
+}
+.search_back li.item{
+    padding: 10px 20px;
+    background: #0487a1;
+    color: #fff;
 }
