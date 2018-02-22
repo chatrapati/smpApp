@@ -4,26 +4,30 @@
 
 
 		<div ng-if="searchDiv">
-			<ul class="list">
-				<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
-					{{product.upload_name}}
-				</li>
-				<li class="item" ng-if="searchedMoreProducts.length!=0">
-					<b>Recommended</b>
-				</li>
-				<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
-					{{recommended.upload_category}}
-				</li>
+			<div class="">
+				<ul class="search_back">
+					<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
+						{{product.upload_name}}
+					</li>
+					<li class="item" ng-if="searchedMoreProducts.length!=0">
+						<b>Recommended</b>
+					</li>
+					<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
+						{{recommended.upload_category}}
+					</li>
 
-			</ul>
-
-
-			<div class="row " ng-if="searchedMoreProducts.length==0">
-				<div class="col no_records">
-					<span>No Search Results Found !!!</span>
+				</ul>
+				<div class="col123" ng-if="searchedMoreProducts.length==0">
+					<ul class="search_back">
+						<li class="item">
+								<span>No Search Results Found !!!</span>
+						</li>
+					</ul>
+					<!-- <div class="col no_records">
+						<span>No Search Results Found !!!</span>
+					</div> -->
 				</div>
 			</div>
-
 		</div>
 
 		<div>

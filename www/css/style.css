@@ -1236,3 +1236,13 @@ p.ph_no{
     z-index: 10;
     background: white;
 }
+.search_back{
+    margin-left: 10%;
+    width: 80%;
+    position:absolute;
+}
+.search_back li.item{
+    padding: 10px 20px;
+    background: #0487a1;
+    color: #fff;
+}
