@@ -20,21 +20,19 @@
 
         <div class="bar bar-header item-input-inset" ng-if="search">
           <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
+            <!-- <i class="icon ion-ios-search placeholder-icon"></i> -->
             <input type="search" style="color:black;" placeholder="Search" ng-model="searchKey" ng-change="getSeachProducts(searchKey)">
           </label>
-          <!-- <button class="button button-clear">
-            Cancel
-          </button> -->
+
         </div>
 
       </ion-nav-title>
 
 
       <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios-search-strong" ng-if="!search" ng-click="enableSearchbar()"></button>
-        <button class="button button-icon icon ion-ios-search-strong" ng-if="search"></button>
-        
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="search=!search"></button>
+
+
         <!-- <input type="text" class="form-control" ng-change="isTextChange()" ng-model="text" /> -->
         <button class="button button-icon icon ion-ios-cart"></button>
         <ion-badge class="cart_badge">{{CartItemsCount}}</ion-badge>

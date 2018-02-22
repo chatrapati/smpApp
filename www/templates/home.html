@@ -2,24 +2,20 @@
 	<ion-content class="smt_background_image" style="padding: 0;">
 
 
-		<div>
-			<div ng-if="searchDiv">
-				<ul class="list" >
-					<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
-						{{product.upload_name}}
-					</li>
-					<li class="item" ng-if="searchedMoreProducts.length!=0">
-						<b>Recommended</b>
-					</li>
-					<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
-						{{recommended.upload_category}}
-					</li>
 
-				</ul>
+		<div ng-if="searchDiv">
+			<ul class="list">
+				<li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
+					{{product.upload_name}}
+				</li>
+				<li class="item" ng-if="searchedMoreProducts.length!=0">
+					<b>Recommended</b>
+				</li>
+				<li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
+					{{recommended.upload_category}}
+				</li>
 
-
-			</div>
-
+			</ul>
 
 
 			<div class="row " ng-if="searchedMoreProducts.length==0">
@@ -27,6 +23,7 @@
 					<span>No Search Results Found !!!</span>
 				</div>
 			</div>
+
 		</div>
 
 		<div>

@@ -43,7 +43,6 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.gotoRegistration = function () {
             $state.go('smt_registration');
-            //  $state.go('app.home');
         };
         $scope.inputType = 'password';
 
@@ -104,6 +103,21 @@ angular.module('shopMyTools.controllers', [])
         $scope.gotoForgotPswd = function () {
             $state.go('forgotPassword');
         };
+
+        $scope.getLoginCredentials = function (checked) {
+            if (checked == true) {
+                alert('in');
+                // $scope.loginData.username = window.localStorage['Password'];
+                // $scope.loginData.password = window.localStorage['email'];
+            } else {
+                alert('out');
+            }
+
+        }
+
+
+
+
     })
 
     .controller('registrationController', function ($scope, $rootScope, registrationService, $state, $ionicPopup, $ionicLoading) {
@@ -119,6 +133,9 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.getOtp = function (form) {
             if (form.$valid && $scope.registerData.password == $scope.registerData.confirm_password) {
+
+                window.localStorage['Password'] = $scope.registerData.password;
+                window.localStorage['email'] = $scope.registerData.email;
 
                 $scope.registerData.mobile = '91' + $scope.registrationData.mobile;
                 $rootScope.mobile = $scope.registerData.mobile;
@@ -254,7 +271,7 @@ angular.module('shopMyTools.controllers', [])
 
                 logoutService.userLogout(window.localStorage['token']).then(function (data) {
                     if (data.data.status == 'success') {
-                        $window.localStorage.clear();
+                        // $window.localStorage.clear();
                         // $scope = $scope.$new(true);
                         // $rootScope = $rootScope.$new(true);
                         $state.go('smtLogin');
@@ -265,35 +282,22 @@ angular.module('shopMyTools.controllers', [])
             }
         }
 
-        $scope.search = false;
-
-        $scope.enableSearchbar = function(){
-            $scope.search = true;
-        }
 
 
         //search bar
         $scope.getSeachProducts = function (searchKey) {
-
-
             if (searchKey.length >= 3) {
-
                 searchProductsService.searchProductsMoreMethod(searchKey).then(function (data) {
                     //alert(JSON.stringify(data))
                     if (data.data.status == 'success') {
                         $scope.searchedMoreProducts = data.data.product_info;
                         $rootScope.recommendedList = data.data.recommended;
                     }
-
                 })
-
                 $rootScope.searchDiv = true;
             } else {
                 $rootScope.searchDiv = false;
             }
-
-
-
         }
 
 
