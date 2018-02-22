@@ -3,20 +3,21 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Product Details</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-android-cart" menu-toggle="right"></a><ion-badge class="cart_badge">{{CartItemsCount}}</ion-badge>
+            <a class="button button-icon icon ion-android-cart" ng-click="gotoCartPage()"></a>
+            <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
         </ion-nav-buttons>
     </ion-nav-bar>
     <!--  category top header end here  -->
 
     <ion-content class="smt_background_image" style="padding:0;">
 
-       
+
         <div class="row">
             <div class="col ">
                 <!-- <ion-slide-box does-continue="true" class="mainSlider">
@@ -40,7 +41,7 @@
             </div>
         </div>
 
-       
+
         <div class="product_top_desc">
             <div class="row">
                 <div class="col">
@@ -58,7 +59,7 @@
                         </div>
                         <p class="detailexcl_gst">(Excluding-GST)</p>
                         <!--  Product Description part end here    -->
-                        <div class="pro_detail_name">
+                        <div class="pro_detail_name" >
                             <h1>{{productDetail.upload_name}}</h1>
                             <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
@@ -89,58 +90,59 @@
             </div>
 
             <div class="product_desc" id="prodetail">
-                <div class="row">
-                    <div class="col col-50">
-                        <div class="highlits">
-                            <h3>Ratings & Reviews</h3>
+                <div ng-if="productDetail.avgrating > 0">
+                    <div class="row">
+                        <div class="col col-50">
+                            <div class="highlits">
+                                <h3>Ratings & Reviews</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="rating">
-                    <div class="row">
-                        <div class="center_star">
-                            <div>
-                                <span class="ratepercentage">{{productDetail.avgrating}}/5</span>
-                            </div>
-                            <div>
-                                <div id="rating" ng-repeat="n in [] | range:5" style="float:left;">
+                    <div class="rating">
+                        <div class="row">
+                            <div class="center_star">
+                                <div>
+                                    <span class="ratepercentage">{{productDetail.avgrating}}/5</span>
+                                </div>
+                                <div>
+                                    <div id="rating" ng-repeat="n in [] | range:5" style="float:left;">
 
-                                    <div ng-if="n<productDetail.avgrating">
-                                        <i class="fa fa-star" aria-hidden="true" style="padding-right:5px;font-size:15px;color:#efb30b;"></i>
-                                    </div>
+                                        <div ng-if="n<productDetail.avgrating">
+                                            <i class="fa fa-star" aria-hidden="true" style="padding-right:5px;font-size:15px;color:#efb30b;"></i>
+                                        </div>
 
-                                    <div ng-if="n>=productDetail.avgrating">
-                                        <i class="fa fa-star-o" aria-hidden="true" style="padding-right:5px;font-size:15px;"></i>
+                                        <div ng-if="n>=productDetail.avgrating">
+                                            <i class="fa fa-star-o" aria-hidden="true" style="padding-right:5px;font-size:15px;"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
 
 
 
-                </div>
 
-                <br>
+                    <br>
 
-                <div ng-repeat="reviews in prdouctReviewInfo|limitTo:3">
+                    <div ng-repeat="reviews in prdouctReviewInfo|limitTo:3">
 
-                    <div class="padding-left5" ng-repeat="review in reviews.data |limitTo:2">
-                        <span class="review-rated">{{review.rating}}
-                            <i class="ion-android-star-outline"></i>
-                        </span>
-                        <span class="padding-left2">{{review.review}}
-                            <span>Review by</span>
-                            <span class="theme_clr">{{review.user}}</span>
-                        </span>
-                        <p class="review_desc">{{review.rating_comments}}</p>
-                        <p class="posted_on">Posted On
-                            <span>{{review.created_date | date:'medium'}}</span>
-                            <p>
+                        <div class="padding-left5" ng-repeat="review in reviews.data |limitTo:2">
+                            <span class="review-rated">{{review.rating}}
+                                <i class="ion-android-star-outline"></i>
+                            </span>
+                            <span class="padding-left2">{{review.review}}
+                                <span>Review by</span>
+                                <span class="theme_clr">{{review.user}}</span>
+                            </span>
+                            <p class="review_desc">{{review.rating_comments}}</p>
+                            <p class="posted_on">Posted On
+                                <span>{{review.created_date | date:'medium'}}</span>
+                                <p>
+                        </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class="col">
@@ -150,7 +152,7 @@
                         </div>
                         <div ng-if="review">
                             <form name="reviewForm">
-                                <ionic-ratings  class="give_rating" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
+                                <ionic-ratings class="give_rating" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
                                 <span ng-show="reviewForm.$submitted || reviewForm.rating.$touched || (reviewForm.rating.$dirty && reviewForm.rating.$invalid)">
                                     <span class="error" ng-show="reviewForm.rating.$error.required">Please give rating.</span>
                                 </span>

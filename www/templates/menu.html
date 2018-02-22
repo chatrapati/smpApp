@@ -20,7 +20,8 @@
       </ion-nav-title>
       <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-ios-search-strong"></button>
-        <button class="button button-icon icon ion-ios-cart"></button><ion-badge class="cart_badge">{{CartItemsCount}}</ion-badge>
+        <button class="button button-icon icon ion-ios-cart" ng-click="gotoCartPage()"></button>
+        <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -33,7 +34,7 @@
       <!-- <h1 class="title">Left</h1> -->
       <div class="menu_user_photo">
         <img src="img/smtlogo.png">
-      </div>     
+      </div>
       <div class="login_user_details">
         <h1>{{user_name}}</h1>
         <p>{{mobileNo}}</p>
@@ -54,16 +55,19 @@
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Login
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('myorders')">
-          <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders <span class="w3-badge">{{ordersCount}}</span>
+          <i class="icon ion-ios-cart-outline placeholder-icon"></i> My Orders
+          <span nf-if="ordersCount > 0" class="w3-badge">{{ordersCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('profile')">
           <i class="icon ion-ios-person-outline placeholder-icon"></i> Profile
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('wishlist')">
-          <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List <span class="w3-badge">{{wishListItemsCount}}</span>
+          <i class="icon ion-ios-heart-outline placeholder-icon"></i> My Wish List
+          <span ng-if="wishListItemsCount>0" class="w3-badge">{{wishListItemsCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('cartPage')">
-          <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart <span class="w3-badge">{{CartItemsCount}}</span>
+          <i class="icon ion-ios-cart-outline placeholder-icon"></i> Tool Cart
+          <span ng-if="CartItemsCount > 0" class="w3-badge">{{CartItemsCount}}</span>
         </ion-item>
         <ion-item menu-close href="" ng-click="gotoRespectivePage('chngpaswd')">
           <i class="icon ion-ios-unlocked-outline placeholder-icon"></i> Change Password
@@ -84,7 +88,7 @@
         <div class="m_top12" ng-click="gotoRespectivePage('logout')">
           <button class="button button-block all_btns" id="menu_login_btn">LOGOUT</button>
         </div>
-       
+
       </ion-list>
     </ion-content>
   </ion-side-menu>

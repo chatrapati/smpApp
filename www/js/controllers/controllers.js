@@ -26,6 +26,12 @@ angular.module('shopMyTools.controllers', [])
         $scope.gotoLoginPage = function () {
             $state.go('smtLogin');
         };
+
+        if (window.localStorage['token']) {
+            $state.go('app.home');
+        }
+
+
     })
 
     .controller('loginController', function ($scope, $rootScope, $state, loginService, $ionicPopup, $ionicLoading) {
@@ -249,14 +255,19 @@ angular.module('shopMyTools.controllers', [])
                 logoutService.userLogout(window.localStorage['token']).then(function (data) {
                     if (data.data.status == 'success') {
                         $window.localStorage.clear();
-                        $scope = $scope.$new(true);
-                        $rootScope = $rootScope.$new(true);
+                        // $scope = $scope.$new(true);
+                        // $rootScope = $rootScope.$new(true);
                         $state.go('smtLogin');
                     } else {
 
                     }
                 })
             }
+        }
+
+
+        $scope.gotoCartPage = function () {
+            $state.go('cart_page');
         }
 
 

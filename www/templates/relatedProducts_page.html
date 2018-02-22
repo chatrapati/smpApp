@@ -7,7 +7,10 @@
         <ion-nav-title>
             <div class="h1 title">Related Products</div>
         </ion-nav-title>
-        
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-android-cart" menu-toggle="right" ng-click="gotoCartPage()"></a>
+            <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
+        </ion-nav-buttons>
     </ion-nav-bar>
     <!--  category top header end here  -->
 
@@ -41,68 +44,68 @@
         <br/>
 
 
-            <div class="row"  ng-repeat="related in relatedproducts  | limitTo:6" ng-switch on="$index % 2">
-                <div class="col" ng-switch-when="0">
-                    <div class="card111">
-                        <img ng-src={{related.upload_photo}}  width="90%">
-                        <div class="content_part">
-                            <div class="product_name" id="tooltip_name" ng-click="getProductDetails(related)">
-                                <a href="" >{{related.upload_name}}</a>
-                            </div>
-                            <div class="product_price" ng-repeat="price in related.prices">
-                                <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-                                <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
-                                <span class="offer_percentage">{{price.percentage}}%</span>
-                            </div>
-                            <p class="excl_gst">(Excluding-GST)</p>
-                            <div class="cart_icons">
-                                <span>
-                                    <i class="icon ion-android-cart" ng-click="addtoCart(related.upload_name)"></i>
-                                </span>
-                                <span>
-                                    <i class="icon ion-heart"></i>
-                                </span>
-                                <!-- <span class="extraCshback">
+        <div class="row" ng-repeat="related in relatedproducts  | limitTo:6" ng-switch on="$index % 2">
+            <div class="col" ng-switch-when="0">
+                <div class="card111">
+                    <img ng-src={{related.upload_photo}} width="90%">
+                    <div class="content_part">
+                        <div class="product_name" id="tooltip_name" ng-click="getProductDetails(related)">
+                            <a href="">{{related.upload_name}}</a>
+                        </div>
+                        <div class="product_price" ng-repeat="price in related.prices">
+                            <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
+                            <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+                            <span class="offer_percentage">{{price.percentage}}%</span>
+                        </div>
+                        <p class="excl_gst">(Excluding-GST)</p>
+                        <div class="cart_icons">
+                            <span ng-click="addtoCart(related.upload_name)">
+                                <i class="icon ion-android-cart"></i>
+                            </span>
+                            <span ng-click="addtoWishList(related.upload_name)">
+                                <i class="icon ion-heart"></i>
+                            </span>
+                            <!-- <span class="extraCshback">
                                     + Extra Cashback
                                 </span> -->
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col" ng-switch-when="0">
-                    <div class="card111" ng-show="relatedproducts[$index+1]">
-                        <img ng-src={{relatedproducts[$index+1].upload_photo}}  width="90%">
-                        <div class="content_part">
-                            <div class="product_name" ng-click="getProductDetails(relatedproducts[$index+1])" >
-                                <a href="">{{relatedproducts[$index+1].upload_name}}</a>
-                            </div>
-                            <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">
-                                <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
-                                <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
-                                <span class="offer_percentage">{{price.percentage}}%</span>
-                            </div>
-                            <p class="excl_gst">(Excluding-GST)</p>
-                            <div class="cart_icons">
-                                <span>
-                                    <i class="icon ion-android-cart"></i>
-                                </span>
-                                <span>
-                                    <i class="icon ion-heart"></i>
-                                </span>
-                                <!-- <span class="extraCshback">
+            <div class="col" ng-switch-when="0">
+                <div class="card111" ng-show="relatedproducts[$index+1]">
+                    <img ng-src={{relatedproducts[$index+1].upload_photo}} width="90%">
+                    <div class="content_part">
+                        <div class="product_name" ng-click="getProductDetails(relatedproducts[$index+1])">
+                            <a href="">{{relatedproducts[$index+1].upload_name}}</a>
+                        </div>
+                        <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">
+                            <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
+                            <span class="real_price">{{price.enduser_price | currency:'&#8377;'}}</span>
+                            <span class="offer_percentage">{{price.percentage}}%</span>
+                        </div>
+                        <p class="excl_gst">(Excluding-GST)</p>
+                        <div class="cart_icons">
+                            <span ng-click="addtoCart(relatedproducts[$index+1].upload_name)">
+                                <i class="icon ion-android-cart"></i>
+                            </span>
+                            <span ng-click="addtoWishList(relatedproducts[$index+1].upload_name)">
+                                <i class="icon ion-heart"></i>
+                            </span>
+                            <!-- <span class="extraCshback">
                                     + Extra Cashback
                                 </span> -->
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" ng-if="relatedproducts.length==0">
-                <div class="col no_records">
-                        <span>No Products Available !!!</span>
-                </div>     
+        </div>
+        <div class="row" ng-if="relatedproducts.length==0">
+            <div class="col no_records">
+                <span>No Products Available !!!</span>
             </div>
+        </div>
         <!--  category body end here  -->
     </ion-content>
 </ion-view>

@@ -49,8 +49,6 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.Addressmodal.hide();
             if ($scope.sameAsShipping == true) {
                 $scope.billingAddress = editShippingAdd;
-            } else {
-
             }
         }
 
@@ -76,8 +74,11 @@ angular.module('shopMyTools.ckeckoutController', [])
         $scope.getPickupDetails = function (getPincodeData) {
 
             $scope.customerMobile = getPincodeData.mobile;
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             checkoutService.getPincodeStatus(getPincodeData.postal_code).then(function (data) {
-
+                $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({ 'address': JSON.stringify(getPincodeData.postal_code) }, function (results, status) {
@@ -110,7 +111,11 @@ angular.module('shopMyTools.ckeckoutController', [])
 
 
         $scope.getDealersList = function (latLongArray) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             checkoutService.getDealersList(latLongArray).then(function (data) {
+                $ionicLoading.hide();
                 if (data.data.status == 'success') {
                     $scope.dealersList = data.data.dealer_list;
                     $scope.modal.show();
@@ -137,9 +142,17 @@ angular.module('shopMyTools.ckeckoutController', [])
         }
 
         $scope.gotoBillingAddressDetails = function () {
-            $scope.modal.hide();
-            $scope.showshippingDiv = false;
-            $scope.showBillingAddressDiv = true;
+            if ($scope.shop != '' && $scope.shop != undefined) {
+                $scope.modal.hide();
+                $scope.showshippingDiv = false;
+                $scope.showBillingAddressDiv = true;
+            } else {
+                $ionicPopup.alert({
+                    template: 'Please Select Shop',
+                    title: 'Alert!'
+                });
+            }
+
         }
 
         $scope.saveBillingAddress = function (billingAddress) {
@@ -216,11 +229,13 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 "user_id": window.localStorage['user_id'],
 
-                "user_type" : "mobile"
+                "user_type": "mobile"
             }
-
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
             checkoutService.saveOrderMethod($scope.finalCheckoutData).then(function (data) {
-                console.log($scope.finalCheckoutData);
+                $ionicLoading.hide();
                 if (data.data.status == 'data saved') {
                     $scope.finalOrderId = data.data.orderid;
                     window.localStorage['finalOrderId'] = $scope.finalOrderId;
@@ -234,28 +249,11 @@ angular.module('shopMyTools.ckeckoutController', [])
 
             })
 
-
-            $scope.getCartItemsList = function () {
-                $ionicLoading.show({
-                    template: 'Loading...'
-                });
-                viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
-                    $ionicLoading.hide();
-                    if (data.data.status == 'success') {
-                        $rootScope.cartItemsList = data.data.item_list;
-                        $rootScope.grand_total = data.data.grand_total;
-                        $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-
-                        $scope.submitPayment();
-                    }
-
-                })
-            }
-
             $scope.submitPayment = function () {
                 checkoutService.submitPayment(window.localStorage['finalOrderId'], window.localStorage['user_id']).then(function (data) {
-                    alert(data.data.status == "status changed");
-                    $state.go('app.home');
+                    if (data.data.status == "status changed") {
+                        $state.go('app.home');
+                    }
                 })
             }
         }
