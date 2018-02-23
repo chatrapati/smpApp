@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('shopMyTools', ['ionic', 'ngCordova','shopMyTools.controllers', 'shopMyTools.dashboardController', 'shopMyTools.homeController', 'shopMyTools.categoryPageController', 'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
+angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.dashboardController', 'shopMyTools.homeController', 'shopMyTools.categoryPageController', 'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
   'shopMyTools.services', 'shopMyTools.dashboardServices', 'shopMyTools.homeService', 'shopMyTools.categoryService', 'shopMyTools.productDetailPageService', 'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective', '720kb.tooltips', 'ionic-ratings'])
 
   .run(function ($ionicPlatform, $state) {

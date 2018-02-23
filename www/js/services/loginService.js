@@ -78,7 +78,7 @@ angular.module('shopMyTools.services', [])
                 method: 'POST',
                 url: LOGIN_URL + '/verifyotp',
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-                data: { "mobile": mobile, "otp": otp, "ip_address":ipAddress }
+                data: { "mobile": mobile, "otp": otp, "ip_address": ipAddress }
 
             }).then(function success(data) {
                 deferred.resolve(data);
@@ -98,7 +98,7 @@ angular.module('shopMyTools.services', [])
                 method: 'POST',
                 url: LOGIN_URL + '/resendotp',
                 headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-                data : {"mobile": mobile, "otp":otp}
+                data: { "mobile": mobile, "otp": otp }
             }).then(function success(data) {
                 deferred.resolve(data);
 
@@ -152,3 +152,25 @@ angular.module('shopMyTools.services', [])
             return deferred.promise;
         };
     })
+
+
+    .service('editProfileService', function ($q, $http, LOGIN_URL) {
+        this.updateuserData = function (editData, userId) {
+            var deferred = $q.defer();
+            $http({
+                method: 'PUT',
+                url: LOGIN_URL + '/smtaccountinfo?id=' + userId,
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+                data: {
+                    "firstname": editData.first_name, "lastname": editData.last_name,
+                    "mobile": "91" + editData.mobile
+                }
+            }).then(function success(data) {
+                deferred.resolve(data);
+            }, function error(data) {
+                deferred.reject(data);
+            });
+            return deferred.promise;
+        };
+    })
+
