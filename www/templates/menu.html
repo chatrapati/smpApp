@@ -30,7 +30,7 @@
       <ion-nav-buttons side="right">
         <button class="button button-icon icon ion-ios-search-strong" ng-click="search=!search"></button>
         <!-- <input type="text" class="form-control" ng-change="isTextChange()" ng-model="text" /> -->
-        <button class="button button-icon icon ion-ios-cart"></button>
+        <button class="button button-icon icon ion-ios-cart" ng-click="gotoCartPage()"></button>
         <ion-badge ng-if="CartItemsCount>0" class="cart_badge">{{CartItemsCount}}</ion-badge>
       </ion-nav-buttons>
 
