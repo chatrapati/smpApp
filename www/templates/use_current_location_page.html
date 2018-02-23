@@ -31,12 +31,12 @@
         <div class="location_address">
             <div class="row">
                 <div class="col">
-                    <form name="">
+                    <form name="editShippingAddForm">
                         <div class="list edit_labls">
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">City</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.city">
+                                    <input type="text" required ng-model="shippingAddress.city" ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
                                     <div class="placeholder">
                                         City
                                         <span class="star">*</span>
@@ -47,7 +47,8 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Locality, area of street</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.street_address">
+                                    <input type="text" required ng-model="shippingAddress.street_address" ng-minlength="3" ng-maxlength="50" maxlength="50" required
+                                        ng-pattern="/^[A-Za-z0-9_./#&-,: ]*[A-Za-z0-9_./#&-,: ]{1,50}$/">
                                     <div class="placeholder">
                                         Locality, area of street
                                         <span class="star">*</span>
@@ -58,7 +59,8 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Flat no., Building name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.house_no">
+                                    <input type="text" required ng-model="shippingAddress.house_no" ng-minlength="3" ng-maxlength="15" maxlength="15" required
+                                        ng-pattern="/^[a-zA-Z0-9/ -]*$/">
                                     <div class="placeholder">
                                         Flat no., Building name
                                         <span class="star">*</span>
@@ -71,7 +73,7 @@
                                     <label class="item item-input item-floating-label">
                                         <span class="input-label">Pincode</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required ng-model="shippingAddress.postal_code">
+                                            <input type="text" required ng-model="shippingAddress.postal_code" required maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
                                             <div class="placeholder">
                                                 Pincode
                                                 <span class="star">*</span>
@@ -84,7 +86,7 @@
                                     <label class="item item-input item-floating-label">
                                         <span class="input-label">State</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required ng-model="shippingAddress.state">
+                                            <input type="text" required ng-model="shippingAddress.state" ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
                                             <div class="placeholder">
                                                 State
                                                 <span class="star">*</span>
@@ -105,7 +107,8 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.firstname">
+                                    <input type="text" name="firstname" ng-model="shippingAddress.firstname" ng-minlength="3" ng-maxlength="50" maxlength="50"
+                                        required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/" autofocus="true">
                                     <div class="placeholder">
                                         Name
                                         <span class="star">*</span>
@@ -113,10 +116,17 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Name" name="name"> -->
                             </label>
+                            <span ng-show="editShippingAddForm.$submitted || editShippingAddForm.firstname.$touched || (editShippingAddForm.firstname.$dirty && editShippingAddForm.firstname.$invalid)">
+                                <span class="error" ng-show="editShippingAddForm.firstname.$error.required">Please enter First Name.</span>
+                                <span class="error" ng-show="editShippingAddForm.firstname.$error.pattern">Allows only Alphabets.</span>
+                                <span class="error" ng-show="editShippingAddForm.firstname.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editShippingAddForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.mobile">
+                                    <input type="text" required ng-model="shippingAddress.mobile" ng-minlength="10" ng-maxlength="10" maxlength="10" required
+                                        ng-pattern="/^[7-9][0-9]{9}$/">
                                     <div class="placeholder">
                                         Mobile Number
                                         <span class="star">*</span>
@@ -124,10 +134,16 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Mobile Number" name="mobile"> -->
                             </label>
+                            <span ng-show="registerForm.$submitted || registerForm.mobile.$touched || (registerForm.mobile.$dirty && registerForm.mobile.$invalid)">
+                                <span class="error" ng-show="registerForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                <span class="error" ng-show="registerForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Alt Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="shippingAddress.alt_mobile">
+                                    <input type="text" required ng-model="shippingAddress.alt_mobile" ng-minlength="10" ng-maxlength="10" maxlength="10" required
+                                        ng-pattern="/^[7-9][0-9]{9}$/">
                                     <div class="placeholder">
                                         Alt Mobile Number(Optional)
                                         <!-- <span class="star">*</span> -->
@@ -135,7 +151,11 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Alt Mobile Number(Optional)" name="altMobile"> -->
                             </label>
-
+                            <span ng-show="registerForm.$submitted || registerForm.mobile.$touched || (registerForm.mobile.$dirty && registerForm.mobile.$invalid)">
+                                <span class="error" ng-show="registerForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                <span class="error" ng-show="registerForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                            </span>
 
                             <span class="remember_me">
                                 <input type="checkbox" ng-model="shippingAddress.checked">

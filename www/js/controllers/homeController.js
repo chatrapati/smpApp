@@ -154,7 +154,7 @@ angular.module('shopMyTools.homeController', [])
                 template: 'Loading...'
             });
 
-            if ($rootScope.cartItemsList.length > 0) {
+            if ($rootScope.cartItemsList) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })

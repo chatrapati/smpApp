@@ -234,6 +234,8 @@ angular.module('shopMyTools.ckeckoutController', [])
 
             if (document.URL == 'http://localhost:8100/#/payu') {
                 $scope.getPayuPageDetails();
+            }else{
+                $scope.totalquantity = $rootScope.cartItemsList.length;
             }
             $scope.payuMoneyFunc = function ($location, $sce) {
 
@@ -280,9 +282,9 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 });
             }
-            alert(window.localStorage['mobile']);
+          //  alert(window.localStorage['mobile']);
 
-            $scope.totalquantity = $rootScope.cartItemsList.length;
+          
 
             $scope.checkoutProcess = function () {
                 var options = {

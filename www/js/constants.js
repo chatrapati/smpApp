@@ -13,10 +13,6 @@ angular.module('shopMyTools.constants', [])
     //.constant('PRODUCT_DETAIL_SERVICE', 'http://192.168.20.66:8000')
 
 
-
-
-
-
     .constant('SERVER_URL', 'http://157.119.108.141:80')
 
     .constant('SERVER_URL1', 'http://157.119.108.142:8002')
