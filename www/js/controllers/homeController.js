@@ -2,6 +2,8 @@ angular.module('shopMyTools.homeController', [])
 
     .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
+        $scope.mobileNo = window.localStorage['mobile'];
+        $scope.user_name = window.localStorage['user_name'];
         $rootScope.searchDiv = false;
         $rootScope.searchKey = '';
         //home top slider
@@ -253,7 +255,7 @@ angular.module('shopMyTools.homeController', [])
                 if (data.data.status == 'success') {
                     $rootScope.cartItemsList = data.data.item_list;
                     $rootScope.grand_total = data.data.grand_total;
-                    window.localStorage['amount'] =  $rootScope.grand_total;
+                    window.localStorage['amount'] = $rootScope.grand_total;
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
