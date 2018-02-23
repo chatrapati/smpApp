@@ -455,8 +455,8 @@ angular.module('shopMyTools.controllers', [])
 
     .controller('editProfileCntrl', function ($scope, $rootScope, $state, $window, $ionicPopup, $ionicLoading, editProfileService) {
 
-        $scope.CustomerProfileData =JSON.parse(localStorage.getItem('CustomerProfileData')) ;
-       
+        $scope.CustomerProfileData = JSON.parse(localStorage.getItem('CustomerProfileData'));
+
         $scope.editProfileData = {};
         $scope.editProfileData = $scope.CustomerProfileData;
         $scope.editMobile = true;
@@ -486,8 +486,6 @@ angular.module('shopMyTools.controllers', [])
         $scope.goback = function () {
             $window.history.go(-1);
         }
-
-
 
 
     });
