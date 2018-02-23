@@ -182,7 +182,7 @@ angular.module('shopMyTools', ['ionic', 'ngCordova','shopMyTools.controllers', '
       
       .state('payu', {
         url: '/payu',
-        cache: false,
+       
         templateUrl: 'templates/payu.html',
         controller: 'ckeckoutCntrl'
       })

@@ -63,6 +63,7 @@ angular.module('shopMyTools.controllers', [])
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
+                window.localStorage['Password'] = $scope.loginData.password;
                 loginService.userAuthentication($scope.loginData.username, $scope.loginData.password, $scope.user_type, $scope.ip_address).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'Success') {
@@ -284,15 +285,15 @@ angular.module('shopMyTools.controllers', [])
             }
         }
 
- //search bar
+        //search bar
         $scope.search = false;
 
-        $scope.enableSearchbar = function(){
+        $scope.enableSearchbar = function () {
             $scope.search = true;
         }
 
 
-       
+
         $scope.getSeachProducts = function (searchKey) {
             $rootScope.searchKey = searchKey;
 
@@ -326,6 +327,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.userId = window.localStorage['user_id'];
         $scope.resetPassword = function (form) {
             if (form.$valid && $scope.resetPswdData.new_password == $scope.resetPswdData.confirm_password) {
+                window.localStorage['Password'] = $scope.resetPswdData.new_password;
                 resetPasswordService.resetPassword($scope.userId, $scope.resetPswdData.new_password, $scope.resetPswdData.confirm_password).then(function (data) {
                     if (data.data.status == "password changed successfully") {
                         $ionicPopup.alert({
@@ -346,9 +348,9 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService,  $ionicLoading, $ionicPopup) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup) {
 
-         $scope.getSearchtDetailsList = function () {
+        $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
                 //alert(JSON.stringify(data))
                 if (data.data.status == 'success') {
@@ -356,11 +358,11 @@ angular.module('shopMyTools.controllers', [])
                 }
 
             })
-         }
+        }
 
-         $scope.getSearchtDetailsList();
+        $scope.getSearchtDetailsList();
 
-         $scope.getProductDetails = function (productObj) {
+        $scope.getProductDetails = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
             $state.go("productDetail_page")
         }
@@ -437,8 +439,8 @@ angular.module('shopMyTools.controllers', [])
 
 
         $scope.goback = function () {
-          //  $state.go('app.home');
-              $window.history.go(-1);
+            //  $state.go('app.home');
+            $window.history.go(-1);
         }
     })
 

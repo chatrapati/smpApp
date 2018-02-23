@@ -179,9 +179,9 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                     $scope.payuData = data.data.data;
 
-                    $scope.merchant_key = $scope.payuData.merchant_id;
+                    window.localStorage['merchant_key']  = $scope.payuData.merchant_id;
 
-                    $scope.salt_key = $scope.payuData.salt_key;
+                    window.localStorage['salt_key']  = $scope.payuData.salt_key;
 
                 }
 
@@ -191,27 +191,67 @@ angular.module('shopMyTools.ckeckoutController', [])
 
         $scope.getPayuDetails();
 
-        $scope.firstname = $scope.userInfo.firstname;
-        $scope.email = $scope.userInfo.email;
-        $scope.phone = window.localStorage['mobile'];
-        $rootScope.amount = $rootScope.grand_total;
-       
+        window.localStorage['firstname'] = $scope.userInfo.firstname;
+        window.localStorage['email'] = $scope.userInfo.email;
+        window.localStorage['phone']= window.localStorage['mobile'];
+      
+     //  window.localStorage['amount'] = $rootScope.grand_total;
+     
 
+    //    $scope.firstname = $scope.userInfo.firstname;
+    //    $scope.email = $scope.userInfo.email;
+    //    $scope.phone= window.localStorage['mobile'].substr(2);
+   
+    //  $scope.amount = $rootScope.grand_total;
+
+    //  $scope.merchant_key = window.localStorage['merchant_key'];
+
+    //  $scope.salt_key = window.localStorage['salt_key'];
+    
+    //   $scope.txnId = window.localStorage['finalOrderId'];
+
+       $scope.getPayuPageDetails = function(){
+           //alert('1')
+        $scope.firstname =  window.localStorage['firstname'] ;
+        $scope.email = window.localStorage['email'];
+       $scope.phone =  window.localStorage['phone'];
+       $scope.merchant_key = window.localStorage['merchant_key'];
+
+      $scope.salt_key = window.localStorage['salt_key'];
+
+      $scope.txnId = window.localStorage['finalOrderId'];
+
+      $scope.amount =  window.localStorage['amount'];
+      console.log($scope.firstname)
+      console.log($scope.email)
+      console.log($scope.phone)
+      console.log($scope.merchant_key)
+      console.log($scope.salt_key)
+      console.log($scope.txnId)
+      console.log($scope.amount)
+      console.log($scope.merchant_key + '|' +  $scope.txnId + '|' + $scope.amount  + '|' + 'propertyInfo' + '|' +$scope.firstname + '|' +$scope.email + '|||||||||||' +  $scope.salt_key)
+       }
+
+       if(document.URL == 'http://localhost:8100/#/payu'){
+        $scope.getPayuPageDetails();
+       }
         $scope.payuMoneyFunc = function ($location, $sce) {
 
-            $scope.txnId = window.localStorage['finalOrderId'];
-           // alert($scope.txnId)
+           // window.localStorage['txnId'] = window.localStorage['finalOrderId'];
+           
 
-            $scope.string = $scope.merchant_key + '|' + $scope.txnId + '|' + $rootScope.amount + '|' + 'productinfo' + '|' + $scope.firstname + '|' + $scope.email + '|||||||||||' + $scope.salt_key;
+            $scope.string =  $scope.merchant_key + '|' +  $scope.txnId + '|' + $scope.amount  + '|' + 'propertyinfo' + '|' +$scope.firstname + '|' +$scope.email + '|||||||||||' +  $scope.salt_key;
 
             $scope.encrypttext = sha512($scope.string);
 
             $scope.hash = $scope.encrypttext;
 
+            console.log($scope.string)
+
             console.log($scope.hash)
 
             // cordova.InAppBrowser.open('https://secure.payu.in/_payment?merchant_key='+$scope.merchant_key+'&txnId='+$scope.txnId+'&amount='+$rootScope.amount+'&productinfo=productinfo&firstname='+$scope.firstname+'&email='+$scope.email+'&salt_key='+$scope.salt_key)
-            window.open('https://secure.payu.in/_payment?merchant_key='+$scope.merchant_key+'&txnId='+$scope.txnId+'&amount='+$rootScope.amount+'&productinfo=productinfo&firstname='+$scope.firstname+'&email='+$scope.email+'&salt_key='+$scope.salt_key+'&phone='+$scope.phone+'&hash='+$scope.hash)
+          
 
 
 
@@ -227,7 +267,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
         $scope.orderItemArray = [];
 
-        if ($rootScope.cartItemsList.length > 0) {
+        if ($rootScope.cartItemsList) {
             $rootScope.cartItemsList.forEach(function (cartItem) {
                 $scope.orderItemArray.push({
                     "sno": "", "productdescription": cartItem.productdescription, "qty": cartItem.qty,
@@ -244,13 +284,17 @@ angular.module('shopMyTools.ckeckoutController', [])
 
 
 
-        $scope.totalquantity = $rootScope.cartItemsList.length;
+      //  $scope.totalquantity = $rootScope.cartItemsList.length;
         $scope.checkoutProcess = function () {
-
-            // if($scope.paymentType == 'online'){
-            //    $state.go('payu');
-            // }
-
+            var options = {
+                location: 'yes',
+                clearcache: 'no',
+                toolbar: 'no'
+              };
+            if($scope.paymentType == 'online'){
+               // $cordovaInAppBrowser.open('http://localhost:8100/#/payu',options)
+               $state.go('payu')
+             }
 
             $scope.finalCheckoutData = {
 

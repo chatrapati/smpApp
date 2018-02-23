@@ -1,6 +1,6 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService,searchProductsMoreService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
         $rootScope.searchDiv = false;
         $rootScope.searchKey = '';
@@ -151,12 +151,7 @@ angular.module('shopMyTools.homeController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            //  viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-            // if (data.data.status == 'success') {
-            //     $rootScope.cartItemsList = data.data.item_list;
-            //     $rootScope.grand_total = data.data.grand_total;
-            //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
             if ($rootScope.cartItemsList.length > 0) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
@@ -182,11 +177,9 @@ angular.module('shopMyTools.homeController', [])
                         title: 'Sorry!'
                     });
                 }
+                $scope.getCartItemsList();
+
             });
-            //   }
-
-            //  })
-
 
 
 
@@ -248,7 +241,7 @@ angular.module('shopMyTools.homeController', [])
                 }
             })
         };
-          $scope.getOrdersCount();
+        $scope.getOrdersCount();
 
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
@@ -259,6 +252,7 @@ angular.module('shopMyTools.homeController', [])
                 if (data.data.status == 'success') {
                     $rootScope.cartItemsList = data.data.item_list;
                     $rootScope.grand_total = data.data.grand_total;
+                    window.localStorage['amount'] =  $rootScope.grand_total;
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
@@ -274,7 +268,7 @@ angular.module('shopMyTools.homeController', [])
             $state.go("search")
         }
 
-      
+
 
 
     });

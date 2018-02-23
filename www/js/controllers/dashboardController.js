@@ -200,6 +200,7 @@ angular.module('shopMyTools.dashboardController', [])
                     alert(data.data.status);
                 }
             })
+            $scope.getCartItemsList();
         };
         $scope.getWishList();
 
@@ -271,6 +272,23 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
+        $scope.getCartItemsList = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'success') {
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                } else if (data.data.status == 'no data available of this user') {
+                    $rootScope.cartItemsList = [];
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                }
+
+            })
+        }
 
 
         $scope.goback = function () {
@@ -296,6 +314,7 @@ angular.module('shopMyTools.dashboardController', [])
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 }
 
             })
@@ -404,19 +423,7 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
-        // $scope.item = {};
-        // //   $scope.item.qty = 0;
-        // $scope.increment = function (qty) {
-        //     $scope.val = JSON.parse(qty);
-        //     $scope.val += 1;
-        //     $scope.item.qty = $scope.val;
-        //     alert($scope.item.qty);
-        // }
-        // $scope.decrement = function (qty) {
-        //     qty -= 1;
-        //     $scope.item.qty = qty;
 
-        // }
 
 
         $scope.gotoCheckout = function () {
