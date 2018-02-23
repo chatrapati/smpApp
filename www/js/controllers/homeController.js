@@ -1,7 +1,9 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService,searchProductsMoreService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
+        $scope.mobileNo = window.localStorage['mobile'];
+        $scope.user_name = window.localStorage['user_name'];
         $rootScope.searchDiv = false;
         $rootScope.searchKey = '';
         //home top slider
@@ -151,13 +153,8 @@ angular.module('shopMyTools.homeController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            //  viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-            // if (data.data.status == 'success') {
-            //     $rootScope.cartItemsList = data.data.item_list;
-            //     $rootScope.grand_total = data.data.grand_total;
-            //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-            if ($rootScope.cartItemsList.length > 0) {
+            if ($rootScope.cartItemsList) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
@@ -182,11 +179,9 @@ angular.module('shopMyTools.homeController', [])
                         title: 'Sorry!'
                     });
                 }
+                $scope.getCartItemsList();
+
             });
-            //   }
-
-            //  })
-
 
 
 
@@ -232,7 +227,8 @@ angular.module('shopMyTools.homeController', [])
                     $rootScope.wishListItemsCount = data.data.wishlist_items;
                     $rootScope.CartItemsCount = data.data.add_to_cart;
                     $rootScope.ordersCount = data.data.orders_count;
-                    $rootScope.customerData = data.data.cust_details
+                    $rootScope.CustomerProfileData = data.data.cust_details
+                    localStorage.setItem('CustomerProfileData', JSON.stringify($rootScope.CustomerProfileData));
                     $rootScope.couponCode = data.data.cupon_code;
                     if (data.data.reward_points == null) {
                         $rootScope.rewardPoints = 0;
@@ -248,7 +244,7 @@ angular.module('shopMyTools.homeController', [])
                 }
             })
         };
-          $scope.getOrdersCount();
+        $scope.getOrdersCount();
 
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
@@ -259,6 +255,7 @@ angular.module('shopMyTools.homeController', [])
                 if (data.data.status == 'success') {
                     $rootScope.cartItemsList = data.data.item_list;
                     $rootScope.grand_total = data.data.grand_total;
+                    window.localStorage['amount'] = $rootScope.grand_total;
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
@@ -274,7 +271,7 @@ angular.module('shopMyTools.homeController', [])
             $state.go("search")
         }
 
-      
+
 
 
     });

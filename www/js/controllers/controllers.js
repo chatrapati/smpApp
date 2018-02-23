@@ -63,6 +63,7 @@ angular.module('shopMyTools.controllers', [])
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
+                window.localStorage['Password'] = $scope.loginData.password;
                 loginService.userAuthentication($scope.loginData.username, $scope.loginData.password, $scope.user_type, $scope.ip_address).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'Success') {
@@ -82,11 +83,12 @@ angular.module('shopMyTools.controllers', [])
                         window.localStorage['user_id'] = data.data.user_id;
                         window.localStorage['email'] = data.data.userinfo.email;
                         window.localStorage['mobile'] = data.data.userinfo.user_mobile;
+                        window.localStorage['user_name'] = data.data.username;
                         localStorage.setItem('userInfo', JSON.stringify(data.data.userinfo));
                         localStorage.setItem('gstNumber', JSON.stringify(data.data.GSTnumber));
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
-                        window.localStorage['user_name'] = $scope.userName;
+
 
                         $state.go('app.home');
                     } else {
@@ -213,8 +215,6 @@ angular.module('shopMyTools.controllers', [])
         };
     })
 
-
-
     .controller('forgotPasswordCtrl', function ($scope, $rootScope, forgotPaswdService, $state, $ionicPopup, $ionicLoading) {
 
         $scope.forgetPswdData = {};
@@ -246,6 +246,9 @@ angular.module('shopMyTools.controllers', [])
 
 
     .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window, searchProductsService) {
+
+        $scope.mobileNo = window.localStorage['mobile'];
+        $scope.user_name = window.localStorage['user_name'];
         $scope.gotoRespectivePage = function (page) {
             if (page == 'home') {
                 $state.go('app.home');
@@ -284,15 +287,15 @@ angular.module('shopMyTools.controllers', [])
             }
         }
 
- //search bar
         $scope.search = false;
-
-        $scope.enableSearchbar = function(){
-            $scope.search = true;
+        $scope.changeval = function (val) {
+            if (val) {
+                $rootScope.searchDiv = false;
+                $scope.searchKey = '';
+            }
         }
 
 
-       
         $scope.getSeachProducts = function (searchKey) {
             $rootScope.searchKey = searchKey;
 
@@ -306,8 +309,10 @@ angular.module('shopMyTools.controllers', [])
                     }
                 })
                 $rootScope.searchDiv = true;
+
             } else {
                 $rootScope.searchDiv = false;
+
             }
         }
 
@@ -315,6 +320,12 @@ angular.module('shopMyTools.controllers', [])
         $scope.gotoCartPage = function () {
             $state.go('cart_page');
         }
+
+        $scope.changeValue = function (val) {
+            alert(val);
+        }
+
+
 
 
     })
@@ -326,6 +337,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.userId = window.localStorage['user_id'];
         $scope.resetPassword = function (form) {
             if (form.$valid && $scope.resetPswdData.new_password == $scope.resetPswdData.confirm_password) {
+                window.localStorage['Password'] = $scope.resetPswdData.new_password;
                 resetPasswordService.resetPassword($scope.userId, $scope.resetPswdData.new_password, $scope.resetPswdData.confirm_password).then(function (data) {
                     if (data.data.status == "password changed successfully") {
                         $ionicPopup.alert({
@@ -346,9 +358,9 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService,  $ionicLoading, $ionicPopup) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup) {
 
-         $scope.getSearchtDetailsList = function () {
+        $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
                 //alert(JSON.stringify(data))
                 if (data.data.status == 'success') {
@@ -356,11 +368,11 @@ angular.module('shopMyTools.controllers', [])
                 }
 
             })
-         }
+        }
 
-         $scope.getSearchtDetailsList();
+        $scope.getSearchtDetailsList();
 
-         $scope.getProductDetails = function (productObj) {
+        $scope.getProductDetails = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
             $state.go("productDetail_page")
         }
@@ -437,17 +449,49 @@ angular.module('shopMyTools.controllers', [])
 
 
         $scope.goback = function () {
-          //  $state.go('app.home');
-              $window.history.go(-1);
+            //  $state.go('app.home');
+            $window.history.go(-1);
         }
     })
 
 
-    .controller('editProfileCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading) {
+    .controller('editProfileCntrl', function ($scope, $rootScope, $state, $window, $ionicPopup, $ionicLoading, editProfileService) {
 
-
-        $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        $scope.CustomerProfileData = JSON.parse(localStorage.getItem('CustomerProfileData'));
 
         $scope.editProfileData = {};
-        $scope.editProfileData = $scope.userInfo;
+        $scope.editProfileData = $scope.CustomerProfileData;
+        $scope.editProfileData.user_mobile = $scope.editProfileData.mobile.slice(2)
+      
+        $scope.editMobile = true;
+       
+        $scope.editMobileNo = function () {
+            $scope.editMobile = false;
+        }
+
+        $scope.updateMobileNo = function () {
+            window.localStorage['mobile'] = "91" + $scope.editProfileData.user_mobile;
+            editProfileService.updateuserData($scope.editProfileData, window.localStorage['user_id']).then(function (data) {
+                if (data.data.status == 'details updated successfully') {
+                    $ionicPopup.alert({
+                        template: 'Updated Successfully!',
+                        title: 'Success!'
+                    });
+                    $state.go('app.home');
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Error!'
+                    });
+                }
+
+            })
+        }
+
+
+        $scope.goback = function () {
+            $window.history.go(-1);
+        }
+
+
     });

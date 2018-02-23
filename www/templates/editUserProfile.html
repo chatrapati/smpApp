@@ -2,7 +2,7 @@
     <!-- header part start here -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+            <a class="button button-icon icon ion-close-circled"  ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Profile</div>
@@ -15,12 +15,12 @@
         <div class="">
             <div class="row">
                 <div class="col">
-                    <form name="">
+                    <form name="editForm">
                         <div class="list edit_labls">
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">First Name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" name="new_password" readonly ng-model="editProfileData.firstname">
+                                    <input type="text" name="new_password" readonly ng-model="editProfileData.first_name">
 
                                 </div>
 
@@ -29,7 +29,7 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Last Name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" name="new_password" readonly ng-model="editProfileData.lastname">
+                                    <input type="text" name="new_password" readonly ng-model="editProfileData.last_name">
 
                                 </div>
 
@@ -45,16 +45,30 @@
                             </label>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Mobile</span>
+
+
                                 <div class="input-placeholder">
-                                    <input type="text" name="confirm_password" required ng-model="editProfileData.user_mobile">
-                                    <div class="placeholder">
-                                        Confirm Password
+
+                                    <input type="text" ng-readonly="editMobile" name="mobile" required ng-model="editProfileData.user_mobile" ng-minlength="10"
+                                        ng-pattern="/^[6-9][0-9]{9}$/" maxlength="10">
+                                    <!-- <div class="placeholder">
+                                        Mobile
                                         <span class="star">*</span>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </label>
-                            <button class="button button-block all_btns" type="submit" id="login_btn" ng-disabled="resetPswdForm.$invalid" ng-click="resetPassword(resetPswdForm)">Reset</button>
+                            <span ng-show="editForm.$submitted || editForm.mobile.$touched || (editForm.mobile.$dirty && editForm.mobile.$invalid)">
+                                <span class="error" ng-show="editForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                <span class="error" ng-show="editForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                            </span>
+
+                            <span ng-click="editMobileNo()">
+                                <i class="icon ion-edit placeholder-icon f_right"></i>
+                            </span>
+
+                            <button ng-if="!editMobile" class="button button-block all_btns" type="submit" id="login_btn" ng-click="updateMobileNo()">Reset</button>
                         </div>
                     </form>
                 </div>
