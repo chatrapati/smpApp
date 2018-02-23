@@ -284,15 +284,15 @@ angular.module('shopMyTools.controllers', [])
             }
         }
 
- //search bar
         $scope.search = false;
-
-        $scope.enableSearchbar = function(){
-            $scope.search = true;
+        $scope.changeval = function (val) {
+            if (val) {
+                $rootScope.searchDiv = false;
+                $scope.searchKey = '';
+            }
         }
 
 
-       
         $scope.getSeachProducts = function (searchKey) {
             $rootScope.searchKey = searchKey;
 
@@ -306,8 +306,10 @@ angular.module('shopMyTools.controllers', [])
                     }
                 })
                 $rootScope.searchDiv = true;
+
             } else {
                 $rootScope.searchDiv = false;
+
             }
         }
 
@@ -315,6 +317,12 @@ angular.module('shopMyTools.controllers', [])
         $scope.gotoCartPage = function () {
             $state.go('cart_page');
         }
+
+        $scope.changeValue = function (val) {
+            alert(val);
+        }
+
+
 
 
     })
@@ -346,9 +354,9 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService,  $ionicLoading, $ionicPopup) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup) {
 
-         $scope.getSearchtDetailsList = function () {
+        $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
                 //alert(JSON.stringify(data))
                 if (data.data.status == 'success') {
@@ -356,11 +364,11 @@ angular.module('shopMyTools.controllers', [])
                 }
 
             })
-         }
+        }
 
-         $scope.getSearchtDetailsList();
+        $scope.getSearchtDetailsList();
 
-         $scope.getProductDetails = function (productObj) {
+        $scope.getProductDetails = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
             $state.go("productDetail_page")
         }
@@ -437,17 +445,47 @@ angular.module('shopMyTools.controllers', [])
 
 
         $scope.goback = function () {
-          //  $state.go('app.home');
-              $window.history.go(-1);
+            //  $state.go('app.home');
+            $window.history.go(-1);
         }
     })
 
 
-    .controller('editProfileCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading) {
+    .controller('editProfileCntrl', function ($scope, $rootScope, $state, $window, $ionicPopup, $ionicLoading, editProfileService) {
 
-
-        $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
+        $scope.CustomerProfileData =JSON.parse(localStorage.getItem('CustomerProfileData')) ;
+       
         $scope.editProfileData = {};
-        $scope.editProfileData = $scope.userInfo;
+        $scope.editProfileData = $scope.CustomerProfileData;
+        $scope.editMobile = true;
+
+        $scope.editMobileNo = function () {
+            $scope.editMobile = false;
+        }
+
+        $scope.updateMobileNo = function () {
+            editProfileService.updateuserData($scope.editProfileData, window.localStorage['user_id']).then(function (data) {
+                if (data.data.status == 'success') {
+                    $ionicPopup.alert({
+                        template: 'Updated Successfully!',
+                        title: 'Success!'
+                    });
+                    $state.go('app.home');
+                } else {
+                    $ionicPopup.alert({
+                        template: data.data.status,
+                        title: 'Success!'
+                    });
+                }
+            })
+        }
+
+
+        $scope.goback = function () {
+            $window.history.go(-1);
+        }
+
+
+
+
     });

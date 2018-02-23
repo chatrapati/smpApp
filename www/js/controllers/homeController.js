@@ -1,6 +1,6 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService,searchProductsMoreService) {
+    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
         $rootScope.searchDiv = false;
         $rootScope.searchKey = '';
@@ -225,14 +225,15 @@ angular.module('shopMyTools.homeController', [])
                 template: 'Loading...'
             });
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
-            homePageService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
+            homePageService.getOrdersCount($scope.userInfo.email, $scope.userInfo.mobile, window.localStorage['user_id']).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     // $scope.ordersCount = data.data;
                     $rootScope.wishListItemsCount = data.data.wishlist_items;
                     $rootScope.CartItemsCount = data.data.add_to_cart;
                     $rootScope.ordersCount = data.data.orders_count;
-                    $rootScope.customerData = data.data.cust_details
+                    $rootScope.CustomerProfileData = data.data.cust_details
+                    localStorage.setItem('CustomerProfileData', JSON.stringify($rootScope.CustomerProfileData));
                     $rootScope.couponCode = data.data.cupon_code;
                     if (data.data.reward_points == null) {
                         $rootScope.rewardPoints = 0;
@@ -248,7 +249,7 @@ angular.module('shopMyTools.homeController', [])
                 }
             })
         };
-          $scope.getOrdersCount();
+        $scope.getOrdersCount();
 
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
@@ -274,7 +275,7 @@ angular.module('shopMyTools.homeController', [])
             $state.go("search")
         }
 
-      
+
 
 
     });
