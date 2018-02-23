@@ -413,7 +413,7 @@ angular.module('shopMyTools.controllers', [])
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
-            $rootScope.CartItemsCount = $scope.productDataList.length;
+           // $rootScope.CartItemsCount = $scope.productDataList.length;
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
                 $ionicLoading.hide();
@@ -472,7 +472,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.gotoCartPage = function () {
             $state.go('cart_page');
         }
-        
+
         $scope.goback = function () {
             //  $state.go('app.home');
             $window.history.go(-1);

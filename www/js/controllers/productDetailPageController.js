@@ -98,6 +98,23 @@ angular.module('shopMyTools.productDetailPageController', [])
 
         };
 
+        $scope.getCartItemsList = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'success') {
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                } else if (data.data.status == 'no data available of this user') {
+                    $rootScope.cartItemsList = [];
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                }
+
+            })
+        }
 
 
         $scope.addtoCart = function (productName) {
@@ -105,16 +122,11 @@ angular.module('shopMyTools.productDetailPageController', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            // viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
-
-            //     if (data.data.status == 'success') {
-            //         $rootScope.cartItemsList = data.data.item_list;
-            //         $rootScope.grand_total = data.data.grand_total;
             if ($rootScope.cartItemsList.length > 0) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productName, "qty": "1" })
-            $rootScope.CartItemsCount = $scope.productDataList.length;
+           // $rootScope.CartItemsCount = $scope.productDataList.length;
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
                 $ionicLoading.hide();
@@ -123,6 +135,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                         template: 'Added to Cart Successfully!',
                         title: 'Success!'
                     });
+                    
                 } else if (data.data.status == 'item added to cart..') {
                     $ionicPopup.alert({
                         template: 'Added to Cart Successfully!',
@@ -135,13 +148,11 @@ angular.module('shopMyTools.productDetailPageController', [])
                         title: 'Sorry!'
                     });
                 }
+                $scope.getCartItemsList();
             });
         }
 
-        //     })
-
-        // }
-
+      
         $scope.addtoWishList = function (productName) {
             $ionicLoading.show({
                 template: 'Loading...'
@@ -165,7 +176,7 @@ angular.module('shopMyTools.productDetailPageController', [])
 
         $scope.goback = function () {
             $window.history.go(-1);
-          //  $state.go('app.home');
+            //  $state.go('app.home');
         }
 
         $scope.gotoCartPage = function () {

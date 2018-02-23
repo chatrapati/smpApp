@@ -232,7 +232,7 @@ angular.module('shopMyTools.dashboardController', [])
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" });
-            $rootScope.CartItemsCount = $scope.productDataList.length;
+           // $rootScope.CartItemsCount = $scope.productDataList.length;
 
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
@@ -437,8 +437,8 @@ angular.module('shopMyTools.dashboardController', [])
 
 
         $scope.goback = function () {
-            $state.go('app.home');
-            //  $window.history.go(-1);
+           // $state.go('app.home');
+             $window.history.go(-1);
         }
 
     })
