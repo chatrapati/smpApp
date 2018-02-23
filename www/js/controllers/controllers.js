@@ -358,7 +358,7 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup, viewCartItemsService) {
 
         $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
@@ -372,6 +372,26 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.getSearchtDetailsList();
 
+        $scope.getCartItemsList = function () {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+            viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+                $ionicLoading.hide();
+                if (data.data.status == 'success') {
+                    $rootScope.cartItemsList = data.data.item_list;
+                    $rootScope.grand_total = data.data.grand_total;
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                } else if (data.data.status == 'no data available of this user') {
+                    $rootScope.cartItemsList = [];
+                    $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                }
+
+            })
+        }
+
+      
+
         $scope.getProductDetails = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
             $state.go("productDetail_page")
@@ -383,12 +403,12 @@ angular.module('shopMyTools.controllers', [])
             $ionicLoading.show({
                 template: 'Loading...'
             });
-            //  viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
+             viewCartItemsService.getCartItemsList(window.localStorage['user_id']).then(function (data) {
 
-            // if (data.data.status == 'success') {
-            //     $rootScope.cartItemsList = data.data.item_list;
-            //     $rootScope.grand_total = data.data.grand_total;
-            //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+            if (data.data.status == 'success') {
+                $rootScope.cartItemsList = data.data.item_list;
+                $rootScope.grand_total = data.data.grand_total;
+                $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
             if ($rootScope.cartItemsList.length > 0) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
@@ -414,10 +434,12 @@ angular.module('shopMyTools.controllers', [])
                         title: 'Sorry!'
                     });
                 }
+               
             });
-            //   }
+            $scope.getCartItemsList();
+              }
 
-            //  })
+             })
 
 
 
@@ -447,7 +469,10 @@ angular.module('shopMyTools.controllers', [])
             })
         }
 
-
+        $scope.gotoCartPage = function () {
+            $state.go('cart_page');
+        }
+        
         $scope.goback = function () {
             //  $state.go('app.home');
             $window.history.go(-1);

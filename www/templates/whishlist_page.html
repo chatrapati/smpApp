@@ -3,12 +3,16 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <span class="button button-icon icon ion-close-circled"  ng-click="goback()"></span>
+            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">My Wish List</div>
         </ion-nav-title>
-       
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-android-cart" ng-click="gotoCartPage()"></a>
+            <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
+        </ion-nav-buttons>
+
     </ion-nav-bar>
     <!--  category top header end here  -->
 
@@ -41,6 +45,18 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div ng-if="wishlistItems.length == 0" class="cart-btn">
+            <div align="middle">
+                <i class="fa fa-heart" style="font-size:150px;margin-top:40%;color:#ccc"></i>
+                <div style="padding-bottom:40px;">
+                    <h3>
+                        <span>Your Wish List is Empty</span>
+                    </h3>
+                </div>
+                <button class="button button-block" style="width:50%;" ui-sref="app.home">Start Shopping</button>
             </div>
         </div>
 

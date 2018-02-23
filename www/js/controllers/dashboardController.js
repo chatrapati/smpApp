@@ -290,7 +290,9 @@ angular.module('shopMyTools.dashboardController', [])
         }
 
 
-
+        $scope.gotoCartPage = function () {
+            $state.go('cart_page');
+        }
 
         $scope.goback = function () {
             $state.go('app.home');
