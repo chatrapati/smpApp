@@ -3,7 +3,7 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" menu-toggle="left" ng-click="goback()"></a>
+            <a class="button button-icon icon ion-close-circled" ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Cart</div>
@@ -55,11 +55,11 @@
                                 <div class="amunt_auto_incre">
                                     <a id="decre" class="button" ng-click="decrement(item)">-</a>
                                     <input type="text" class="texting" ng-model="item.qty" ng-change="addtocartDetails(item)">
-                                    <a id="incre" class="button"  ng-click="increment(item)">+</a>
+                                    <a id="incre" class="button" ng-click="increment(item)">+</a>
                                 </div>
 
 
-                                
+
                             </div>
                         </div>
                         <!-- <div class="row">
@@ -114,8 +114,16 @@
                 </div>
             </div>
         </div>
-        <div class="no_records" ng-if="cartItemsList.length == 0">
-            <span>No Records Found !!!</span>
+        <div  ng-if="cartItemsList.length == 0" class="cart-btn">
+            <div align="middle">
+                <i class="fa fa-cart-plus" style="font-size:150px;margin-top:40%;"></i>
+                <div style="padding-bottom:40px;">
+                    <h3>
+                        <span  >Your Tool Cart is Empty</span>
+                    </h3>
+                </div>
+                <button class="button button-block" style="width:50%;" ui-sref="app.home">Start Shopping</button>
+            </div>
         </div>
         <br>
         <br>
