@@ -89,7 +89,16 @@ angular.module('shopMyTools.productDetailPageController', [])
         //    $scope.productDetailedReview = [];
 
 
+        $scope.set_color = function (review) {
+            if (review.rating == 1 ) {
+              return { background: "#ea4949" }
+            }
+            else if(review.rating == 2){
+                return { background: "#d59722" }
+            }
+          }
 
+        
 
         $scope.ratingsCallback = function (rating, index) {
             // console.log('Selected rating is : ', rating, ' and the index is : ', index);
@@ -117,7 +126,9 @@ angular.module('shopMyTools.productDetailPageController', [])
         }
 
 
-        $scope.addtoCart = function (productName) {
+        $scope.addtoCart = function (s,productName) {
+            $scope.selectedButton =s;
+            
             $scope.productDataList = [];
             $ionicLoading.show({
                 template: 'Loading...'
@@ -179,7 +190,8 @@ angular.module('shopMyTools.productDetailPageController', [])
             //  $state.go('app.home');
         }
 
-        $scope.gotoCartPage = function () {
+        $scope.gotoCartPage = function (s) {
+            $scope.selectedButton =s;
             $state.go('cart_page');
         }
     });

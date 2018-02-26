@@ -314,7 +314,11 @@ div.footer-button a.button.button-full {
     padding: 20% 0 20% 0;
     text-align: center;
 }
-
+.card1111{
+    border: 0px dotted #aeaeae;
+    padding: 5px;
+    border-radius: 15px;
+}
 .card111{
     border: 1px dotted #aeaeae;
     padding: 5px;
@@ -723,10 +727,12 @@ div.footer-button a.button.button-full {
 .attrName{ 
     color: #a09797;
     padding-left: 15px;
+    font-weight: 500;
 }
 .attrValue{
     color: #000;
     padding-right: 15px;
+    font-weight: 500;
 }
 .prod_specification .spec_count{
     border-bottom: 1px solid #ddd;
@@ -1013,7 +1019,7 @@ div.footer-button a.button.button-full {
 }
 #prodetail .review-rated{
     font-size: 15px;
-    background: #d59722;
+    background: #1fb74a;
     border-radius: 5px;
     color: #fff;
     padding-left: 6px;
@@ -1143,8 +1149,8 @@ p.ph_no{
 
  .padding-left5{
      padding-left: 3%;
-     border-bottom: 1px solid #ddd;
-     margin-top: -10px;
+     /* border-bottom: 1px solid #ddd; */
+     margin: 10px 0;
  }
  .padding-left2{
      padding-left: 2%;
@@ -1199,7 +1205,7 @@ p.ph_no{
     color: #9d9b9b;
  }
  .rating{
-     border-bottom: 1px solid #ddd;
+     /*border-bottom: 1px solid #ddd;*/
  }
  .give_rating{
     background: #f5f5f5;
@@ -1255,4 +1261,31 @@ p.ph_no{
 .cart-btn .button {
     background: #0487a1;
     color: #fff;
+}
+.clicked 
+{
+background-color:#0487a1;
+color: #fff
+}
+
+.prod_slider .swiper-container{
+    height: 110%;
+}
+
+#prod_border{
+    border-bottom: 0.1px solid #ddd;
+}
+#prod_border:last-child{
+    border:none;
+}
+#prod_border .col:first-child{
+    border-right: 1px solid #ddd;
+}
+.all_btns_chkot {
+    color: #bb3232;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.offers_part h3{
+    margin-top: 10px;
 }

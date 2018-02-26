@@ -23,4 +23,16 @@ angular.module('shopMyTools.smtdirective', [])
         input.push(i);
       return input;
     };
-  });
+  })
+
+  .filter('image_jpg', function () {
+    return function (text) {
+        if (!text) {
+            return text;
+        }
+  text1= text.replace('thumbnail/gif', 'web');
+  text2= text1.replace('gif', 'jpg');
+  text=text2;
+  return text;
+    };
+});

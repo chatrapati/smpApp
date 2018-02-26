@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <img ng-src="{{item.image}}" width="50%" class="cart_imagess">
+                                <img ng-src="{{item.image  | image_jpg}}" width="50%" class="cart_imagess">
 
                                 <div class="amunt_auto_incre">
                                     <a id="decre" class="button" ng-click="decrement(item)">-</a>

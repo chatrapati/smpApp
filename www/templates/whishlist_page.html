@@ -25,7 +25,7 @@
                 <div class="category_cart_list" ng-repeat="item in wishlistItems">
                     <div class="list1">
                         <a class="item item-thumbnail-left cart_imge" class="product-img">
-                            <img ng-src="{{item.upload_photo}}" alt="{{item.brand_name}}">
+                            <img ng-src="{{item.upload_photo  | image_jpg}}" alt="{{item.brand_name}}">
                             <h1 style="white-space: initial;">{{item.upload_name}}</h1>
                             <!-- <h2>Model Number</h2> -->
                             <div class="product_price" ng-repeat="price in item.prices">

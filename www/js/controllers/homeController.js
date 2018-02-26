@@ -6,6 +6,7 @@ angular.module('shopMyTools.homeController', [])
         $scope.user_name = window.localStorage['user_name'];
         $rootScope.searchDiv = false;
         $rootScope.searchKey = '';
+        
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 

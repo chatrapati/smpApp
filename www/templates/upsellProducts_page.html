@@ -44,10 +44,10 @@
         <br/>
 
 
-        <div class="row" ng-repeat="upsell in upsellproducts  | limitTo:6" ng-switch on="$index % 2">
+        <div class="row" ng-repeat="upsell in upsellproducts  | limitTo:6" ng-switch on="$index % 2" id="prod_border">
             <div class="col" ng-switch-when="0">
-                <div class="card111">
-                    <img ng-src={{upsell.upload_photo}} width="90%">
+                <div class="card1111">
+                    <img ng-src="{{upsell.upload_photo  | image_jpg}}" width="90%">
                     <div class="content_part">
                         <div class="product_name" id="tooltip_name" ng-click="getProductDetails(upsell)">
                             <a href="">{{upsell.upload_name}}</a>
@@ -74,8 +74,8 @@
             </div>
 
             <div class="col" ng-switch-when="0">
-                <div class="card111" ng-show="upsellproducts[$index+1]">
-                    <img ng-src={{upsellproducts[$index+1].upload_photo}} width="90%">
+                <div class="card1111" ng-show="upsellproducts[$index+1]">
+                    <img ng-src="{{upsellproducts[$index+1].upload_photo  | image_jpg}}" width="90%">
                     <div class="content_part">
                         <div class="product_name" ng-click="getProductDetails(upsellproducts[$index+1])">
                             <a href="">{{upsellproducts[$index+1].upload_name}}</a>

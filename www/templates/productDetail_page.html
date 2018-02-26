@@ -90,7 +90,7 @@
             </div>
 
             <div class="product_desc" id="prodetail">
-                <div ng-if="productDetail.avgrating > 0">
+                <div ng-if="productDetail.avgrating > 0" class="product_desc">
                     <div class="row">
                         <div class="col col-50">
                             <div class="highlits">
@@ -129,7 +129,7 @@
                     <div ng-repeat="reviews in prdouctReviewInfo|limitTo:3">
 
                         <div class="padding-left5" ng-repeat="review in reviews.data |limitTo:2">
-                            <span class="review-rated">{{review.rating}}
+                            <span ng-style="set_color(review)" class="review-rated">{{review.rating}}
                                 <i class="ion-android-star-outline"></i>
                             </span>
                             <span class="padding-left2">{{review.review}}
@@ -296,8 +296,8 @@
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button" ng-click="addtoCart(productDetail.upload_name)">ADD TO CART</a>
-            <a id="buynow" class="button" ng-click="gotoCartPage()">BUY NOW</a>
+            <a id="cart" class="button"  ng-class="{'clicked': selectedButton== 'Cart'  }" ng-click="addtoCart('Cart',productDetail.upload_name)">ADD TO CART</a>
+            <a id="buynow" class="button"  ng-class="{'clicked': selectedButton== 'buy'  }" ng-click="gotoCartPage('buy')">BUY NOW</a>
         </div>
         <!--Footer End here -->
     </ion-footer-bar>
