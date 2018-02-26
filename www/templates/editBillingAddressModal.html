@@ -10,9 +10,11 @@
         <ion-nav-title>
             <div class="h1 title">Billing Address</div>
         </ion-nav-title>
-        <ion-nav-buttons side="right">
-            <button class="button button-icon" ng-click="saveEditBillingAddress(billingAddress)">Save</button>
-        </ion-nav-buttons>
+        <!-- <ion-nav-buttons side="right">
+         
+                <button class="button button-icon"  ng-click="saveEditBillingAddress(editBillingAddForm,billingAddress)">Save</button>
+           
+        </ion-nav-buttons> -->
     </ion-nav-bar>
     <!-- header part end here -->
 
@@ -31,12 +33,13 @@
         <div class="location_address">
             <div class="row">
                 <div class="col">
-                    <form name="">
+                    <form name="editBillingAddForm">
                         <div class="list edit_labls">
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">City</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.city">
+                                    <input type="text" name="city" ng-model="billingAddress.city" ng-minlength="3" ng-maxlength="20" maxlength="20" required
+                                        ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
                                     <div class="placeholder">
                                         City
                                         <span class="star">*</span>
@@ -44,10 +47,17 @@
                                 </div>
                                 <!-- <input type="text" placeholder="City" name="city"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.city.$touched || (editBillingAddForm.city.$dirty && editBillingAddForm.city.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.city.$error.required">Please enter city.</span>
+                                <span class="error" ng-show="editBillingAddForm.city.$error.pattern">Allows only Alphabets.</span>
+                                <span class="error" ng-show="editBillingAddForm.city.$error.minlength">Should be atleast 3-20 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.city.$error.maxlength">Should be atleast 3-20 characters.</span>
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Locality, area of street</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.street_address">
+                                    <input type="text" name="street_address" ng-model="billingAddress.street_address" ng-minlength="3" ng-maxlength="50" maxlength="50"
+                                        required ng-pattern="/^[A-Za-z0-9_./#&-,: ]*[A-Za-z0-9_./#&-,: ]{1,50}$/">
                                     <div class="placeholder">
                                         Locality, area of street
                                         <span class="star">*</span>
@@ -55,10 +65,16 @@
                                 </div>
                                 <!-- <input type="text" name="locality" placeholder="Locality, area of street"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.street_address.$touched || (editBillingAddForm.street_address.$dirty && editBillingAddForm.street_address.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.street_address.$error.required">Please enter street.</span>
+                                <span class="error" ng-show="editBillingAddForm.street_address.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.street_address.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Flat no., Building name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.house_no">
+                                    <input type="text" name="house_no" ng-model="billingAddress.house_no" ng-minlength="3" ng-maxlength="15" maxlength="15" required
+                                        ng-pattern="/^[a-zA-Z0-9/ -]*$/">
                                     <div class="placeholder">
                                         Flat no., Building name
                                         <span class="star">*</span>
@@ -66,12 +82,17 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Flat no., Building name" name="flatno"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.house_no.$touched || (editBillingAddForm.house_no.$dirty && editBillingAddForm.house_no.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.house_no.$error.required">Please enter House No.</span>
+                                <span class="error" ng-show="editBillingAddForm.house_no.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.house_no.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
                             <div class="row">
                                 <div class="col" style="margin: 0 0 0 -10px;">
                                     <label class="item item-input item-floating-label">
                                         <span class="input-label">Pincode</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required ng-model="billingAddress.postal_code">
+                                            <input type="text" name="postal_code" ng-model="billingAddress.postal_code" required maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
                                             <div class="placeholder">
                                                 Pincode
                                                 <span class="star">*</span>
@@ -79,12 +100,17 @@
                                         </div>
                                         <!-- <input type="text" placeholder="Pincode" name="pincode"> -->
                                     </label>
+                                    <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.postal_code.$touched || (editBillingAddForm.postal_code.$dirty && editBillingAddForm.postal_code.$invalid)">
+                                        <span class="error" ng-show="editBillingAddForm.postal_code.$error.required">Please enter Pincode.</span>
+                                        <span class="error" ng-show="editBillingAddForm.postal_code.$error.pattern">Please enter Valid Pincode.</span>
+                                    </span>
                                 </div>
                                 <div class="col" style="margin: 0 -10px 0 0;">
                                     <label class="item item-input item-floating-label">
                                         <span class="input-label">State</span>
                                         <div class="input-placeholder">
-                                            <input type="text" required ng-model="billingAddress.state">
+                                            <input type="text" name="state" ng-model="billingAddress.state" ng-minlength="3" ng-maxlength="20" maxlength="20" required
+                                                ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
                                             <div class="placeholder">
                                                 State
                                                 <span class="star">*</span>
@@ -92,6 +118,12 @@
                                         </div>
                                         <!-- <input type="text" placeholder="State" name="state"> -->
                                     </label>
+                                    <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.state.$touched || (editBillingAddForm.state.$dirty && editBillingAddForm.state.$invalid)">
+                                        <span class="error" ng-show="editBillingAddForm.state.$error.required">Please enter State.</span>
+                                        <span class="error" ng-show="editBillingAddForm.state.$error.pattern">Allows only Alphabets.</span>
+                                        <span class="error" ng-show="editBillingAddForm.state.$error.minlength">Should be atleast 3-20 characters.</span>
+                                        <span class="error" ng-show="editBillingAddForm.state.$error.maxlength">Should be atleast 3-20 characters.</span>
+                                    </span>
                                 </div>
                             </div>
                             <!-- <label class="item item-input item-floating-label">
@@ -105,7 +137,8 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.firstname">
+                                    <input type="text" name="firstname" ng-model="billingAddress.firstname" ng-minlength="3" ng-maxlength="50" maxlength="50"
+                                        required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
                                     <div class="placeholder">
                                         Name
                                         <span class="star">*</span>
@@ -113,10 +146,17 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Name" name="name"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.firstname.$touched || (editBillingAddForm.firstname.$dirty && editBillingAddForm.firstname.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.firstname.$error.required">Please enter First Name.</span>
+                                <span class="error" ng-show="editBillingAddForm.firstname.$error.pattern">Allows only Alphabets.</span>
+                                <span class="error" ng-show="editBillingAddForm.firstname.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.mobile">
+                                    <input type="text" name="mobile" ng-model="billingAddress.mobile" ng-minlength="10" ng-maxlength="10" maxlength="10" required
+                                        ng-pattern="/^[7-9][0-9]{9}$/">
                                     <div class="placeholder">
                                         Mobile Number
                                         <span class="star">*</span>
@@ -124,10 +164,16 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Mobile Number" name="mobile"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.mobile.$touched || (editBillingAddForm.mobile.$dirty && editBillingAddForm.mobile.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                <span class="error" ng-show="editBillingAddForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                <!-- <span class="error" ng-show="editBillingAddForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                            </span>
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Alt Mobile Number</span>
                                 <div class="input-placeholder">
-                                    <input type="text" required ng-model="billingAddress.alt_mobile">
+                                    <input type="text" name="alt_mobile" ng-model="billingAddress.alt_mobile" name="alt_mobile" ng-minlength="10" ng-maxlength="10"
+                                        maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/">
                                     <div class="placeholder">
                                         Alt Mobile Number(Optional)
                                         <!-- <span class="star">*</span> -->
@@ -135,16 +181,21 @@
                                 </div>
                                 <!-- <input type="text" placeholder="Alt Mobile Number(Optional)" name="altMobile"> -->
                             </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.alt_mobile.$touched || (editBillingAddForm.alt_mobile.$dirty && editBillingAddForm.alt_mobile.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.alt_mobile.$error.required">Please enter Mobile Number.</span>
+                                <span class="error" ng-show="editBillingAddForm.alt_mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                                <!-- <span class="error" ng-show="editBillingAddForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                            </span>
 
 
-                           
 
-                            <!-- <div class="row" id="delivery_btn">
+                            <div class="row" id="delivery_btn">
                                     <div class="col">
     
-                                        <button class="button button-block" ng-click="saveEditbillingAddress(billingAddress)">Save</button>
+                                        <button class="button button-block" ng-disabled="editBillingAddForm.$invalid" ng-click="saveEditBillingAddress(billingAddress)">Save</button>
                                     </div>
-                                </div> -->
+                                </div>
+                                <!-- <button class="button button-icon"  ng-click="saveEditBillingAddress(editBillingAddForm,billingAddress)">Save</button> -->
                         </div>
                     </form>
                 </div>

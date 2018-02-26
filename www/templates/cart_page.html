@@ -116,7 +116,7 @@
         </div>
         <div  ng-if="cartItemsList.length == 0" class="cart-btn">
             <div align="middle">
-                <i class="fa fa-cart-plus" style="font-size:150px;margin-top:40%;"></i>
+                <i class="fa fa-cart-plus" style="font-size:150px;margin-top:40%;color:#ccc;"></i>
                 <div style="padding-bottom:40px;">
                     <h3>
                         <span  >Your Tool Cart is Empty</span>
@@ -135,7 +135,7 @@
         <!--Footer Start here -->
         <div id="footer" class="button-bar" ng-repeat="item in cartItemsList">
             <a id="cart" class="button" ng-click="gotoCheckout(item)">Checkout</a>
-            <a id="buynow" class="button">View Price Details</a>
+            <!-- <a id="buynow" class="button">View Price Details</a> -->
         </div>
         <!--Footer End here -->
     </ion-footer-bar>
