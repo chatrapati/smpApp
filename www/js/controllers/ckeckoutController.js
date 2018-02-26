@@ -2,7 +2,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
     .controller('ckeckoutCntrl',
         function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading,
-            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService) {
+            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService,$cordovaInAppBrowser) {
 
             $scope.showshippingDiv = true;
             $scope.showBillingAddressDiv = false;
@@ -191,73 +191,24 @@ angular.module('shopMyTools.ckeckoutController', [])
 
             $scope.getPayuDetails();
 
-            window.localStorage['firstname'] = $scope.userInfo.firstname;
-            window.localStorage['email'] = $scope.userInfo.email;
-            window.localStorage['phone'] = window.localStorage['mobile'];
+          
 
-            //  window.localStorage['amount'] = $rootScope.grand_total;
+               $scope.firstname = $scope.userInfo.firstname;
+               $scope.email = $scope.userInfo.email;
+               $scope.phone= window.localStorage['mobile'];
 
+             $scope.amount = $rootScope.grand_total;
 
-            //    $scope.firstname = $scope.userInfo.firstname;
-            //    $scope.email = $scope.userInfo.email;
-            //    $scope.phone= window.localStorage['mobile'].substr(2);
+             $scope.merchant_key = window.localStorage['merchant_key'];
 
-            //  $scope.amount = $rootScope.grand_total;
+           
 
-            //  $scope.merchant_key = window.localStorage['merchant_key'];
+              $scope.txnId = window.localStorage['finalOrderId'];
 
-            //  $scope.salt_key = window.localStorage['salt_key'];
+           
+                 $scope.totalquantity = $rootScope.cartItemsList.length;
 
-            //   $scope.txnId = window.localStorage['finalOrderId'];
-
-            $scope.getPayuPageDetails = function () {
-                //alert('1')
-                $scope.firstname = window.localStorage['firstname'];
-                $scope.email = window.localStorage['email'];
-                $scope.phone = window.localStorage['phone'];
-                $scope.merchant_key = window.localStorage['merchant_key'];
-
-                $scope.salt_key = window.localStorage['salt_key'];
-
-                $scope.txnId = window.localStorage['finalOrderId'];
-
-                $scope.amount = window.localStorage['amount'];
-                console.log($scope.firstname)
-                console.log($scope.email)
-                console.log($scope.phone)
-                console.log($scope.merchant_key)
-                console.log($scope.salt_key)
-                console.log($scope.txnId)
-                console.log($scope.amount)
-                console.log($scope.merchant_key + '|' + $scope.txnId + '|' + $scope.amount + '|' + 'propertyInfo' + '|' + $scope.firstname + '|' + $scope.email + '|||||||||||' + $scope.salt_key)
-            }
-
-            if (document.URL == 'http://localhost:8100/#/payu') {
-                $scope.getPayuPageDetails();
-            }else{
-                $scope.totalquantity = $rootScope.cartItemsList.length;
-            }
-            $scope.payuMoneyFunc = function ($location, $sce) {
-
-                // window.localStorage['txnId'] = window.localStorage['finalOrderId'];
-
-
-                $scope.string = $scope.merchant_key + '|' + $scope.txnId + '|' + $scope.amount + '|' + 'propertyinfo' + '|' + $scope.firstname + '|' + $scope.email + '|||||||||||' + $scope.salt_key;
-
-                $scope.encrypttext = sha512($scope.string);
-
-                $scope.hash = $scope.encrypttext;
-
-                console.log($scope.string)
-
-                console.log($scope.hash)
-
-                // cordova.InAppBrowser.open('https://secure.payu.in/_payment?merchant_key='+$scope.merchant_key+'&txnId='+$scope.txnId+'&amount='+$rootScope.amount+'&productinfo=productinfo&firstname='+$scope.firstname+'&email='+$scope.email+'&salt_key='+$scope.salt_key)
-
-
-
-
-            }
+         
 
 
             $scope.goback = function () {
@@ -287,15 +238,7 @@ angular.module('shopMyTools.ckeckoutController', [])
           
 
             $scope.checkoutProcess = function () {
-                var options = {
-                    location: 'yes',
-                    clearcache: 'no',
-                    toolbar: 'no'
-                };
-                if ($scope.paymentType == 'online') {
-                    // $cordovaInAppBrowser.open('http://localhost:8100/#/payu',options)
-                    $state.go('payu')
-                }
+              
 
                 $scope.finalCheckoutData = {
 
@@ -341,27 +284,58 @@ angular.module('shopMyTools.ckeckoutController', [])
                     if (data.data.status == 'data saved') {
                         $scope.finalOrderId = data.data.orderid;
                         window.localStorage['finalOrderId'] = $scope.finalOrderId;
+                        var options = {
+                            location: 'yes',
+                            clearcache: 'yes',
+                            toolbar: 'no',
+                            closebuttoncaption:'back'
+                          };
+                        if ($scope.paymentType == 'online') {
+                           // onDeviceReadyTest()
+                           
+                            var amt = parseInt( $rootScope.grand_total ) ;
+                            var name =   $scope.firstname ;
+                            var mobile =  $scope.phone;
+                            var email = window.localStorage['email'];
+                            var bookingId = window.localStorage['finalOrderId'];
+                            var productinfo = "Order for OR0293435435";
+                            var key =   window.localStorage['merchant_key'];
+                            var salt = window.localStorage['salt_key'];
+                            var string = key + '|' + bookingId + '|' + amt+ '|' + productinfo + '|' + name + '|' + email +'|||||||||||'+salt;    
+                            var encrypttext = sha512(string);
 
+                            var data = 'key=' + key
+                            + '&txnid=' + bookingId
+                            + '&amount=' + amt
+                            + '&productinfo=' + productinfo
+                            + '&firstname=' + name
+                            + '&email=' + email
+                            + '&phone=' + mobile
+                            + '&hash=' + encrypttext;
+                           
+                          
+                            $cordovaInAppBrowser.open('templates/payu.html?'+'key=' + key
+                            + '&txnid=' + bookingId
+                            + '&amount=' + amt
+                            + '&productinfo=' + productinfo
+                            + '&firstname=' + name
+                            + '&email=' + email
+                            + '&phone=' + mobile
+                            + '&hash=' + encrypttext, '_blank')
+                             
+                            
+                        }
 
-                        $scope.submitPayment();
+                       // $scope.submitPayment();
                     }
 
                 })
 
-                $scope.submitPayment = function () {
-                    checkoutService.submitPayment(window.localStorage['finalOrderId'], window.localStorage['user_id']).then(function (data) {
-                        if (data.data.status == "status changed") {
-                            if ($scope.paymentType == 'cashondelivery') {
-                                $ionicPopup.alert({
-                                    template: window.localStorage['finalOrderId'],
-                                    title: 'Sucess!'
-                                });
-                                $state.go('app.home');
-                            }
-                        }
-                    })
-                }
+              
             }
+
+            
 
 
         })
+

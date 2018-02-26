@@ -1,106 +1,67 @@
 <ion-view>
-        <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
-                <ion-nav-buttons side="left">
-                    <span class="button button-icon icon ion-close-circled"  ng-click="goback()"></span>
-                </ion-nav-buttons>
-                <ion-nav-title>
-                    <div class="h1 title">{{categoryName}}</div>
-                </ion-nav-title>
-                <ion-nav-buttons side="right">
-                    <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
-                </ion-nav-buttons>
-            </ion-nav-bar>
-            <ion-content >
- <div class="details_container packerdivtopheight" ng-controller="ckeckoutCntrl">
+    <ion-content >
 
-        <div class="submit_right">
-
-           <!--***************************--> 
-
-           <div class="submit_right">
-
-              <div class="addporperty_from" align="middle">
-                   <!-- <div class="edit_information_page_block"  style="width:60%;margin-top:10px;"> -->
-                 <form id="msform" ng-submit="payuMoneyFunc()" action="https://secure.payu.in/_payment"  method="post"  name="payuForm">
-
-                   <fieldset>
-
-                               <input type="hidden" name="key" ng-model="merchant_key" value="{{merchant_key}}" />
-
-                               <input type="hidden" name="hash" value="{{hash}}" ng-model="hash" />
-
-                               <input type="hidden" name="txnid" ng-model="txnId" value="{{txnId}}"  />
-
-                               <input type="hidden" id="amount" name="amount"  ng-model="amount" value="{{amount}}" placeholder="Amount" />
-
-                               
-
-                               <input type="hidden" id="firstname" name="firstname" value="{{firstname}}"  ng-model="firstname" placeholder="Your Name" required/>
-
-                               
-
-                               <input type="hidden" name="email" ng-model="email" value="{{email}}"  placeholder="Email id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-
-                               />
-                           
-
-                               <input type="hidden" id="phone"  value="{{phone}}" ng-minlength="10" ng-maxlength="10" name="phone" ng-model="phone" placeholder="Phone Number"
-
-                                required  />
-
-                               <p style="color:red" ng-show="onSubmit && (payuForm.phone.$error.required)">Please Enter your number.</p>
-
-                               <p style="color:red" ng-show="onSubmit && (payuForm.phone.$error.pattern || payuForm.phone.$error.minlength || payuForm.phone.$error.maxlength)">Invalid mobile number.</p>
-
-                               <input type="hidden" id="productinfo" name="productinfo" ng-model="productinfo" ng-init="productinfo = 'propertyPost'" value="propertyPost"
-
-                               />
-
-                               <input type="hidden" style="visibility:hidden;" id="surl" name="surl" ng-model="surl" value="http://toolsomg.com/success.html"
-
-                                placeholder="Address" />
-
-                               <input type="hidden" style="visibility:hidden;" id="furl" name="furl" ng-model="furl" value="http://toolsomg.com/error.html"
-
-                                placeholder="Address" />
-
-                               <p style="color:red" ng-show="onSubmit && (payuForm.address.$error.required)">Please enter Address</p>
-
-                               <center>
-
-                                   <input type="hidden" style="width:158px !important;display: -webkit-box;" class="next action-button" value="Confirm">
-
-                                   <span ng-show="searchButtonText == 'Please Wait...'">
-
-                                       <img style="width: 21px !important;" src="view/images/loading.gif">
-
-                                   </span>{{ searchButtonText }}</center>
-
-                           
-
-                                    <input type="submit" id="payment_conti" style="background-color:#0487a1;border-color:#0487a1;" class="next action-button" value="Go To Payu" > 
-
-                           </fieldset>
-
-                 </form>
-                       <!-- </div> -->
-
-              </div>
-
-           </div>
-
-        </div>
-
-
-     </div>
-     </ion-content>
-    </ion-view>
-
-
-
-  
-
-
-
+    <div class="full-width">
+    	<h1>Please Wait.., Your transaction is processing...</h1> 
     
+    </div>
+<div  >
+	<form name="payuForm"  id="payuForm" method="post" action="https://secure.payu.in/_payment">
+        <input type="hidden" name="key"  id="key" value="" ng-model="key">
+        <input type="hidden" name="productinfo" id="productinfo" value="" ng-model="productinfo">
+        <input type="hidden" name="hash" id="hash" value="" ng-model="hash">
+        <input type="hidden" name="txnid" id="txnid" value="" ng-model="txnid">
+        <input  type="hidden" name="amount" id="amount" value="" ng-model="amount">
+        <input  type="hidden" name="firstname" id="firstname" value="" ng-model="firstname">
+        <input  type="hidden" name="email" id="email" value="" ng-model="email">
+        <input name="phone"  type="hidden" id="phone" value="" ng-model="phone">
+        <input  type="hidden" name="surl" id="surl" value="http://localhost:8100/#/success.html" size="64">
+        <input  type="hidden" name="furl" id="furl" value="http://localhost/failure.html" size="64">
+        <input  type="hidden" name="service_provider" id="service_provider" value="" size="64">
+    <input type="hidden" value="enter" /> 
+</form >
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style type="text/css">
+	.full-width { width: 100%; float: left; text-align: center;  }
+	h1 { font-size: 35px; width: 50%; margin-top: 30px; margin: 100px auto 0 auto;  }
+	img { margin-top: 30px;  }
+</style>
 
+<script type="text/javascript">
+function findGetParameter(parameterName) {
+    var result = null,
+      tmp = [];
+    location.search
+      .substr(1)
+      .split("&")
+      .forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+      });
+    return result;
+  }
+
+  try {
+    document.getElementById("firstname").value = findGetParameter('firstname');
+    document.getElementById("email").value = findGetParameter('email');
+    document.getElementById("hash").value = findGetParameter('hash');
+    document.getElementById("phone").value = findGetParameter('phone');
+    document.getElementById("productinfo").value = findGetParameter('productinfo');
+    document.getElementById("amount").value = findGetParameter('amount');
+    document.getElementById("key").value = findGetParameter('key');
+    document.getElementById("txnid").value = findGetParameter('txnid');
+   
+    setTimeout(function () {
+       // console.log('2233243')
+
+     document.payuForm.submit();
+    }, 1000);
+  }catch (e)
+  {
+    alert(e);
+  }
+</script>
+ </ion-content>
+</ion-view>
