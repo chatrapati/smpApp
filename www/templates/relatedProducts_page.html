@@ -44,13 +44,13 @@
         <br/>
 
 
-        <div class="row" ng-repeat="related in relatedproducts  | limitTo:6" ng-switch on="$index % 2" id="prod_border">
+        <div class="row" ng-repeat="related in relatedproducts" ng-switch on="$index % 2" id="prod_border">
             <div class="col" ng-switch-when="0">
                 <div class="card1111">
                     <img ng-src="{{related.upload_photo | image_jpg}}" ng-click="getProductDetails(related)" width="90%">
                     <div class="content_part">
-                        <div class="product_name" id="tooltip_name" ng-click="getProductDetails(related)">
-                            <a href="">{{related.upload_name}}</a>
+                        <div class="product_name" ng-init="limit=35" id="tooltip_name" ng-click="getProductDetails(related)">
+                            <a href="">{{related.upload_name | limitTo: limit}}{{related.upload_name .length > limit ? ' . . .' : ''}}</a>
                         </div>
                         <div class="product_price" ng-repeat="price in related.prices">
                             <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
@@ -77,8 +77,8 @@
                 <div class="card1111" ng-show="relatedproducts[$index+1]">
                     <img ng-src= "{{relatedproducts[$index+1].upload_photo | image_jpg}}" ng-click="getProductDetails(relatedproducts[$index+1])" width="90%">
                     <div class="content_part">
-                        <div class="product_name" ng-click="getProductDetails(relatedproducts[$index+1])">
-                            <a href="">{{relatedproducts[$index+1].upload_name}}</a>
+                        <div class="product_name" ng-init="limit=35" id="tooltip_name" ng-click="getProductDetails(relatedproducts[$index+1])">
+                            <a href="">{{relatedproducts[$index+1].upload_name | limitTo: limit}}{{relatedproducts[$index+1].upload_name .length > limit ? ' . . .' : ''}}</a>
                         </div>
                         <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">
                             <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>

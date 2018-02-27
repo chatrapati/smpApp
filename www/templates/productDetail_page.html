@@ -79,7 +79,7 @@
                                 <li>Model No : {{productDetail.upload_modelno}}</li>
                                 <li>Net Weight : {{productDetail.upload_netWeight}}</li>
                                 <li ng-repeat="specification in ProductSpecification  | limitTo:2">
-                                    <span> {{specification.atrname}}</span>
+                                    <span> {{specification.atrname}} :</span>
                                     <span> {{specification.atrvalue}}</span>
                                 </li>
                                 <a ui-sref="specifications_page">View Details</a>

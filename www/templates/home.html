@@ -98,21 +98,21 @@
 			<!--Best Offers start here -->
 			<div class="offers_part">
 				<div class="block_head ofers">
-					<h3 style="margin-bottom:-7px;">Best Offers</h3>
+					<h3>Best Offers</h3>
 				</div>
 			</div>
-			<div class="row" style="height:350px;">
+			<div class="row">
 				<div class="col home-slider">
 					<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 						<ion-slide-page ng-repeat="product in offersArray">
 							<div class="card111">
-								<img class="small-image pdt-img-small" ng-click="getProductDetails(product)" ng-src="{{product.upload_photo | image_jpg}}">
+								<img class="small-image pdt-img-small" ng-click="getProductDetails(product)" ng-src="{{product.upload_photo | image_jpg}}" style="height: 175px;">
 								<!-- <div class="deal_icons">
 									<span class="deal">Deal</span>
 								</div> -->
 								<div class="content_part">
-									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
-										<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name }}</a>
+									<div class="product_name" id="tooltip_name" ng-init="limit = 35" ng-click="getProductDetails(product)">
+										<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
 									</div>
 									<div class="product_price" ng-repeat="price in product.prices">
 										<span class="offer_price">&#8377;{{price.offer_price | number}}</span>
@@ -167,8 +167,8 @@
 							<div class="card111">
 								<img class="small-image pdt-img-small" ng-click="getProductDetails(newarrival)" ng-src="{{newarrival.upload_photo  | image_jpg}}">
 								<div class="content_part">
-									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(newarrival)">
-										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name }}</a>
+									<div class="product_name" id="tooltip_name" ng-init="limit = 35" ng-click="getProductDetails(newarrival)">
+										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
 									</div>
 									<div class="product_price" ng-repeat="price in newarrival.prices">
 										<span class="offer_price">&#8377;{{price.offer_price |number}}</span>

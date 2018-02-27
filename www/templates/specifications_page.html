@@ -29,6 +29,14 @@
                         </div>
                         <div class="row spec_count">
                             <div class="col">
+                                <span class="attrName">Model No</span>
+                            </div>
+                            <div class="col">
+                                <span class="attrValue">{{productDetail.upload_modelno}}</span>
+                            </div>
+                        </div>
+                        <div class="row spec_count">
+                            <div class="col">
                                 <span class="attrName">Price</span>
                             </div>
                             <div class="col">
@@ -43,14 +51,7 @@
                                     <span class="attrValue">{{productDetailPrice.offer_price | currency:'&#8377;'}}</span>
                                 </div>
                             </div>
-                            <div class="row spec_count">
-                                    <div class="col">
-                                        <span class="attrName">Model No</span>
-                                    </div>
-                                    <div class="col">
-                                        <span class="attrValue">{{productDetail.upload_modelno}}</span>
-                                    </div>
-                                </div>
+                           
                                 <div class="row spec_count" ng-repeat="specification in ProductSpecification">
                                         <div class="col">
                                             <span class="attrName">{{specification.atrname}}</span>
