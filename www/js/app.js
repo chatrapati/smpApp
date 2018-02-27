@@ -202,6 +202,13 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
         cache: false,
         templateUrl: 'templates/editUserProfile.html',
         controller: 'editProfileCntrl'
+      })
+      
+      .state('myOrdersFilter_page', {
+        url: '/myOrdersFilter_page',
+        cache: false,
+        templateUrl: 'templates/myOrdersFilter_page.html'
+        //controller: 'welcomeController'
       });
 
 

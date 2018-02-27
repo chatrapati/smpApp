@@ -114,15 +114,16 @@
                 </div>
             </div>
         </div>
-        <div  ng-if="cartItemsList.length == 0" class="cart-btn">
-            <div align="middle">
-                <i class="fa fa-cart-plus" style="font-size:150px;margin-top:40%;color:#ccc;"></i>
-                <div style="padding-bottom:40px;">
-                    <h3>
-                        <span  >Your Tool Cart is Empty</span>
-                    </h3>
+        <div ng-if="cartItemsList.length == 0" class="cart-btn">
+            <div align="middle" id="empty_cart">
+                <i class="fa ion-android-cart"></i>
+                <div class="empty_cart_desc">
+                    <h1>
+                        <span>You don't have any orders</span>
+                    </h1>
+                    <h4>Discover Latest Products and collections on Shop My Tools</h4>
                 </div>
-                <button class="button button-block" style="width:50%;" ui-sref="app.home">Start Shopping</button>
+                <button class="button button-block all_btns" ui-sref="app.home">Shop Now</button>
             </div>
         </div>
         <br>

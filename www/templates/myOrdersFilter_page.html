@@ -1,0 +1,66 @@
+<ion-view>
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="closePopup()">
+                <i class="icon ion-close-circled"></i>
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Filter</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon" ng-click="getfiterItems(getCategoryProductData)">Apply</button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="smt_background_image" style="padding:0;">
+        <ion-list>
+            <div class="block">
+                <div class="filter_head_options" ng-click="categories=!categories">
+                    <ion-item>
+                        <span>Order type</span>
+                    </ion-item>
+                </div>
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions">
+                    <div class="orders_list">
+                        <form class="radiobutns">
+                            <input type="radio" name="orders" value="invoice" checked> Invoice Orders
+                            <br>
+                            <input type="radio" name="orders" value="pending"> Pending Orders
+                            <br>
+                            <input type="radio" name="orders" value="cancel"> Cancel Orders
+                        </form>
+                    </div>
+                </ion-list>
+            </div>
+
+            <div class="block">
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Time Filter</span>
+                    </ion-item>
+                </div>
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions">
+                    <div class="orders_list">
+                        <form class="radiobutns">
+                            <input type="radio" name="orders" value="days" checked> Last 30 days
+                            <br>
+                            <input type="radio" name="orders" value="months"> Last 6 months
+                            <br>
+                            <input type="radio" name="orders" value="oldYear"> 2017
+                            <br>
+                            <input type="radio" name="orders" value="newYear"> 2018
+                        </form>
+                    </div>
+                </ion-list>
+            </div>
+        </ion-list>
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-block all_btns">Apply</button>
+                <p class="filter_tag">Time Filter will not apply to open or cancelled orders...</p>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
