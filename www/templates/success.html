@@ -1,18 +1,20 @@
-<ion-view>
+<ion-view ng-controller="paymentsuccessCntrl">
         <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
                 <ion-nav-buttons side="left">
-                    <button class="button button-clear" ng-click="closeAddPopup()">
+                    <button class="button button-clear" ng-click="goback()">
                         <i class="icon ion-close-circled"></i>
                     </button>
                 </ion-nav-buttons>
                 <ion-nav-title>
                     <div class="h1 title">Success</div>
                 </ion-nav-title>
-                <ion-nav-buttons side="right">
+                <!-- <ion-nav-buttons side="right">
                     <button class="button button-icon" ng-click="saveEditShippingAddress(shippingAddress)">Save</button>
-                </ion-nav-buttons>
+                </ion-nav-buttons> -->
             </ion-nav-bar>
-    <ion-content ng-controller="paymentsuccessCntrl">
-        Your  Order Id is
+    <ion-content >
+      <div align="middle" style="margin-top: 25%;"> Your  Order Id is {{finalOrderId}}
+    </div>
+    <button class="button all_btns middle" id="reg_btn" style="margin-left: 29%;" ng-click="goback()" align="middle">Continue Shopping</button> 
     </ion-content>
 </ion-view>

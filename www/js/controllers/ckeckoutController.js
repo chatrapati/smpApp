@@ -15,7 +15,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
 
-            //  $scope.customermobile = window.localStorage['mobile'];
+           
 
             $scope.editAddress = function () {
                 $scope.Addressmodal.show();
@@ -235,7 +235,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             }
           //  alert(window.localStorage['mobile']);
 
-          
+          $scope.customerMobile = window.localStorage['mobile'];
 
             $scope.checkoutProcess = function () {
               
