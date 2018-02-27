@@ -5,7 +5,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.options = {
             loop: false,
             effect: 'slide', // cube, coverflow
-            speed: 1500,
+            speed: 1000,
         }
 
         $scope.$on("$ionicSlides.sliderInitialized", function (event, data) {
@@ -27,9 +27,9 @@ angular.module('shopMyTools.controllers', [])
             $state.go('smtLogin');
         };
 
-        if (window.localStorage['token']) {
-            $state.go('app.home');
-        }
+        // if (window.localStorage['token']) {
+        //     $state.go('app.home');
+        // }
 
 
     })
