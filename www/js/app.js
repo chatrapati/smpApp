@@ -209,6 +209,13 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
         cache: false,
         templateUrl: 'templates/myOrdersFilter_page.html'
         //controller: 'welcomeController'
+      })
+      
+      .state('cancelOrders_page', {
+        url: '/cancelOrders_page',
+        cache: false,
+        templateUrl: 'templates/cancelOrders_page.html'
+        //controller: 'welcomeController'
       });
 
 
