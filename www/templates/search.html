@@ -20,7 +20,7 @@
         <div class="row" ng-repeat="product in searchedMoreProducts  | limitTo:6" ng-switch on="$index % 2" id="prod_border">
             <div class="col" ng-switch-when="0">
                 <div class="card1111">
-                    <img ng-src="{{product.upload_photo  | image_jpg}}" width="90%">
+                    <img ng-src="{{product.upload_photo  | image_jpg}}" ng-click="getProductDetails(product)" width="90%">
                     <div class="content_part">
                         <div class="product_name" id="tooltip_name">
                             <a href="" ng-click="getProductDetails(product)">{{product.upload_name}}</a>
@@ -48,7 +48,7 @@
 
             <div class="col" ng-switch-when="0">
                 <div class="card1111" ng-show="searchedMoreProducts[$index+1]">
-                    <img ng-src="{{searchedMoreProducts[$index+1].upload_photo | image_jpg}}" width="90%">
+                    <img ng-src="{{searchedMoreProducts[$index+1].upload_photo | image_jpg}}" ng-click="getProductDetails(searchedMoreProducts[$index+1])" width="90%">
                     <div class="content_part">
                         <div class="product_name">
                             <a href="" ng-click="getProductDetails(searchedMoreProducts[$index+1])">{{searchedMoreProducts[$index+1].upload_name}}</a>

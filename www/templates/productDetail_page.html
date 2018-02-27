@@ -32,7 +32,7 @@
 
 
                 <ion-slides options="" slider="" class="prod_slider">
-                    <ion-slide-page ng-repeat="img in imgList track by $index" class="text-center">
+                    <ion-slide-page ng-repeat="img in imgList track by $index" class="text-center" style="height: 200px;">
                         <img ng-src="{{img}}" class="">
                     </ion-slide-page>
                 </ion-slides>
@@ -59,7 +59,7 @@
                         </div>
                         <p class="detailexcl_gst">(Excluding-GST)</p>
                         <!--  Product Description part end here    -->
-                        <div class="pro_detail_name" >
+                        <div class="pro_detail_name">
                             <h1>{{productDetail.upload_name}}</h1>
                             <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
@@ -69,7 +69,7 @@
             </div>
 
 
-            <div class="product_desc">
+            <div>
                 <div class="row">
                     <div class="col">
                         <div class="highlits">
@@ -89,8 +89,8 @@
                 </div>
             </div>
 
-            <div class="product_desc" id="prodetail">
-                <div ng-if="productDetail.avgrating > 0" class="product_desc">
+            <div  id="prodetail" class="product_desc" style="border-top:5px solid #ddd;">
+                <div ng-if="productDetail.avgrating > 0">
                     <div class="row">
                         <div class="col col-50">
                             <div class="highlits">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <div class="highlits" ng-click="review=!review" id="product-icon">
                             <h3>Write your review</h3>
@@ -157,11 +157,6 @@
                                     <span class="error" ng-show="reviewForm.rating.$error.required">Please give rating.</span>
                                 </span>
 
-                                <!-- <label class="item item-input item-floating-label">
-                                    <span class="input-label">Name*</span>
-                                    <input type="text" name="name" placeholder="Name" ng-model="reviewdata.name" required ng-minlength="3" ng-maxlength="50"
-                                        ng-pattern="/^[A-z][A-z .]*$/">
-                                </label> -->
 
                                 <label class="item item-input item-floating-label" id="border_none">
                                     <span class="input-label space">Name
@@ -183,10 +178,6 @@
                                     <span class="error" ng-show="reviewForm.name.$error.maxlength">Should be atleast 3-50 characters.</span>
                                 </span>
 
-                                <!-- <label class="item item-input item-floating-label">
-                                    <span class="input-label">Summary of Your Review*</span>
-                                    <input type="text" name="summary" placeholder="Summary of Your Review " ng-model="reviewdata.summary">
-                                </label> -->
 
                                 <label class="item item-input item-floating-label" id="border_none">
                                     <span class="input-label space">Summary of Your Review
@@ -204,11 +195,6 @@
                                 <span ng-show="reviewForm.$submitted || reviewForm.summary.$touched || (reviewForm.summary.$dirty && reviewForm.summary.$invalid)">
                                     <span class="error" ng-show="reviewForm.summary.$error.required">Please enter summary.</span>
                                 </span>
-                                <!-- <label class="item item-input item-floating-label">
-                                    <span class="input-label">Mobile Number*</span>
-                                    <input type="text" placeholder="Mobile Number" name="mobile" ng-model="reviewdata.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
-                                        maxlength="10" required>
-                                </label> -->
 
                                 <label class="item item-input item-floating-label" id="border_none">
                                     <span class="input-label space">Mobile Number
@@ -227,13 +213,9 @@
                                 <span ng-show="reviewForm.$submitted || reviewForm.mobile.$touched || (reviewForm.mobile.$dirty && reviewForm.mobile.$invalid)">
                                     <span class="error" ng-show="reviewForm.mobile.$error.required">Please enter Mobile Number.</span>
                                     <span class="error" ng-show="reviewForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
-                                    <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+
                                 </span>
 
-                                <!-- <label class="item item-input item-floating-label">
-                                    <span class="input-label">Review*</span>
-                                    <input type="text" placeholder="Review..." name="review" ng-model="reviewdata.review">
-                                </label> -->
 
                                 <label class="item item-input item-floating-label" id="border_none">
                                     <span class="input-label space">Review
@@ -253,13 +235,12 @@
                                 </span>
 
                                 <div class="col text-center">
-                                    <!-- <button style="float:right" ng-click="submitReviews(reviewdata, productDetail.upload_name)">submit</button> -->
                                     <button class="button all_btns middle" ng-click="submitReviews(reviewdata, productDetail.upload_name)">Submit</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="product_desc">
@@ -296,8 +277,8 @@
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button"  ng-class="{'clicked': selectedButton== 'Cart'  }" ng-click="addtoCart('Cart',productDetail.upload_name)">ADD TO CART</a>
-            <a id="buynow" class="button"  ng-class="{'clicked': selectedButton== 'buy'  }" ng-click="gotoCartPage('buy')">BUY NOW</a>
+            <a id="cart" class="button" ng-class="{'clicked': selectedButton== 'Cart'  }" ng-click="addtoCart('Cart',productDetail.upload_name)">ADD TO CART</a>
+            <a id="buynow" class="button" ng-class="{'clicked': selectedButton== 'buy'  }" ng-click="gotoCartPage('buy')">BUY NOW</a>
         </div>
         <!--Footer End here -->
     </ion-footer-bar>
