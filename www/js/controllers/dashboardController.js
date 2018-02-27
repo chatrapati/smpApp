@@ -228,7 +228,7 @@ angular.module('shopMyTools.dashboardController', [])
                 template: 'Loading...'
             });
 
-            if ($rootScope.cartItemsList.length > 0) {
+            if ($rootScope.CartItemsCount > 0) {
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" });
@@ -289,6 +289,10 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
+        $scope.getProductDetails = function (productObj) {
+            window.localStorage['productName'] = productObj.upload_name;
+            $state.go("productDetail_page")
+        }
 
         $scope.gotoCartPage = function () {
             $state.go('cart_page');
@@ -426,6 +430,7 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
+      
 
 
 

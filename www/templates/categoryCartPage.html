@@ -34,7 +34,7 @@
             <div class="category_cart_list" ng-if="products!='' && products!=undefined">
                 <div class="list1" ng-repeat="productsdata in products">
                     <a class="item item-thumbnail-left" class="product-img">
-                        <img ng-src="{{productsdata.upload_photo  | image_jpg}}" alt="Image">
+                        <img ng-src="{{productsdata.upload_photo  | image_jpg}}" ng-click="getProductDetails(productsdata)" alt="Image">
                         <h2 ng-click="getProductDetails(productsdata)">{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
                             <span class="offer_price">&#8377;{{prices.offer_price | number}}</span>

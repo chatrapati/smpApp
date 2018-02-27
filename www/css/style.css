@@ -1293,6 +1293,12 @@ color: #fff
 #tooltip_name{
     height:45px;
 }
+.swiper-container-horizontal > .swiper-pagination {
+    bottom: 0px !important;
+}
+.product_desc:last-child {
+    border-bottom: none;
+}
 .filter_tag{
     margin-left: 2%;
     margin-top: -1%;
