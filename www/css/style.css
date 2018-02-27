@@ -1348,7 +1348,12 @@ color: #fff
 }
 .cancel_orders_ser h1{
     font-size: 22px;
-    font-weight: 700;   
+    font-weight: 700; 
+    margin-bottom: 0px;  
+}
+.cancel_orders_ser p{
+    font-size: 16px;
+    color: #6f6d6d;
 }
 .cancel_orders_ser .search{
     /* border-bottom: 1px solid #0487a1; */
@@ -1370,4 +1375,20 @@ color: #fff
 .canc_div{
     background: #f8f8f8;
     box-shadow: 2px 2px 2px #ececec;
+}
+.invoice_body .cancel_cart_list .item {
+    background: transparent;
+    border: none;
+}
+.invoice_body{
+    padding: 0 5%;
+    border-bottom: 5px solid #ddd;
+}
+.invoice_body:last-child{
+    border-bottom: none;
+}
+
+.invoice_rev .item-input {
+    margin-bottom: 15px;
+    border-radius: 5px;
 }

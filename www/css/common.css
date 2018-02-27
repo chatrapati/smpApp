@@ -162,7 +162,9 @@
 
 
 /*   lakki styles start here 8-2-2018 */
-
+    .border_bottom1 {
+        border-bottom: 1px solid #ddd;
+    }
     .smt_background_image{
         background: url("../img/BG_IMG.png");
         width: 100%;
