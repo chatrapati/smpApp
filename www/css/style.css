@@ -1288,11 +1288,12 @@ color: #fff
 }
 .offers_part h3{
     margin-top: 10px;
+    margin-bottom: 0px;
 }
 #tooltip_name{
     height:45px;
 }
-.swiper-container-horizontal > .swiper-pagination {
+#product_detail_slider .swiper-container-horizontal > .swiper-pagination {
     bottom: 0px !important;
 }
 .product_desc:last-child {
@@ -1330,4 +1331,43 @@ color: #fff
     font-size: 20px;
     color: #636262;
     padding: 20px 0 0 0;
+}
+.cancel_cart_list .list1{
+    margin-top: 4%;
+}
+.cancel_cart_list h2{
+    font-size: 20px;
+    font-weight: 500;
+}
+.cancel_cart_list p{
+    font-size: 16px;
+    color: #a09c9c;
+}
+.cancel_cart_list .item{
+    border-radius: 10px;
+}
+.cancel_orders_ser h1{
+    font-size: 22px;
+    font-weight: 700;   
+}
+.cancel_orders_ser .search{
+    /* border-bottom: 1px solid #0487a1; */
+    font-size: 12px;
+    margin-top: 5px;
+}
+.capitalize{
+    text-transform: capitalize;
+}
+.cancel_orders_ser h4{
+    font-size: 16px;
+}
+.canc_div .cancel_orders_ser .f_left{
+    color: #878484;
+}
+.canc_div .cancel_orders_ser .f_right{
+    color: #0487a1;
+}
+.canc_div{
+    background: #f8f8f8;
+    box-shadow: 2px 2px 2px #ececec;
 }
