@@ -191,6 +191,12 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
        
         templateUrl: 'templates/payu.html'
       })
+      .state('success', {
+        url: '/success',
+       
+        templateUrl: 'templates/success.html',
+        controller:'paymentsuccessCntrl'
+      })
       .state('editUserProfile', {
         url: '/editUserProfile',
         cache: false,
