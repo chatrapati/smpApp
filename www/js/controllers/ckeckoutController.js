@@ -321,9 +321,9 @@ angular.module('shopMyTools.ckeckoutController', [])
                             + '&firstname=' + name
                             + '&email=' + email
                             + '&phone=' + mobile
-                            + '&hash=' + encrypttext, '_blank')
-                             
-                            
+                            + '&hash=' + encrypttext, '_blank') 
+                        }else{
+                            $state.go('success')
                         }
 
                        // $scope.submitPayment();

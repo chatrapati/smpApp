@@ -189,6 +189,12 @@ angular.module('shopMyTools', ['ionic','ngCordova','shopMyTools.controllers', 's
        
         templateUrl: 'templates/payu.html'
       })
+      .state('success', {
+        url: '/success',
+       
+        templateUrl: 'templates/success.html',
+        controller:'paymentsuccessCntrl'
+      })
       .state('editUserProfile', {
         url: '/editUserProfile',
         cache: false,
