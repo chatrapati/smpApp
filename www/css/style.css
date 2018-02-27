@@ -1289,3 +1289,6 @@ color: #fff
 .offers_part h3{
     margin-top: 10px;
 }
+#tooltip_name{
+    height:45px;
+}

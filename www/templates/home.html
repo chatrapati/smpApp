@@ -112,7 +112,7 @@
 								</div> -->
 								<div class="content_part">
 									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(product)">
-										<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}</a>
+										<a href="" tooltips tooltip-template={{product.upload_name}}>{{product.upload_name }}</a>
 									</div>
 									<div class="product_price" ng-repeat="price in product.prices">
 										<span class="offer_price">&#8377;{{price.offer_price | number}}</span>
@@ -168,7 +168,7 @@
 								<img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo  | image_jpg}}" alt="{{newarrival.upload_name}}">
 								<div class="content_part">
 									<div class="product_name" id="tooltip_name" ng-init="limit = 19" ng-click="getProductDetails(newarrival)">
-										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>
+										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name }}</a>
 									</div>
 									<div class="product_price" ng-repeat="price in newarrival.prices">
 										<span class="offer_price">&#8377;{{price.offer_price |number}}</span>
