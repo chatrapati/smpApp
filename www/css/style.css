@@ -1292,3 +1292,12 @@ color: #fff
 #tooltip_name{
     height:45px;
 }
+.filter_tag{
+    margin-left: 2%;
+    margin-top: -1%;
+    color: #918d8d;
+    font-size: 15px;
+}
+.orders_list{
+    margin-bottom: 15px;
+}
