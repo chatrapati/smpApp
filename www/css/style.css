@@ -1301,3 +1301,27 @@ color: #fff
 .orders_list{
     margin-bottom: 15px;
 }
+#empty_cart{
+    padding: 0px 10%;
+}
+#empty_cart i{
+    font-size: 130px;
+    margin-top: 15%;
+    color: #0487a1;
+    border: 1px solid #f6f6f6;
+    border-radius: 50%;
+    padding: 15% 20%;
+    background: #f6f6f6;
+}
+.empty_cart_desc{
+    margin: 20% 0;
+}
+.empty_cart_desc h1{
+    font-size: 25px;
+    font-weight: 700;
+}
+.empty_cart_desc h4{
+    font-size: 20px;
+    color: #636262;
+    padding: 20px 0 0 0;
+}
