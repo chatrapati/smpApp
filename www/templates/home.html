@@ -165,7 +165,7 @@
 					<ion-slides options="galleryOptions_deal" slider="gallerySlider" class="homeSmt">
 						<ion-slide-page ng-repeat="newarrival in newarrivalsArray">
 							<div class="card111">
-								<img class="small-image pdt-img-small" ng-click="getProductDetails(newarrival)" ng-src="{{newarrival.upload_photo  | image_jpg}}">
+								<img class="small-image pdt-img-small" ng-click="getProductDetails(newarrival)" ng-src="{{newarrival.upload_photo  | image_jpg}}" style="height: 175px;">
 								<div class="content_part">
 									<div class="product_name" id="tooltip_name" ng-init="limit = 35" ng-click="getProductDetails(newarrival)">
 										<a href="" tooltips tooltip-template={{newarrival.upload_name}}>{{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}</a>

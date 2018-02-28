@@ -1,0 +1,102 @@
+<ion-view>
+    <!--  category top header start here  -->
+    <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
+        <ion-nav-buttons side="left">
+            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
+        </ion-nav-buttons>
+        <ion-nav-title>
+            <div class="h1 title">Order</div>
+        </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!--  category top header end here  -->
+
+    <ion-content class="smt_background_image" style="padding:0;">
+        <div class="row border_bottom1">
+            <div class="col">
+                <div class="cancel_orders_ser">
+                    <h1 class="">Your reviews</h1>
+                    <p>
+                        <span class="theme_clr">Lakshmi</span> is your public name </p>
+                </div>
+            </div>
+        </div>
+
+        <!--  category body start here  -->
+        <div class="invoice_body">
+            <div class="cancel_cart_list">
+                <div class="list1">
+                    <a class="item item-thumbnail-left" class="product-img">
+                        <img ng-src="{{productsdata.upload_photo  | image_jpg}}" alt="Image" style="border: 1px solid #ddd;">
+                        <h2 style="white-space: initial;">Product Name</h2>
+                        <p>
+                            <i class="icon ion-android-star" style="color: #aaa;"></i>
+                            <i class="icon ion-android-star" style="color: #aaa;"></i>
+                            <i class="icon ion-android-star" style="color: #aaa;"></i>
+                            <i class="icon ion-android-star" style="color: #aaa;"></i>
+                            <i class="icon ion-android-star" style="color: #aaa;"></i>
+                        </p>
+                    </a>
+                    <p>
+                        <span style="color:#000;">
+                            <i class="icon ion-chevron-up"></i>
+                        </span>
+                        <span class="theme_clr"> Write a Review</span>
+                    </p>
+                </div>
+            </div>
+            <div class="invoice_rev">
+                <div class="list">
+                    <label class="item item-input">
+                        <textarea placeholder="Write your review here..."></textarea>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Headline for your review">
+                    </label>
+                    <p style="border:1px solid #ddd;padding: 3px 10px;border-radius:5px;">
+                       <span class="text-center"> <span><i class="icon ion-ios-camera-outline" style="color: #0487a1;font-size:40px;"></i></span> <span style="font-size: 16px;font-weight: 500;">Add Photos / Vedio</span></span>
+                    </p>
+                    <button class="button button-block all_btns">Submit</button>
+                </div>
+            </div>
+            <div class="cancel_cart_list">
+                    <div class="list1">
+                        <a class="item item-thumbnail-left" class="product-img">
+                            <img ng-src="{{productsdata.upload_photo  | image_jpg}}" alt="Image" style="border: 1px solid #ddd;">
+                            <h2 style="white-space: initial;">Product Name</h2>
+                            <p>
+                                <i class="icon ion-android-star" style="color: #aaa;"></i>
+                                <i class="icon ion-android-star" style="color: #aaa;"></i>
+                                <i class="icon ion-android-star" style="color: #aaa;"></i>
+                                <i class="icon ion-android-star" style="color: #aaa;"></i>
+                                <i class="icon ion-android-star" style="color: #aaa;"></i>
+                            </p>
+                        </a>
+                        <p>
+                            <span style="color:#000;">
+                                <i class="icon ion-chevron-up"></i>
+                            </span>
+                            <span class="theme_clr"> Write a Review</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="invoice_rev">
+                    <div class="list">
+                        <label class="item item-input">
+                            <textarea placeholder="Write your review here..."></textarea>
+                        </label>
+                        <label class="item item-input">
+                            <input type="text" placeholder="Headline for your review">
+                        </label>
+                        <p style="border:1px solid #ddd;padding: 3px 10px;border-radius:5px;">
+                           <span class="text-center"> <span><i class="icon ion-ios-camera-outline" style="color: #0487a1;font-size:40px;"></i></span> <span style="font-size: 16px;font-weight: 500;">Add Photos / Vedio</span></span>
+                        </p>
+                        <button class="button button-block all_btns">Submit</button>
+                    </div>
+                </div>
+        </div>
+        <!--  category body end here  -->
+    </ion-content>
+</ion-view>
