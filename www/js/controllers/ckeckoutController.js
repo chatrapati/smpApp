@@ -9,12 +9,19 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.showPaymentTypeDiv = false;
             $scope.showOrderDetailDiv = false;
             $scope.checkoutData = {};
+           
             $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
             $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
             $scope.billingAddressLength = Object.keys($scope.billingAddress).length;
+            // if($scope.shippingAddressLength==0){
+            //     $scope.shippingAddress = "";
+            // }
+            // if($scope.billingAddressLength==0){
+            //     $scope.billingAddress = "";
+            // }
 
 
             $scope.editAddress = function () {
