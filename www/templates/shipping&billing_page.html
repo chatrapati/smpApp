@@ -168,7 +168,7 @@
                 </div>
 
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="showOrderDetailDiv">
-                    <table style="width:100%" class="nrows m_top_5" ng-if="cartItemsList.length > 0">
+                    <!-- <table style="width:100%" class="nrows m_top_5" ng-if="cartItemsList.length > 0">
                         <thead>
                             <tr>
                                 <th>Product Name</th>
@@ -189,7 +189,34 @@
                                 <td class="txt_right">{{cartItem.offer_price*cartItem.qty|currency:'&#8377;'}}</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
+                    <div class="category_body">
+                    <div class="row">
+                        <div class="col" ng-if="cartItemsList.length > 0" ng-repeat="cartItem in cartItemsList">
+                            <div class="pro_amnt_details">
+                                <h2>Price Details</h2>
+                                <div class="">
+                                    <p>
+                                        <span class="attr">Price (
+                                            <span>{{cartItem.length}}</span> items)</span>
+                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                                    </p>
+                                    <p>
+                                        <span class="attr">Shipping Charges</span>
+                                        <span class="val">&#8377;0.00</span>
+                                    </p>
+                                </div>
+                                <!-- <div class="pro_attr_vals">
+                                    <p>
+                                        <span class="attr">Amount Payble</span>
+                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                                    </p>
+                                </div> -->
+                                <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <div class="pro_attr_vals txt_right">
                         <p>
                             <span class="attr">Amount Payble</span>

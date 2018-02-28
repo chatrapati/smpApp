@@ -9,7 +9,6 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.showPaymentTypeDiv = false;
             $scope.showOrderDetailDiv = false;
             $scope.checkoutData = {};
-
             $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
