@@ -15,30 +15,35 @@
 
     <ion-content class="smt_background_image" style="padding:0;">
         <!--  category body start here  -->
-        
-            <div class="row" style="padding-left: 15px;">
+
+        <div class="row" style="padding-left: 15px;">
+            <div class="col">
+                <div class="cancel_orders_ser">
+                    <h1 class="f_left">Your Orders</h1>
+                    <span class="search f_right">
+                        <i class="icon ion-search placeholder-icon" style="color: #aaa;"></i>
+                        <input type="search" placeholder="Search all orders" style="color:#000;margin-top:-32px; margin-left:20px;">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="canc_div">
+            <div class="row">
                 <div class="col">
                     <div class="cancel_orders_ser">
-                        <h1 class="f_left">Your Orders</h1>
-                        <span class="search f_right">
-                            <i class="icon ion-search placeholder-icon" style="color: #aaa;"></i>
-                            <input type="search" placeholder="Search all orders" style="color:#000;margin-top:-32px; margin-left:20px;">
-                        </span>
+                        <h4 class="f_left">Cancelled Orders</h4>
+                        <h4 class="f_right">Filter Orders
+                            <span style="color:#000;">
+                                <i class="icon ion-ios-arrow-right"></i>
+                                <i class="icon ion-ios-arrow-right"></i>
+                            </span>
+                        </h4>
                     </div>
                 </div>
             </div>
-            <div class="canc_div">
-                <div class="row">
-                    <div class="col">
-                        <div class="cancel_orders_ser">
-                            <h4 class="f_left">Cancelled Orders</h4>
-                            <h4 class="f_right">Filter Orders <span style="color:#000;"><i class="icon ion-ios-arrow-right"></i><i class="icon ion-ios-arrow-right"></i></span></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category_body">
-            <div class="cancel_cart_list">
+        </div>
+        <div class="category_body" >
+            <div class="cancel_cart_list" ng-repeat="cancelOrderData in cancelOrderList">
                 <div class="list1">
                     <a class="item item-thumbnail-left" class="product-img">
                         <img ng-src="{{productsdata.upload_photo  | image_jpg}}" alt="Image">

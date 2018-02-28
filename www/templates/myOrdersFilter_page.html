@@ -1,19 +1,19 @@
 <ion-view>
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <button class="button button-clear" ng-click="closePopup()">
+            <button class="button button-clear" ng-click="goback()">
                 <i class="icon ion-close-circled"></i>
             </button>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Filter</div>
         </ion-nav-title>
-        <ion-nav-buttons side="right">
-            <button class="button button-icon" ng-click="getfiterItems(getCategoryProductData)">Apply</button>
-        </ion-nav-buttons>
+        <!-- <ion-nav-buttons side="right">
+            <button class="button button-icon" >Apply</button>
+        </ion-nav-buttons> -->
     </ion-nav-bar>
     <ion-content class="smt_background_image" style="padding:0;">
-        <ion-list>
+       
             <div class="block">
                 <div class="filter_head_options" ng-click="categories=!categories">
                     <ion-item>
@@ -33,7 +33,7 @@
                 </ion-list>
             </div>
 
-            <div class="block">
+            <!-- <div class="block">
                 <div class="filter_head_options">
                     <ion-item>
                         <span>Time Filter</span>
@@ -52,13 +52,13 @@
                         </form>
                     </div>
                 </ion-list>
-            </div>
-        </ion-list>
+            </div> -->
+     
 
         <div class="row">
             <div class="col">
                 <button class="button button-block all_btns">Apply</button>
-                <p class="filter_tag">Time Filter will not apply to open or cancelled orders...</p>
+                <!-- <p class="filter_tag">Time Filter will not apply to open or cancelled orders...</p> -->
             </div>
         </div>
 

@@ -3,7 +3,7 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <span class="button button-icon icon ion-close-circled"  ng-click="goback()"></span>
+            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">{{categoryName}}</div>
@@ -19,13 +19,18 @@
         <!--  category body start here  -->
         <div class="category_body">
             <div class="category_dropdown">
-                <div class="list" style="float:left;">
+                <!-- <div class="list" style="float:left;">
                     <label> Show</label>
                     <select ng-model="noOfItems" ng-options="obj.value as obj.Name for obj in showNoOfItems" ng-change="getselectedNoProducts(noOfItems)">
                     </select>
-
-
-                </div>
+                </div> -->
+                <button ng-disabled="currentPage == 1" ng-click="prevPage(currentPage)">
+                    Prev
+                </button>
+                {{currentPage}}
+                <button ng-disabled="products.length<6"  ng-click="nextPage(currentPage)">
+                    Next
+                </button>
                 <div class="list" style="float:right;">
                     <label> Sort</label>
                     <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select>
@@ -62,8 +67,8 @@
 
         </div>
         <div class="no_records m_top12" ng-if="products=='' || products==undefined">
-                <span>No Records Found !!!</span>
-            </div>
+            <span>No Records Found !!!</span>
+        </div>
         <!--  category body end here  -->
     </ion-content>
 
