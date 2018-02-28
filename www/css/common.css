@@ -493,3 +493,22 @@ th {
     position: relative !important;
     margin-top: 70%;
 }
+.category_cart_list .item-thumbnail-left > img:first-child{
+    max-width: 90px !important;
+    max-height: 100px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+
+
+/* ios styles changes start here */
+
+    .platform-ios .nav-bar-container{
+        margin-top: 20px;
+    }
+    .platform-ios .mainSlider {
+        border-radius: 15px;
+    }
+
+/* ios styles changes end here */

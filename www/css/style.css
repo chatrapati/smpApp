@@ -522,6 +522,7 @@ div.footer-button a.button.button-full {
     color: #444;
     border: none; 
     border-bottom: 5px solid #ddd; 
+    margin: 0 -10px;
     /*padding-bottom: 6%;  */   
 }
 .category_cart_list .list1 h1{
@@ -667,6 +668,8 @@ div.footer-button a.button.button-full {
     color:#fff;
     font-size: 17px;
     line-height: 2.7;
+    margin-left: -10px;
+    margin-right: 5px;
   }
   #buynow{
     min-width: 50%;
@@ -675,6 +678,8 @@ div.footer-button a.button.button-full {
     border:1px solid #0487a1;
     font-size: 17px;
     line-height: 2.7;
+    margin-right: 5px;
+    margin-left: -10px;
   }
   
 #productdetailSlide .slider-slide {
@@ -945,6 +950,9 @@ div.footer-button a.button.button-full {
     }
     .block{
         border-bottom: 5px solid #ddd;
+    }
+    .block:last-child{
+        border-bottom: none;
     }
     .shop_address .s_head{
         color: #2c2b2b;
