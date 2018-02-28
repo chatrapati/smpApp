@@ -34,7 +34,7 @@
                     <div ng-repeat="item in cartItemsList">
                         <div class="row">
                             <div class="col">
-                                <h1>{{item.productdescription}}</h1>
+                                <h1 class="theme_clr">{{item.productdescription}}</h1>
                                 <div class="product_price">
                                     <span class="offer_price">{{item.offer_price | currency:'&#8377;'}}</span>
                                     <br>
@@ -92,13 +92,21 @@
                                 <h2>Price Details</h2>
                                 <div class="">
                                     <p>
-                                        <span class="attr">Price (
-                                            <span>{{cartItemsList.length}}</span> items)</span>
-                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                                        <span class="attr">Sub Total</span>
+                                        <span class="val">&#8377;0.00</span>
+                                    </p>
+                                    <p>
+                                        <span class="attr">Total Tax Amt</span>
+                                        <span class="val">&#8377;0.00</span>
                                     </p>
                                     <p>
                                         <span class="attr">Shipping Charges</span>
                                         <span class="val">&#8377;0.00</span>
+                                    </p>
+                                    <p>
+                                        <span class="attr">Grand Total (
+                                            <span>{{cartItemsList.length}}</span> items)</span>
+                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
                                     </p>
                                 </div>
                                 <div class="pro_attr_vals">
