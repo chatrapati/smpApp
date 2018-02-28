@@ -1,12 +1,15 @@
 angular.module('shopMyTools.dashboardController', [])
 
     .controller('myOrderController', function ($scope, $rootScope, $state, myOrdersService, $ionicPopup, $ionicLoading, $ionicModal) {
-        $scope.myOrdersList = [];
-        $scope.pendingOrderList = [];
-        $scope.invoiceOrderList = [];
-        $scope.cancelOrderList = [];
+
 
         $scope.getOrders = function () {
+
+            $scope.myOrdersList = [];
+            $scope.pendingOrderList = [];
+            $scope.invoiceOrderList = [];
+            $scope.cancelOrderList = [];
+
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -89,6 +92,7 @@ angular.module('shopMyTools.dashboardController', [])
 
         $scope.closePopup = function () {
             $scope.modal.hide();
+            $scope.getOrders();
         }
 
         $scope.Pendingactive = true;
@@ -232,7 +236,7 @@ angular.module('shopMyTools.dashboardController', [])
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" });
-           // $rootScope.CartItemsCount = $scope.productDataList.length;
+            // $rootScope.CartItemsCount = $scope.productDataList.length;
 
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
@@ -430,7 +434,7 @@ angular.module('shopMyTools.dashboardController', [])
 
         }
 
-      
+
 
 
 
@@ -442,8 +446,8 @@ angular.module('shopMyTools.dashboardController', [])
 
 
         $scope.goback = function () {
-           // $state.go('app.home');
-             $window.history.go(-1);
+            // $state.go('app.home');
+            $window.history.go(-1);
         }
 
     })
