@@ -12,7 +12,7 @@ angular.module('shopMyTools.homeController', [])
 
         $scope.homePageDetails = function () {
             $ionicLoading.show({
-                template: 'Loading...'
+                template: '<ion-spinner icon="spiral"></ion-spinner>'
             });
             homePageService.homePageMethod().then(function (data) {
                 $ionicLoading.hide();
@@ -34,7 +34,7 @@ angular.module('shopMyTools.homeController', [])
 
         $scope.getOffers = function (categoryObj) {
             $ionicLoading.show({
-                template: 'Loading...'
+                template: '<ion-spinner icon="bubbles"></ion-spinner>'
             });
             homePageService.allOffersMethod(categoryObj).then(function (data) {
                 $ionicLoading.hide();
@@ -103,7 +103,7 @@ angular.module('shopMyTools.homeController', [])
 
         $scope.getNewArrivals = function (categoryObj) {
             $ionicLoading.show({
-                template: 'Loading...'
+                template: '<ion-spinner icon="bubbles"></ion-spinner>'
             });
             homePageService.allNewArrivalsMethod(categoryObj).then(function (data) {
                 $ionicLoading.hide();
@@ -152,7 +152,7 @@ angular.module('shopMyTools.homeController', [])
 
             $scope.productDataList = [];
             $ionicLoading.show({
-                template: 'Loading...'
+                template: '<ion-spinner icon="android"></ion-spinner>'
             });
 
             if ($rootScope.cartItemsList) {

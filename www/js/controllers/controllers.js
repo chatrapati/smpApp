@@ -27,9 +27,9 @@ angular.module('shopMyTools.controllers', [])
             $state.go('smtLogin');
         };
 
-        if (window.localStorage['token']) {
-            $state.go('app.home');
-        }
+        // if (window.localStorage['token']) {
+        //     $state.go('app.home');
+        // }
 
         $scope.loginData = {};
         if (window.localStorage['remeberCredentials']) {
