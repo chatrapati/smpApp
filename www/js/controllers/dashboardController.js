@@ -312,7 +312,7 @@ angular.module('shopMyTools.dashboardController', [])
 
 
     .controller('viewCartItemsListCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, $window, viewCartItemsService, categoryService) {
-
+       
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
                 template: 'Loading...'
@@ -323,6 +323,16 @@ angular.module('shopMyTools.dashboardController', [])
                     $rootScope.cartItemsList = data.data.item_list;
                     $rootScope.grand_total = data.data.grand_total;
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
+                    $rootScope.totalprice = 0;
+                    $rootScope.totaltaxAmout = 0;
+                    for (var i = 0; i < $rootScope.cartItemsList.length; i++) {
+                        var offerprice = $rootScope.cartItemsList[i].offer_price;
+                        var taxAmount =$rootScope.cartItemsList[i].tax_amount;
+                        $rootScope.totalprice += JSON.parse(offerprice * $rootScope.cartItemsList[i].qty) ;
+                        $rootScope.totaltaxAmout += JSON.parse(taxAmount) ; 
+                       // alert($rootScope.totalprice);
+                    }
+
                 } else if (data.data.status == 'no data available of this user') {
                     $rootScope.cartItemsList = [];
                     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
@@ -369,6 +379,7 @@ angular.module('shopMyTools.dashboardController', [])
 
                 $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
                 categoryService.addToCartMethod($rootScope.cartItemsList, window.localStorage['user_id']).then(function (data) {
+
                     window.localStorage['orderId'] = data.data.orderid;
                     $ionicLoading.hide();
                     if (data.data.status == 'item added to cart') {

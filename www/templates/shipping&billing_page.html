@@ -73,17 +73,15 @@
                     <div class="delivery" ng-if="checkoutData.shippingType == 'Delivery'">
                         <div class="row">
                             <div class="col delivery">
-                                <div ng-if="shippingAddressLength>0">
-                                    <h1>{{shippingAddress.firstname}} {{shippingAddress.lastname}}</h1>
-                                    <p>
-                                        <span>{{shippingAddress.house_no}},</span>
-                                        <span>{{shippingAddress.street_address}},</span>
-                                        <span>{{shippingAddress.city}}, {{shippingAddress.postal_code}}</span>
-                                        <span>{{shippingAddress.state}},</span>
-                                        <span>{{shippingAddress.country}}.</span>
-                                    </p>
-                                    <p class="theme_clr">{{shippingAddress.mobile}}</p>
-                                </div>
+                                <h1>{{shippingAddress.firstname}} {{shippingAddress.lastname}}</h1>
+                                <p>
+                                    <span>{{shippingAddress.house_no}},</span>
+                                    <span>{{shippingAddress.street_address}},</span>
+                                    <span>{{shippingAddress.city}}, {{shippingAddress.postal_code}}</span>
+                                    <span>{{shippingAddress.state}},</span>
+                                    <span>{{shippingAddress.country}}.</span>
+                                </p>
+                                <p class="theme_clr">{{shippingAddress.mobile}}</p>
                                 <!-- <a class="f_right" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</a> -->
                                 <button class="button all_btns changeAddr middle" ng-click="editAddress(shippingAddress)">Change or Add Address</button>
                                 <!--all_btns_chkot replace of all_btns-->
@@ -110,17 +108,15 @@
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showBillingAddressDiv">
                     <div class="row ">
                         <div class="col delivery">
-                            <div ng-if="billingAddressLength>0">
-                                <h1>{{billingAddress.firstname}} {{billingAddress.lastname}}</h1>
-                                <p>
-                                    <span>{{billingAddress.house_no}},</span>
-                                    <span>{{billingAddress.street_address}},</span>
-                                    <span>{{billingAddress.city}}, {{billingAddress.postal_code}}</span>
-                                    <span>{{billingAddress.state}},</span>
-                                    <span>{{billingAddress.country}}.</span>
-                                </p>
-                                <p class="theme_clr">{{billingAddress.mobile}}</p>
-                            </div>
+                            <h1>{{billingAddress.firstname}} {{billingAddress.lastname}}</h1>
+                            <p>
+                                <span>{{billingAddress.house_no}},</span>
+                                <span>{{billingAddress.street_address}},</span>
+                                <span>{{billingAddress.city}}, {{billingAddress.postal_code}}</span>
+                                <span>{{billingAddress.state}},</span>
+                                <span>{{billingAddress.country}}.</span>
+                            </p>
+                            <p class="theme_clr">{{billingAddress.mobile}}</p>
                             <!-- <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a> -->
                             <button class="button all_btns changeAddr middle" id="reg_btn" ng-click="gotoEditBillingAddress()">Change or Add Address</button>
                             <button class="button all_btns conti middle" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
@@ -191,37 +187,42 @@
                         </tbody>
                     </table> -->
                     <div class="category_body">
-                    <div class="row">
-                        <div class="col" ng-if="cartItemsList.length > 0" ng-repeat="cartItem in cartItemsList">
-                            <div class="pro_amnt_details">
-                                <h2>Price Details</h2>
-                                <div class="">
+                        <div class="row">
+                            <div class="col" ng-if="cartItemsList.length > 0">
+                                <div class="pro_amnt_details">
+                                    <h2>Price Details</h2>
+                                    <div class="">
+                                        <p>
+                                            <span class="attr">Total Price</span>
+                                            <span class="val">{{totalprice | currency:'&#8377;'}}</span>
+                                        </p>
+                                        <p>
+                                            <span class="attr">Total Tax Amt</span>
+                                            <span class="val">{{totaltaxAmout | currency:'&#8377;'}}</span>
+                                        </p>
+                                        <p>
+                                            <span class="attr">Shipping Charges</span>
+                                            <span class="val">&#8377;0.00</span>
+                                        </p>
+                                    </div>
                                     <p>
-                                        <span class="attr">Price (
-                                            <span>{{cartItem.length}}</span> items)</span>
+                                        <span class="attr">Grand Total (
+                                            <span>{{cartItemsList.length}}</span> items)</span>
                                         <span class="val">{{grand_total | currency:'&#8377;'}}</span>
                                     </p>
-                                    <p>
-                                        <span class="attr">Shipping Charges</span>
-                                        <span class="val">&#8377;0.00</span>
-                                    </p>
+                                    <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
                                 </div>
-                                <!-- <div class="pro_attr_vals">
-                                    <p>
-                                        <span class="attr">Amount Payble</span>
-                                        <span class="val">{{grand_total | currency:'&#8377;'}}</span>
-                                    </p>
-                                </div> -->
-                                <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
                             </div>
                         </div>
-                    </div>
-                    </div>
-                    <div class="pro_attr_vals txt_right">
-                        <p>
-                            <span class="attr">Amount Payble</span>
-                            <span class="val">{{grand_total | currency:'&#8377;'}}</span>
-                        </p>
+
+                        <div class="row pro_attr_vals txt_right">
+                            <div class="col">
+                                <p>
+                                    <span class="attr">Amount Payble</span>
+                                    <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
