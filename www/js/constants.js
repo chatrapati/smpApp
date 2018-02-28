@@ -21,10 +21,6 @@ angular.module('shopMyTools.constants', [])
 
     .constant('SERVER_URL1', 'http://157.119.108.142:8002')
 
-
-    //.constant('LOGIN_URL', ' http://192.168.20.69:9002')
-
     .constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005')
-
-
+    
     .constant('PRODUCT_CATEGORY_SERVICE', 'http://157.119.108.137:80'); 

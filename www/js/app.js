@@ -207,8 +207,8 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
       .state('myOrdersFilter_page', {
         url: '/myOrdersFilter_page',
         cache: false,
-        templateUrl: 'templates/myOrdersFilter_page.html'
-        //controller: 'welcomeController'
+        templateUrl: 'templates/myOrdersFilter_page.html',
+        controller: 'myOrderController'
       })
       
       .state('cancelOrders_page', {

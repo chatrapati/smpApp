@@ -2,7 +2,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
     .controller('ckeckoutCntrl',
         function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading,
-            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService,$cordovaInAppBrowser) {
+            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService, $cordovaInAppBrowser) {
 
             $scope.showshippingDiv = true;
             $scope.showBillingAddressDiv = false;
@@ -14,8 +14,9 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
+            $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
+            $scope.billingAddressLength = Object.keys($scope.billingAddress).length;
 
-           
 
             $scope.editAddress = function () {
                 $scope.Addressmodal.show();
@@ -191,24 +192,24 @@ angular.module('shopMyTools.ckeckoutController', [])
 
             $scope.getPayuDetails();
 
-          
 
-               $scope.firstname = $scope.userInfo.firstname;
-               $scope.email = $scope.userInfo.email;
-               $scope.phone= window.localStorage['mobile'];
 
-             $scope.amount = $rootScope.grand_total;
+            $scope.firstname = $scope.userInfo.firstname;
+            $scope.email = $scope.userInfo.email;
+            $scope.phone = window.localStorage['mobile'];
 
-             $scope.merchant_key = window.localStorage['merchant_key'];
+            $scope.amount = $rootScope.grand_total;
 
-           
+            $scope.merchant_key = window.localStorage['merchant_key'];
 
-              $scope.txnId = window.localStorage['finalOrderId'];
 
-           
-                 $scope.totalquantity = $rootScope.cartItemsList.length;
 
-         
+            $scope.txnId = window.localStorage['finalOrderId'];
+
+
+            $scope.totalquantity = $rootScope.cartItemsList.length;
+
+
 
 
             $scope.goback = function () {
@@ -233,16 +234,16 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                 });
             }
-          //  alert(window.localStorage['mobile']);
+            //  alert(window.localStorage['mobile']);
 
-          $scope.customerMobile = window.localStorage['mobile'];
+            $scope.customerMobile = window.localStorage['mobile'];
 
             $scope.checkoutProcess = function () {
-              
+
 
                 $scope.finalCheckoutData = {
 
-                    "pic_alt_mobile" : $scope.customerMobile,
+                    "pic_alt_mobile": $scope.customerMobile,
 
                     "status": $scope.status,
 
@@ -279,6 +280,11 @@ angular.module('shopMyTools.ckeckoutController', [])
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
+
+                localStorage.setItem('shippingAddressInfo', JSON.stringify($scope.shippingAddress));
+                localStorage.setItem('billingAddressInfo', JSON.stringify($scope.billingAddress));
+
+
                 checkoutService.saveOrderMethod($scope.finalCheckoutData).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'data saved') {
@@ -288,53 +294,53 @@ angular.module('shopMyTools.ckeckoutController', [])
                             location: 'yes',
                             clearcache: 'yes',
                             toolbar: 'no',
-                            closebuttoncaption:'back'
-                          };
+                            closebuttoncaption: 'back'
+                        };
                         if ($scope.paymentType == 'online') {
-                           // onDeviceReadyTest()
-                           
-                            var amt = parseInt( $rootScope.grand_total ) ;
-                            var name =   $scope.firstname ;
-                            var mobile =  $scope.phone;
+                            // onDeviceReadyTest()
+
+                            var amt = parseInt($rootScope.grand_total);
+                            var name = $scope.firstname;
+                            var mobile = $scope.phone;
                             var email = window.localStorage['email'];
                             var bookingId = window.localStorage['finalOrderId'];
                             var productinfo = "Order for OR0293435435";
-                            var key =   window.localStorage['merchant_key'];
+                            var key = window.localStorage['merchant_key'];
                             var salt = window.localStorage['salt_key'];
-                            var string = key + '|' + bookingId + '|' + amt+ '|' + productinfo + '|' + name + '|' + email +'|||||||||||'+salt;    
+                            var string = key + '|' + bookingId + '|' + amt + '|' + productinfo + '|' + name + '|' + email + '|||||||||||' + salt;
                             var encrypttext = sha512(string);
 
                             var data = 'key=' + key
-                            + '&txnid=' + bookingId
-                            + '&amount=' + amt
-                            + '&productinfo=' + productinfo
-                            + '&firstname=' + name
-                            + '&email=' + email
-                            + '&phone=' + mobile
-                            + '&hash=' + encrypttext;
-                           
-                          
-                            $cordovaInAppBrowser.open('templates/payu.html?'+'key=' + key
-                            + '&txnid=' + bookingId
-                            + '&amount=' + amt
-                            + '&productinfo=' + productinfo
-                            + '&firstname=' + name
-                            + '&email=' + email
-                            + '&phone=' + mobile
-                            + '&hash=' + encrypttext, '_blank') 
-                        }else{
+                                + '&txnid=' + bookingId
+                                + '&amount=' + amt
+                                + '&productinfo=' + productinfo
+                                + '&firstname=' + name
+                                + '&email=' + email
+                                + '&phone=' + mobile
+                                + '&hash=' + encrypttext;
+
+
+                            $cordovaInAppBrowser.open('templates/payu.html?' + 'key=' + key
+                                + '&txnid=' + bookingId
+                                + '&amount=' + amt
+                                + '&productinfo=' + productinfo
+                                + '&firstname=' + name
+                                + '&email=' + email
+                                + '&phone=' + mobile
+                                + '&hash=' + encrypttext, '_blank')
+                        } else {
                             $state.go('success')
                         }
 
-                       // $scope.submitPayment();
+                        // $scope.submitPayment();
                     }
 
                 })
 
-              
+
             }
 
-            
+
 
 
         })

@@ -73,18 +73,22 @@
                     <div class="delivery" ng-if="checkoutData.shippingType == 'Delivery'">
                         <div class="row">
                             <div class="col delivery">
-                                <h1>{{shippingAddress.firstname}} {{shippingAddress.lastname}}</h1>
-                                <p>
-                                    <span>{{shippingAddress.house_no}},</span>
-                                    <span>{{shippingAddress.street_address}},</span>
-                                    <span>{{shippingAddress.city}}, {{shippingAddress.postal_code}}</span>
-                                    <span>{{shippingAddress.state}},</span>
-                                    <span>{{shippingAddress.country}}.</span>
-                                </p>
-                                <p class="theme_clr">{{shippingAddress.mobile}}</p>
+                                <div ng-if="shippingAddressLength>0">
+                                    <h1>{{shippingAddress.firstname}} {{shippingAddress.lastname}}</h1>
+                                    <p>
+                                        <span>{{shippingAddress.house_no}},</span>
+                                        <span>{{shippingAddress.street_address}},</span>
+                                        <span>{{shippingAddress.city}}, {{shippingAddress.postal_code}}</span>
+                                        <span>{{shippingAddress.state}},</span>
+                                        <span>{{shippingAddress.country}}.</span>
+                                    </p>
+                                    <p class="theme_clr">{{shippingAddress.mobile}}</p>
+                                </div>
                                 <!-- <a class="f_right" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</a> -->
-                                <button class="button all_btns changeAddr middle" ng-click="editAddress(shippingAddress)">Change or Add Address</button><!--all_btns_chkot replace of all_btns-->
-                                <button class="button all_btns conti middle" ng-click="saveShippingAddress()">Continue</button><!--all_btns_chkot replace of all_btns-->
+                                <button class="button all_btns changeAddr middle" ng-click="editAddress(shippingAddress)">Change or Add Address</button>
+                                <!--all_btns_chkot replace of all_btns-->
+                                <button class="button all_btns conti middle" ng-click="saveShippingAddress()">Continue</button>
+                                <!--all_btns_chkot replace of all_btns-->
                             </div>
                         </div>
                     </div>
@@ -106,15 +110,17 @@
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showBillingAddressDiv">
                     <div class="row ">
                         <div class="col delivery">
-                            <h1>{{billingAddress.firstname}} {{billingAddress.lastname}}</h1>
-                            <p>
-                                <span>{{billingAddress.house_no}},</span>
-                                <span>{{billingAddress.street_address}},</span>
-                                <span>{{billingAddress.city}}, {{billingAddress.postal_code}}</span>
-                                <span>{{billingAddress.state}},</span>
-                                <span>{{billingAddress.country}}.</span>
-                            </p>
-                            <p class="theme_clr">{{billingAddress.mobile}}</p>
+                            <div ng-if="billingAddressLength>0">
+                                <h1>{{billingAddress.firstname}} {{billingAddress.lastname}}</h1>
+                                <p>
+                                    <span>{{billingAddress.house_no}},</span>
+                                    <span>{{billingAddress.street_address}},</span>
+                                    <span>{{billingAddress.city}}, {{billingAddress.postal_code}}</span>
+                                    <span>{{billingAddress.state}},</span>
+                                    <span>{{billingAddress.country}}.</span>
+                                </p>
+                                <p class="theme_clr">{{billingAddress.mobile}}</p>
+                            </div>
                             <!-- <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a> -->
                             <button class="button all_btns changeAddr middle" id="reg_btn" ng-click="gotoEditBillingAddress()">Change or Add Address</button>
                             <button class="button all_btns conti middle" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
