@@ -157,6 +157,7 @@ angular.module('shopMyTools.controllers', [])
 
                 window.localStorage['Password'] = $scope.registerData.password;
                 window.localStorage['email'] = $scope.registerData.email;
+                window.localStorage['gstNumber'] = $scope.registerData.gstnumber;
 
                 $scope.registerData.mobile = '91' + $scope.registrationData.mobile;
                 $rootScope.mobile = $scope.registerData.mobile;

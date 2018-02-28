@@ -3,7 +3,7 @@
         <h1 class="title">Order # : {{orderId}}</h1>
         <div class="buttons">
             <button class="button button-clear" ng-click="closePopup()">
-                    <i class="icon ion-close-circled"></i>
+                <i class="icon ion-close-circled"></i>
             </button>
         </div>
     </ion-header-bar>
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <table style="width:100%" ng-if="orderDetails.length>0" class="order_details_table m_top_5">
+        <!-- <table style="width:100%" ng-if="orderDetails.length>0" class="order_details_table m_top_5">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -100,7 +100,61 @@
                 </tfoot>
             </tbody>
 
-        </table>
+        </table> -->
+        <h3>Order Details</h3>
+
+        <div ng-repeat="data in orderDetails">
+            <div class="row">
+                <div class="col">
+                    <h5 class="theme_clr">{{data.productdescription}}</h5>
+                    <span class="pro_attr">Unit Price :</span>
+                    <span class="pro_val">{{data.unitprice | currency:'&#8377;'}}</span>
+                    <br>
+                    <span class="pro_attr">Tax (%) :</span>
+                    <span class="pro_val">{{data.tax}}</span>
+                    <br>
+                    <span class="pro_attr">Tax Amount:</span>
+                    <span class="pro_val">{{data.tax_amount | currency:'&#8377;'}}</span>
+                    <br>
+                    <span class="pro_attr">Quantity:</span>
+                    <span class="pro_val">{{data.qty}}</span>
+                    <br>
+                    <span class="pro_attr">Sub Total:</span>
+                    <span class="pro_val">{{data.sub_total | currency:'&#8377;'}}</span>
+                    <!-- <span class="offer_percentage">30.24%</span> -->
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="pro_amnt_details">
+                    <h2>Price Details</h2>
+                    <div class="">
+
+                        <p>
+                            <span class="attr">Shipping Charges</span>
+                            <span class="val">&#8377;0.00</span>
+                        </p>
+                        <p>
+                            <span class="attr">Coupon Amount</span>
+                            <span class="val">{{discountAmt | currency:'&#8377;'}}</span>
+                        </p>
+                        <p>
+                            <span class="attr">Grand Total (
+                                <span>{{orderDetails.length}}</span> items)</span>
+                            <span class="val">{{grandTotal-discountAmt | currency:'&#8377;'}}</span>
+                        </p>
+                    </div>
+
+                    <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
+                </div>
+            </div>
+        </div>
+
+
         <div class="f_right m_top_5" ng-if="status == 'Accepted'">
             <button class="button all_btns" type="submit" ng-click="cancelOrder(orderId)">Cancel Order</button>
         </div>
