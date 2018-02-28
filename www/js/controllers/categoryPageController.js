@@ -16,7 +16,7 @@ angular.module('shopMyTools.categoryPageController', [])
 
       $rootScope.getCategoryProductData.subcategory = [""];
       $rootScope.getCategoryProductData.from = 0;
-      $rootScope.getCategoryProductData.to = 12;
+      $rootScope.getCategoryProductData.to = 6;
       $rootScope.getCategoryProductData.val = "popularty";
       $scope.callService();
     }
@@ -37,6 +37,7 @@ angular.module('shopMyTools.categoryPageController', [])
           $rootScope.totalcount = data.data.totalcount;
           $rootScope.totalItems = data.data.products.length;
           $rootScope.datalists = data.data.products;
+
         }
       })
     }
@@ -45,6 +46,7 @@ angular.module('shopMyTools.categoryPageController', [])
 
 
     $scope.showNoOfItems = [
+      { value: "6", Name: "6" },
       { value: "12", Name: "12" },
       { value: "24", Name: "24" },
       { value: "36", Name: "36" }
@@ -64,6 +66,27 @@ angular.module('shopMyTools.categoryPageController', [])
       $rootScope.getCategoryProductData.to = noOfItems;
       $scope.callService();
     }
+
+
+    $scope.currentPage = 1;
+
+    $scope.prevPage = function (page) {
+      $scope.currentPage = page;
+      $scope.currentPage -= 1;
+      $rootScope.getCategoryProductData.to = $rootScope.getCategoryProductData.from;
+      $rootScope.getCategoryProductData.from -= 6;
+      $scope.callService();
+    }
+
+    $scope.nextPage = function (page) {
+      $scope.currentPage = page;
+      $scope.currentPage += 1;
+      $rootScope.getCategoryProductData.from = $rootScope.getCategoryProductData.to;
+      $rootScope.getCategoryProductData.to += 6;
+      $scope.callService();
+    }
+
+
 
     $scope.getsortedProducts = function (sortItem) {
       $rootScope.getCategoryProductData.val = sortItem
@@ -125,7 +148,7 @@ angular.module('shopMyTools.categoryPageController', [])
     $scope.getProductDetails = function (productObj) {
       window.localStorage['productName'] = productObj.upload_name;
       $state.go("productDetail_page")
-  }
+    }
 
     $scope.addtoCart = function (productData) {
       $scope.productDataList = [];
@@ -139,33 +162,33 @@ angular.module('shopMyTools.categoryPageController', [])
       //     $rootScope.cartItemsList = data.data.item_list;
       //     $rootScope.grand_total = data.data.grand_total;
       //     $rootScope.CartItemsCount = $rootScope.cartItemsList.length;
-          if ($rootScope.cartItemsList.length > 0) {
-            $scope.productDataList = $rootScope.cartItemsList;
-          }
+      if ($rootScope.cartItemsList.length > 0) {
+        $scope.productDataList = $rootScope.cartItemsList;
+      }
 
-          $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
-          $rootScope.CartItemsCount = $scope.productDataList.length;
-          categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
-            window.localStorage['orderId'] = data.data.orderid;
-            $ionicLoading.hide();
-            if (data.data.status == 'item added to cart') {
-              $ionicPopup.alert({
-                template: 'Added to Cart Successfully!',
-                title: 'Success!'
-              });
-            } else if (data.data.status == 'item added to cart..') {
-              $ionicPopup.alert({
-                template: 'Added to Cart Successfully!',
-                title: 'Success!'
-              });
-            }
-            else if (data.data.status == 'out off stock') {
-              $ionicPopup.alert({
-                template: 'Out Off Stock!',
-                title: 'Sorry!'
-              });
-            }
+      $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
+      $rootScope.CartItemsCount = $scope.productDataList.length;
+      categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
+        window.localStorage['orderId'] = data.data.orderid;
+        $ionicLoading.hide();
+        if (data.data.status == 'item added to cart') {
+          $ionicPopup.alert({
+            template: 'Added to Cart Successfully!',
+            title: 'Success!'
           });
+        } else if (data.data.status == 'item added to cart..') {
+          $ionicPopup.alert({
+            template: 'Added to Cart Successfully!',
+            title: 'Success!'
+          });
+        }
+        else if (data.data.status == 'out off stock') {
+          $ionicPopup.alert({
+            template: 'Out Off Stock!',
+            title: 'Sorry!'
+          });
+        }
+      });
 
       //   }
 

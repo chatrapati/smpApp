@@ -276,6 +276,7 @@ angular.module('shopMyTools.controllers', [])
                 $state.go('smtLogin');
             } else if (page == 'myorders') {
                 $state.go('myorders');
+              //  $state.go('myOrdersFilter_page');
             } else if (page == 'profile') {
                 $state.go('editUserProfile');
             } else if (page == 'wishlist') {

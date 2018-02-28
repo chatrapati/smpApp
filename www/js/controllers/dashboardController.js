@@ -1,6 +1,6 @@
 angular.module('shopMyTools.dashboardController', [])
 
-    .controller('myOrderController', function ($scope, $rootScope, $state, myOrdersService, $ionicPopup, $ionicLoading, $ionicModal) {
+    .controller('myOrderController', function ($scope, $rootScope, $state, myOrdersService, $ionicPopup, $ionicLoading, $ionicModal, $window) {
 
 
         $scope.getOrders = function () {
@@ -52,8 +52,8 @@ angular.module('shopMyTools.dashboardController', [])
         // };
 
         $scope.goback = function () {
-            $state.go('app.home');
-            //  $window.history.go(-1);
+           // $state.go('app.home');
+              $window.history.go(-1);
         }
 
         $scope.gotoOrderDetails = function (orderId) {

@@ -214,15 +214,15 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
       .state('cancelOrders_page', {
         url: '/cancelOrders_page',
         cache: false,
-        templateUrl: 'templates/cancelOrders_page.html'
-        //controller: 'welcomeController'
+        templateUrl: 'templates/cancelOrders_page.html',
+        controller: 'myOrderController'
       })
       
       .state('invoiceOrders_page', {
         url: '/invoiceOrders_page',
         cache: false,
-        templateUrl: 'templates/invoiceOrders_page.html'
-        //controller: 'welcomeController'
+        templateUrl: 'templates/invoiceOrders_page.html',
+        controller: 'myOrderController'
       });
 
 
