@@ -486,3 +486,10 @@ th {
     margin-left: -10px;
     line-height: 1;
 }
+#welcome_pagination .swiper-pagination{
+    position: inherit !important;
+}
+.welcome-slide-text{
+    position: relative !important;
+    margin-top: 70%;
+}

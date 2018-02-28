@@ -270,7 +270,7 @@ th, td {
 }
 
 .welcome-slider .swiper-container-horizontal > .swiper-pagination {
-    bottom: 7%;
+    bottom: 10%;
 }
 .welcome-slide label {
     font-size: 20px;

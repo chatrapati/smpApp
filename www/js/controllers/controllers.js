@@ -107,6 +107,7 @@ angular.module('shopMyTools.controllers', [])
         };
 
         $scope.getLoginCredentials = function (checked) {
+           
             if (checked == true) {
                 $scope.loginData.username = window.localStorage['email'];
                 $scope.loginData.password = window.localStorage['Password'];

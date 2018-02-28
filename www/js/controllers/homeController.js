@@ -88,7 +88,7 @@ angular.module('shopMyTools.homeController', [])
         };
         $scope.galleryOptions_deal = {
             pagination: '.swiper-pagination',
-            slidesPerView: 1.4,
+            slidesPerView: 1.2,
             freeMode: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
