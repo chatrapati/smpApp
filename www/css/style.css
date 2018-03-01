@@ -1420,6 +1420,19 @@ fader {
     line-height: 1.8;
 }
 
+.category_cart_list .review .item {
+    background-color: transparent;
+    color: #444;
+    border: none;
+    /* border-bottom: 5px solid #ddd; */
+    margin: 0 -10px;
+}
+
+.review_border {
+    border-bottom: 5px solid #ddd;
+}
+
+
 /* ion-side-menu-content{
     z-index: -1 !important;
 } */

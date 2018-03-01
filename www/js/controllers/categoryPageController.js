@@ -1,6 +1,6 @@
 angular.module('shopMyTools.categoryPageController', [])
 
-  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window) {
+  .controller('categoryController', function ($scope, $state, $rootScope, categoryService, $ionicModal, $ionicHistory, $ionicLoading, $ionicPopup, $window, reviews_service) {
 
     $scope.getProductCategories = function (fromVal, toVal) {
       $rootScope.getCategoryProductData = {};
@@ -220,6 +220,23 @@ angular.module('shopMyTools.categoryPageController', [])
       })
     }
 
+
+    $scope.openRivewModal = function (productName) {
+      $scope.reviewProductName = productName;
+      $scope.reviewmodal.show();
+    }
+
+    $ionicModal.fromTemplateUrl('templates/reviewModal.html', {
+      scope: $scope,
+    }).then(function (modal) {
+      $scope.reviewmodal = modal;
+    });
+
+    $scope.closereviewPopup = function () {
+      $scope.reviewmodal.hide();
+    }
+
+
     $scope.ratingsObject = {
       iconOn: 'ion-ios-star',    //Optional
       iconOff: 'ion-ios-star-outline',   //Optional
@@ -232,6 +249,33 @@ angular.module('shopMyTools.categoryPageController', [])
         $scope.ratingsCallback(rating, index);
       }
     };
+    $scope.ratingsCallback = function (rating, index) {
+      $scope.rating = JSON.stringify(rating);
+    };
+
+    $scope.reviewdata = {};
+
+    $scope.submitReviews = function (data) {
+      if ($scope.rating != undefined) {
+        
+        reviews_service.reviewsMethod(data, $scope.rating, $scope.reviewProductName, window.localStorage['email']).then(function (data) {
+          if (data.data.success == 'success') {
+            // $ionicPopup.alert({
+            //   template: 'Thanks for Review.... Your comment will be updated in 48 hours.',
+            //   title: 'Success!'
+            // });
+            $scope.closereviewPopup();
+          }
+        });
+        
+      } else {
+        $ionicPopup.alert({
+          template: 'Please Give Rating',
+          title: 'Alert!'
+        });
+      }
+    }
+
 
 
   });
