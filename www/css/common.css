@@ -511,4 +511,9 @@ th {
         border-radius: 15px;
     }
 
+
 /* ios styles changes end here */
+
+.m-left10{
+    margin-left: 10px;
+}

@@ -22,8 +22,8 @@
         <br>
         <br>
         <div class="name_of_the_shop" ng-repeat="dealer in dealersList">
-            <div class="radiobutns">
-                <input type="radio" name="address" ng-model="selected" ng-value="'{{dealer}}'" ng-change="saveDealerAddress(dealer)"/>{{dealer.shop_name}}
+            <div class="radiobutns-shop">
+                <input type="radio" name="address" ng-model="selected" ng-value="'{{dealer}}'"  ng-change="saveDealerAddress(dealer)"/><span class="theme_clr m-left10">{{dealer.shop_name}}</span>
                 <div class="shop_address">
                     <div class="row">
                         <div class="col">

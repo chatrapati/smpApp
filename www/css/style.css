@@ -968,7 +968,7 @@ div.footer-button a.button.button-full {
         padding: 0 5px;
     }
     .shop_address .row{
-        padding: 0 5px;
+        padding: 0 25px;
     }
     .name_of_the_shop .radiobutns{
         font-weight: 500;
@@ -976,6 +976,9 @@ div.footer-button a.button.button-full {
     .name_of_the_shop{
         border-bottom: 5px solid #ddd;
         margin: 5px 0;
+    }
+    .name_of_the_shop:last-child{
+        border-bottom: none;
     }
     .font_size15 {
         font-size: 15px;
@@ -1410,4 +1413,13 @@ fader {
     background: rgba(0,0,0,.8);
     opacity: 0;
     z-index: -1; }
- 
+
+.radiobutns-shop{
+    margin-left: 10px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+/* ion-side-menu-content{
+    z-index: -1 !important;
+} */
