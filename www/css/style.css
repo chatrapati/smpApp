@@ -1423,3 +1423,8 @@ fader {
 /* ion-side-menu-content{
     z-index: -1 !important;
 } */
+
+.headersearchenable .title {
+    left: 25px !important;
+    right: 80px !important;
+}
