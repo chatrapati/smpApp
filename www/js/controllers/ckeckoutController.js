@@ -9,19 +9,14 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.showPaymentTypeDiv = false;
             $scope.showOrderDetailDiv = false;
             $scope.checkoutData = {};
-           
+
             $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
             $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
             $scope.billingAddressLength = Object.keys($scope.billingAddress).length;
-            // if($scope.shippingAddressLength==0){
-            //     $scope.shippingAddress = "";
-            // }
-            // if($scope.billingAddressLength==0){
-            //     $scope.billingAddress = "";
-            // }
+
 
 
             $scope.editAddress = function () {
@@ -56,6 +51,8 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.saveEditShippingAddress = function (editShippingAdd) {
                 $scope.shippingAddress = editShippingAdd;
                 $scope.sameAsShipping = editShippingAdd.checked;
+                $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
+                alert($scope.shippingAddressLength)
                 $scope.Addressmodal.hide();
                 if ($scope.sameAsShipping == true) {
                     $scope.billingAddress = editShippingAdd;
@@ -64,6 +61,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
 
             $scope.saveShippingAddress = function () {
+
                 if ($scope.sameAsShipping == true) {
                     $scope.showshippingDiv = false;
                     $scope.showBillingAddressDiv = false;
@@ -180,7 +178,6 @@ angular.module('shopMyTools.ckeckoutController', [])
             }
 
             $scope.getPayuDetails = function () {
-
                 getpayuDetailsService.getpayuDetailsMethod().then(function (data) {
                     if (data.data.status == 'payu data') {
 
@@ -283,6 +280,15 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                     "user_type": "mobile"
                 }
+
+
+                if ($scope.shippingAddressLength == 0) {
+                    $scope.finalCheckoutData.shippingaddress = [];
+                }
+                if ($scope.billingAddressLength == 0) {
+                    $scope.finalCheckoutData.billingaddress = [];
+                }
+
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
@@ -326,19 +332,20 @@ angular.module('shopMyTools.ckeckoutController', [])
                                 + '&hash=' + encrypttext;
 
 
-                            $cordovaInAppBrowser.open('templates/payu.html?' + 'key=' + key
+                            var browser = $cordovaInAppBrowser.open('templates/payu.html?' + 'key=' + key
                                 + '&txnid=' + bookingId
                                 + '&amount=' + amt
                                 + '&productinfo=' + productinfo
                                 + '&firstname=' + name
                                 + '&email=' + email
                                 + '&phone=' + mobile
-                                + '&hash=' + encrypttext, '_blank')
+                                + '&hash=' + encrypttext, '_blank');
+
                         } else {
-                            $state.go('success')
+
                         }
 
-                        // $scope.submitPayment();
+                        $scope.submitPayment();
                     }
 
                 })
@@ -346,7 +353,21 @@ angular.module('shopMyTools.ckeckoutController', [])
 
             }
 
+            $scope.submitPayment = function () {
+                checkoutService.submitPayment($scope.finalOrderId,window.localStorage['user_id']).then(function (data) {
+                    if (data.data.status == 'status changed') {
+                        if ($scope.paymentType == 'cashondelivery') {
+                            $ionicPopup.alert({
+                                template: $scope.finalOrderId,
+                                title: 'Thanks for Shopping!! Your Order ID is'
+                            });
+                            $state.go('app.home')
+                        }
+                    }
 
+                })
+
+            }
 
 
         })

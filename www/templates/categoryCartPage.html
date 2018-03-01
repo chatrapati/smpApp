@@ -24,13 +24,16 @@
                     <select ng-model="noOfItems" ng-options="obj.value as obj.Name for obj in showNoOfItems" ng-change="getselectedNoProducts(noOfItems)">
                     </select>
                 </div> -->
-                <button ng-disabled="currentPage == 1" ng-click="prevPage(currentPage)">
-                    Prev
-                </button>
+
+
+                <span class="button" ng-disabled="currentPage == 1" ng-click="prevPage(currentPage)">
+                    <i class="icon ion-chevron-left placeholder-icon"></i>
+                </span>
                 {{currentPage}}
-                <button ng-disabled="products.length<6"  ng-click="nextPage(currentPage)">
-                    Next
-                </button>
+                <span class="button" ng-disabled="products.length<6" ng-click="nextPage(currentPage)">
+                    <i class="icon ion-chevron-right placeholder-icon"></i>
+                </span>
+
                 <div class="list" style="float:right;">
                     <label> Sort</label>
                     <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select>
@@ -57,11 +60,112 @@
                             <!-- <span>
                                 <i class="icon ion-arrow-swap"></i>
                             </span> -->
-                            <span>
+                            <span ng-click="review=!review">
                                 <i class="icon ion-android-star"></i>
                             </span>
                         </div>
                     </a>
+
+
+                    <div class="row" ng-if="review">
+                        <div class="col">
+                            <div class="highlits" id="product-icon">
+                                <h3>Write your review</h3>
+                                <i class="downarrow icon ion-chevron-down icon-accessory"></i>
+                            </div>
+                            <div>
+                                <form name="reviewForm">
+                                    <ionic-ratings class="give_rating" ng-model="reviewdata.rating" name="rating" ratingsobj='ratingsObject' index='0'></ionic-ratings>
+                                    <span ng-show="reviewForm.$submitted || reviewForm.rating.$touched || (reviewForm.rating.$dirty && reviewForm.rating.$invalid)">
+                                        <span class="error" ng-show="reviewForm.rating.$error.required">Please give rating.</span>
+                                    </span>
+
+
+                                    <label class="item item-input item-floating-label" id="border_none">
+                                        <span class="input-label space">Name
+                                            <span class="error">*</span>
+                                        </span>
+                                        <div class="input-placeholder">
+                                            <input type="text" name="name" ng-model="reviewdata.name" required ng-minlength="3" ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
+                                            <div class="placeholder">
+                                                Enter your name
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <span ng-show="reviewForm.$submitted || reviewForm.name.$touched || (reviewForm.name.$dirty && reviewForm.name.$invalid)">
+                                        <span class="error" ng-show="reviewForm.name.$error.required">Please enter First Name.</span>
+                                        <span class="error" ng-show="reviewForm.name.$error.pattern">Allows only Alphabets.</span>
+                                        <span class="error" ng-show="reviewForm.name.$error.minlength">Should be atleast 3-50 characters.</span>
+                                        <span class="error" ng-show="reviewForm.name.$error.maxlength">Should be atleast 3-50 characters.</span>
+                                    </span>
+
+
+                                    <label class="item item-input item-floating-label" id="border_none">
+                                        <span class="input-label space">Summary of Your Review
+                                            <span class="error">*</span>
+                                        </span>
+                                        <div class="input-placeholder">
+                                            <input type="text" name="summary" required ng-model="reviewdata.summary">
+                                            <div class="placeholder">
+                                                Summary of Your Review
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <span ng-show="reviewForm.$submitted || reviewForm.summary.$touched || (reviewForm.summary.$dirty && reviewForm.summary.$invalid)">
+                                        <span class="error" ng-show="reviewForm.summary.$error.required">Please enter summary.</span>
+                                    </span>
+
+                                    <label class="item item-input item-floating-label" id="border_none">
+                                        <span class="input-label space">Mobile Number
+                                            <span class="error">*</span>
+                                        </span>
+                                        <div class="input-placeholder">
+                                            <input type="text" name="mobile" ng-model="reviewdata.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/" maxlength="10"
+                                                required>
+                                            <div class="placeholder">
+                                                Mobile Number
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <span ng-show="reviewForm.$submitted || reviewForm.mobile.$touched || (reviewForm.mobile.$dirty && reviewForm.mobile.$invalid)">
+                                        <span class="error" ng-show="reviewForm.mobile.$error.required">Please enter Mobile Number.</span>
+                                        <span class="error" ng-show="reviewForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+
+                                    </span>
+
+
+                                    <label class="item item-input item-floating-label" id="border_none">
+                                        <span class="input-label space">Review
+                                            <span class="error">*</span>
+                                        </span>
+                                        <div class="input-placeholder">
+                                            <input type="text" name="mobile" ng-model="reviewdata.review" required>
+                                            <div class="placeholder">
+                                                Review...
+                                                <span class="star">*</span>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <span ng-show="reviewForm.$submitted || reviewForm.review.$touched || (reviewForm.review.$dirty && reviewForm.review.$invalid)">
+                                        <span class="error" ng-show="reviewForm.review.$error.required">Please enter review</span>
+                                    </span>
+
+                                    <div class="col text-center">
+                                        <button class="button all_btns middle" ng-click="submitReviews(reviewdata, productDetail.upload_name)">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 

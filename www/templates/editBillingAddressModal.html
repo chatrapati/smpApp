@@ -126,6 +126,23 @@
                                     </span>
                                 </div>
                             </div>
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Country</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="country" ng-model="billingAddress.country" ng-minlength="3" ng-maxlength="15" maxlength="15" required
+                                        ng-pattern="/^[a-zA-Z0-9/ -]*$/">
+                                    <div class="placeholder">
+                                        Country
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Flat no., Building name" name="flatno"> -->
+                            </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.country.$touched || (editBillingAddForm.country.$dirty && editBillingAddForm.country.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.country.$error.required">Please enter Country.</span>
+                                <span class="error" ng-show="editBillingAddForm.country.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.country.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
                             <!-- <label class="item item-input item-floating-label">
                                     <div class="input-placeholder">
                                         <input type="text" required ng-model="billingAddress.city">
@@ -152,6 +169,26 @@
                                 <span class="error" ng-show="editBillingAddForm.firstname.$error.minlength">Should be atleast 3-50 characters.</span>
                                 <span class="error" ng-show="editBillingAddForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
                             </span>
+
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Name</span>
+                                <div class="input-placeholder">
+                                    <input type="text" name="lastname" ng-model="billingAddress.lastname" ng-minlength="3" ng-maxlength="50" maxlength="50"
+                                        required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
+                                    <div class="placeholder">
+                                        Name
+                                        <span class="star">*</span>
+                                    </div>
+                                </div>
+                                <!-- <input type="text" placeholder="Name" name="name"> -->
+                            </label>
+                            <span ng-show="editBillingAddForm.$submitted || editBillingAddForm.lastname.$touched || (editBillingAddForm.lastname.$dirty && editBillingAddForm.lastname.$invalid)">
+                                <span class="error" ng-show="editBillingAddForm.lastname.$error.required">Please enter First Name.</span>
+                                <span class="error" ng-show="editBillingAddForm.lastname.$error.pattern">Allows only Alphabets.</span>
+                                <span class="error" ng-show="editBillingAddForm.lastname.$error.minlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editBillingAddForm.lastname.$error.maxlength">Should be atleast 3-50 characters.</span>
+                            </span>
+                            
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Mobile Number</span>
                                 <div class="input-placeholder">

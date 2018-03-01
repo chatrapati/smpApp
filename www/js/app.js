@@ -4,14 +4,14 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.dashboardController',
- 'shopMyTools.homeController', 'shopMyTools.categoryPageController', 
- 'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
+angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.dashboardController',
+  'shopMyTools.homeController', 'shopMyTools.categoryPageController',
+  'shopMyTools.productDetailPageController', 'shopMyTools.ckeckoutController',
   'shopMyTools.services',
-   'shopMyTools.dashboardServices', 'ngCordova','shopMyTools.homeService', 
-   'shopMyTools.categoryService', 'shopMyTools.productDetailPageService',
-    'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective',
-     '720kb.tooltips', 'ionic-ratings','shopMyTools.paymentsuccess'])
+  'shopMyTools.dashboardServices', 'ngCordova', 'shopMyTools.homeService',
+  'shopMyTools.categoryService', 'shopMyTools.productDetailPageService',
+  'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective',
+  '720kb.tooltips', 'ionic-ratings', 'shopMyTools.paymentsuccess'])
 
   .run(function ($ionicPlatform, $state) {
     $ionicPlatform.ready(function () {
@@ -178,24 +178,23 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
         cache: false,
         templateUrl: 'templates/changePassword.html',
         controller: 'resetPasswordCntrl'
-     })
-     .state('search', {
-      url: '/search',
-      cache: false,
-      templateUrl: 'templates/search.html',
-      controller: 'searchController'
-   })
-      
+      })
+      .state('search', {
+        url: '/search',
+        cache: false,
+        templateUrl: 'templates/search.html',
+        controller: 'searchController'
+      })
+
       .state('payu', {
         url: '/payu',
-       
         templateUrl: 'templates/payu.html'
       })
+      
       .state('success', {
         url: '/success',
-       
         templateUrl: 'templates/success.html',
-        controller:'paymentsuccessCntrl'
+        controller: 'paymentsuccessCntrl'
       })
       .state('editUserProfile', {
         url: '/editUserProfile',
@@ -203,21 +202,21 @@ angular.module('shopMyTools', ['ionic','shopMyTools.controllers', 'shopMyTools.d
         templateUrl: 'templates/editUserProfile.html',
         controller: 'editProfileCntrl'
       })
-      
+
       .state('myOrdersFilter_page', {
         url: '/myOrdersFilter_page',
         cache: false,
         templateUrl: 'templates/myOrdersFilter_page.html',
         controller: 'myOrderController'
       })
-      
+
       .state('cancelOrders_page', {
         url: '/cancelOrders_page',
         cache: false,
         templateUrl: 'templates/cancelOrders_page.html',
         controller: 'myOrderController'
       })
-      
+
       .state('invoiceOrders_page', {
         url: '/invoiceOrders_page',
         cache: false,

@@ -87,7 +87,7 @@
                                 <!-- <a class="f_right" id="reg_btn" ng-click="editAddress(shippingAddress)">Change or Add Address</a> -->
                                 <button class="button all_btns changeAddr middle" ng-click="editAddress(shippingAddress)">Change or Add Address</button>
                                 <!--all_btns_chkot replace of all_btns-->
-                                <button class="button all_btns conti middle" ng-click="saveShippingAddress()">Continue</button>
+                                <button class="button all_btns conti middle" ng-disabled="shippingAddressLength == 0" ng-click="saveShippingAddress()">Continue</button>
                                 <!--all_btns_chkot replace of all_btns-->
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                             </div>
                             <!-- <a class="f_right" id="reg_btn" ng-disabled="registerForm.$invalid">Change or Add Address</a> -->
                             <button class="button all_btns changeAddr middle" id="reg_btn" ng-click="gotoEditBillingAddress()">Change or Add Address</button>
-                            <button class="button all_btns conti middle" id="reg_btn" ng-click="saveBillingAddress(billingAddress)">Continue</button>
+                            <button class="button all_btns conti middle" id="reg_btn" ng-disabled="billingAddressLength == 0" ng-click="saveBillingAddress(billingAddress)">Continue</button>
                         </div>
                     </div>
                 </ion-list>
