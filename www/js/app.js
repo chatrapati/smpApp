@@ -13,7 +13,7 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
   'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective',
   '720kb.tooltips', 'ionic-ratings', 'shopMyTools.paymentsuccess'])
 
-  .run(function ($ionicPlatform, $state) {
+  .run(function ($ionicPlatform, $state, $cordovaNetwork,$rootScope,$ionicPopup) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -26,6 +26,19 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      $rootScope.$on('$cordovaNetwork:offline', function (event, networkState) {
+
+        $ionicPopup.alert({
+          template: 'Please Check Network Connection',
+          title: 'Error!'
+        });
+      });
+
+      $rootScope.$on('$cordovaNetwork:online', function (event, networkState) {
+        alert('Net');
+      });
+
 
     });
   })
@@ -190,7 +203,7 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         url: '/payu',
         templateUrl: 'templates/payu.html'
       })
-      
+
       .state('success', {
         url: '/success',
         templateUrl: 'templates/success.html',
