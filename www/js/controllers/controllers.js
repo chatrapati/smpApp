@@ -94,8 +94,8 @@ angular.module('shopMyTools.controllers', [])
                         window.localStorage['email'] = data.data.userinfo.email;
                         window.localStorage['mobile'] = data.data.userinfo.user_mobile;
                         window.localStorage['user_name'] = data.data.username;
+                        window.localStorage['gst_number'] = data.data.GSTnumber;
                         localStorage.setItem('userInfo', JSON.stringify(data.data.userinfo));
-                        localStorage.setItem('gstNumber', JSON.stringify(data.data.GSTnumber));
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
 
@@ -368,7 +368,26 @@ angular.module('shopMyTools.controllers', [])
             alert(val);
         }
 
+        //Load category menu
+        $scope.getCategoriesMenu = function () {
+            searchProductsService.getCategoriesMenu().then(function (data) {
+                if (data.data.status == 'success') {
+                    //  alert(data.data.status)
+                    $scope.categoryMenu = data.data.categories;
+                }
+            })
 
+        }
+
+        $scope.getCategoriesMenu();
+
+
+        $scope.gotoCategoryPage = function (product, type) {
+            $rootScope.categoryName = product;
+            window.localStorage['categoryType'] = type;
+            window.localStorage['categoryName'] = product;
+            $state.go('categoryCartPage');
+        }
 
 
     })

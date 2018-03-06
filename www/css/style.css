@@ -165,6 +165,18 @@ th, td {
 
 /*   lakki styles start here 8-2-2018 */
 
+.scroll {
+    height: 100% !important;
+}
+.tab-nav.tabs {
+    top: 0;
+    background-color: transparent;
+}
+
+.tab-item.tab-item-active {
+    border-bottom: 2px solid #0487a1;      
+}
+
 #login_btn{
     margin-top: 20%;
 }
@@ -497,13 +509,10 @@ div.footer-button a.button.button-full {
    margin-top: 12%;
 }
 .menu_user_photo{
-    border: 1px solid #fff;
-    border-radius: 50%;
-    width: 22%;
-    margin: 3%;
+    margin-top:5px !important;
 }
 .menu_user_photo img{
-    max-width: 100%;
+    max-width: 90%;
     padding: 10px;
 }
 .login_user_details{
@@ -1440,4 +1449,85 @@ fader {
 .headersearchenable .title {
     left: 25px !important;
     right: 80px !important;
+}
+
+
+/* Vijay Sir CSS */
+
+.swiper-container{
+    overflow:visible !important;
+}
+
+.swiper-pagination{
+    /* top:60px !important; */
+}
+
+#checkbox{
+    border:none !important;
+    outline:none !important;
+    padding-left:8px;
+}
+
+.login_labls .item-input{
+    padding: 20px 0 5px 5px !important;
+}
+
+.remember_me input[type="checkbox"]{
+    position:relative;
+    top:1px;
+}
+
+.smt_background_image .item-input{
+    padding: 20px 0 5px 5px !important;
+}
+
+.tab-selection-bg {
+    box-shadow: 0px 0px 2px 0px #488aff inset;
+}
+.tab-selection-no-bg {
+    box-shadow: transparent;
+}
+
+#regForm .item-input{
+    padding: 10px 0 5px 5px !important;
+}
+
+.bar .bar-header .nav-bar-container{
+    margin-top:20px !important;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-header, .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader{
+    top:74px !important;
+}
+
+#mainSlider .slider-pager{
+    bottom:10px !important;
+}
+
+/* ion-nav-bar.bar.bar-header.bar-assertive.nav-bar-container,
+ion-header-bar.bar-stable.bar.bar-header{
+    height:74px !important;
+} */
+
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > *{
+    margin-top:10px !important;
+}
+
+.menu_user_photo{
+    width:70px !important;
+}
+
+.menu-close div{
+    padding:5px !important;
+    display:inline-block !important;
+}
+
+.sideMenu .ion-item.item.item-complex{
+    border-width:0 !important;
+}
+
+.productSlide .swiper-pagination{
+    position:absolute !important;
+    top:90% !important;
+    
 }

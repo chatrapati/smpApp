@@ -13,6 +13,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            $scope.gst_number = window.localStorage['gst_number'];
 
             $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
             $scope.billingAddressLength = Object.keys($scope.billingAddress).length;
@@ -80,7 +81,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
 
             $scope.getPickupDetails = function (getPincodeData) {
-
+                $scope.gst_number = getPincodeData.gst_number;
                 $scope.customerMobile = getPincodeData.mobile;
                 $ionicLoading.show({
                     template: 'Loading...'
@@ -278,7 +279,10 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                     "user_id": window.localStorage['user_id'],
 
-                    "user_type": "mobile"
+                    "user_type": "mobile",
+
+                    "gst_number": $scope.gst_number
+
                 }
 
 
@@ -354,7 +358,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             }
 
             $scope.submitPayment = function () {
-                checkoutService.submitPayment($scope.finalOrderId,window.localStorage['user_id']).then(function (data) {
+                checkoutService.submitPayment($scope.finalOrderId, window.localStorage['user_id']).then(function (data) {
                     if (data.data.status == 'status changed') {
                         if ($scope.paymentType == 'cashondelivery') {
                             $ionicPopup.alert({

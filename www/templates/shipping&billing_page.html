@@ -38,6 +38,11 @@
                     <div class="pickup" ng-if="checkoutData.shippingType == 'Pickup'">
                         <form name="pickupForm">
                             <div class="list login_labls m_top-10">
+
+                                <label class="item item-input item-floating-label">
+                                    <input type="text" placeholder="GST Number" name="gst" ng-model="getPincodeData.gst_number">
+                                </label>
+                                <br/>
                                 <label class="item item-input item-floating-label">
                                     <input type="text" placeholder="Mobile" name="mobile" ng-model="getPincodeData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
                                         maxlength="10" required>
@@ -52,7 +57,7 @@
                                 </div>
                                 <br/>
                                 <label class="item item-input item-floating-label">
-                                    <input type="text" name="postal_code" ng-model="getPincodeData.postal_code" placeholder="Enter Postal code" required maxlength="6"
+                                    <input type="text" name="postal_code" ng-model="getPincodeData.postal_code" placeholder="Postal code" required maxlength="6"
                                         ng-pattern="/^[1-9][0-9]{5}$/">
                                 </label>
                                 <div class="row">
@@ -63,6 +68,7 @@
                                         </span>
                                     </div>
                                 </div>
+
                             </div>
                             <button class="button button-block all_btns" id="reg_btn" ng-disabled="pickupForm.$invalid" ng-click="getPickupDetails(getPincodeData)">Get</button>
                         </form>

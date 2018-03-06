@@ -486,6 +486,8 @@ th {
     margin-left: -10px;
     line-height: 1;
 }
+
+/* 
 #welcome_pagination .swiper-pagination{
     position: inherit !important;
 }
@@ -498,7 +500,7 @@ th {
     max-height: 100px !important;
     width: auto !important;
     height: auto !important;
-}
+} */
 
 
 
@@ -516,4 +518,9 @@ th {
 
 .m-left10{
     margin-left: 10px;
+}
+
+
+.menu-left-icon {
+    color: #0487a1;
 }
