@@ -9,6 +9,7 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "add": "2.0.6",
     "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-inappbrowser": "^2.0.2",

@@ -27,15 +27,15 @@ angular.module('shopMyTools.controllers', [])
             $state.go('smtLogin');
         };
 
-        // if (window.localStorage['token']) {
-        //     $state.go('app.home');
-        // }
+        if (window.localStorage['welcomeToken']) {
+            $state.go('app.home');
+        }
 
         $scope.loginData = {};
         if (window.localStorage['remeberCredentials']) {
-          //  window.localStorage['remeberCredentials'] = checked;
-            $scope.loginData.username = window.localStorage['email'];
-            $scope.loginData.password = window.localStorage['Password'];
+            //  window.localStorage['remeberCredentials'] = checked;
+            $scope.loginData.username = window.localStorage['remembermeEmail'];
+            $scope.loginData.password = window.localStorage['remembermePassword'];
         } else {
             $scope.loginData = {};
         }
@@ -73,7 +73,7 @@ angular.module('shopMyTools.controllers', [])
                 $ionicLoading.show({
                     template: 'Loading...'
                 });
-               
+
                 loginService.userAuthentication($scope.loginData.username, $scope.loginData.password, $scope.user_type, $scope.ip_address).then(function (data) {
                     $ionicLoading.hide();
                     if (data.data.status == 'Success') {
@@ -99,6 +99,11 @@ angular.module('shopMyTools.controllers', [])
                         localStorage.setItem('shippingAddressInfo', JSON.stringify(data.data.shipping_address));
                         localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
 
+                        window.localStorage['welcomeToken'] = data.data.token;
+
+                        window.localStorage['remembermeEmail'] = data.data.userinfo.email;
+                        window.localStorage['remembermePassword'] = $scope.loginData.password;
+
 
                         $state.go('app.home');
                     } else {
@@ -117,21 +122,29 @@ angular.module('shopMyTools.controllers', [])
         };
 
         $scope.getLoginCredentials = function (checked) {
-           
+            window.localStorage['remeberCredentials'] = checked;
             if (checked == true) {
-                window.localStorage['remeberCredentials'] = checked;
-                $scope.loginData.username = window.localStorage['email'];
-                $scope.loginData.password = window.localStorage['Password'];
+
+                if ($scope.loginData != '') {
+                    window.localStorage['remembermeEmail'] = $scope.loginData.username;
+                    window.localStorage['remembermePassword'] = $scope.loginData.password;
+                } else {
+
+                    $scope.loginData.username = window.localStorage['remembermeEmail'];
+                    $scope.loginData.password = window.localStorage['remembermePassword'];
+                }
+
             } else {
                 $scope.loginData = {};
+                localStorage.removeItem("remembermeEmail");
+                localStorage.removeItem("remembermePassword");
             }
 
         }
-
         if (window.localStorage['remeberCredentials']) {
             $scope.loginData.checked = true;
-            $scope.loginData.username = window.localStorage['email'];
-            $scope.loginData.password = window.localStorage['Password'];
+            $scope.loginData.username = window.localStorage['remembermeEmail'];
+            $scope.loginData.password = window.localStorage['remembermePassword'];
         } else {
             $scope.loginData.checked = false;
         }
@@ -277,7 +290,7 @@ angular.module('shopMyTools.controllers', [])
                 $state.go('smtLogin');
             } else if (page == 'myorders') {
                 $state.go('myorders');
-              //  $state.go('myOrdersFilter_page');
+                //  $state.go('myOrdersFilter_page');
             } else if (page == 'profile') {
                 $state.go('editUserProfile');
             } else if (page == 'wishlist') {
@@ -301,6 +314,14 @@ angular.module('shopMyTools.controllers', [])
                         // $window.localStorage.clear();
                         // $scope = $scope.$new(true);
                         // $rootScope = $rootScope.$new(true);
+                        localStorage.removeItem("welcomeToken");
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("token");
+                        if (!window.localStorage['remeberCredentials']) {
+                            localStorage.removeItem("remembermeEmail");
+                            localStorage.removeItem("remembermePassword");
+                            localStorage.removeItem("remeberCredentials");
+                        }
                         $state.go('smtLogin');
                     } else {
 

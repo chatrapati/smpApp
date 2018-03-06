@@ -13,7 +13,7 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
   'shopMyTools.ckeckoutSerivce', 'shopMyTools.constants', 'shopMyTools.smtdirective',
   '720kb.tooltips', 'ionic-ratings', 'shopMyTools.paymentsuccess'])
 
-  .run(function ($ionicPlatform, $state, $cordovaNetwork,$rootScope,$ionicPopup) {
+  .run(function ($ionicPlatform, $state, $cordovaNetwork, $rootScope, $ionicPopup) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -27,17 +27,27 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         StatusBar.styleDefault();
       }
 
-      $rootScope.$on('$cordovaNetwork:offline', function (event, networkState) {
 
-        $ionicPopup.alert({
-          template: 'Please Check Network Connection',
-          title: 'Error!'
-        });
-      });
+     
 
-      $rootScope.$on('$cordovaNetwork:online', function (event, networkState) {
-        alert('Net');
-      });
+      // $rootScope.checkConnection = function () {
+      //   $rootScope.isOnline = $cordovaNetwork.isOnline();
+      //   $rootScope.$apply();
+      //   alert( $rootScope.isOnline)
+      // }
+      // $rootScope.checkConnection();
+
+      // $rootScope.$on('$cordovaNetwork:offline', function (event, networkState) {
+      //   alert('Net');
+      //   $ionicPopup.alert({
+      //     template: 'Please Check Network Connection',
+      //     title: 'Error!'
+      //   });
+      // });
+
+      // $rootScope.$on('$cordovaNetwork:online', function (event, networkState) {
+      //   alert('Net');
+      // });
 
 
     });

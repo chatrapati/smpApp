@@ -28,7 +28,7 @@ angular.module('shopMyTools.categoryPageController', [])
       });
       categoryService.getAllCategoriesOfProduct($scope, $rootScope).then(function (data) {
         $ionicLoading.hide();
-        if (data.data) {
+        if (data.data.status == 'Success') {
           $rootScope.products = data.data.products;
           $rootScope.subcategoriesList = data.data.mobilesubcategories;
           $rootScope.brandsList = data.data.mobilebrandslist;

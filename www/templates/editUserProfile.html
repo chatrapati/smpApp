@@ -2,11 +2,14 @@
     <!-- header part start here -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled"  ng-click="goback()"></a>
+            <a class="button button-icon icon ion-close-circled" ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Profile</div>
         </ion-nav-title>
+        <ion-nav-buttons side="right">
+            <a class="button button-icon icon ion-edit" menu-toggle="right" ng-click="editMobileNo()"></a>
+        </ion-nav-buttons>
     </ion-nav-bar>
     <!-- header part end here -->
 
@@ -64,9 +67,9 @@
                                 <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
                             </span>
 
-                            <span ng-click="editMobileNo()">
+                            <!-- <span ng-click="editMobileNo()">
                                 <i class="icon ion-edit placeholder-icon f_right"></i>
-                            </span>
+                            </span> -->
 
                             <button ng-if="!editMobile" class="button button-block all_btns" type="submit" id="login_btn" ng-click="updateMobileNo()">Reset</button>
                         </div>
