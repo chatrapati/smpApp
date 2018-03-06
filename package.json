@@ -9,8 +9,10 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "@ionic-native/google-plus": "^4.5.3",
     "cordova-android": "7.0.0",
     "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-googleplus": "^5.2.1",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -28,7 +30,10 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-network-information": {}
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "apps.googleusercontent.com.761840465026-1752ses7k1pk42vsvms3mt9inuuh6jdt"
+      }
     },
     "platforms": [
       "android"
