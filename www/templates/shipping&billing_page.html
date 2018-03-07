@@ -135,32 +135,7 @@
                 </ion-list>
             </div>
 
-            <div class="block">
 
-                <div class="filter_head_options">
-                    <ion-item>
-                        <span>Payment Method</span>
-                        <i ng-if="showPaymentTypeDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
-                        <i ng-if="!showPaymentTypeDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
-                    </ion-item>
-                </div>
-
-                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showPaymentTypeDiv">
-                    <div class="">
-                        <div class="radiobutns">
-                            <input type="radio" name="online" ng-model="paymentType" value="online"> Pay Online
-                            <br>
-                            <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery"> Cash on Delivery
-                            <div class="row">
-                                <div class="col text-center">
-                                    <button class="button all_btns middle" ng-disabled="!paymentType" id="reg_btn" ng-click="savePaymentType(paymentType)">Continue</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-list>
-
-            </div>
 
             <div class="block">
 
@@ -174,28 +149,7 @@
                 </div>
 
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="showOrderDetailDiv">
-                    <!-- <table style="width:100%" class="nrows m_top_5" ng-if="cartItemsList.length > 0">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Unit Price</th>
-                                <th>Tax (%)</th>
-                                <th>Tax-Amount</th>
-                                <th>Qty</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="cartItem in cartItemsList">
-                                <td>{{cartItem.productdescription}}</td>
-                                <td class="txt_right">{{cartItem.offer_price | currency:'&#8377;'}}</td>
-                                <td>{{cartItem.tax}}</td>
-                                <td class="txt_right">{{cartItem.tax_amount|currency:'&#8377;'}}</td>
-                                <td>{{cartItem.qty}}</td>
-                                <td class="txt_right">{{cartItem.offer_price*cartItem.qty|currency:'&#8377;'}}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
+
                     <div class="category_body">
                         <div class="row">
                             <div class="col" ng-if="cartItemsList.length > 0">
@@ -237,7 +191,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <button class="button all_btns middle" id="reg_btn" ng-click="checkoutProcess()">Place Order</button>
+                            <button class="button all_btns middle" id="reg_btn" ng-click="continueForPayment()">Continue</button>
                         </div>
                     </div>
 
@@ -245,7 +199,33 @@
 
             </div>
 
+            <div class="block">
 
+                <div class="filter_head_options">
+                    <ion-item>
+                        <span>Payment Method</span>
+                        <i ng-if="showPaymentTypeDiv" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                        <i ng-if="!showPaymentTypeDiv" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
+                    </ion-item>
+                </div>
+
+                <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showPaymentTypeDiv">
+                    <div class="">
+                        <div class="radiobutns">
+                            <input type="radio" name="payu" ng-model="paymentType" value="payu" ng-change="savePaymentType(paymentType)"> Pay Online
+                            <br>
+                            <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery" ng-change="savePaymentType(paymentType)"> Cash on Delivery
+
+                        </div>
+                        <div class="row">
+                            <div class="col text-center">
+                                <button class="button all_btns middle" ng-disabled="!paymentType" id="reg_btn" ng-click="checkoutProcess()">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </ion-list>
+
+            </div>
 
         </ion-list>
 

@@ -28,7 +28,31 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       }
 
 
-     
+      // this.network.onchange().subscribe((change) => {
+      //   if (change.type == "offline") {
+      //     this.tostOffline = this.toastCtrl.create({
+      //       message: 'No internet connection, Reconnect and try again'
+      //     });
+      //     this.tostOffline.present();
+      //     if (this.tostOnline !== undefined) {
+      //       this.tostOnline.dismiss();
+      //     }
+      //   }
+
+      //   if (change.type == "online") {
+      //     console.log(this.network.type)
+      //     alert(this.network.type);
+      //     this.tostOnline = this.toastCtrl.create({
+      //       message: 'Internet connection is back',
+      //       duration: 3000
+      //     });
+      //     this.tostOnline.present();
+      //     if (this.tostOffline !== undefined) {
+      //       this.tostOffline.dismiss();
+      //     }
+      //   }
+      // });
+
 
       // $rootScope.checkConnection = function () {
       //   $rootScope.isOnline = $cordovaNetwork.isOnline();

@@ -221,7 +221,7 @@ angular.module('shopMyTools.homeController', [])
                 template: 'Loading...'
             });
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
-            homePageService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile.substr(2), window.localStorage['user_id']).then(function (data) {
+            homePageService.getOrdersCount($scope.userInfo.email, $scope.userInfo.user_mobile, window.localStorage['user_id']).then(function (data) {
                 $ionicLoading.hide();
                 if (data.data.status == 'Success') {
                     // $scope.ordersCount = data.data;

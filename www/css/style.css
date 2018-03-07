@@ -178,7 +178,7 @@ th, td {
 }
 
 #login_btn{
-    margin-top: 20%;
+    margin-top: 25%;
 }
 #reg_btn{
     margin-top: 5%;
@@ -197,7 +197,8 @@ th, td {
     border-left: 1px solid #0487a1;   
     border-right: 1px solid #0487a1; 
     /*padding: 0 13px;*/
-    padding: 0 13%;
+    padding: 0 40px;
+    height:38px;
 }
 #row1{
     padding: 0 13px;
@@ -208,7 +209,7 @@ th, td {
     float: right;
 }
 .sign_up{
-    margin-top: 20%;
+    margin-top: 15%;
     text-align: center;
     font-size: 18px;
     font-weight: 600;
@@ -219,7 +220,7 @@ th, td {
     font-weight: 700;
 }
 .remeber_forgetpass{
-    margin-top: -5%;
+    margin-top: -3%;
 }
 .remember_me{
     float: left;
@@ -229,10 +230,13 @@ th, td {
 .forgot_pswd{
     float: right;
     color:#0487a1;
+    text-decoration:underline;
+    font-size:14px;
     font-weight: 500;
 }
 #check_text{
     padding-left: 5px;
+    font-size:14px;
 }
 #checkbox_icon{
     border-style: none !important;
@@ -278,11 +282,11 @@ th, td {
 
 .welcome-slide-icon{
     text-align: center;
-    margin-top: 20%;
+    margin-top: 25%;
 }
 
 .welcome-slider .swiper-container-horizontal > .swiper-pagination {
-    bottom: 10%;
+    bottom: 7%;
 }
 .welcome-slide label {
     font-size: 20px;
@@ -290,7 +294,6 @@ th, td {
     color: #0487a1;
 }
 .welcome-slide-text{
-    position: absolute;
     /* padding-left: 20%;
     padding-right: 20%; */
     bottom: 20%;
@@ -303,6 +306,7 @@ th, td {
 .welcome-slide2-txt {
     padding-left: 5%;
     padding-right: 5%;
+    margin-top:100px;
 }
 .swiper-pagination-bullet-active {
     opacity: 1;
@@ -505,9 +509,7 @@ div.footer-button a.button.button-full {
 .smt_sideMenu .item{
     background-color: transparent;
 }
-.scroll-content-menu{
-   margin-top: 12%;
-}
+
 .menu_user_photo{
     margin-top:5px !important;
 }
@@ -516,7 +518,7 @@ div.footer-button a.button.button-full {
     padding: 10px;
 }
 .login_user_details{
-    padding-top: 3%;
+    padding-top: 2%;
 }
 .login_user_details h1{
     font-size: 25px;
@@ -531,7 +533,6 @@ div.footer-button a.button.button-full {
     color: #444;
     border: none; 
     border-bottom: 5px solid #ddd; 
-    margin: 0 -10px;
     /*padding-bottom: 6%;  */   
 }
 .category_cart_list .list1 h1{
@@ -666,6 +667,7 @@ div.footer-button a.button.button-full {
 #footer {
     position : absolute;
     bottom : 0;
+    left:0;
     height: 50px;
     margin-top: 50px;
   }
@@ -677,8 +679,7 @@ div.footer-button a.button.button-full {
     color:#fff;
     font-size: 17px;
     line-height: 2.7;
-    margin-left: -10px;
-    margin-right: 5px;
+    
   }
   #buynow{
     min-width: 50%;
@@ -687,8 +688,6 @@ div.footer-button a.button.button-full {
     border:1px solid #0487a1;
     font-size: 17px;
     line-height: 2.7;
-    margin-right: 5px;
-    margin-left: -10px;
   }
   
 #productdetailSlide .slider-slide {
@@ -696,6 +695,10 @@ div.footer-button a.button.button-full {
 }
 .slider-slides {
     text-align: center;
+}
+
+about_product {
+    margin-top: 55px;
 }
 
  .about_product .tabs-striped.tabs-background-positive .tabs{
@@ -923,6 +926,7 @@ div.footer-button a.button.button-full {
         padding-right: 8px;
         text-align: center;
         border-radius: 10px;
+        margin-left: 15px;
     }
     .cart_imagess{
         float: right;
@@ -960,9 +964,6 @@ div.footer-button a.button.button-full {
     .block{
         border-bottom: 5px solid #ddd;
     }
-    .block:last-child{
-        border-bottom: none;
-    }
     .shop_address .s_head{
         color: #2c2b2b;
     }
@@ -977,7 +978,7 @@ div.footer-button a.button.button-full {
         padding: 0 5px;
     }
     .shop_address .row{
-        padding: 0 25px;
+        padding: 0 5px;
     }
     .name_of_the_shop .radiobutns{
         font-weight: 500;
@@ -985,9 +986,6 @@ div.footer-button a.button.button-full {
     .name_of_the_shop{
         border-bottom: 5px solid #ddd;
         margin: 5px 0;
-    }
-    .name_of_the_shop:last-child{
-        border-bottom: none;
     }
     .font_size15 {
         font-size: 15px;
@@ -1368,12 +1366,7 @@ color: #fff
 }
 .cancel_orders_ser h1{
     font-size: 22px;
-    font-weight: 700; 
-    margin-bottom: 0px;  
-}
-.cancel_orders_ser p{
-    font-size: 16px;
-    color: #6f6d6d;
+    font-weight: 700;   
 }
 .cancel_orders_ser .search{
     /* border-bottom: 1px solid #0487a1; */
@@ -1396,63 +1389,8 @@ color: #fff
     background: #f8f8f8;
     box-shadow: 2px 2px 2px #ececec;
 }
-.invoice_body .cancel_cart_list .item {
-    background: transparent;
-    border: none;
-}
-.invoice_body{
-    padding: 0 5%;
-    border-bottom: 5px solid #ddd;
-}
-.invoice_body:last-child{
-    border-bottom: none;
-}
 
-.invoice_rev .item-input {
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
-/*Overlay*/
-
-fader {
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: rgba(0,0,0,.8);
-    opacity: 0;
-    z-index: -1; }
-
-.radiobutns-shop{
-    margin-left: 10px;
-    font-size: 20px;
-    line-height: 1.8;
-}
-
-.category_cart_list .review .item {
-    background-color: transparent;
-    color: #444;
-    border: none;
-    /* border-bottom: 5px solid #ddd; */
-    margin: 0 -10px;
-}
-
-.review_border {
-    border-bottom: 5px solid #ddd;
-}
-
-
-/* ion-side-menu-content{
-    z-index: -1 !important;
-} */
-
-.headersearchenable .title {
-    left: 25px !important;
-    right: 80px !important;
-}
-
-
-/* Vijay Sir CSS */
+/* 03-March-2018 */
 
 .swiper-container{
     overflow:visible !important;
@@ -1530,4 +1468,21 @@ ion-header-bar.bar-stable.bar.bar-header{
     position:absolute !important;
     top:90% !important;
     
+}
+
+.invoice_body .cancel_cart_list .item {
+    background: transparent;
+    border: none;
+}
+.invoice_body{
+    padding: 0 5%;
+    border-bottom: 5px solid #ddd;
+}
+.invoice_body:last-child{
+    border-bottom: none;
+}
+
+.invoice_rev .item-input {
+    margin-bottom: 15px;
+    border-radius: 5px;
 }

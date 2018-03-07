@@ -9,11 +9,15 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.showPaymentTypeDiv = false;
             $scope.showOrderDetailDiv = false;
             $scope.checkoutData = {};
+            $scope.getPincodeData = {};
 
             $scope.shippingAddress = JSON.parse(localStorage.getItem('shippingAddressInfo'));
             $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
             $scope.gst_number = window.localStorage['gst_number'];
+            $scope.customerMobile = window.localStorage['mobile'];
+            $scope.getPincodeData.mobile =  window.localStorage['mobile'];
+            $scope.getPincodeData.gst_number = window.localStorage['gst_number'];
 
             $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
             $scope.billingAddressLength = Object.keys($scope.billingAddress).length;
@@ -53,7 +57,6 @@ angular.module('shopMyTools.ckeckoutController', [])
                 $scope.shippingAddress = editShippingAdd;
                 $scope.sameAsShipping = editShippingAdd.checked;
                 $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
-                alert($scope.shippingAddressLength)
                 $scope.Addressmodal.hide();
                 if ($scope.sameAsShipping == true) {
                     $scope.billingAddress = editShippingAdd;
@@ -154,7 +157,8 @@ angular.module('shopMyTools.ckeckoutController', [])
                 if ($scope.shop != '' && $scope.shop != undefined) {
                     $scope.modal.hide();
                     $scope.showshippingDiv = false;
-                    $scope.showBillingAddressDiv = true;
+                    $scope.showBillingAddressDiv = false;
+                    $scope.showOrderDetailDiv = true;
                 } else {
                     $ionicPopup.alert({
                         template: 'Please Select Shop',
@@ -167,14 +171,19 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.saveBillingAddress = function (billingAddress) {
                 $scope.billingAddress = billingAddress;
                 $scope.showBillingAddressDiv = false;
+                $scope.showOrderDetailDiv = true;
+            }
+
+            $scope.continueForPayment = function(){
+                $scope.showOrderDetailDiv = false;
                 $scope.showPaymentTypeDiv = true;
             }
 
             $scope.savePaymentType = function (paymentType) {
                 $scope.paymentType = paymentType;
-                $scope.showOrderDetailDiv = true;
-                $scope.showBillingAddressDiv = false;
-                $scope.showPaymentTypeDiv = false;
+                // $scope.showOrderDetailDiv = false;
+                // $scope.showBillingAddressDiv = false;
+                // $scope.showPaymentTypeDiv = true;
 
             }
 
@@ -240,7 +249,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             }
             //  alert(window.localStorage['mobile']);
 
-            $scope.customerMobile = window.localStorage['mobile'];
+            
 
             $scope.checkoutProcess = function () {
 
@@ -312,7 +321,7 @@ angular.module('shopMyTools.ckeckoutController', [])
                             toolbar: 'no',
                             closebuttoncaption: 'back'
                         };
-                        if ($scope.paymentType == 'online') {
+                        if ($scope.paymentType == 'payu') {
                             // onDeviceReadyTest()
 
                             var amt = parseInt($rootScope.grand_total);

@@ -281,8 +281,8 @@ angular.module('shopMyTools.controllers', [])
 
     .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window, searchProductsService) {
 
-        $scope.mobileNo = window.localStorage['mobile'];
-        $scope.user_name = window.localStorage['user_name'];
+        // $scope.mobileNo = window.localStorage['mobile'];
+        // $scope.user_name = window.localStorage['user_name'];
         $scope.gotoRespectivePage = function (page) {
             if (page == 'home') {
                 $state.go('app.home');
