@@ -2,7 +2,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
     .controller('ckeckoutCntrl',
         function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading,
-            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService, $cordovaInAppBrowser) {
+            $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService, $cordovaInAppBrowser, getCouponService) {
 
             $scope.showshippingDiv = true;
             $scope.showBillingAddressDiv = false;
@@ -16,7 +16,7 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.userInfo = JSON.parse(localStorage.getItem('userInfo'));
             $scope.gst_number = window.localStorage['gst_number'];
             $scope.customerMobile = window.localStorage['mobile'];
-            $scope.getPincodeData.mobile =  window.localStorage['mobile'];
+            $scope.getPincodeData.mobile = window.localStorage['mobile'];
             $scope.getPincodeData.gst_number = window.localStorage['gst_number'];
 
             $scope.shippingAddressLength = Object.keys($scope.shippingAddress).length;
@@ -174,7 +174,7 @@ angular.module('shopMyTools.ckeckoutController', [])
                 $scope.showOrderDetailDiv = true;
             }
 
-            $scope.continueForPayment = function(){
+            $scope.continueForPayment = function () {
                 $scope.showOrderDetailDiv = false;
                 $scope.showPaymentTypeDiv = true;
             }
@@ -249,10 +249,14 @@ angular.module('shopMyTools.ckeckoutController', [])
             }
             //  alert(window.localStorage['mobile']);
 
-            
+            $rootScope.user_id = window.localStorage['user_id']
 
             $scope.checkoutProcess = function () {
-
+                if ($rootScope.couponAmt) {
+                    $rootScope.grand_total = JSON.stringify($rootScope.grand_total - $rootScope.couponAmt);
+                    alert($rootScope.grand_total);
+                  
+                }
 
                 $scope.finalCheckoutData = {
 
@@ -314,6 +318,7 @@ angular.module('shopMyTools.ckeckoutController', [])
                     $ionicLoading.hide();
                     if (data.data.status == 'data saved') {
                         $scope.finalOrderId = data.data.orderid;
+                        $rootScope.finalOrderId = $scope.finalOrderId;
                         window.localStorage['finalOrderId'] = $scope.finalOrderId;
                         var options = {
                             location: 'yes',
@@ -354,11 +359,22 @@ angular.module('shopMyTools.ckeckoutController', [])
                                 + '&phone=' + mobile
                                 + '&hash=' + encrypttext, '_blank');
 
-                        } else {
 
+
+                            browser.addEventListener('loadstop', function (event) {
+                                alert(event.url);
+                                alert(event["url"]);
+                                if (event["url"] == "http://toolsomg.com/mobilesuccess.html") {
+                                    browser.close();
+                                    $state.go('app.home');
+                                }
+                            });
+
+                        } else {
+                            $scope.submitPayment();
                         }
 
-                        $scope.submitPayment();
+                        
                     }
 
                 })
@@ -379,6 +395,108 @@ angular.module('shopMyTools.ckeckoutController', [])
                     }
 
                 })
+
+            }
+            $scope.couponNotApplicable = 'false';
+            $rootScope.couponApplied = 'false';
+            $scope.couponShopMsg = 'false';
+
+            $scope.getCouponText = function (coupon) {
+                if (coupon.length == 0) {
+                    $scope.couponNotApplicable = 'false';
+                    $rootScope.couponApplied = 'false';
+                    $scope.couponShopMsg = 'false';
+                    $rootScope.couponAmt = 0;
+                    //   $scope.viewCartItems();
+                }
+            }
+
+           
+
+            $scope.getCoupon = function (coupon) {
+                //  alert(coupon)
+                if (coupon == undefined) {
+                    alert(" Please enter  coupon")
+                } else {
+                    if (window.localStorage['token']) {
+
+
+                        if (coupon.charAt(0) == 'B' || coupon.slice(0, 2) == 'SC') {
+                            $scope.itemList = $rootScope.cartItemsList;
+                            if ($rootScope.couponApplied == 'false') {
+                                getCouponService.brandBasedCouponMethod(coupon, window.localStorage['user_id'], $scope.itemList).then(function (data) {
+                                    if (data.data.status == 'cupon applicable') {
+                                        $scope.couponData = data.data.coupon_details;
+                                        $rootScope.couponApplied = 'true';
+                                        $scope.couponNotApplicable = 'false';
+                                        $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                        $rootScope.amount1 = $rootScope.grand_total - $rootScope.couponAmt;
+                                        // localStorage.setItem('couponAmt', $rootScope.couponAmt);
+                                    } else {
+                                        $scope.couponNotApplicable = 'true';
+                                        $rootScope.couponApplied = 'false';
+                                    }
+                                })
+                            }
+                        } else if (coupon.charAt(0) == 'M') {
+                            if ($rootScope.couponApplied == 'false') {
+                                getCouponService.maxPurchasedCouponMethod(coupon, window.localStorage['user_id'], $rootScope.grand_total).then(function (data) {
+                                    if (data.data.status == 'cupon applicable') {
+                                        $scope.couponData = data.data.coupon_details;
+                                        $rootScope.couponApplied = 'true';
+                                        $scope.couponNotApplicable = 'false';
+                                        $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                        // localStorage.setItem('couponAmt', $rootScope.couponAmt);
+                                        //  alert(localStorage.getItem('couponAmt'))
+                                        $rootScope.amount1 = $rootScope.grand_total - $rootScope.couponAmt;
+
+                                    } else {
+                                        $scope.couponNotApplicable = 'true';
+                                        $rootScope.couponApplied = 'false';
+                                    }
+                                })
+                            }
+                        }
+
+                        else {
+                            localStorage.setItem('coupon', coupon);
+                            if ($scope.couponShopMsg == 'false') {
+                                getCouponService.getCouponMethod(coupon, window.localStorage['user_id']).then(function (data) {
+                                    // alert(JSON.stringify(data))
+                                    if (data.data.status == 'cupon applicable') {
+                                        $scope.couponData = data.data.coupon_details;
+                                        $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                        if ($scope.couponData.shop) {
+                                            $rootScope.couponShop = $scope.couponData.shop;
+                                            if ($scope.dealerAddress == $rootScope.couponShop) {
+                                                $rootScope.amount1 = $rootScope.grand_total - $rootScope.couponAmt;
+                                            } else {
+                                                $rootScope.amount = $rootScope.grand_total;
+                                            }
+                                            localStorage.setItem('couponShop', $rootScope.couponShop);
+                                            $scope.couponShopMsg = 'true';
+                                            $rootScope.couponApplied = 'false';
+                                            $scope.couponNotApplicable = 'false';
+                                        } else {
+                                            $rootScope.couponApplied = 'true';
+                                            $scope.couponNotApplicable = 'false';
+                                            $scope.couponShopMsg = 'false';
+                                            $rootScope.amount1 = $rootScope.grand_total - $rootScope.couponAmt;
+                                        }
+                                        //   localStorage.setItem('couponAmt', $rootScope.couponAmt);
+                                    } else {
+                                        $scope.couponNotApplicable = 'true';
+                                        $rootScope.couponApplied = 'false';
+                                        $scope.couponShopMsg = 'false';
+                                    }
+                                })
+                            }
+                        }
+                    } else {
+                        alert('Please Login to Continue Checkout')
+                    }
+                }
+
 
             }
 

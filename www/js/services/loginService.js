@@ -174,19 +174,40 @@ angular.module('shopMyTools.services', [])
         };
     })
 
-    .service('UserService', function() {
+    .service('UserService', function () {
         // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
-    
-      var setUser = function(user_data) {
-        window.localStorage.starter_google_user = JSON.stringify(user_data);
-      };
-    
-      var getUser = function(){
-        return JSON.parse(window.localStorage.starter_google_user || '{}');
-      };
-    
-      return {
-        getUser: getUser,
-        setUser: setUser
-      };
+
+        var setUser = function (user_data) {
+            window.localStorage.starter_google_user = JSON.stringify(user_data);
+        };
+
+        var getUser = function () {
+            return JSON.parse(window.localStorage.starter_google_user || '{}');
+        };
+
+        return {
+            getUser: getUser,
+            setUser: setUser
+        };
+    })
+
+    .service('couponService', function ($q, $http, SERVER_URL) {
+        this.getCoupons = function () {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: SERVER_URL + '/homepage',
+                headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+
+            }).then(function success(data) {
+                deferred.resolve(data);
+
+            }, function error(data) {
+                deferred.reject(data);
+
+            });
+
+            return deferred.promise;
+        };
     })

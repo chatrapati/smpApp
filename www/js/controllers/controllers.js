@@ -279,7 +279,7 @@ angular.module('shopMyTools.controllers', [])
     })
 
 
-    .controller('menuController', function ($scope, $rootScope, $state, logoutService, $window, searchProductsService) {
+    .controller('menuController', function ($scope, $rootScope, $cordovaInAppBrowser, $state, logoutService, $window, searchProductsService) {
 
         // $scope.mobileNo = window.localStorage['mobile'];
         // $scope.user_name = window.localStorage['user_name'];
@@ -299,10 +299,12 @@ angular.module('shopMyTools.controllers', [])
                 $state.go('cart_page');
             } else if (page == 'chngpaswd') {
                 $state.go('changePassword');
-            } else if (page == 'chngadd') {
-                $state.go('app.home');
+            } else if (page == 'Coupons') {
+                $state.go('couponsPage');
             } else if (page == 'policy') {
-                window.open('http://toolsomg.com/returnpolicy.html#!/', '_blank');
+                var browser = $cordovaInAppBrowser.open('http://toolsomg.com/returnpolicy.html#!/');
+
+                //  window.open('http://toolsomg.com/returnpolicy.html#!/', '_blank');
             } else if (page == 'aboutus') {
                 window.open('http://toolsomg.com/aboutus.html#!/', '_blank');
             } else if (page == 'faq') {
@@ -349,6 +351,8 @@ angular.module('shopMyTools.controllers', [])
                     if (data.data.status == 'success') {
                         $scope.searchedMoreProducts = data.data.product_info;
                         $rootScope.recommendedList = data.data.recommended;
+                    } else {
+                        $scope.searchedMoreProducts = [];
                     }
                 })
                 $rootScope.searchDiv = true;
@@ -581,4 +585,22 @@ angular.module('shopMyTools.controllers', [])
         }
 
 
+    })
+
+
+    .controller('couponsController', function ($scope, $rootScope, $state, $window, $ionicLoading, $ionicHistory, couponService) {
+
+        $scope.getCoupons = function () {
+            $ionicLoading.show();
+            couponService.getCoupons().then(function (data) {
+                $ionicLoading.hide();
+                $scope.couponsList = data.data.coupons;
+            })
+        }
+        $scope.getCoupons();
+
+        $scope.goback = function () {
+            $ionicHistory.goBack();
+            //  $window.history.go(-1);
+        }
     });

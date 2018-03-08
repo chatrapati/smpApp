@@ -1389,6 +1389,50 @@ color: #fff
     background: #f8f8f8;
     box-shadow: 2px 2px 2px #ececec;
 }
+.invoice_body .cancel_cart_list .item {
+    background: transparent;
+    border: none;
+}
+.invoice_body{
+    padding: 0 5%;
+    border-bottom: 5px solid #ddd;
+}
+.invoice_body:last-child{
+    border-bottom: none;
+}
+
+.invoice_rev .item-input {
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+/*Overlay*/
+
+fader {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.8);
+    opacity: 0;
+    z-index: -1; }
+
+.radiobutns-shop{
+    margin-left: 10px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.category_cart_list .review .item {
+    background-color: transparent;
+    color: #444;
+    border: none;
+    /* border-bottom: 5px solid #ddd; */
+    margin: 0 -10px;
+}
+
+.review_border {
+    border-bottom: 5px solid #ddd;
+}
 
 /* 03-March-2018 */
 

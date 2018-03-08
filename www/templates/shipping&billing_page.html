@@ -174,6 +174,11 @@
                                             <span>{{cartItemsList.length}}</span> items)</span>
                                         <span class="val">{{grand_total | currency:'&#8377;'}}</span>
                                     </p>
+                                    <p ng-if="couponAmt">
+                                        <span class="attr">Coupon Amount</span>
+                                        <span class="val">{{couponAmt | currency:'&#8377;'}}</span>
+                                    </p>
+                                   
                                     <!-- <p class="save_item">You will save 1200 rupees on this order...</p> -->
                                 </div>
                             </div>
@@ -181,13 +186,40 @@
 
                         <div class="row pro_attr_vals txt_right">
                             <div class="col">
-                                <p>
+                                <!-- <p>
                                     <span class="attr">Amount Payble</span>
                                     <span class="val">{{grand_total | currency:'&#8377;'}}</span>
+                                </p> -->
+                                <p>
+                                    <span class="attr">Amount Payble</span>
+                                    <span class="val">{{grand_total-couponAmt | currency:'&#8377;'}}</span>
                                 </p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <span>Enter your coupon code if you have one.</span>
+                            <div class="list login_labls">
+                                <label class="item item-input item-floating-label">
+                                    <input type="text" ng-model="coupon" placeholder="Enter Coupon Code" ng-change="getCouponText(coupon)" 
+                                        my-enter="getCoupon(coupon)">
+                                </label>
+
+                                <button type="submit" class="btn btn-default pull-right" ng-disabled="couponShopMsg == 'true'" id="discCodesBtn" ng-click="getCoupon(coupon)">Apply Coupon</button>
+                            </div>
+
+                            <div style="margin-left: 10px;">
+                                <p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
+                                <p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
+                                <p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
+                                <p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="row">
                         <div class="col text-center">
