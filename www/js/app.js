@@ -274,7 +274,15 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       cache: false,
       templateUrl: 'templates/couponsPage.html',
       controller: 'couponsController'
+    })
+
+    .state('headerSearchbar', {
+      url: '/headerSearchbar',
+      cache: false,
+      templateUrl: 'templates/headerSearchbar.html',
+      controller: 'searchController'
     });
+
 
 
 
