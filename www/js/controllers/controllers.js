@@ -339,25 +339,25 @@ angular.module('shopMyTools.controllers', [])
         }
 
 
-        $scope.getSeachProducts = function (searchKey) {
-            $rootScope.searchKey = searchKey;
+        // $scope.getSeachProducts = function (searchKey) {
+        //     $rootScope.searchKey = searchKey;
 
-            if (searchKey.length >= 3) {
+        //     if (searchKey.length >= 3) {
 
-                searchProductsService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
-                    //alert(JSON.stringify(data))
-                    if (data.data.status == 'success') {
-                        $scope.searchedMoreProducts = data.data.product_info;
-                        $rootScope.recommendedList = data.data.recommended;
-                    }
-                })
-                $rootScope.searchDiv = true;
+        //         searchProductsService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
+        //             //alert(JSON.stringify(data))
+        //             if (data.data.status == 'success') {
+        //                 $scope.searchedMoreProducts = data.data.product_info;
+        //                 $rootScope.recommendedList = data.data.recommended;
+        //             }
+        //         })
+        //         $rootScope.searchDiv = true;
 
-            } else {
-                $rootScope.searchDiv = false;
+        //     } else {
+        //         $rootScope.searchDiv = false;
 
-            }
-        }
+        //     }
+        // }
 
 
         $scope.gotoCartPage = function () {
@@ -390,6 +390,12 @@ angular.module('shopMyTools.controllers', [])
         }
 
 
+
+        $scope.goback = function () {
+            //  $state.go('app.home');
+            $window.history.go(-1);
+        }
+
     })
 
 
@@ -420,8 +426,44 @@ angular.module('shopMyTools.controllers', [])
 
     })
 
-    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, $window, $state, categoryService, $ionicLoading, $ionicPopup, viewCartItemsService) {
+    .controller('searchController', function ($scope, $rootScope, searchProductsMoreService, searchProductsService, $window, $state, categoryService, $ionicLoading, $ionicPopup, viewCartItemsService) {
 
+        $scope.SearchData = {};
+
+        $scope.search=false;
+        $rootScope.searchDiv = false;
+        $scope.getSeachProducts = function (searchKey) {
+            $scope.search=true;
+           
+            $rootScope.searchKey = searchKey;
+
+            //window.localStorage['searchKey'] = searchKey; 
+
+            if (searchKey.length >= 3) {
+
+
+                searchProductsService.searchProductsMoreMethod(searchKey).then(function (data) {
+                    //alert(JSON.stringify(data))
+                    if (data.data.status == 'success') {
+                        $scope.searchedMoreProducts = data.data.product_info;
+                        $rootScope.recommendedList = data.data.recommended;
+                    } else {
+                        $scope.searchedMoreProducts = [];
+                    }
+                })
+                $rootScope.searchDiv = true;
+
+            } else {
+                $rootScope.searchDiv = false;
+
+            }
+        }
+
+        $scope.clearSearch = function () {
+            $scope.SearchData = {};
+            $rootScope.searchDiv = false;
+            $scope.search=false;
+        }
         $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
                 //alert(JSON.stringify(data))
@@ -452,7 +494,12 @@ angular.module('shopMyTools.controllers', [])
             })
         }
 
-
+        $scope.gotoCategoryPage = function (product, type) {
+            $rootScope.categoryName = product;
+            window.localStorage['categoryType'] = type;
+            window.localStorage['categoryName'] = product;
+            $state.go('categoryCartPage');
+        }
 
         $scope.getProductDetails = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
@@ -533,6 +580,10 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.gotoCartPage = function () {
             $state.go('cart_page');
+        }
+
+        $scope.getSearchtDetails = function (searchKey) {
+            $state.go("search")
         }
 
         $scope.goback = function () {

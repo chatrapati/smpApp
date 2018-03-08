@@ -1249,8 +1249,8 @@ p.ph_no{
 
 
  .search-view-more{
-    font-size: 17px;
-    color: #fff;
+    font-size: 14px;
+    /* color: #fff; */
     float: right;
     text-decoration: underline;
  }
@@ -1267,14 +1267,15 @@ p.ph_no{
     background: white;
 }
 .search_back{
-    margin-left: 10%;
+    /* margin-left: 10%;
     width: 80%;
-    position:absolute;
+    position:absolute; */
 }
 .search_back li.item{
     padding: 10px 20px;
-    background: #0487a1;
-    color: #fff;
+    font-size: 14px;
+   /* background: #0487a1;
+    color: #fff;*/
 }
 .cart-btn .button {
     background: #0487a1;
@@ -1485,4 +1486,8 @@ ion-header-bar.bar-stable.bar.bar-header{
 .invoice_rev .item-input {
     margin-bottom: 15px;
     border-radius: 5px;
+}
+#search-clear.button-clear.button-clear {
+   
+    color: black;
 }

@@ -268,9 +268,9 @@ angular.module('shopMyTools.homeController', [])
         $scope.getCartItemsList();
 
         //search
-        $scope.getSearchtDetails = function (searchKey) {
-            $state.go("search")
-        }
+        // $scope.getSearchtDetails = function (searchKey) {
+        //     $state.go("search")
+        // }
 
 
 
