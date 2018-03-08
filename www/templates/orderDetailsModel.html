@@ -106,6 +106,24 @@
         <div ng-repeat="data in orderDetails">
             <div class="row">
                 <div class="col">
+                   
+                    <div ng-if="review">
+
+                        <!-- <span>{{data.avgrating}}</span> -->
+                        <div>
+                            <div id="rating" ng-repeat="n in [] | range:5" style="float:left;">
+
+                                <div ng-if="n<data.avgrating">
+                                    <i class="fa fa-star" aria-hidden="true" style="padding-right:5px;font-size:15px;color:#efb30b;"></i>
+                                </div>
+
+                                <div ng-if="n>=data.avgrating">
+                                    <i class="fa fa-star-o" aria-hidden="true" style="padding-right:5px;font-size:15px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button  ng-click="productreview(data)">write a review</button>
+                    </div>
                     <h5 class="theme_clr">{{data.productdescription}}</h5>
                     <span class="pro_attr">Unit Price :</span>
                     <span class="pro_val">{{data.unitprice | currency:'&#8377;'}}</span>
