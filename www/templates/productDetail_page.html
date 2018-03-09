@@ -144,7 +144,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="row">
+                <div class="row" ng-if="writereview">
                     <div class="col">
                         <div class="highlits" ng-click="review=!review" id="product-icon">
                             <h3>Write your review</h3>
@@ -222,7 +222,7 @@
                                         <span class="error">*</span>
                                     </span>
                                     <div class="input-placeholder">
-                                        <input type="text" name="mobile" ng-model="reviewdata.review" required>
+                                        <input type="text" name="review" ng-model="reviewdata.review" required>
                                         <div class="placeholder">
                                             Review...
                                             <span class="star">*</span>
@@ -240,7 +240,7 @@
                             </form>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div class="product_desc">

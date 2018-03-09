@@ -43,10 +43,13 @@ angular.module('shopMyTools.productDetailPageController', [])
             })
         }
         $scope.reviewdata = {};
+       
 
         $scope.submitReviews = function (data) {
-
-
+           
+            if($scope.rating== null){
+                alert('please rate us')
+            }
             reviews_service.reviewsMethod(data, $scope.rating, $scope.productDetail.upload_name, window.localStorage['email']).then(function (data) {
 
                 if (data.data.success == 'success') {
@@ -56,7 +59,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                         title: 'Success!'
                     });
 
-
+                   $rootScope.writereview=false;
                 } else {
                     alert(data.data.success)
                 }

@@ -103,19 +103,22 @@ angular.module('shopMyTools.dashboardController', [])
         $scope.Invoiceactive = false;
         $scope.Cancelactive = false;
         //  $scope.getPendingOrders();
-
+        $rootScope.review = false;
         $scope.getOrdersList = function (orderType) {
             if (orderType == 'pending') {
+                $rootScope.review = false;
                 $scope.Pendingactive = true;
                 $scope.Invoiceactive = false;
                 $scope.Cancelactive = false;
                 // $scope.getPendingOrders();
             } else if (orderType == 'invoice') {
+                $rootScope.review = true;
                 $scope.Pendingactive = false;
                 $scope.Invoiceactive = true;
                 $scope.Cancelactive = false;
                 // $scope.getInvoiceOrders();
             } else if (orderType == 'cancel') {
+                $rootScope.review = false;
                 $scope.Pendingactive = false;
                 $scope.Invoiceactive = false;
                 $scope.Cancelactive = true;
@@ -154,6 +157,17 @@ angular.module('shopMyTools.dashboardController', [])
 
 
 
+        }
+
+        //review
+      
+
+        $scope.productreview =function(productObj){
+            $scope.closePopup();
+            $rootScope.writereview=true;
+            window.localStorage['productName'] = productObj.productdescription;
+           // alert( window.localStorage['productName']);
+            $state.go("productDetail_page")
         }
 
 
