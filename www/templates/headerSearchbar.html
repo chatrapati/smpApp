@@ -1,13 +1,13 @@
 <ion-view>
-    <ion-content>
+    <ion-content class="smt_background_image" style="padding:0;">
         <div class="bar bar-header item-input-inset">
             <button class="button button-icon icon ion-android-arrow-back" ng-click="goback()">
             </button>
             <label class="item-input-wrapper">
                 <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="search" style="color:black;"  placeholder="Search here..." ng-model="SearchData.searchKey" ng-change="getSeachProducts(SearchData.searchKey)">
+                <input type="search" style="color:black;" placeholder="Search here..." ng-model="SearchData.searchKey" ng-change="getSeachProducts(SearchData.searchKey)">
             </label>
-            <button class="button button-clear" ng-if="search"  id="search-clear" ng-click="clearSearch()">
+            <button class="button button-clear" ng-if="search" id="search-clear" ng-click="clearSearch()">
                 Cancel
             </button>
         </div>
@@ -15,16 +15,16 @@
             <div ng-if="searchDiv">
                 <div class="">
                     <ul class="search_back">
-                        <li class="item" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
+                        <li class="item theme_clr" ng-repeat="product in searchedMoreProducts" ng-click="getProductDetails(product)">
                             {{product.upload_name}}
                         </li>
-                        <li class="item" ng-if="searchedMoreProducts.length>0">
+                        <li class="item theme_clr" ng-if="searchedMoreProducts.length>0">
                             <span ng-click="getSearchtDetails(searchKey)" class="search-view-more">view more</span>
                         </li>
-                        <li class="item" ng-if="recommendedList.length>0">
+                        <li class="item theme_clr" ng-if="recommendedList.length>0">
                             <b>Recommended</b>
                         </li>
-                        <li class="item" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
+                        <li class="item theme_clr" ng-repeat="recommended in recommendedList" ng-click="gotoCategoryPage(recommended.upload_category,'category')">
                             {{recommended.upload_category}}
                         </li>
 

@@ -34,7 +34,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.loginData = {};
         if (window.localStorage['remeberCredentials']) {
             //  window.localStorage['remeberCredentials'] = checked;
-            $scope.loginData.username = window.localStorage['remembermeEmail'];
+            $scope.loginData.username = window.localStorage['remembermeUserName'];
             $scope.loginData.password = window.localStorage['remembermePassword'];
         } else {
             $scope.loginData = {};
@@ -101,7 +101,7 @@ angular.module('shopMyTools.controllers', [])
 
                         window.localStorage['welcomeToken'] = data.data.token;
 
-                        window.localStorage['remembermeEmail'] = data.data.userinfo.email;
+                        window.localStorage['remembermeUserName'] = $scope.loginData.username;
                         window.localStorage['remembermePassword'] = $scope.loginData.password;
 
 
@@ -126,24 +126,24 @@ angular.module('shopMyTools.controllers', [])
             if (checked == true) {
 
                 if ($scope.loginData != '') {
-                    window.localStorage['remembermeEmail'] = $scope.loginData.username;
+                    window.localStorage['remembermeUserName'] = $scope.loginData.username;
                     window.localStorage['remembermePassword'] = $scope.loginData.password;
                 } else {
 
-                    $scope.loginData.username = window.localStorage['remembermeEmail'];
+                    $scope.loginData.username = window.localStorage['remembermeUserName'];
                     $scope.loginData.password = window.localStorage['remembermePassword'];
                 }
 
             } else {
                 $scope.loginData = {};
-                localStorage.removeItem("remembermeEmail");
+                localStorage.removeItem("remembermeUserName");
                 localStorage.removeItem("remembermePassword");
             }
 
         }
         if (window.localStorage['remeberCredentials']) {
             $scope.loginData.checked = true;
-            $scope.loginData.username = window.localStorage['remembermeEmail'];
+            $scope.loginData.username = window.localStorage['remembermeUserName'];
             $scope.loginData.password = window.localStorage['remembermePassword'];
         } else {
             $scope.loginData.checked = false;
@@ -318,7 +318,7 @@ angular.module('shopMyTools.controllers', [])
                         localStorage.removeItem("token");
                         localStorage.removeItem("token");
                         if (!window.localStorage['remeberCredentials']) {
-                            localStorage.removeItem("remembermeEmail");
+                            localStorage.removeItem("remembermeUserName");
                             localStorage.removeItem("remembermePassword");
                             localStorage.removeItem("remeberCredentials");
                         }
