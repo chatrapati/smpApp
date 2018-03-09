@@ -196,6 +196,11 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
     color: #0487a1 !important;
     font-size: 18px !important;
 }
+
+.coupon-input input[type="text"]{
+    color:black !important;
+    font-size: 13px !important;
+}
 .float_labels{
     color: #0487a1;
     font-size: 13px;
@@ -522,4 +527,11 @@ input[type="radio"] {
 
 .m-left10{
     margin-left: 10px;
+}
+.position-0{
+    position: absolute;
+    top: 0%;
+}
+.p-left15{
+    padding-left: 15px;
 }

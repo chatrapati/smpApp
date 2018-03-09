@@ -1540,3 +1540,55 @@ ion-header-bar.bar-stable.bar.bar-header{
    
     color: black;
 }
+.catsort.button{
+    line-height: 20px;
+}
+.coupon-apply{
+    font-size: 15px;
+    color: #0487a1;
+    line-height: 33px;
+    font-weight: 500;
+}
+
+.coupon .item-input{
+    border:none;
+}
+.coupon ::-webkit-input-placeholder { /* Chrome */
+    color: #b8c0c1 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+  }
+  .coupon :-ms-input-placeholder { /* IE 10+ */
+    color: #b8c0c1 !important;
+  }
+  .coupon ::-moz-placeholder { /* Firefox 19+ */
+    color: #b8c0c1 !important;
+    opacity: 1 !important;
+  }
+  .coupon :-moz-placeholder { /* Firefox 4 - 18 */
+    color: #b8c0c1 !important;
+    opacity: 1 !important;
+  }
+  .coupon-header{
+    color: #0487a1;
+    font-weight: 500;
+  }
+  .reg-label i{
+    float: left;
+    line-height: 46px;
+  }
+  
+  .reg-input-placeholder input {
+    font-size: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  .reg_labls .item{
+     /* border-bottom:1px solid #0487a1 !important;  */
+    border: none
+}
+.reg-login_labls .item-input{
+    padding: 20px 0 5px 5px !important;
+}
+.reg-label-border{
+    border-bottom: 1px solid #0487a1;
+}
