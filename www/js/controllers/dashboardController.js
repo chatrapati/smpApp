@@ -161,7 +161,7 @@ angular.module('shopMyTools.dashboardController', [])
 
         //review
       
-
+        $rootScope.writereview=false;
         $scope.productreview =function(productObj){
             $scope.closePopup();
             $rootScope.writereview=true;
