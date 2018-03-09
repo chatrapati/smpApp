@@ -520,6 +520,15 @@ input[type="radio"] {
 
 /* ios styles changes end here */
 
-.m-left10{
+.m-left10 {
     margin-left: 10px;
+}
+
+.m_left5 {
+    margin-left: 5%;
+}
+
+
+.categorymenu .item-icon-left {
+    padding-left: 40px;
 }
