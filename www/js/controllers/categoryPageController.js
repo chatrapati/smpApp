@@ -37,7 +37,8 @@ angular.module('shopMyTools.categoryPageController', [])
           $rootScope.totalcount = data.data.totalcount;
           $rootScope.totalItems = data.data.products.length;
           $rootScope.datalists = data.data.products;
-
+        } else {
+          $rootScope.products = [];
         }
       })
     }
@@ -131,9 +132,31 @@ angular.module('shopMyTools.categoryPageController', [])
       }
     }
 
-    $scope.getPriceRange = function (range) {
-      $rootScope.getCategoryProductData.pricerange = $rootScope.minPrice + '-' + range;
+    $scope.priceRangeList = [
+      { value: "0 - 1000", range: "0 - 1,000" },
+      { value: "1000 - 10000", range: "1,000 - 10,000" },
+      { value: "10000 - 30000", range: "10,000 - 30,000" },
+      { value: "30000 - 50000", range: "30,000 - 50,000" },
+      { value: "50000 - 100000", range: "50,000 and above" }
+
+    ];
+
+    $scope.selectPriceRange = function (position, itens, title) {
+      angular.forEach(itens, function (subscription, index) {
+        if (position != index)
+          subscription.checked = false;
+        $scope.selected = title;
+        $rootScope.getCategoryProductData.pricerange = title;
+      }
+      );
     }
+
+
+
+
+    // $scope.getPriceRange = function (range) {
+    //   $rootScope.getCategoryProductData.pricerange = $rootScope.minPrice + '-' + range;
+    // }
 
     $scope.getfiterItems = function (filterData) {
       $scope.callService();
@@ -257,7 +280,7 @@ angular.module('shopMyTools.categoryPageController', [])
 
     $scope.submitReviews = function (data) {
       if ($scope.rating != undefined) {
-        
+
         reviews_service.reviewsMethod(data, $scope.rating, $scope.reviewProductName, window.localStorage['email']).then(function (data) {
           if (data.data.success == 'success') {
             // $ionicPopup.alert({
@@ -267,7 +290,7 @@ angular.module('shopMyTools.categoryPageController', [])
             $scope.closereviewPopup();
           }
         });
-        
+
       } else {
         $ionicPopup.alert({
           template: 'Please Give Rating',

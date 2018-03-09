@@ -22,12 +22,25 @@
                 </td>
                 <td ng-bind="shippingtype"></td>
             </tr>
+            <tr ng-if="shippingtype=='Pickup'">
+                <td class="theme_clr">
+                    <b>Shop Name</b>
+                </td>
+                <td ng-bind="shopName"></td>
+            </tr>
+            <tr ng-if="shippingtype=='Pickup'">
+                <td class="theme_clr">
+                    <b>Pickup Address</b>
+                </td>
+                <td ng-bind="pickupAddress"></td>
+            </tr>
             <tr ng-if="paymenttype!=''">
                 <td class="theme_clr">
                     <b>Payment Method</b>
                 </td>
                 <td ng-bind="paymenttype"></td>
             </tr>
+            
         </table>
 
 

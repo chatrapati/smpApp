@@ -22,7 +22,7 @@
         <!--  category body start here  -->
         <div class="category_body">
             <div class="category_cart_list">
-                <div class="category_cart_list" ng-repeat="item in wishlistItems">
+                <div class="category_cart_list" ng-repeat="item in wishlistItems | reverse">
                     <div class="list1">
                         <a class="item item-thumbnail-left cart_imge" class="product-img">
                             <img ng-src="{{item.upload_photo  | image_jpg}}" ng-click="getProductDetails(item)"  alt="{{item.brand_name}}">

@@ -71,7 +71,7 @@
                                 <i class="icon ion-edit placeholder-icon f_right"></i>
                             </span> -->
 
-                            <button ng-if="!editMobile" class="button button-block all_btns" type="submit" id="login_btn" ng-click="updateMobileNo()">Reset</button>
+                            <button ng-if="!editMobile" ng-disabled="editForm.$invalid" class="button button-block all_btns" type="submit" id="login_btn" ng-click="updateMobileNo()">Reset</button>
                         </div>
                     </form>
                 </div>

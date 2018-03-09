@@ -19,16 +19,18 @@ angular.module('shopMyTools.dashboardController', [])
                     $scope.myOrdersList = data.data.order_info;
 
                     //alert(JSON.stringify($scope.myOrdersList))
+                    if ($scope.myOrdersList.length > 0) {
+                        $scope.myOrdersList.forEach(function (orders) {
+                            if (orders.status == 'Accepted') {
+                                $scope.pendingOrderList.push(orders)
+                            } else if (orders.status == 'Complete') {
+                                $scope.invoiceOrderList.push(orders)
+                            } else if (orders.status == 'Cancel') {
+                                $scope.cancelOrderList.push(orders)
+                            }
+                        });
+                    }
 
-                    $scope.myOrdersList.forEach(function (orders) {
-                        if (orders.status == 'Accepted') {
-                            $scope.pendingOrderList.push(orders)
-                        } else if (orders.status == 'Complete') {
-                            $scope.invoiceOrderList.push(orders)
-                        } else if (orders.status == 'Cancel') {
-                            $scope.cancelOrderList.push(orders)
-                        }
-                    });
                 }
             })
         };
@@ -52,8 +54,8 @@ angular.module('shopMyTools.dashboardController', [])
         // };
 
         $scope.goback = function () {
-           // $state.go('app.home');
-              $window.history.go(-1);
+            // $state.go('app.home');
+            $window.history.go(-1);
         }
 
         $scope.gotoOrderDetails = function (orderId) {
@@ -71,6 +73,8 @@ angular.module('shopMyTools.dashboardController', [])
                     $rootScope.grandTotal = data.data.user_info.grand_total;
                     $rootScope.custDetails = data.data.user_info.cust_details;
                     $rootScope.status = $rootScope.custDetails.status;
+                    $rootScope.shopName = $rootScope.custDetails.shop;
+                    $rootScope.pickupAddress = $rootScope.custDetails.pickup_address;
                     $rootScope.shippingaddress = data.data.user_info.cust_details.shippingaddress;
                     $rootScope.billingaddress = data.data.user_info.cust_details.billingaddress;
                     $rootScope.shippingtype = $rootScope.custDetails.shippingtype;
@@ -312,7 +316,7 @@ angular.module('shopMyTools.dashboardController', [])
 
 
     .controller('viewCartItemsListCntrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading, $window, viewCartItemsService, categoryService) {
-       
+
         $scope.getCartItemsList = function () {
             $ionicLoading.show({
                 template: 'Loading...'
@@ -327,10 +331,10 @@ angular.module('shopMyTools.dashboardController', [])
                     $rootScope.totaltaxAmout = 0;
                     for (var i = 0; i < $rootScope.cartItemsList.length; i++) {
                         var offerprice = $rootScope.cartItemsList[i].offer_price;
-                        var taxAmount =$rootScope.cartItemsList[i].tax_amount;
-                        $rootScope.totalprice += JSON.parse(offerprice * $rootScope.cartItemsList[i].qty) ;
-                        $rootScope.totaltaxAmout += JSON.parse(taxAmount) ; 
-                       // alert($rootScope.totalprice);
+                        var taxAmount = $rootScope.cartItemsList[i].tax_amount;
+                        $rootScope.totalprice += JSON.parse(offerprice * $rootScope.cartItemsList[i].qty);
+                        $rootScope.totaltaxAmout += JSON.parse(taxAmount);
+                        // alert($rootScope.totalprice);
                     }
 
                 } else if (data.data.status == 'no data available of this user') {

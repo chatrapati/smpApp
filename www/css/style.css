@@ -601,20 +601,25 @@ div.footer-button a.button.button-full {
     margin-top: 10px;
 }
 .product_Detail_price .offer_price{
-    color: #454343;
+    color:#54a70a;
     font-weight: 500;
     font-size: 20px;
     padding-right: 5px;
 }
 .product_Detail_price .real_price{
-    color: #a9a9a9;
+    color:red;
     font-size: 20px;
     padding-right: 5px;
     text-decoration: line-through;
 }
 .product_Detail_price .offer_percentage{
-    color: #28a54c;
-    font-size: 20px;
+    /* color: #28a54c;*/
+    font-size: 20px; 
+    background: #ed3d3d;
+    color:#fff;
+   
+    padding: 1px 5px;
+    float: right;
 }
 .detailexcl_gst{
     font-size: 15px;

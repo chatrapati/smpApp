@@ -39,11 +39,11 @@
                     <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select>
                 </div>
             </div>
-            <div class="category_cart_list" ng-if="products!='' && products!=undefined">
+            <div class="category_cart_list" ng-if="products.length>0">
                 <div class="review review_border" ng-repeat="productsdata in products">
                     <a class="item item-thumbnail-left" class="product-img">
                         <img ng-src="{{productsdata.upload_photo  | image_jpg}}" ng-click="getProductDetails(productsdata)" alt="Image">
-                        <h2 ng-click="getProductDetails(productsdata)">{{productsdata.upload_name}}</h2>
+                        <h2 style="white-space: initial" ng-click="getProductDetails(productsdata)">{{productsdata.upload_name}}</h2>
                         <div class="product_price" ng-repeat="prices in productsdata.prices">
                             <span class="offer_price">{{prices.offer_price | currency:'&#8377;'}}</span>
                             <span class="real_price">{{prices.enduser_price | currency:'&#8377;'}}</span>
@@ -71,7 +71,7 @@
             </div>
 
         </div>
-        <div class="no_records m_top12" ng-if="products=='' || products==undefined">
+        <div class="no_records m_top12" ng-if="products.length==0">
             <span>No Records Found !!!</span>
         </div>
         <!--  category body end here  -->

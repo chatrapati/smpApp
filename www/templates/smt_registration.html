@@ -1,91 +1,102 @@
 <ion-view view-title="Registrtion">
-        <ion-content class="smt_background_image">
-    
-            <div class="smt_logo_reg">
-                <img src="img/Smt_Logo.png" width="90%">
-            </div>
-    
-            <!-- <div class="smt_user_photo">
+    <ion-content class="smt_background_image">
+
+        <div class="smt_logo_reg">
+            <img src="img/Smt_Logo.png" width="90%">
+        </div>
+
+        <!-- <div class="smt_user_photo">
                     <i class="icon ion-camera placeholder-icon" id="user_photo"></i>
                 </div> -->
-            <form name="registerForm" id="regForm">
-                <div class="list login_labls m_top-10">
-                    <label class="item item-input item-floating-label custom-login-label">
-                        <!-- <i id="mandatory_feild">*</i> -->
-                        
-                        <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">First Name</span> -->
-                        <input type="text" placeholder="First Name" name="firstname" ng-model="registerData.firstname" required ng-minlength="3"
-                            ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.firstname.$touched || (registerForm.firstname.$dirty && registerForm.firstname.$invalid)">
-                        <span class="error" ng-show="registerForm.firstname.$error.required">Please enter First Name.</span>
-                        <span class="error" ng-show="registerForm.firstname.$error.pattern">Allows only Alphabets.</span>
-                        <span class="error" ng-show="registerForm.firstname.$error.minlength">Should be atleast 3-50 characters.</span>
-                        <span class="error" ng-show="registerForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
-                    </span>
-                    <label class="item item-input item-floating-label custom-login-label">
-                        <!-- <i id="mandatory_feild">*</i> -->
-                        <i class="icon ion-ios-person-outline placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">Last Name</span> -->
-                        <input type="text" placeholder="Last Name" name="lastname" ng-model="registerData.lastname" required ng-minlength="3" ng-maxlength="50"
-                            ng-pattern="/^[A-z][A-z .]*$/">
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.lastname.$touched || (registerForm.lastname.$dirty && registerForm.lastname.$invalid)">
-                        <span class="error" ng-show="registerForm.lastname.$error.required">Please enter Last Name.</span>
-                        <span class="error" ng-show="registerForm.lastname.$error.pattern">Allows only Alphabets.</span>
-                        <span class="error" ng-show="registerForm.lastname.$error.minlength">Should be atleast 3-50 characters.</span>
-                        <span class="error" ng-show="registerForm.lastname.$error.maxlength">Should be atleast 3-50 characters.</span>
-                    </span>
-                    <label class="item item-input item-floating-label custom-login-label">
-                        <!-- <i id="mandatory_feild">*</i> -->
-                        <i class="icon ion-iphone placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">Mobile</span>  -->
-                        <input type="text" placeholder="Mobile" name="mobile" ng-model="registrationData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
-                            maxlength="10" required>
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.mobile.$touched || (registerForm.mobile.$dirty && registerForm.mobile.$invalid)">
-                        <span class="error" ng-show="registerForm.mobile.$error.required">Please enter Mobile Number.</span>
-                        <span class="error" ng-show="registerForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
-                        <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
-                    </span>
-                    <label class="item item-input item-floating-label custom-login-label">
-                            <!-- <i id="mandatory_feild">*</i> -->
-                        <i class="ion-ios-email-outline placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">E-mail</span> -->
-                        <input type="email" placeholder="E-mail" name="email" ng-model="registerData.email" required ng-maxlength="50" ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.email.$touched || (registerForm.email.$dirty && registerForm.email.$invalid)">
-                        <span class="error" ng-show="registerForm.email.$error.required">Please enter Email ID.</span>
-                        <span class="error" ng-show="registerForm.email.$error.pattern">Please enter Valid Email ID.</span>
-                        <span class="error" ng-show="registerForm.email.$error.maxlength">Email ID cannot exceed more than 50 characters.</span>
-                    </span>
-                    <label class="item item-input item-floating-label custom-login-label">
-                            <!-- <i id="mandatory_feild">*</i> -->
-                        <i class="icon ion-ios-locked-outline placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">Password</span> -->
-                        <input type="password" placeholder="Password" name="password" ng-model="registerData.password" required>
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.password.$touched || (registerForm.password.$dirty && registerForm.password.$invalid)">
-                        <span class="error" ng-show="registerForm.password.$error.required">Please enter Password.</span>
-                    </span>
-                    <label class="item item-input item-floating-label custom-login-label">
-                            <!-- <i id="mandatory_feild">*</i> -->
-                        <i class="icon ion-ios-locked-outline placeholder-icon"></i>
-                        <!-- <span class="input-label float_labels">Confirm Password</span> -->
-                        <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="registerData.confirm_password" required>
-                    </label>
-                    <span ng-show="registerForm.$submitted || registerForm.confirm_password.$touched || (registerForm.confirm_password.$dirty && registerForm.confirm_password.$invalid)">
-                        <span class="error" ng-show="registerForm.confirm_password.$error.required">Please enter Password.</span>
-                        <span class="error" ng-show="registerData.password!=registerData.confirm_password">Password must be match.</span>
-                    </span>
-                </div>
-                <div class="m_top12">
-                    <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid" ng-click="getOtp(registerForm)">Sign Up</button>
-                    <button class="button button-block all_btns" id="reg_btn" ng-click="gotoLogin()">Cancel</button>
-                </div>
-    
-            </form>
-    
-        </ion-content>
-    </ion-view>
+        <form name="registerForm" id="regForm">
+            <div class="list login_labls m_top-10">
+
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+
+                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">First Name</span> -->
+                    <input type="text" placeholder="First Name" name="firstname" ng-model="registerData.firstname" required ng-minlength="3"
+                        ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.firstname.$touched || (registerForm.firstname.$dirty && registerForm.firstname.$invalid)">
+                    <span class="error" ng-show="registerForm.firstname.$error.required">Please enter First Name.</span>
+                    <span class="error" ng-show="registerForm.firstname.$error.pattern">Allows only Alphabets.</span>
+                    <span class="error" ng-show="registerForm.firstname.$error.minlength">Should be atleast 3-50 characters.</span>
+                    <span class="error" ng-show="registerForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
+                </span>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-ios-person-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Last Name</span> -->
+                    <input type="text" placeholder="Last Name" name="lastname" ng-model="registerData.lastname" required ng-minlength="3" ng-maxlength="50"
+                        ng-pattern="/^[A-z][A-z .]*$/">
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.lastname.$touched || (registerForm.lastname.$dirty && registerForm.lastname.$invalid)">
+                    <span class="error" ng-show="registerForm.lastname.$error.required">Please enter Last Name.</span>
+                    <span class="error" ng-show="registerForm.lastname.$error.pattern">Allows only Alphabets.</span>
+                    <span class="error" ng-show="registerForm.lastname.$error.minlength">Should be atleast 3-50 characters.</span>
+                    <span class="error" ng-show="registerForm.lastname.$error.maxlength">Should be atleast 3-50 characters.</span>
+                </span>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-iphone placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Mobile</span>  -->
+                    <input type="text" placeholder="Mobile" name="mobile" ng-model="registerData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
+                        maxlength="10" required>
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.mobile.$touched || (registerForm.mobile.$dirty && registerForm.mobile.$invalid)">
+                    <span class="error" ng-show="registerForm.mobile.$error.required">Please enter Mobile Number.</span>
+                    <span class="error" ng-show="registerForm.mobile.$error.pattern">Please enter Valid Mobile Number.</span>
+                    <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
+                </span>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-iphone placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Mobile</span>  -->
+                    <input type="text" placeholder="GST NUmber" name="gstnumber" ng-model="registerData.gstnumber">
+                </label>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="ion-ios-email-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">E-mail</span> -->
+                    <input type="email" placeholder="E-mail" name="email" ng-model="registerData.email" required ng-maxlength="50" ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.email.$touched || (registerForm.email.$dirty && registerForm.email.$invalid)">
+                    <span class="error" ng-show="registerForm.email.$error.required">Please enter Email ID.</span>
+                    <span class="error" ng-show="registerForm.email.$error.pattern">Please enter Valid Email ID.</span>
+                    <span class="error" ng-show="registerForm.email.$error.maxlength">Email ID cannot exceed more than 50 characters.</span>
+                </span>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-ios-locked-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Password</span> -->
+                    <input type="password" placeholder="Password" name="password" ng-model="registerData.password" ng-minlength="6" maxlength="15"
+                        required>
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.password.$touched || (registerForm.password.$dirty && registerForm.password.$invalid)">
+                    <span class="error" ng-show="registerForm.password.$error.required">Please enter Password.</span>
+                    <span class="error" ng-show="registerForm.password.$error.minlength">Should be atleast 6-15 characters.</span>
+                </span>
+                <label class="item item-input item-floating-label custom-login-label">
+                    <!-- <i id="mandatory_feild">*</i> -->
+                    <i class="icon ion-ios-locked-outline placeholder-icon"></i>
+                    <!-- <span class="input-label float_labels">Confirm Password</span> -->
+                    <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="registerData.confirm_password" ng-minlength="6"
+                        maxlength="15" required>
+                </label>
+                <span ng-show="registerForm.$submitted || registerForm.confirm_password.$touched || (registerForm.confirm_password.$dirty && registerForm.confirm_password.$invalid)">
+                    <span class="error" ng-show="registerForm.confirm_password.$error.required">Please enter Password.</span>
+                    <span class="error" ng-show="registerForm.confirm_password.$error.minlength">Should be atleast 6-15 characters.</span>
+                    <span class="error" ng-show="registerData.password!=registerData.confirm_password">Password must be match.</span>
+                </span>
+            </div>
+            <div class="m_top12">
+                <button class="button button-block all_btns" id="reg_btn" ng-disabled="registerForm.$invalid" ng-click="getOtp(registerForm)">Sign Up</button>
+                <button class="button button-block all_btns" id="reg_btn" ng-click="gotoLogin()">Cancel</button>
+            </div>
+
+        </form>
+
+    </ion-content>
+</ion-view>

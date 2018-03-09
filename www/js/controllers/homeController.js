@@ -2,11 +2,10 @@ angular.module('shopMyTools.homeController', [])
 
     .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
-        $scope.mobileNo = window.localStorage['mobile'];
-        $scope.user_name = window.localStorage['user_name'];
-        $rootScope.searchDiv = false;
-        $rootScope.searchKey = '';
-        
+        $rootScope.mobileNo = window.localStorage['mobile'];
+        $rootScope.user_name = window.localStorage['user_name'];
+       
+       
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 
@@ -159,7 +158,7 @@ angular.module('shopMyTools.homeController', [])
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productData.upload_name, "qty": "1" })
-          //  $rootScope.CartItemsCount = $scope.productDataList.length;
+            //  $rootScope.CartItemsCount = $scope.productDataList.length;
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
                 $ionicLoading.hide();

@@ -55,19 +55,26 @@
 
 
                 <div class="list">
-                    <div class="filter_head_options">
+                    <div class="filter_head_options" ng-click="priceRange=!priceRange">
                         <ion-item>
                             <span>Price</span>
-                            <label class="priceshower">{{minPrice}}
-                                <span>to</span> {{range}}</label>
+                            <i ng-if="!priceRange" class="downarrow icon ion-chevron-down icon-accessory" style="float:right;"></i>
+                            <i ng-if="priceRange" class="downarrow icon ion-chevron-up icon-accessory" style="float:right;"></i>
                         </ion-item>
                     </div>
-                    <div class="item range range-positive" id="priceRange">
-                        <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
-                        <input class="lineRange" type="range" name="volume" min="{{minPrice}}" ng-model="range" max="{{maxPrice}}" value="{{minPrice}}"
-                            ng-change="getPriceRange(range)">
-                        <i class="fa fa-inr theme_clr" aria-hidden="true"></i>
-                    </div>
+
+                    <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="priceRange">
+
+                        <ion-list>
+                            <ion-item class="item-checkbox" ng-repeat="item in priceRangeList">
+                                <label class="checkbox">
+                                    <input type="checkbox" ng-model="item.checked" ng-click="selectPriceRange($index, priceRangeList, item.value)">
+                                </label>
+                                {{ item.range }}
+                            </ion-item>
+                        </ion-list>
+                    </ion-list>
+
                 </div>
             </div>
 

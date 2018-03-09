@@ -71,7 +71,7 @@
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Flat no., Building name</span>
                                 <div class="input-placeholder">
-                                    <input type="text" name="house_no" ng-model="shippingAddress.house_no" ng-minlength="3" ng-maxlength="15" maxlength="15"
+                                    <input type="text" name="house_no" ng-model="shippingAddress.house_no" ng-minlength="3" maxlength="50"
                                         required ng-pattern="/^[a-zA-Z0-9/ -]*$/">
                                     <div class="placeholder">
                                         Flat no., Building name
@@ -83,8 +83,7 @@
                             <span ng-show="editShippingAddForm.$submitted || editShippingAddForm.house_no.$touched || (editShippingAddForm.house_no.$dirty && editShippingAddForm.house_no.$invalid)">
                                 <span class="error" ng-show="editShippingAddForm.house_no.$error.required">Please enter House No.</span>
                                 <span class="error" ng-show="editShippingAddForm.house_no.$error.minlength">Should be atleast 3-50 characters.</span>
-                                <span class="error" ng-show="editShippingAddForm.house_no.$error.maxlength">Should be atleast 3-50 characters.</span>
-                            </span>
+                               </span>
                             <div class="row">
                                 <div class="col" style="margin: 0 0 0 -10px;">
                                     <label class="item item-input item-floating-label">
@@ -138,8 +137,8 @@
                             </label>
                             <span ng-show="editShippingAddForm.$submitted || editShippingAddForm.country.$touched || (editShippingAddForm.country.$dirty && editShippingAddForm.country.$invalid)">
                                 <span class="error" ng-show="editShippingAddForm.country.$error.required">Please enter Country.</span>
-                                <span class="error" ng-show="editShippingAddForm.country.$error.minlength">Should be atleast 3-50 characters.</span>
-                                <span class="error" ng-show="editShippingAddForm.country.$error.maxlength">Should be atleast 3-50 characters.</span>
+                                <span class="error" ng-show="editShippingAddForm.country.$error.minlength">Should be atleast 3-15 characters.</span>
+                                <span class="error" ng-show="editShippingAddForm.country.$error.maxlength">Should be atleast 3-15 characters.</span>
                             </span>
                             <!-- <label class="item item-input item-floating-label">
                                 <div class="input-placeholder">
@@ -209,7 +208,7 @@
                                     <input type="text" ng-model="shippingAddress.alt_mobile" name="alt_mobile" ng-minlength="10" ng-maxlength="10" maxlength="10"
                                         required ng-pattern="/^[7-9][0-9]{9}$/">
                                     <div class="placeholder">
-                                        Alt Mobile Number(Optional)
+                                        Alt Mobile Number
                                         <!-- <span class="star">*</span> -->
                                     </div>
                                 </div>

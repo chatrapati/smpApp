@@ -160,7 +160,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.registrationData = {};
         $scope.otpData = {};
 
-        $scope.registerData.newsletter = "unchecked";
+        $scope.registerData.newsletter = "checked";
         $scope.registerData.gstnumber = "";
         $scope.registerData.user_type = "mobile";
 
@@ -171,8 +171,8 @@ angular.module('shopMyTools.controllers', [])
                 window.localStorage['Password'] = $scope.registerData.password;
                 window.localStorage['email'] = $scope.registerData.email;
                 window.localStorage['gstNumber'] = $scope.registerData.gstnumber;
-
-                $scope.registerData.mobile = '91' + $scope.registrationData.mobile;
+                window.localStorage['mobile'] = $scope.registerData.mobile;
+               
                 $rootScope.mobile = $scope.registerData.mobile;
 
                 $ionicLoading.show({
@@ -281,8 +281,6 @@ angular.module('shopMyTools.controllers', [])
 
     .controller('menuController', function ($scope, $rootScope, $cordovaInAppBrowser, $state, logoutService, $window, searchProductsService) {
 
-        // $scope.mobileNo = window.localStorage['mobile'];
-        // $scope.user_name = window.localStorage['user_name'];
         $scope.gotoRespectivePage = function (page) {
             if (page == 'home') {
                 $state.go('app.home');
@@ -581,7 +579,7 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.editProfileData = {};
         $scope.editProfileData = $scope.CustomerProfileData;
-        $scope.editProfileData.user_mobile = $scope.editProfileData.mobile.slice(2)
+        $scope.editProfileData.user_mobile = $scope.editProfileData.mobile;
 
         $scope.editMobile = true;
 
@@ -590,7 +588,7 @@ angular.module('shopMyTools.controllers', [])
         }
 
         $scope.updateMobileNo = function () {
-            window.localStorage['mobile'] = "91" + $scope.editProfileData.user_mobile;
+            window.localStorage['mobile'] = $scope.editProfileData.user_mobile;
             editProfileService.updateuserData($scope.editProfileData, window.localStorage['user_id']).then(function (data) {
                 if (data.data.status == 'details updated successfully') {
                     $ionicPopup.alert({
