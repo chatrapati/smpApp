@@ -63,8 +63,13 @@
                         </ion-item>
                     </div>
 
-                    <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="priceRange">
+                    <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-repeat="item in priceRangeList" ng-if="priceRange">
 
+                        <ion-checkbox ng-model="item.checked" ng-click="selectPriceRange($index, priceRangeList, item.value)"> {{ item.range }}</ion-checkbox>
+                    </ion-list>
+
+
+                    <!-- <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-if="priceRange">
                         <ion-list>
                             <ion-item class="item-checkbox" ng-repeat="item in priceRangeList">
                                 <label class="checkbox">
@@ -73,7 +78,7 @@
                                 {{ item.range }}
                             </ion-item>
                         </ion-list>
-                    </ion-list>
+                    </ion-list> -->
 
                 </div>
             </div>

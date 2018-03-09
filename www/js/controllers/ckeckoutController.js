@@ -255,8 +255,6 @@ angular.module('shopMyTools.ckeckoutController', [])
             $scope.checkoutProcess = function () {
                 if ($rootScope.couponAmt) {
                     $rootScope.grand_total = JSON.stringify($rootScope.grand_total - $rootScope.couponAmt);
-                    alert($rootScope.grand_total);
-
                 }
 
                 $scope.finalCheckoutData = {
