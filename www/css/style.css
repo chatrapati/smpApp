@@ -1540,6 +1540,8 @@ ion-header-bar.bar-stable.bar.bar-header{
    
     color: black;
 }
+
+
 .catsort.button{
     line-height: 20px;
 }
@@ -1573,22 +1575,58 @@ ion-header-bar.bar-stable.bar.bar-header{
     color: #0487a1;
     font-weight: 500;
   }
+
+
+  /*registration start*/
+
   .reg-label i{
-    float: left;
+    /* float: left; */
     line-height: 46px;
   }
   
-  .reg-input-placeholder input {
+  /* .reg-input-placeholder input {
     font-size: 15px;
     border-bottom: 1px solid #ddd;
-  }
+    border: none;
+  } */
   .reg_labls .item{
-     /* border-bottom:1px solid #0487a1 !important;  */
+      /* border-bottom:1px solid #ddd !important;   */
     border: none
 }
-.reg-login_labls .item-input{
+.reg_labls .item-input{
     padding: 20px 0 5px 5px !important;
 }
 .reg-label-border{
     border-bottom: 1px solid #0487a1;
 }
+
+.reg-input-placeholder {
+    position: relative;
+  }
+  .reg-input-placeholder input {
+    font-size: 15px;
+    border-bottom:none;
+  }
+  .reg-input-placeholder input:valid + .reg-placeholder {
+    display: none;
+  }
+  .reg-placeholder {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 18px;
+    color: #0487a1;
+    /* font-weight: 500; */
+  }
+ .reg-placeholder-icon{
+    color: #0487a1;
+    font-size: 20px;
+    margin-bottom: -3px;
+    padding-left: 0px !important;
+    padding-right: 15px;
+ }
+ .width-10{
+    width: 10%;
+ }
+
+  /*registration end*/
