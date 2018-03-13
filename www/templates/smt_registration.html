@@ -11,17 +11,16 @@
         <form name="registerForm" id="regForm">
             <div class="list  reg_labls  m_top-10">
                 <div class="reg-label reg-label-border">
-                   <div class="pull-left width-10"> 
-                       <i class="icon ion-ios-person-outline reg-placeholder-icon"></i>
+                    <div class="pull-left width-10">
+                        <i class="icon ion-ios-person-outline reg-placeholder-icon"></i>
                     </div>
                     <label class="item item-input item-floating-label">
                         <!-- <i id="mandatory_feild">*</i> -->
                         <div class="reg-input-placeholder">
                             <!-- <span class="input-label float_labels">First Name</span> -->
-                            <input type="text"  name="firstname" ng-model="registerData.firstname" required ng-minlength="3"
-                                ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
+                            <input type="text" name="firstname" ng-model="registerData.firstname" required ng-minlength="3" ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
                             <div class="reg-placeholder">
-                                    First Name
+                                First Name
                                 <span class="star">*</span>
                             </div>
                         </div>
@@ -35,22 +34,21 @@
                     <span class="error" ng-show="registerForm.firstname.$error.maxlength">Should be atleast 3-50 characters.</span>
                 </span>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-10" > 
+                    <div class="pull-left width-10">
                         <i class="icon ion-ios-person-outline reg-placeholder-icon"></i>
-                        </div>
-                <label class="item item-input item-floating-label">
-                    <!-- <i id="mandatory_feild">*</i> -->
-                   
-                    <!-- <span class="input-label float_labels">Last Name</span> -->
-                    <div class="reg-input-placeholder">
-                    <input type="text"  name="lastname" ng-model="registerData.lastname" required ng-minlength="3" ng-maxlength="50"
-                        ng-pattern="/^[A-z][A-z .]*$/">
-                        <div class="reg-placeholder">
-                                Last Name
-                            <span class="star">*</span>
-                        </div>
                     </div>
-                </label>
+                    <label class="item item-input item-floating-label">
+                        <!-- <i id="mandatory_feild">*</i> -->
+
+                        <!-- <span class="input-label float_labels">Last Name</span> -->
+                        <div class="reg-input-placeholder">
+                            <input type="text" name="lastname" ng-model="registerData.lastname" required ng-minlength="3" ng-maxlength="50" ng-pattern="/^[A-z][A-z .]*$/">
+                            <div class="reg-placeholder">
+                                Last Name
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
                 <span ng-show="registerForm.$submitted || registerForm.lastname.$touched || (registerForm.lastname.$dirty && registerForm.lastname.$invalid)">
                     <span class="error" ng-show="registerForm.lastname.$error.required">Please enter Last Name.</span>
@@ -59,22 +57,22 @@
                     <span class="error" ng-show="registerForm.lastname.$error.maxlength">Should be atleast 3-50 characters.</span>
                 </span>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-10">
-                             <i class="icon ion-iphone reg-placeholder-icon"></i>
-                            </div>
-                <label class="item item-input item-floating-label">
-                    <!-- <i id="mandatory_feild">*</i> -->
-                   
-                    <!-- <span class="input-label float_labels">Mobile</span>  -->
-                    <div class="reg-input-placeholder">
-                    <input type="text"  name="mobile" ng-model="registerData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/"
-                        maxlength="10" required>
-                        <div class="reg-placeholder">
-                                Mobile
-                            <span class="star">*</span>
-                        </div>
+                    <div class="pull-left width-10">
+                        <i class="icon ion-iphone reg-placeholder-icon"></i>
                     </div>
-                </label>
+                    <label class="item item-input item-floating-label">
+                        <!-- <i id="mandatory_feild">*</i> -->
+
+                        <!-- <span class="input-label float_labels">Mobile</span>  -->
+                        <div class="reg-input-placeholder">
+                            <input type="text" name="mobile" ng-model="registerData.mobile" ng-minlength="10" ng-pattern="/^[6-9][0-9]{9}$/" maxlength="10"
+                                required>
+                            <div class="reg-placeholder">
+                                Mobile
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
                 <span ng-show="registerForm.$submitted || registerForm.mobile.$touched || (registerForm.mobile.$dirty && registerForm.mobile.$invalid)">
                     <span class="error" ng-show="registerForm.mobile.$error.required">Please enter Mobile Number.</span>
@@ -82,35 +80,35 @@
                     <!-- <span class="error" ng-show="registerForm.mobile.$error.minlength">Enter 10 digit Mobile Number</span> -->
                 </span>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-8"> 
+                    <div class="pull-left width-8">
                         <i class="icon ion-iphone reg-placeholder-icon"></i>
-                        </div>
-                        <label class="item item-input item-floating-label">
-                            <!-- <i id="mandatory_feild">*</i> -->
-    
-                            <!-- <span class="input-label float_labels">Mobile</span>  -->
-                            <div class="reg-input-placeholder">
-                                <input type="text" name="gstnumber" placeholder=" GST Number" ng-model="registerData.gstnumber" >
-                                <!-- <div class="reg-placeholder">
+                    </div>
+                    <label class="item item-input item-floating-label">
+                        <!-- <i id="mandatory_feild">*</i> -->
+
+                        <!-- <span class="input-label float_labels">Mobile</span>  -->
+                        <div class="reg-input-placeholder">
+                            <input type="text" name="gstnumber" placeholder=" GST Number" ng-model="registerData.gstnumber">
+                            <!-- <div class="reg-placeholder">
                                         GST Number
                                 </div> -->
-                            </div>
-                        </label>
+                        </div>
+                    </label>
 
                 </div>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-10"> 
+                    <div class="pull-left width-10">
                         <i class="ion-ios-email-outline reg-placeholder-icon"></i>
-                        </div>
-                <label class="item item-input item-floating-label">
-                    <div class="reg-input-placeholder">
-                    <input type="text"  name="email" ng-model="registerData.email" required ng-maxlength="50" ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
-                    <div class="reg-placeholder">
-                            E-mail
-                            <span class="star">*</span>
                     </div>
-                </div>
-                </label>
+                    <label class="item item-input item-floating-label">
+                        <div class="reg-input-placeholder">
+                            <input type="email" name="email" ng-model="registerData.email" required ng-maxlength="50" ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
+                            <div class="reg-placeholder">
+                                E-mail
+                                <span class="star">*</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
                 <span ng-show="registerForm.$submitted || registerForm.email.$touched || (registerForm.email.$dirty && registerForm.email.$invalid)">
                     <span class="error" ng-show="registerForm.email.$error.required">Please enter Email ID.</span>
@@ -118,44 +116,42 @@
                     <span class="error" ng-show="registerForm.email.$error.maxlength">Email ID cannot exceed more than 50 characters.</span>
                 </span>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-10"> 
+                    <div class="pull-left width-10">
                         <i class="icon ion-ios-locked-outline reg-placeholder-icon"></i>
-                        </div>
-                <label class="item item-input item-floating-label">
-                    <!-- <i id="mandatory_feild">*</i> -->
-                  
-                    <!-- <span class="input-label float_labels">Password</span> -->
-                    <div class="reg-input-placeholder">
-                    <input type="password"  name="password" ng-model="registerData.password" ng-minlength="6" maxlength="15"
-                        required>
-                        <div class="reg-placeholder">
+                    </div>
+                    <label class="item item-input item-floating-label">
+                        <!-- <i id="mandatory_feild">*</i> -->
+
+                        <!-- <span class="input-label float_labels">Password</span> -->
+                        <div class="reg-input-placeholder">
+                            <input type="password" name="password" ng-model="registerData.password" ng-minlength="6" maxlength="15" required>
+                            <div class="reg-placeholder">
                                 Password
                                 <span class="star">*</span>
+                            </div>
                         </div>
-                    </div>
-                </label>
+                    </label>
                 </div>
                 <span ng-show="registerForm.$submitted || registerForm.password.$touched || (registerForm.password.$dirty && registerForm.password.$invalid)">
                     <span class="error" ng-show="registerForm.password.$error.required">Please enter Password.</span>
                     <span class="error" ng-show="registerForm.password.$error.minlength">Should be atleast 6-15 characters.</span>
                 </span>
                 <div class="reg-label reg-label-border">
-                        <div class="pull-left width-10"> 
+                    <div class="pull-left width-10">
                         <i class="icon ion-ios-locked-outline reg-placeholder-icon"></i>
-                        </div>
-                <label class="item item-input item-floating-label">
-                    <!-- <i id="mandatory_feild">*</i> -->
-                   
-                    <!-- <span class="input-label float_labels">Confirm Password</span> -->
-                    <div class="reg-input-placeholder">
-                    <input type="password"  name="confirm_password" ng-model="registerData.confirm_password" ng-minlength="6"
-                        maxlength="15" required>
-                        <div class="reg-placeholder">
+                    </div>
+                    <label class="item item-input item-floating-label">
+                        <!-- <i id="mandatory_feild">*</i> -->
+
+                        <!-- <span class="input-label float_labels">Confirm Password</span> -->
+                        <div class="reg-input-placeholder">
+                            <input type="password" name="confirm_password" ng-model="registerData.confirm_password" ng-minlength="6" maxlength="15" required>
+                            <div class="reg-placeholder">
                                 Confirm Password
                                 <span class="star">*</span>
+                            </div>
                         </div>
-                    </div>
-                </label>
+                    </label>
                 </div>
                 <span ng-show="registerForm.$submitted || registerForm.confirm_password.$touched || (registerForm.confirm_password.$dirty && registerForm.confirm_password.$invalid)">
                     <span class="error" ng-show="registerForm.confirm_password.$error.required">Please enter Password.</span>

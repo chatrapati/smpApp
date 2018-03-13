@@ -1139,6 +1139,7 @@ p.ph_no{
   .input-placeholder {
     position: relative;
   }
+  
   .input-placeholder input {
     font-size: 15px;
     border-bottom: 1px solid #ddd;
