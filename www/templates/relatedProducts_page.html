@@ -47,7 +47,7 @@
                 <div class="card1111">
                     <img ng-src="{{related.upload_photo | image_jpg}}" ng-click="getProductDetails(related)" width="90%" style="height:135px;">
                     <div class="content_part">
-                        <div class="product_name" ng-init="limit=35" id="tooltip_name" ng-click="getProductDetails(related)">
+                        <div class="product_name" ng-init="limit=30" id="tooltip_name" ng-click="getProductDetails(related)">
                             <a href="">{{related.upload_name | limitTo: limit}}{{related.upload_name .length > limit ? ' . . .' : ''}}</a>
                         </div>
                         <div class="product_price" ng-repeat="price in related.prices">
@@ -75,7 +75,7 @@
                 <div class="card1111" ng-show="relatedproducts[$index+1]">
                     <img ng-src= "{{relatedproducts[$index+1].upload_photo | image_jpg}}" ng-click="getProductDetails(relatedproducts[$index+1])" width="90%" style="height:135px;">
                     <div class="content_part">
-                        <div class="product_name" ng-init="limit=35" id="tooltip_name" ng-click="getProductDetails(relatedproducts[$index+1])">
+                        <div class="product_name" ng-init="limit=30" id="tooltip_name" ng-click="getProductDetails(relatedproducts[$index+1])">
                             <a href="">{{relatedproducts[$index+1].upload_name | limitTo: limit}}{{relatedproducts[$index+1].upload_name .length > limit ? ' . . .' : ''}}</a>
                         </div>
                         <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">
