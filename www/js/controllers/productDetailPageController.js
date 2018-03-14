@@ -2,6 +2,17 @@ angular.module('shopMyTools.productDetailPageController', [])
 
     .controller('productDetailController', function ($scope, $rootScope, product_detailed_service, $ionicPopup, $state, $window, $ionicLoading, categoryService, viewCartItemsService, reviews_service, $ionicPopup) {
         $scope.getProductDetails = function () {
+
+            //Footer start
+            $scope.gotoRespectivePage = function (page) {
+                if (page == 'home') {
+                    $state.go('app.home');
+                } else if (page == 'tracking') {
+                    var browser = $cordovaInAppBrowser.open('http://care.shopmytools.com/cust_order_tracking');
+                }
+            }
+            //Footer End
+            
             $scope.ratingsList = [];
             $rootScope.imgList = [];
             $ionicLoading.show({
@@ -43,11 +54,11 @@ angular.module('shopMyTools.productDetailPageController', [])
             })
         }
         $scope.reviewdata = {};
-       
+
 
         $scope.submitReviews = function (data) {
-           
-            if($scope.rating== null){
+
+            if ($scope.rating == null) {
                 alert('please rate us')
             }
             reviews_service.reviewsMethod(data, $scope.rating, $scope.productDetail.upload_name, window.localStorage['email']).then(function (data) {
@@ -59,7 +70,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                         title: 'Success!'
                     });
 
-                   $rootScope.writereview=false;
+                    $rootScope.writereview = false;
                 } else {
                     alert(data.data.success)
                 }
@@ -93,15 +104,15 @@ angular.module('shopMyTools.productDetailPageController', [])
 
 
         $scope.set_color = function (review) {
-            if (review.rating == 1 ) {
-              return { background: "#ea4949" }
+            if (review.rating == 1) {
+                return { background: "#ea4949" }
             }
-            else if(review.rating == 2){
+            else if (review.rating == 2) {
                 return { background: "#d59722" }
             }
-          }
+        }
 
-        
+
 
         $scope.ratingsCallback = function (rating, index) {
             // console.log('Selected rating is : ', rating, ' and the index is : ', index);
@@ -129,9 +140,9 @@ angular.module('shopMyTools.productDetailPageController', [])
         }
 
 
-        $scope.addtoCart = function (s,productName) {
-            $scope.selectedButton =s;
-            
+        $scope.addtoCart = function (s, productName) {
+            $scope.selectedButton = s;
+
             $scope.productDataList = [];
             $ionicLoading.show({
                 template: 'Loading...'
@@ -140,7 +151,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                 $scope.productDataList = $rootScope.cartItemsList;
             }
             $scope.productDataList.push({ "productdescription": productName, "qty": "1" })
-           // $rootScope.CartItemsCount = $scope.productDataList.length;
+            // $rootScope.CartItemsCount = $scope.productDataList.length;
             categoryService.addToCartMethod($scope.productDataList, window.localStorage['user_id']).then(function (data) {
                 window.localStorage['orderId'] = data.data.orderid;
                 $ionicLoading.hide();
@@ -149,7 +160,7 @@ angular.module('shopMyTools.productDetailPageController', [])
                         template: 'Added to Cart Successfully!',
                         title: 'Success!'
                     });
-                    
+
                 } else if (data.data.status == 'item added to cart..') {
                     $ionicPopup.alert({
                         template: 'Added to Cart Successfully!',
@@ -166,7 +177,7 @@ angular.module('shopMyTools.productDetailPageController', [])
             });
         }
 
-      
+
         $scope.addtoWishList = function (productName) {
             $ionicLoading.show({
                 template: 'Loading...'
@@ -194,7 +205,7 @@ angular.module('shopMyTools.productDetailPageController', [])
         }
 
         $scope.gotoCartPage = function (s) {
-            $scope.selectedButton =s;
+            $scope.selectedButton = s;
             $state.go('cart_page');
         }
     });

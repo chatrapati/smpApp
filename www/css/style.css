@@ -320,6 +320,7 @@ th, td {
     border: 2px solid #0487a1;
 }
 
+
 div.footer-button a.button.button-full {
     width:100%;
     margin-top: 0
@@ -510,11 +511,11 @@ div.footer-button a.button.button-full {
     background-color: transparent;
 }
 
-.menu_user_photo{
+/* .menu_user_photo{
     margin-top:5px !important;
-}
+} */
 .menu_user_photo img{
-    max-width: 90%;
+    max-width: 85%;
     padding: 10px;
 }
 .login_user_details{
@@ -1601,7 +1602,9 @@ ion-header-bar.bar-stable.bar.bar-header{
 .reg-label-border{
     border-bottom: 1px solid #0487a1;
 }
-
+.login-label-border{
+    border-bottom: 2px solid #0487a1;
+}
 .reg-input-placeholder {
     position: relative;
   }
@@ -1620,13 +1623,6 @@ ion-header-bar.bar-stable.bar.bar-header{
     color: #0487a1;
     /* font-weight: 500; */
   }
- .reg-placeholder-icon{
-    color: #0487a1;
-    font-size: 20px;
-    margin-bottom: -3px;
-    padding-left: 0px !important;
-    padding-right: 15px;
- }
  .width-10{
     width: 10%;
  }

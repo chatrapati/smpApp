@@ -1,11 +1,20 @@
 angular.module('shopMyTools.homeController', [])
 
-    .controller('homeController', function ($scope, $state, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
+    .controller('homeController', function ($scope, $state, $cordovaInAppBrowser, homePageService, $rootScope, $ionicLoading, categoryService, $ionicPopup, viewCartItemsService, searchProductsMoreService) {
 
         $rootScope.mobileNo = window.localStorage['mobile'];
         $rootScope.user_name = window.localStorage['user_name'];
-       
-       
+
+        //Footer start
+        $scope.gotoRespectivePage = function (page) {
+            if (page == 'home') {
+                $state.go('app.home');
+            } else if (page == 'tracking') {
+                var browser = $cordovaInAppBrowser.open('http://care.shopmytools.com/cust_order_tracking');
+            }
+        }
+        //Footer End
+
         //home top slider
         $scope.firstCarouselImages = ["img/banners/1.png", "img/banners/2.png", "img/banners/3.png"];
 

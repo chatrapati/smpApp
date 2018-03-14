@@ -2,13 +2,13 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled"  ng-click="goback()"></a>
+            <a class="button button-icon icon ion-close-circled" ng-click="goback()"></a>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Related Products</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-android-cart" menu-toggle="right" ng-click="gotoCartPage()"></a>
+            <a class="button button-icon icon ion-android-cart" ng-click="gotoCartPage()"></a>
             <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -45,7 +45,7 @@
         <div class="row" ng-repeat="related in relatedproducts" ng-switch on="$index % 2" id="prod_border">
             <div class="col" ng-switch-when="0">
                 <div class="card1111">
-                    <img ng-src="{{related.upload_photo | image_jpg}}" ng-click="getProductDetails(related)" width="90%" style="height:135px;">
+                    <img ng-src="{{related.upload_photo | image_jpg}}" ng-click="getProductDetails(related)" width="90%">
                     <div class="content_part">
                         <div class="product_name" ng-init="limit=30" id="tooltip_name" ng-click="getProductDetails(related)">
                             <a href="">{{related.upload_name | limitTo: limit}}{{related.upload_name .length > limit ? ' . . .' : ''}}</a>
@@ -73,10 +73,12 @@
 
             <div class="col" ng-switch-when="0">
                 <div class="card1111" ng-show="relatedproducts[$index+1]">
-                    <img ng-src= "{{relatedproducts[$index+1].upload_photo | image_jpg}}" ng-click="getProductDetails(relatedproducts[$index+1])" width="90%" style="height:135px;">
+                    <img ng-src="{{relatedproducts[$index+1].upload_photo | image_jpg}}" ng-click="getProductDetails(relatedproducts[$index+1])"
+                        width="90%">
                     <div class="content_part">
                         <div class="product_name" ng-init="limit=30" id="tooltip_name" ng-click="getProductDetails(relatedproducts[$index+1])">
-                            <a href="">{{relatedproducts[$index+1].upload_name | limitTo: limit}}{{relatedproducts[$index+1].upload_name .length > limit ? ' . . .' : ''}}</a>
+                            <a href="">{{relatedproducts[$index+1].upload_name | limitTo: limit}}{{relatedproducts[$index+1].upload_name
+                                .length > limit ? ' . . .' : ''}}</a>
                         </div>
                         <div class="product_price" ng-repeat="price in relatedproducts[$index+1].prices">
                             <span class="offer_price">{{price.offer_price | currency:'&#8377;'}}</span>
@@ -106,4 +108,30 @@
         </div>
         <!--  category body end here  -->
     </ion-content>
+
+    <ion-footer-bar class="smtFooter">
+        <div class="tabs tabs-icon-top bar bar-assertive">
+            <a class="tab-item" ng-click="gotoRespectivePage('home')">
+                <i class="icon ion-ios-home"></i>
+                Home
+            </a>
+            <a class="tab-item" ng-click="gotoRespectivePage('dealers')">
+                <i class="icon ion-ios-people-outline"></i>
+                Dealers
+            </a>
+            <a class="tab-item" ng-click="gotoRespectivePage('tracking')">
+                <i class="icon ion-home"></i>
+                Tracking
+            </a>
+            <a class="tab-item" ng-click="gotoRespectivePage('service')">
+                <i class="icon ion-ios-person-outline"></i>
+                Service
+            </a>
+            <a class="tab-item" ng-click="gotoRespectivePage('more')">
+                <i class="icon ion-ios-more-outline"></i>
+                More
+            </a>
+        </div>
+
+    </ion-footer-bar>
 </ion-view>

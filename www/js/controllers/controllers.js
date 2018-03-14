@@ -172,7 +172,7 @@ angular.module('shopMyTools.controllers', [])
                 window.localStorage['email'] = $scope.registerData.email;
                 window.localStorage['gstNumber'] = $scope.registerData.gstnumber;
                 window.localStorage['mobile'] = $scope.registerData.mobile;
-               
+
                 $rootScope.mobile = $scope.registerData.mobile;
 
                 $ionicLoading.show({
@@ -410,11 +410,11 @@ angular.module('shopMyTools.controllers', [])
 
         $scope.SearchData = {};
 
-        $scope.search=false;
+        $scope.search = false;
         $rootScope.searchDiv = false;
         $scope.getSeachProducts = function (searchKey) {
-            $scope.search=true;
-           
+            $scope.search = true;
+
             $rootScope.searchKey = searchKey;
 
             //window.localStorage['searchKey'] = searchKey; 
@@ -442,7 +442,7 @@ angular.module('shopMyTools.controllers', [])
         $scope.clearSearch = function () {
             $scope.SearchData = {};
             $rootScope.searchDiv = false;
-            $scope.search=false;
+            $scope.search = false;
         }
         $scope.getSearchtDetailsList = function () {
             searchProductsMoreService.searchProductsMoreMethod($rootScope.searchKey).then(function (data) {
@@ -629,5 +629,19 @@ angular.module('shopMyTools.controllers', [])
         $scope.goback = function () {
             $ionicHistory.goBack();
             //  $window.history.go(-1);
+        }
+    })
+
+    .controller('footerController', function ($scope, $rootScope, $state, $cordovaInAppBrowser) {
+
+        $scope.gotoRespectivePage = function (page) {
+            if (page == 'home') {
+                alert('ho');
+                $state.go('app.home');
+            } else if (page == 'tracking') {
+                alert('sdf');
+              var browser = $cordovaInAppBrowser.open('http://care.shopmytools.com/cust_order_tracking');
+               
+            }
         }
     });

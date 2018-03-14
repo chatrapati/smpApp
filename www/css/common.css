@@ -224,7 +224,6 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
     color: #0487a1;
     font-size: 20px;
     margin-bottom: -3px;
-    padding-left: 0px !important;
 }
 .all_btns{
     background: #0487a1;
@@ -496,20 +495,7 @@ input[type="radio"] {
     margin-left: -10px;
     line-height: 1;
 }
-/* 
-#welcome_pagination .swiper-pagination{
-    position: inherit !important;
-}
-.welcome-slide-text{
-    position: relative !important;
-    margin-top: 35%;
-}
-.category_cart_list .item-thumbnail-left > img:first-child{
-    max-width: 90px !important;
-    max-height: 100px !important;
-    width: auto !important;
-    height: auto !important;
-} */
+
 
 
 

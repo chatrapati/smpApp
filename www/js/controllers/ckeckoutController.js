@@ -4,6 +4,17 @@ angular.module('shopMyTools.ckeckoutController', [])
         function ($scope, $rootScope, $state, $ionicPopup, $ionicLoading,
             $window, $ionicModal, checkoutService, viewCartItemsService, getpayuDetailsService, $cordovaInAppBrowser, getCouponService) {
 
+            //Footer start
+            $scope.gotoRespectivePage = function (page) {
+                if (page == 'home') {
+                    $state.go('app.home');
+                } else if (page == 'tracking') {
+                    $cordovaInAppBrowser.open('http://care.shopmytools.com/cust_order_tracking');
+                }
+            }
+            //Footer End
+
+
             $scope.showshippingDiv = true;
             $scope.showBillingAddressDiv = false;
             $scope.showPaymentTypeDiv = false;
@@ -265,7 +276,7 @@ angular.module('shopMyTools.ckeckoutController', [])
 
                     "shop": $scope.shop,
 
-                    "alt_mobile": "91" + $scope.customerMobile,
+                    "alt_mobile": $scope.customerMobile,
 
                     "customermobile": window.localStorage['mobile'],
 
@@ -319,12 +330,7 @@ angular.module('shopMyTools.ckeckoutController', [])
                         $scope.finalOrderId = data.data.orderid;
                         $rootScope.finalOrderId = $scope.finalOrderId;
                         window.localStorage['finalOrderId'] = $scope.finalOrderId;
-                        var options = {
-                            location: 'yes',
-                            clearcache: 'yes',
-                            toolbar: 'no',
-                            closebuttoncaption: 'back'
-                        };
+
                         if ($scope.paymentType == 'payu') {
                             // onDeviceReadyTest()
 
@@ -357,17 +363,6 @@ angular.module('shopMyTools.ckeckoutController', [])
                                 + '&email=' + email
                                 + '&phone=' + mobile
                                 + '&hash=' + encrypttext, '_blank');
-
-
-
-                            // browser.addEventListener('loadstop', function (event) {
-                            //     alert(event.url);
-                            //     alert(event["url"]);
-                            //     if (event["url"] == "http://toolsomg.com/success.html") {
-                            //         browser.close();
-                            //         $state.go('app.home');
-                            //     }
-                            // });
 
                         } else {
                             $scope.submitPayment();
