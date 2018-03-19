@@ -316,7 +316,7 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
     margin-top: 12%;
   }
   .m_top_7{
-    margin-top: 7%;
+   /* margin-top: 7%;*/
   }
 
   .m_top_5{
