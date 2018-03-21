@@ -208,4 +208,10 @@ angular.module('shopMyTools.productDetailPageController', [])
             $scope.selectedButton = s;
             $state.go('cart_page');
         }
+
+        $scope.viewFullImage = function(imgObj){
+            $rootScope.viewImage = imgObj;
+            $state.go('imageview');
+        }
+
     });

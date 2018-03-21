@@ -2,13 +2,14 @@
     <!-- header part start here -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <a class="button button-icon icon ion-close-circled" ng-click="goback()"></a>
+                <span>  <img src="img/close.svg" style="width:50%;margin-left: 10px;" ng-click="goback()"></span>
+            <!-- <a class="button button-icon icon ion-close-circled" ng-click="goback()"></a> -->
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Profile</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-edit" menu-toggle="right" ng-click="editMobileNo()"></a>
+            <a class="fa fa-pencil" menu-toggle="right" ng-click="editMobileNo()"></a>
         </ion-nav-buttons>
     </ion-nav-bar>
     <!-- header part end here -->

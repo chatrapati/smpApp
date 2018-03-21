@@ -1,8 +1,18 @@
 /* Empty. Add your own CSS if you like */
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+
 body {
     /* font-family: 'Alef'; */
- 
+    font-family: 'Lato', sans-serif !important;
+}
+
+.fa.fa-pencil{
+    color:white;
+    font-size: 25px;
+    padding: 6px;
 }
 /* 
 .scroll-content-login {
@@ -537,7 +547,7 @@ div.footer-button a.button.button-full {
     background-color:transparent;
     color: #444;
     border: none; 
-    border-bottom: 5px solid #ddd; 
+    border-bottom: 2px solid #ddd; 
     /*padding-bottom: 6%;  */   
 }
 .category_cart_list .list1 h1{
@@ -608,18 +618,18 @@ div.footer-button a.button.button-full {
 .product_Detail_price .offer_price{
     color:#54a70a;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 15px;
     padding-right: 5px;
 }
 .product_Detail_price .real_price{
     color:red;
-    font-size: 20px;
+    font-size: 15px;
     padding-right: 5px;
     text-decoration: line-through;
 }
 .product_Detail_price .offer_percentage{
     /* color: #28a54c;*/
-    font-size: 20px; 
+    font-size: 15px; 
     background: #ed3d3d;
     color:#fff;
    
@@ -627,13 +637,13 @@ div.footer-button a.button.button-full {
     float: right;
 }
 .detailexcl_gst{
-    font-size: 15px;
+    font-size: 12px;
     color: #a9a9a9;
 }
-.pro_detail_name h1{
+.pro_detail_name h3{
     margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: normal;
     color: #000;
 }
@@ -643,19 +653,19 @@ div.footer-button a.button.button-full {
     margin-top: 3px;
 }
 .product_desc{
-    border-bottom: 5px solid #ddd; 
+    border-bottom: 2px solid #ddd; 
 }
 .highlits h3{
     color: #0487a1;
     font-weight: 500;
-    font-size: 20px;    
+    font-size: 14px;    
 }
 .highlits ul{
     margin-left: 8%;
 }
 .highlits ul li{
     list-style-type: disc;
-    font-size: 17px;
+    font-size: 13px;
     color: #999797;
     line-height: 1.5;
     font-weight: 400;
@@ -668,7 +678,7 @@ div.footer-button a.button.button-full {
 }
 .related h1{
     color: #0487a1;
-    font-size: 20px;
+    font-size: 16px;
 }
 .related span{
     float: right;
@@ -973,7 +983,7 @@ about_product {
         font-weight: 400;
     }
     .block{
-        border-bottom: 5px solid #ddd;
+        border-bottom: 2px solid #ddd;
     }
     .shop_address .s_head{
         color: #2c2b2b;
@@ -1444,7 +1454,7 @@ fader {
 }
 
 .review_border {
-    border-bottom: 5px solid #ddd;
+    border-bottom: 2px solid #ddd;
 }
 
 /* 03-March-2018 */

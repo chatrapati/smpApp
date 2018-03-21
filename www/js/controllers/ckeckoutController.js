@@ -345,6 +345,12 @@ angular.module('shopMyTools.ckeckoutController', [])
                             var string = key + '|' + bookingId + '|' + amt + '|' + productinfo + '|' + name + '|' + email + '|||||||||||' + salt;
                             var encrypttext = sha512(string);
 
+                            var options = {
+                                location: 'yes',
+                                clearcache: 'yes',
+                                toolbar: 'no'
+                             };
+
                             var data = 'key=' + key
                                 + '&txnid=' + bookingId
                                 + '&amount=' + amt
@@ -362,7 +368,15 @@ angular.module('shopMyTools.ckeckoutController', [])
                                 + '&firstname=' + name
                                 + '&email=' + email
                                 + '&phone=' + mobile
-                                + '&hash=' + encrypttext, '_blank');
+                                + '&hash=' + encrypttext, '_self', options);
+
+                                window.addEventListener('loadstart', function(event) { 
+                                    alert(event)
+                                    var urlSuccessPage = "https://m.facebook.com/?refsrc=https%3A%2F%2Fwww.facebook.com%2F&_rdr";
+                                    if (event.url == 'urlSuccessPage') {
+                                    //$cordovaInAppBrowser.close();    
+                                    }
+                                  });
 
                         } else {
                             $scope.submitPayment();

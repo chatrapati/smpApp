@@ -166,29 +166,49 @@
 			</div>
 	
 		</ion-content>
+
+		<!-- <ion-tabs class="tabs-icon-top tabs-positive">
+
+				<ion-tab title="Home" icon="ion-home" href="#/tab/home">
+					<ion-nav-view name="home-tab"></ion-nav-view>
+				</ion-tab>
+		
+				<ion-tab title="About" icon="ion-ios-information" href="#/tab/about">
+					<ion-nav-view name="about-tab"></ion-nav-view>
+				</ion-tab>
+		
+				<ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
+					<ion-nav-view name="contact-tab"></ion-nav-view>
+				</ion-tab>
+		
+			</ion-tabs> -->
 		<!--Footer Start here -->
 		<ion-footer-bar class="smtFooter">
 			<div class="tabs tabs-icon-top bar bar-assertive">
 				<a class="tab-item" ng-click="gotoRespectivePage('home')">
-					<i class="icon ion-ios-home"></i>
+					<!-- <i class="icon ion-ios-home"></i> -->
+					<img src="img/home_fill.svg" style="width:30%;"><br>
 					Home
 				</a>
 				<a class="tab-item" ng-click="gotoRespectivePage('dealers')">
-					<i class="icon ion-ios-people-outline"></i>
+					<!-- <i class="icon ion-ios-people-outline"></i> -->
+					<img src="img/location_stroke.svg" style="width:30%;"><br>
 					Dealers
 				</a>
 				<a class="tab-item" ng-click="gotoRespectivePage('tracking')">
-					<i class="icon ion-home"></i>
+					<!-- <i class="icon ion-home"></i> -->
+					<img src="img/tracking_stroke.svg" style="width:30%;"><br>
 					Tracking
 				</a>
 				<a class="tab-item" ng-click="gotoRespectivePage('service')">
-					<i class="icon ion-ios-person-outline"></i>
+					<i class="icon ion-ios-gear-outline"></i>
+					<!-- <img src="img/service_stroke.svg"> -->
 					Service
 				</a>
-				<a class="tab-item" ng-click="gotoRespectivePage('more')">
+				<!-- <a class="tab-item" ng-click="gotoRespectivePage('more')">
 					<i class="icon ion-ios-more-outline"></i>
 					More
-				</a>
+				</a> -->
 			</div>
 	
 		</ion-footer-bar>

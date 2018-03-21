@@ -2,7 +2,7 @@ angular.module('shopMyTools.constants', [])
 
     // .constant('SERVER_URL', 'http://192.168.20.68:800')
 
-   //  .constant('LOGIN_URL','http://192.168.20.69:8080')
+    // .constant('LOGIN_URL','http://192.168.20.69:8080')
 
   //  .constant('SERVER_URL1','http://192.168.20.65:8000')
 

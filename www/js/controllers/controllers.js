@@ -300,13 +300,14 @@ angular.module('shopMyTools.controllers', [])
             } else if (page == 'Coupons') {
                 $state.go('couponsPage');
             } else if (page == 'policy') {
-                var browser = $cordovaInAppBrowser.open('http://toolsomg.com/returnpolicy.html#!/');
-
+               // var browser = $cordovaInAppBrowser.open('http://toolsomg.com/returnpolicy.html#!/');
+               $state.go('returnPolicy');
                 //  window.open('http://toolsomg.com/returnpolicy.html#!/', '_blank');
             } else if (page == 'aboutus') {
-                window.open('http://toolsomg.com/aboutus.html#!/', '_blank');
+              //  window.open('http://toolsomg.com/aboutus.html#!/', '_blank');
+              $state.go('aboutUs');
             } else if (page == 'faq') {
-                $state.go('app.home');
+                $state.go('faqs');
             } else if (page == 'logout') {
 
                 logoutService.userLogout(window.localStorage['token']).then(function (data) {
@@ -368,6 +369,22 @@ angular.module('shopMyTools.controllers', [])
             window.localStorage['categoryName'] = product;
             $state.go('categoryCartPage');
         }
+
+        $scope.faqs = faqs;
+
+	$scope.toggleGroup = function (group) {
+		if ($scope.isGroupShown(group)) {
+			$scope.shownGroup = null;
+		} else {
+			$scope.shownGroup = group;
+		}
+	};
+
+	$scope.isGroupShown = function (group) {
+
+		return $scope.shownGroup == group;
+
+	};
 
 
 

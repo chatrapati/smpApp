@@ -90,6 +90,7 @@ angular.module('shopMyTools.categoryPageController', [])
 
 
     $scope.getsortedProducts = function (sortItem) {
+     // alert(sortItem)
       $rootScope.getCategoryProductData.val = sortItem
       $scope.callService();
     }

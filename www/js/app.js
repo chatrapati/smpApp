@@ -14,6 +14,34 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
   '720kb.tooltips', 'ionic-ratings', 'shopMyTools.paymentsuccess'])
 
   .run(function ($ionicPlatform, $state, $cordovaNetwork, $rootScope, $ionicPopup,$window) {
+    $ionicPlatform.registerBackButtonAction(function () {
+    //  alert('2')
+      if ($state.current.name == "app.home") {
+      //  alert('1')
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'ShopMyTools',
+          template: 'Are you sure to exit the App?'
+        });
+
+        confirmPopup.then(function (res) {
+          if (res) {
+            navigator.app.exitApp();
+          } else {
+            console.log('Not sure!');
+          }
+        });
+      }
+      else {
+       // $mdSidenav('left').close();
+        $window.history.go(-1);
+      //  alert($state.current.name)
+
+      }
+    }, 100);
+  
+  })
+
+  .run(function ($ionicPlatform, $state, $cordovaNetwork, $rootScope, $ionicPopup,$window) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -49,31 +77,18 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
         //   alert(offlineState)
         // })
 
-        $ionicPlatform.registerBackButtonAction(function () {
-          if ($state.current.name == "app.home") {
-            var confirmPopup = $ionicPopup.confirm({
-              title: 'SMT',
-              template: 'Are you sure to exit the App?'
-            });
-    
-            confirmPopup.then(function (res) {
-              if (res) {
-                navigator.app.exitApp();
-              } else {
-                console.log('Not sure!');
-              }
-            });
-          }
-          else {
-           // $mdSidenav('left').close();
-            $window.history.go(-1);
-    
-          }
-        }, 100);
+      
   });
   })
 
+  .config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}])
+
   .config(function ($stateProvider, $urlRouterProvider) {
+    
   $stateProvider
 
     .state('app', {
@@ -82,6 +97,13 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       templateUrl: 'templates/menu.html',
       controller: 'menuController'
     })
+
+    // .state('tabs', {
+    //   url: '/tabs',
+    //   abstract: true,
+    //   templateUrl: 'templates/tabs.html',
+    //   controller: 'menuController'
+    // })
 
     .state('app.home', {
       url: '/home',
@@ -274,6 +296,34 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
       controller: 'couponsController'
     })
 
+    .state('returnPolicy', {
+      url: '/returnPolicy',
+      cache: false,
+      templateUrl: 'templates/returnpolicy.html',
+      controller:'menuController'
+    })
+
+    .state('faqs', {
+      url: '/faqs',
+      cache: false,
+      templateUrl: 'templates/faqs.html',
+      controller:'menuController'
+    })
+
+    .state('aboutUs', {
+      url: '/aboutUs',
+      cache: false,
+      templateUrl: 'templates/aboutus.html',
+      controller:'menuController'
+    })
+
+    .state('imageview', {
+      url: '/imageview',
+      cache: false,
+      templateUrl: 'templates/imageview.html',
+      controller:'productDetailController'
+    })
+
     .state('headerSearchbar', {
       url: '/headerSearchbar',
       cache: false,
@@ -287,3 +337,12 @@ angular.module('shopMyTools', ['ionic', 'shopMyTools.controllers', 'shopMyTools.
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcomeSlides');
 });
+
+
+var faqs=[{"question":"Is it safe to give credit card or debit card credentials on ShopMyTools?",
+"answer":"ShopMyTools is always operated by sophisticated methodologies and highly secured algorithms which can leave your details strictly secured. However, speaking about the credit card or debit card credentials of customers, it will be stored by our associated parties or third parties with high-end security. "},
+{"question":" Is it mandatory to own an account on ShopMyTools to purchase a product?",
+"answer":"Well, it’s not that much mandatory. You can purchase product on ShopMyTools with a guest account. However, it is highly recommended to own an account on ShopMyTools to enjoy the specialized features in purchases such as faster checkout, reward points and much more."},
+{"question":" What is the process that ShopMyTools follows to deliver a product?",
+"answer":"ShopMyTools offers interesting goods transfer methodologies to provide utmost ease to its customers in reaching their order. Whenever you raise an order with us, we select the nearest location dealer proportionate to your address and the concerned dealer will hand over your order in stipulated time intervals. "}]
+

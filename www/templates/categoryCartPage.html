@@ -3,13 +3,16 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
+            <!-- <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span> -->
+    <span>  <img src="img/close.svg" style="width:50%;margin-left: 10px;" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">{{categoryName}}</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a>
+            <!-- <a class="button button-icon icon ion-funnel" menu-toggle="right" ng-click="gotoFilter()"></a> -->
+            <!-- <i class="fa fa-filter" menu-toggle="right" ng-click="gotoFilter()" style="font-size:30px;"></i> -->
+       <img src="img/filter.svg" menu-toggle="right" ng-click="gotoFilter()" >
         </ion-nav-buttons>
     </ion-nav-bar>
     <!--  category top header end here  -->
@@ -36,7 +39,10 @@
 
                 <div class="list" style="float:right;">
                     <label> Sort</label>
-                    <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select>
+                    <!-- <select ng-model="sortItem" ng-options="obj.value as obj.Name for obj in showSortItems" ng-change="getsortedProducts(sortItem)"></select> -->
+               <select class="form-control" ng-model="sortItem" ng-change="getsortedProducts(sortItem)">
+                   <option value="{{sort_item.value}}" ng-repeat="sort_item in showSortItems">{{sort_item.Name}}</option>
+               </select>
                 </div>
                 
             </div>

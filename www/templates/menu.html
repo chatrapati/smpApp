@@ -3,7 +3,8 @@
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
 
       <ion-nav-buttons side="left">
-        <a class="button button-icon button-clear ion-navicon" menu-toggle="left"></a>
+        <!-- <a class="button button-icon button-clear ion-navicon" menu-toggle="left"></a> -->
+        <img src="img/menu.svg" style="width: 65%;" menu-toggle="left">
       </ion-nav-buttons>
 
       <!-- <ion-nav-title>
@@ -23,17 +24,35 @@
         <!-- <div ng-click="search=!search">
           <button class="button button-icon icon ion-ios-search-strong" ng-click="changeval(search)"></button>
         </div> -->
-        <button class="button button-icon icon ion-ios-search-strong" ui-sref="headerSearchbar"></button>
-
-        <button class="button button-icon icon ion-ios-cart" ng-click="gotoCartPage()"></button>
+        <!-- <button class="button button-icon icon ion-ios-search-strong" ui-sref="headerSearchbar"></button> -->
+        <img src="img/search_fill.svg" ui-sref="headerSearchbar">
+        <!-- <button class="button button-icon icon ion-ios-cart" ng-click="gotoCartPage()"></button> -->
+        <img src="img/kart_white.svg" ng-click="gotoCartPage()">
         <ion-badge ng-if="CartItemsCount>0" class="cart_badge">{{CartItemsCount}}</ion-badge>
       </ion-nav-buttons>
 
     </ion-nav-bar>
 
-    <ion-nav-view name="menuContent"></ion-nav-view>
+    <ion-nav-view name="menuContent">
+       
+    </ion-nav-view>
+    
   </ion-side-menu-content>
+  <!-- <ion-tabs class="tabs-icon-top tabs-positive">
 
+      <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+        <ion-nav-view name="home-tab"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="About" icon="ion-ios-information" href="#/tab/about">
+        <ion-nav-view name="about-tab"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
+        <ion-nav-view name="contact-tab"></ion-nav-view>
+      </ion-tab>
+
+    </ion-tabs> -->
   <ion-side-menu side="left" class="smt_background_image smt_sideMenu">
     <ion-header-bar class="bar-stable">
       <!-- <h1 class="title">Left</h1> -->

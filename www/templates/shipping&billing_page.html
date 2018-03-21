@@ -3,9 +3,10 @@
     <!-- header part start here -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <button class="button button-clear" ng-click="goback()">
+            <!-- <button class="button button-clear" ng-click="goback()">
                 <i class="icon ion-close-circled"></i>
-            </button>
+            </button> -->
+            <span>  <img src="img/close.svg" style="width:50%;margin-left: 10px;" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Cart</div>
@@ -27,10 +28,12 @@
 
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showshippingDiv">
                     <div class="">
-                        <form class="radiobutns">
-                            <input type="radio" name="Pickup" ng-model="checkoutData.shippingType" value="Pickup"> Pick Up
+                        <form class="radiobutns" style="font-size: 14px;">
+                            <input type="radio" name="Pickup" ng-model="checkoutData.shippingType" value="Pickup">
+                            <span class="checkmark"> Pick Up</span>
                             <br>
-                            <input type="radio" name="Delivery" ng-model="checkoutData.shippingType" value="Delivery"> Delivery
+                            <input type="radio" name="Delivery" ng-model="checkoutData.shippingType" value="Delivery">
+                            <span class="checkmark">Delivery</span> 
                         </form>
                     </div>
 
@@ -246,10 +249,12 @@
 
                 <ion-list class="item-accordion item-text-wrap" id="filter_checkOptions" ng-show="showPaymentTypeDiv">
                     <div class="">
-                        <div class="radiobutns">
-                            <input type="radio" name="payu" ng-model="paymentType" value="payu" ng-change="savePaymentType(paymentType)"> Pay Online
+                        <div class="radiobutns" style="font-size: 14px;">
+                            <input type="radio" name="payu" ng-model="paymentType" value="payu" ng-change="savePaymentType(paymentType)">
+                            <span class="checkmark">Pay Online</span> 
                             <br>
-                            <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery" ng-change="savePaymentType(paymentType)"> Cash on Delivery
+                            <input type="radio" name="cashondelivery" ng-model="paymentType" value="cashondelivery" ng-change="savePaymentType(paymentType)"> 
+                            <span class="checkmark">Cash on Delivery</span>
 
                         </div>
                         <div class="row">

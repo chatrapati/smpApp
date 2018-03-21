@@ -172,7 +172,6 @@
     background-position: center center;
     background-color: #fff;
     padding: 0 10%;
-    margin-bottom: 5%;
     font-size: 12px;
 }
 .smt_logo{
@@ -222,8 +221,9 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
 }
 .placeholder-icon{
     color: #0487a1;
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: -3px;
+    padding-left: 0px !important;
 }
 .all_btns{
     background: #0487a1;
@@ -315,9 +315,9 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
   .m_top12 {
     margin-top: 12%;
   }
-  .m_top_7{
-   /* margin-top: 7%;*/
-  }
+  /* .m_top_7{
+    margin-top: 7%;
+  } */
 
   .m_top_5{
     margin-top: 5%;
@@ -348,10 +348,10 @@ textarea, input[type="text"], input[type="password"],  input[type="number"], inp
     border: 1px solid #0487a1;
     border-radius: 50%;
     padding: 5%; */
-    width: 55%;
+    width: 70%;
     border: 1px solid #0487a1;
     border-radius: 50%;
-    padding: 10px 0px;
+    padding: 14px 0px;
 }
 .collections_part{
     text-align: center;
@@ -380,10 +380,10 @@ position: inherit !important;
 text-align: center;
 font-size: 18px;
 background: #fff;
-display: -webkit-box;
+/* display: -webkit-box;
 display: -ms-flexbox;
 display: -webkit-flex;
-display: flex;
+display: flex; */
 -webkit-box-pack: center;
 -ms-flex-pack: center;
 -webkit-justify-content: center;
@@ -474,7 +474,7 @@ font-size: 25px;
 input[type="radio"] {
     margin: 0;
     line-height: normal;
-    height: 20px;
+    height: 25px;
     width: 20px;
 }
 .item-input {
@@ -487,7 +487,8 @@ input[type="radio"] {
     border-radius: 50%;
     background: red;
     height: 20px;
-    padding: 5px 5px;
+    padding: 5px 8px;
+    z-index:10000;
     /* width: 30px; */
     text-align: center;
     font-size: 10px;
@@ -495,7 +496,20 @@ input[type="radio"] {
     margin-left: -10px;
     line-height: 1;
 }
-
+/* 
+#welcome_pagination .swiper-pagination{
+    position: inherit !important;
+}
+.welcome-slide-text{
+    position: relative !important;
+    margin-top: 35%;
+}
+.category_cart_list .item-thumbnail-left > img:first-child{
+    max-width: 90px !important;
+    max-height: 100px !important;
+    width: auto !important;
+    height: auto !important;
+} */
 
 
 
@@ -517,9 +531,7 @@ input[type="radio"] {
 .m_left5 {
     margin-left: 5%;
 }
-.categorymenu .item-icon-left {
-    padding-left: 40px;
-}
+
 .position-0{
     position: absolute;
     top: 0%;
@@ -530,4 +542,13 @@ input[type="radio"] {
 .filterpaging .button {
     min-width: 45px;
     min-height: 28px;
+}
+
+
+.checkmark {
+    position: absolute;
+    top: -2;
+    left: 50px;
+    height: 25px;
+    /* width: 25px; */
 }

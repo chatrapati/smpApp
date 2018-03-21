@@ -3,13 +3,15 @@
     <!--  category top header start here  -->
     <ion-nav-bar class="bar bar-header bar-assertive" align-title="center">
         <ion-nav-buttons side="left">
-            <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span>
+            <!-- <span class="button button-icon icon ion-close-circled" ng-click="goback()"></span> -->
+            <span>  <img src="img/close.svg" style="width:50%;margin-left: 10px;" ng-click="goback()"></span>
         </ion-nav-buttons>
         <ion-nav-title>
             <div class="h1 title">Product Details</div>
         </ion-nav-title>
         <ion-nav-buttons side="right">
-            <a class="button button-icon icon ion-android-cart" ng-click="gotoCartPage()"></a>
+                <img src="img/kart_white.svg" ng-click="gotoCartPage()">
+            <!-- <a class="button button-icon icon ion-android-cart" ng-click="gotoCartPage()"></a> -->
             <ion-badge ng-if="CartItemsCount > 0" class="cart_badge">{{CartItemsCount}}</ion-badge>
         </ion-nav-buttons>
     </ion-nav-bar>
@@ -33,7 +35,7 @@
 
                 <ion-slides options="" slider="" class="prod_slider" id="product_detail_slider">
                     <ion-slide-page ng-repeat="img in imgList track by $index" class="text-center" style="height: 200px;">
-                        <img ng-src="{{img}}" class="">
+                        <img ng-src="{{img}}" class="" ng-click="viewFullImage(img)">
                     </ion-slide-page>
                 </ion-slides>
 
@@ -60,7 +62,7 @@
                         <p class="detailexcl_gst">(Excluding-GST)</p>
                         <!--  Product Description part end here    -->
                         <div class="pro_detail_name">
-                            <h1>{{productDetail.upload_name}}</h1>
+                            <h3>{{productDetail.upload_name}}</h3>
                             <!-- <p>sfhsdf dfsdif ksdjfdfj dkfjsdf kjdfhkfhs dfhdshfs hjfdsfhsdf dsfhdsifhds dshfidsfhisdf dsfhd jfdh
                             ndfjdfh sdfhdfh dfdhfdshf</p> -->
                         </div>
@@ -89,7 +91,7 @@
                 </div>
             </div>
 
-            <div  id="prodetail" class="product_desc" style="border-top:5px solid #ddd;">
+            <div  id="prodetail" class="product_desc" style="border-top:2px solid #ddd;">
                 <div ng-if="productDetail.avgrating > 0">
                     <div class="row">
                         <div class="col col-50">
@@ -277,8 +279,8 @@
     <ion-footer-bar>
         <!--Footer Start here -->
         <div id="footer" class="button-bar">
-            <a id="cart" class="button" ng-class="{'clicked': selectedButton== 'Cart'  }" ng-click="addtoCart('Cart',productDetail.upload_name)">ADD TO CART</a>
-            <a id="buynow" class="button" ng-class="{'clicked': selectedButton== 'buy'  }" ng-click="gotoCartPage('buy')">BUY NOW</a>
+            <a id="cart" class="button" ng-class="{'clicked': selectedButton== 'Cart'  }" ng-click="addtoCart('Cart',productDetail.upload_name)">Add To Cart</a>
+            <!-- <a id="buynow" class="button" ng-class="{'clicked': selectedButton== 'buy'  }" ng-click="gotoCartPage('buy')">BUY NOW</a> -->
         </div>
         <!--Footer End here -->
     </ion-footer-bar>
